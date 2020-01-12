@@ -11,7 +11,15 @@ pondera_alunos_rede(base_alunos, codigo = ibge, etapa_ensino = etapa,
 \arguments{
 \item{base_alunos}{data.frame de numero de alunos por etapa e ente federativo}
 
-\item{ponderador}{data.frame de peso de aluno por etapa}
+\item{codigo}{coluna numerica com o codigo do estado}
+
+\item{etapa_ensino}{coluna de fator ou caractere com a etapa de ensino}
+
+\item{var_alunos}{coluna numerica com o numero de alunos}
+
+\item{busca_creche}{caractere com expressao que identifica a etapa referente a creche}
+
+\item{busca_em}{caractere com expressao que identifica a etapa referente ao ensino medio}
 }
 \value{
 Data.frame com alunos ponderador por ente federativo
@@ -21,6 +29,5 @@ Recebe uma base com código ibge, alunos e
 }
 \examples{
 library(simulador.fundeb)
-simulador.fundeb:::pondera_alunos_rede(test)
 
 }

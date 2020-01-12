@@ -11,6 +11,12 @@ pondera_alunos_etapa(base_alunos, ponderador, codigo = ibge,
 \item{base_alunos}{data.frame de numero de alunos por etapa e ente federativo}
 
 \item{ponderador}{data.frame de peso de aluno por etapa}
+
+\item{codigo}{coluna numerica com o codigo do estado}
+
+\item{etapa_ensino}{coluna de fator ou caractere com a etapa de ensino}
+
+\item{var_alunos}{coluna numerica com o numero de alunos}
 }
 \value{
 Data.frame com alunos ponderador por ente federativo

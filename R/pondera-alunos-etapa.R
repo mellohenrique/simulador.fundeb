@@ -4,6 +4,9 @@
 #'
 #' @param base_alunos data.frame de numero de alunos por etapa e ente federativo
 #' @param ponderador data.frame de peso de aluno por etapa
+#' @param codigo coluna numerica com o codigo do estado
+#' @param etapa_ensino coluna de fator ou caractere com a etapa de ensino
+#' @param var_alunos coluna numerica com o numero de alunos
 #'
 #' @return Data.frame com alunos ponderador por ente federativo
 #'
