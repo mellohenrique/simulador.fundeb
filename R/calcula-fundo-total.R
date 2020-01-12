@@ -7,14 +7,14 @@
 #'
 #' @return O valor do fundo total como vetor numerico de tamanho 1
 #'
-#' @import tidyverse
+#' @importFrom magrittr %>%
 #' @examples
 #' library(simulador.fundeb)
 #' simulador.fundeb:::calcula_fundo_total(test)
 
 calcula_fundo_total <- function(fundo, var_fundo = valor){
   fundo %>%
-    summarise(fundo_total = sum({{var}}, na.rm = TRUE)) %>%
-    pull(fundo_total)
+    dplyr::summarise(fundo_total = sum({{var_fundo}}, na.rm = TRUE)) %>%
+    dplyr::pull(fundo_total)
 }
 

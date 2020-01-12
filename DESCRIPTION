@@ -14,4 +14,4 @@ LazyData: true
 Suggests: 
     testthat
 RoxygenNote: 6.1.1
-Imports: tidyverse (>= 1.2.1)
+Imports: dplyr (>= 0.8.3), magrittr (>= 1.5)
