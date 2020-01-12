@@ -4,12 +4,12 @@
 \alias{calcula_fundo_total}
 \title{Calcula valor do fundo total}
 \usage{
-calcula_fundo_total(fundo, var = valor)
+calcula_fundo_total(fundo, var_fundo = valor)
 }
 \arguments{
 \item{fundo}{data.frame}
 
-\item{var}{coluna numerica de fundo}
+\item{var_fundo}{coluna numerica de fundo}
 }
 \value{
 O valor do fundo total como vetor numerico de tamanho 1
@@ -19,5 +19,5 @@ Essa função calcula o valor total de um fundo
 }
 \examples{
 library(simulador.fundeb)
-calcula_fundo_total(teste)
+simulador.fundeb:::calcula_fundo_total(test)
 }
