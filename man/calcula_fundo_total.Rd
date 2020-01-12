@@ -7,7 +7,7 @@
 calcula_fundo_total(fundo, var_fundo = valor)
 }
 \arguments{
-\item{fundo}{data.frame}
+\item{fundo}{data.frame com o valor do fundo de cada entede federativo}
 
 \item{var_fundo}{coluna numerica de fundo}
 }

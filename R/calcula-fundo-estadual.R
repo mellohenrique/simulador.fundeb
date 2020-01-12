@@ -2,8 +2,7 @@
 #'
 #' @description Essa função calcula o valor total de um fundo
 #'
-#' @param fundo data.frame
-#' @param var_fundo coluna numerica com o valor do fundo
+#' @param fundo data.frame com o valor do fundo de cada entede federativo e o codigo ibge do ente
 #' @param codigo coluna numerica com o codigo do estado
 #'
 #' @return Um data.frame com o valor do fundo estadual em um coluna e o codigo do respectivo estado em outra
