@@ -10,6 +10,8 @@ calcula_fundo_estadual(fundo, codigo = ibge, var_fundo = valor)
 \item{fundo}{data.frame com o valor do fundo de cada entede federativo e o codigo ibge do ente}
 
 \item{codigo}{coluna numerica com o codigo do estado}
+
+\item{var_fundo}{coluna numerica com o valor do fundo}
 }
 \value{
 Um data.frame com o valor do fundo estadual em um coluna e o codigo do respectivo estado em outra

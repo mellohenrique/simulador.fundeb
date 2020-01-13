@@ -4,6 +4,7 @@
 #'
 #' @param fundo data.frame com o valor do fundo de cada entede federativo e o codigo ibge do ente
 #' @param codigo coluna numerica com o codigo do estado
+#' @param var_fundo coluna numerica com o valor do fundo
 #'
 #' @return Um data.frame com o valor do fundo estadual em um coluna e o codigo do respectivo estado em outra
 #'
