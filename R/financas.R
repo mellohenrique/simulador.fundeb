@@ -1,6 +1,6 @@
-#' Base com dados de alunos
+#' Base com dados de financiamento do FUNDEB
 #'
-#'  Base com dados de alunos de 2015 para o pacote
+#'  Base com dados de financiamente do FUNDEB de 2015 para o pacote
 #'
 #' @format Uma tabela com 6 colunas e 33552 linhas.
 #' \describe{
