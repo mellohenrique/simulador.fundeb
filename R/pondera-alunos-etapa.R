@@ -20,5 +20,5 @@ pondera_alunos_etapa <- function(base_alunos, ponderador, codigo = ibge, etapa_e
     select({{codigo}}, {{etapa_ensino}}, {{var_alunos}}) %>%
     left_join(ponderador) %>%
     group_by(ibge) %>%
-    summarise(alunos_ponderado = sum({{var_alunos}} * {{peso}}))
+    summarise(alunos_ponderado = sum({{var_alunos}} * {{variavel_peso}}))
 }
