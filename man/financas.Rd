@@ -3,7 +3,7 @@
 \docType{data}
 \name{financas}
 \alias{financas}
-\title{Base com dados de alunos}
+\title{Base com dados de financiamento do FUNDEB}
 \format{Uma tabela com 6 colunas e 33552 linhas.
 \describe{
   \item{ibge}{codigo ibge do ente federativo}
@@ -20,6 +20,6 @@ Tabela provida por Todos pela educacao
 financas
 }
 \description{
-Base com dados de alunos de 2015 para o pacote
+Base com dados de financiamente do FUNDEB de 2015 para o pacote
 }
 \keyword{datasets}
