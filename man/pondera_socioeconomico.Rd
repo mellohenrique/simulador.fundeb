@@ -15,8 +15,6 @@ pondera_socioeconomico(base_socioeconomica,
 \item{min_social}{peso minimo dado a informacao socioeconomica}
 
 \item{max_social}{peso maximo dado a informacao socioeconomica}
-
-\item{base_alunos}{data.frame de numero de alunos por etapa e ente federativo}
 }
 \value{
 Data.frame com alunos ponderador por ente federativo

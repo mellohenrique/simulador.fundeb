@@ -2,7 +2,6 @@
 #'
 #' @description Recebe uma base com código ibge, etapa e alunos e outra com pesos de ponderador por etapa e gera uma tabela com o número de alunos ponderados por entidade da federação
 #'
-#' @param base_alunos data.frame de numero de alunos por etapa e ente federativo
 #' @param base_socioeconomica data.frame o codigo do ibge, o numero de alunos ponderado e uma variavel socioeconomia a ponderar
 #' @param variavel_socioeconomica variavel numerica socioeconomica de um ente federativo
 #' @param min_social peso minimo dado a informacao socioeconomica
