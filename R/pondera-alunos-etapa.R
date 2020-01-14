@@ -15,10 +15,10 @@
 #' library(simulador.fundeb)
 
 
-pondera_alunos_etapa <- function(base_alunos, ponderador, codigo = ibge, etapa_ensino = etapa, var_alunos = alunos){
+pondera_alunos_etapa <- function(base_alunos, ponderador, codigo = ibge, etapa_ensino = etapa, var_alunos = alunos, variavel_peso = peso){
   base_alunos %>%
     select({{codigo}}, {{etapa_ensino}}, {{var_alunos}}) %>%
     left_join(ponderador) %>%
     group_by(ibge) %>%
-    summarise(alunos_ponderado = sum({{var_alunos}} * peso))
+    summarise(alunos_ponderado = sum({{var_alunos}} * {{peso}}))
 }
