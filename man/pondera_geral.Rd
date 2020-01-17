@@ -5,25 +5,26 @@
 \title{Pondera alunos por etapa de ensino}
 \usage{
 pondera_geral(base_alunos, ponderador, base_socioeconomica,
-  condicao_rede = TRUE, condicao_etapa = TRUE,
-  condicao_socio = FALSE)
+  condicao_rede = TRUE, condicao_socio = FALSE, ...)
 }
 \arguments{
 \item{base_alunos}{data.frame de numero de alunos por etapa e ente federativo}
 
 \item{ponderador}{data.frame de peso de aluno por etapa}
 
-\item{codigo}{coluna numerica com o codigo do estado}
+\item{base_socioeconomica}{data.frame o codigo do ibge, o numero de alunos ponderado e uma variavel socioeconomia a ponderar}
 
-\item{etapa_ensino}{coluna de fator ou caractere com a etapa de ensino}
+\item{condicao_rede}{valor binario que condiciona a ponderacao por rede}
 
-\item{var_alunos}{coluna numerica com o numero de alunos}
+\item{condicao_socio}{valor binario que condiciona a ponderacao por informacao socioeconomica}
+
+\item{condicao_etapa}{valor binario que condiciona a ponderacao por etapa}
 }
 \value{
 Data.frame com alunos ponderador por ente federativo
 }
 \description{
-Recebe uma base com código ibge, etapa e alunos e outra com pesos de ponderador por etapa e gera uma tabela com o número de alunos ponderados por entidade da federação
+Recebe uma base com codigo ibge, etapa e alunos e outra com pesos de ponderador por etapa e gera uma tabela com o número de alunos ponderados por entidade da federação
 }
 \examples{
 library(simulador.fundeb)

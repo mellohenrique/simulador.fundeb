@@ -4,10 +4,12 @@
 \alias{pondera_socioeconomico}
 \title{Pondera alunos por etapa de ensino}
 \usage{
-pondera_socioeconomico(base_socioeconomica,
+pondera_socioeconomico(base_alunos, base_socioeconomica,
   variavel_socioeconomica = nse, min_social = 1, max_social = 1.3)
 }
 \arguments{
+\item{base_alunos}{data.frame de numero de alunos por etapa e ente federativo}
+
 \item{base_socioeconomica}{data.frame o codigo do ibge, o numero de alunos ponderado e uma variavel socioeconomia a ponderar}
 
 \item{variavel_socioeconomica}{variavel numerica socioeconomica de um ente federativo}
@@ -15,8 +17,6 @@ pondera_socioeconomico(base_socioeconomica,
 \item{min_social}{peso minimo dado a informacao socioeconomica}
 
 \item{max_social}{peso maximo dado a informacao socioeconomica}
-
-\item{base_alunos}{data.frame de numero de alunos por etapa e ente federativo}
 
 \item{codigo}{coluna numerica com o codigo do estado, deve ter o mesmo nome em base_alunos e base_socioeconomica}
 }
