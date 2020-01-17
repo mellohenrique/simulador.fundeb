@@ -4,7 +4,7 @@
 \alias{calcula_fundo_total}
 \title{Calcula valor do fundo total}
 \usage{
-calcula_fundo_total(fundo, var_fundo = valor)
+calcula_fundo_total(fundo, var_fundo = fundeb)
 }
 \arguments{
 \item{fundo}{data.frame com o valor do fundo de cada entede federativo}
