@@ -13,9 +13,9 @@
 #' library(simulador.fundeb)
 #' simulador.fundeb:::calcula_fundo_estadual(test)
 
-calcula_fundo_estadual <- function(fundo, codigo = ibge, var_fundo = valor){
-  fundo %>% 
-    dplyr::mutate(codigo_estado = substring({{codigo}}, 1, 2) %>% as.numeric()) %>% 
-    dplyr::group_by(codigo_estado) %>% 
+calcula_fundo_estadual <- function(fundo, codigo = ibge, var_fundo = fundeb){
+  fundo %>%
+    dplyr::mutate(codigo_estado = substring({{codigo}}, 1, 2) %>% as.numeric()) %>%
+    dplyr::group_by(codigo_estado) %>%
     dplyr::summarise(fundo_estadual = sum({{var_fundo}}, na.rm = TRUE))
 }
