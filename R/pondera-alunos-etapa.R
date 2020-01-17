@@ -17,8 +17,7 @@
 
 pondera_alunos_etapa <- function(base_alunos, ponderador, codigo = ibge, etapa_ensino = etapa, var_alunos = alunos, variavel_peso = peso){
   base_alunos %>%
-    select({{codigo}}, {{etapa_ensino}}, {{var_alunos}}) %>%
-    left_join(ponderador) %>%
-    group_by(ibge) %>%
-    summarise(alunos = sum({{var_alunos}} * {{variavel_peso}}))
+    dplyr::left_join(ponderador) %>%
+    dplyr::group_by({{codigo}}) %>%
+    dplyr::summarise(alunos = sum({{var_alunos}} * {{variavel_peso}}))
 }
