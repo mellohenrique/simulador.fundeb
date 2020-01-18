@@ -19,5 +19,5 @@ Essa função calcula o valor total de um fundo
 }
 \examples{
 library(simulador.fundeb)
-simulador.fundeb:::calcula_fundo_total(test)
+simulador.fundeb:::calcula_fundo_total(test, var_fundo = valor)
 }

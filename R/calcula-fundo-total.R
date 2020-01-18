@@ -10,11 +10,11 @@
 #' @importFrom magrittr %>%
 #' @examples
 #' library(simulador.fundeb)
-#' simulador.fundeb:::calcula_fundo_total(test)
+#' simulador.fundeb:::calcula_fundo_total(test, var_fundo = valor)
 
 calcula_fundo_total <- function(fundo, var_fundo = fundeb){
   fundo %>%
-    dplyr::summarise(fundo_total = sum({{fundeb}}, na.rm = TRUE)) %>%
+    dplyr::summarise(fundo_total = sum({{var_fundo}}, na.rm = TRUE)) %>%
     dplyr::pull(fundo_total)
 }
 
