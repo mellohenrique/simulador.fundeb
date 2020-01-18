@@ -1,4 +1,4 @@
-#' @title Calcula valor do fundo total
+#' @title Calcula valor do fundo estadual
 #'
 #' @description Essa função calcula o valor total de um fundo
 #'

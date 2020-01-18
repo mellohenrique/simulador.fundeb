@@ -2,7 +2,7 @@
 % Please edit documentation in R/calcula-fundo-estadual.R
 \name{calcula_fundo_estadual}
 \alias{calcula_fundo_estadual}
-\title{Calcula valor do fundo total}
+\title{Calcula valor do fundo estadual}
 \usage{
 calcula_fundo_estadual(fundo, codigo = ibge, var_fundo = fundeb)
 }
@@ -21,5 +21,5 @@ Essa função calcula o valor total de um fundo
 }
 \examples{
 library(simulador.fundeb)
-simulador.fundeb:::calcula_fundo_estadual(test)
+simulador.fundeb:::calcula_fundo_estadual(test, var_fundo = valor)
 }
