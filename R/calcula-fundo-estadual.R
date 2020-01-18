@@ -11,7 +11,7 @@
 #' @importFrom magrittr %>%
 #' @examples
 #' library(simulador.fundeb)
-#' simulador.fundeb:::calcula_fundo_estadual(test)
+#' simulador.fundeb:::calcula_fundo_estadual(test, var_fundo = valor)
 
 calcula_fundo_estadual <- function(fundo, codigo = ibge, var_fundo = fundeb){
   fundo %>%
