@@ -17,5 +17,5 @@ calcula_alunos_estadual <- function(fundo, codigo = ibge, var_alunos = alunos){
   fundo %>%
     dplyr::mutate(codigo_estado = substring({{codigo}}, 1, 2) %>% as.numeric()) %>%
     dplyr::group_by(codigo_estado) %>%
-    dplyr::summarise(fundo_estadual = sum({{var_alunos}}, na.rm = TRUE))
+    dplyr::summarise(alunos_estado = sum({{var_alunos}}, na.rm = TRUE))
 }
