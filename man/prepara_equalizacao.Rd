@@ -5,14 +5,14 @@
 \title{Prepara um modelo para equalizacao}
 \usage{
 prepara_equalizacao(dados, var_vaa = vaa,
-  var_alunos_grupo = alunos_estado)
+  var_alunos_avaliada = alunos_estado)
 }
 \arguments{
 \item{dados}{data.frame que sera preparado para equalizacao}
 
 \item{var_vaa}{variavel de valor as ser equalizada entre entes federativos}
 
-\item{var_alunos_grupos}{coluna numerica com o numero de alunos por ente}
+\item{var_alunos_avaliada}{coluna numerica com o numero de alunos por ente}
 }
 \value{
 Um data.frame com as seguintes colunas adicionas cumulativo de alunos e gasto necessario para equalizar

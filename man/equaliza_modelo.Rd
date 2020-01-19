@@ -6,7 +6,8 @@
 \usage{
 equaliza_modelo(dados,
   var_necessidade_equalizacao = necessario_equalizacao,
-  aporte = aporte_federal, fundo_equalizado = fundo_estadual)
+  aporte = aporte_federal, fundo_equalizado = fundo_estadual,
+  var_alunos = alunos_estado, codigo)
 }
 \arguments{
 \item{dados}{data.frame que serao equalizados}
