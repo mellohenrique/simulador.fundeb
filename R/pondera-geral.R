@@ -5,6 +5,7 @@
 #' @param base_alunos data.frame de numero de alunos por etapa e ente federativo
 #' @param ponderador data.frame de peso de aluno por etapa
 #' @param base_socioeconomica data.frame o codigo do ibge, o numero de alunos ponderado e uma variavel socioeconomia a ponderar
+#' @param base_financas data.frame com o codigo do ibge e os valores do fundeb e das demais receitas
 #' @param condicao_rede valor binario que condiciona a ponderacao por rede
 #' @param condicao_etapa valor binario que condiciona a ponderacao por etapa
 #' @param condicao_socio valor binario que condiciona a ponderacao por informacao socioeconomica
@@ -18,7 +19,7 @@
 #' @examples
 #' library(simulador.fundeb)
 
-pondera_geral <- function(base_alunos, ponderador, base_socioeconomica, condicao_rede = TRUE, condicao_socio = FALSE, ...){
+pondera_geral <- function(base_alunos, ponderador, base_socioeconomica, base_financas, condicao_rede = TRUE, condicao_socio = FALSE, ...){
   if(condicao_rede) {
     resultado <- pondera_alunos_rede(base_alunos, ...) %>%
       pondera_alunos_etapa(ponderador = ponderador)
@@ -27,10 +28,11 @@ pondera_geral <- function(base_alunos, ponderador, base_socioeconomica, condicao
   }
 
   if(condicao_socio) {
-    pondera_socioeconomico(resultado, base_socioeconomica, ...)
+    pondera_socioeconomico(resultado, base_socioeconomica, base_financas, ...)
   } else {
-    if(is.data.frame(base_socioeconomica) & condicao_socio == FALSE){
-      dplyr::left_join(resultado, base_socioeconomica)
+    if(is.data.frame(base_socioeconomica) & is.data.frame(financas) & condicao_socio == FALSE){
+      dplyr::left_join(resultado, base_socioeconomica) %>%
+        left_join(base_financas)
     } else {
       resultado
     }

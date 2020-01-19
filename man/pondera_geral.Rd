@@ -4,7 +4,7 @@
 \alias{pondera_geral}
 \title{Pondera alunos por etapa de ensino}
 \usage{
-pondera_geral(base_alunos, ponderador, base_socioeconomica,
+pondera_geral(base_alunos, ponderador, base_socioeconomica, base_financas,
   condicao_rede = TRUE, condicao_socio = FALSE, ...)
 }
 \arguments{
@@ -13,6 +13,8 @@ pondera_geral(base_alunos, ponderador, base_socioeconomica,
 \item{ponderador}{data.frame de peso de aluno por etapa}
 
 \item{base_socioeconomica}{data.frame o codigo do ibge, o numero de alunos ponderado e uma variavel socioeconomia a ponderar}
+
+\item{base_financas}{data.frame com o codigo do ibge e os valores do fundeb e das demais receitas}
 
 \item{condicao_rede}{valor binario que condiciona a ponderacao por rede}
 
