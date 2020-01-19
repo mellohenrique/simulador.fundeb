@@ -1,6 +1,6 @@
-#' @title Pondera alunos por etapa de ensino
+#' @title Simulação do modelo Fundeb de financiamento da educação
 #'
-#' @description Recebe uma base com codigo ibge, etapa e alunos e outra com pesos de ponderador por etapa e gera uma tabela com o número de alunos ponderados por entidade da federação
+#' @description Recebe uma base com numero de alunos por ente e por etapa, ponderador por etapa, dados socioeconomicos por ente e dados financeiros por ente e simula o modelo fundeb de financiamento da educação
 #'
 #' @param base_alunos data.frame de numero de alunos por etapa e ente federativo
 #' @param ponderador data.frame de peso de aluno por etapa
@@ -17,31 +17,21 @@
 #' @export
 #'
 
-modelo_fundeb <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, var_fundo = fundeb, var_alunos = alunos, ...) {
+simular_modelo_fundeb <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, var_fundo = fundeb, var_alunos = alunos, ...) {
   dados <-
-    simulador.fundeb:::pondera_geral(base_alunos, ponderador, base_socioeconomica, ...) %>%
-    dplyr::left_join(base_financas)
+    pondera_geral(base_alunos, ponderador, base_socioeconomica, base_financas, ...)
 
   aporte_federal <-
-    auxilio_federal * simulador.fundeb:::calcula_fundo_total(dados, {{var_fundo}})
+    auxilio_federal * calcula_fundo_total(dados, {{var_fundo}})
 
   dados_modelo <-
-    simulador.fundeb:::calcula_fundo_estadual(dados, var_fundo = {{var_fundo}}) %>%
-    dplyr::left_join(simulador.fundeb:::calcula_alunos_estadual(dados, var_alunos = {{var_alunos}}), by = "codigo_estado") %>%
+    calcula_fundo_estadual(dados, var_fundo = {{var_fundo}}) %>%
+    dplyr::left_join(calcula_alunos_estadual(dados, var_alunos = {{var_alunos}}), by = "codigo_estado") %>%
     dplyr::mutate(vaa = fundo_estadual / alunos_estado) %>%
-    dplyr::arrange(vaa) %>%
-    dplyr::mutate(
-      cumulativo_alunos = cumsum(alunos_estado),
-      gasto_necessario =  vaa * cumulativo_alunos,
-      gasto_realizado =  cumsum(vaa * alunos_estado),
-      total_equalizacao = gasto_necessario - gasto_realizado
-    )
+    prepara_equalizacao()
+
   dados_modelo <- dados_modelo %>%
-    dplyr::filter(total_equalizacao < aporte_federal) %>%
-    dplyr::mutate(vaa = (sum(fundo_estadual) + aporte_federal) / sum(alunos_estado)) %>%
-    dplyr::bind_rows(dados_modelo %>% filter(total_equalizacao > aporte_federal)) %>%
-    dplyr::mutate(auxilio_federal = total_equalizacao < aporte_federal) %>%
-    dplyr::select(codigo_estado, vaa_fundo = vaa, fundo_estadual, auxilio_federal)
+    equaliza_modelo(aporte = aporte_federal)
 
   dados %>%
     dplyr::mutate(codigo_estado = substring(ibge, 1, 2) %>% as.numeric()) %>%
