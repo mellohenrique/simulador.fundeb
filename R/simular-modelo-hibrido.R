@@ -26,11 +26,11 @@ simular_modelo_hibrido <- function(base_alunos, ponderador, base_socioeconomica,
 
   dados_modelo <- prepara_equalizacao(dados, vaa_final, var_alunos_avaliada = alunos, ...) %>%
     dplyr::mutate(financiamento_total = vaa_final * alunos) %>%
+    dplyr::rename(vaa = vaa_final) %>%
     equaliza_modelo(fundo_equalizado = financiamento_total, var_alunos = alunos, codigo = {{codigo_equalizacao}}, ...) %>%
     dplyr::rename(vaa_hibrido = vaa)
 
   dados %>%
     dplyr::left_join(dados_modelo) %>%
-    dplyr::rename(vaa_modelo_fundeb = vaa_fundeb) %>%
-    dplyr::mutate(vaa_final = vaa_hibrido + demais_receitas/alunos)
+    dplyr::rename(vaa_modelo_fundeb = vaa_fundeb)
 }
