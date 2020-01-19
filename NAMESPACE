@@ -3,4 +3,5 @@
 export(pondera_geral)
 export(simular_modelo_fundeb)
 export(simular_modelo_hibrido)
+export(simular_modelo_vaa)
 importFrom(magrittr,"%>%")
