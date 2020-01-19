@@ -32,7 +32,7 @@ pondera_geral <- function(base_alunos, ponderador, base_socioeconomica, base_fin
   } else {
     if(is.data.frame(base_socioeconomica) & is.data.frame(financas) & condicao_socio == FALSE){
       dplyr::left_join(resultado, base_socioeconomica) %>%
-        left_join(base_financas)
+        dplyr::left_join(base_financas)
     } else {
       resultado
     }
