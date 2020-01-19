@@ -13,11 +13,11 @@
 #' @examples
 #' library(simulador.fundeb)
 
-equaliza_modelo <- function(dados, var_necessidade_equalizacao = necessario_equalizacao, aporte = aporte_federal, fundo_equalizado = fundo_estadual) {
+equaliza_modelo <- function(dados, var_necessidade_equalizacao = necessario_equalizacao, aporte = aporte_federal, fundo_equalizado = fundo_estadual, var_alunos  = alunos_estado, codigo) {
   dados %>%
     dplyr::filter({{var_necessidade_equalizacao}} < {{aporte}}) %>%
-    dplyr::mutate(vaa = (sum({{fundo_equalizado}}) + {{aporte}}) / sum(alunos_estado)) %>%
-    dplyr::bind_rows(dados %>% filter({{var_necessidade_equalizacao}} > {{aporte}})) %>%
+    dplyr::mutate(vaa = (sum({{fundo_equalizado}}) + {{aporte}}) / sum({{var_alunos}})) %>%
+    dplyr::bind_rows(dados %>% dplyr::filter({{var_necessidade_equalizacao}} > {{aporte}})) %>%
     dplyr::mutate(auxilio_federal = {{var_necessidade_equalizacao}} < {{aporte}}) %>%
-    dplyr::select(codigo_estado, vaa_fundo = vaa, {{fundo_equalizado}}, auxilio_federal)
+    dplyr::select({{codigo}}, vaa)
   }
