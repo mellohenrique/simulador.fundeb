@@ -31,12 +31,13 @@ simular_modelo_fundeb <- function(base_alunos, ponderador, base_socioeconomica, 
     prepara_equalizacao()
 
   dados_modelo <- dados_modelo %>%
-    equaliza_modelo(aporte = aporte_federal)
+    equaliza_modelo(aporte = aporte_federal, codigo = codigo_estado) %>%
+    dplyr::rename(vaa_fundeb = vaa)
 
   dados %>%
     dplyr::mutate(codigo_estado = substring(ibge, 1, 2) %>% as.numeric()) %>%
     dplyr::left_join(dados_modelo) %>%
     dplyr::left_join(base_financas) %>%
-    dplyr::mutate(vaa_final = vaa_fundo + demais_receitas / {{var_alunos}})
+    dplyr::mutate(vaa_final = vaa_fundeb + demais_receitas / {{var_alunos}})
 
 }
