@@ -1,8 +1,8 @@
 #' @title Calcula numero de alunos por estado
 #'
-#' @description Essa função calcula o valor total de um fundo. Essa função supõe que os dois primeiros digitos são referentes ao estado do ente federativo
+#' @description Essa função calcula o valor de alunos por ente federativo. Essa função supõe que os dois primeiros digitos são referentes ao estado do ente federativo
 #'
-#' @param fundo data.frame com o valor do fundo de cada entede federativo e o codigo ibge do ente
+#' @param dados data.frame com o numero de alunos por ente federativo
 #' @param codigo coluna numerica com o codigo identificador do ente
 #' @param var_alunos coluna numerica com o numero de alunos por ente
 #'
@@ -13,8 +13,8 @@
 #' library(simulador.fundeb)
 #' simulador.fundeb:::calcula_alunos_estadual(test)
 
-calcula_alunos_estadual <- function(fundo, codigo = ibge, var_alunos = alunos){
-  fundo %>%
+calcula_alunos_estadual <- function(dados, codigo = ibge, var_alunos = alunos){
+  dados %>%
     dplyr::mutate(codigo_estado = substring({{codigo}}, 1, 2) %>% as.numeric()) %>%
     dplyr::group_by(codigo_estado) %>%
     dplyr::summarise(alunos_estado = sum({{var_alunos}}, na.rm = TRUE))

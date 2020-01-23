@@ -4,10 +4,10 @@
 \alias{calcula_alunos_estadual}
 \title{Calcula numero de alunos por estado}
 \usage{
-calcula_alunos_estadual(fundo, codigo = ibge, var_alunos = alunos)
+calcula_alunos_estadual(dados, codigo = ibge, var_alunos = alunos)
 }
 \arguments{
-\item{fundo}{data.frame com o valor do fundo de cada entede federativo e o codigo ibge do ente}
+\item{dados}{data.frame com o numero de alunos por ente federativo}
 
 \item{codigo}{coluna numerica com o codigo identificador do ente}
 
@@ -17,7 +17,7 @@ calcula_alunos_estadual(fundo, codigo = ibge, var_alunos = alunos)
 Um data.frame com o valor do fundo estadual em um coluna e o codigo do respectivo estado em outra
 }
 \description{
-Essa função calcula o valor total de um fundo. Essa função supõe que os dois primeiros digitos são referentes ao estado do ente federativo
+Essa função calcula o valor de alunos por ente federativo. Essa função supõe que os dois primeiros digitos são referentes ao estado do ente federativo
 }
 \examples{
 library(simulador.fundeb)
