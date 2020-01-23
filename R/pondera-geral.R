@@ -19,7 +19,7 @@
 #' @examples
 #' library(simulador.fundeb)
 
-pondera_geral <- function(base_alunos, ponderador, base_socioeconomica, base_financas, condicao_rede = TRUE, condicao_socio = FALSE, ...){
+pondera_geral <- function(base_alunos, ponderador, base_socioeconomica, base_financas, condicao_rede = TRUE, condicao_socio = TRUE, ...){
   if(condicao_rede) {
     resultado <- pondera_alunos_rede(base_alunos, ...) %>%
       pondera_alunos_etapa(ponderador = ponderador)
