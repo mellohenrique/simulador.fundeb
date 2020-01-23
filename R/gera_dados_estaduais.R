@@ -15,7 +15,7 @@
 gera_dados_estaduais <- function(dados){
   dplyr::left_join(
     calcula_alunos_estadual(dados),
-    calcula_alunos_estadual(dados, var_alunos = alunos_socioeco_fin) %>%
+    calcula_alunos_estadual(dados, var_alunos = alunos_socioeco) %>%
       dplyr::rename(alunos_estado_socio = alunos_estado)) %>%
       dplyr::left_join(calcula_fundo_estadual(dados)) %>%
       dplyr::mutate(vaa = fundo_estadual / alunos_estado,
