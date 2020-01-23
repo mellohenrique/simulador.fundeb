@@ -17,27 +17,30 @@
 #' @export
 #'
 
-simular_modelo_fundeb <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, var_fundo = fundeb, var_alunos = alunos, ...) {
-  dados <-
-    pondera_geral(base_alunos, ponderador, base_socioeconomica, base_financas, ...)
+simular_modelo_fundeb <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, var_fundo = fundeb, var_alunos = alunos, equalizacao_socio = FALSE, distribuicao_fundo_estadual_socio = FALSE, ...) {
+  dados <- simulador.fundeb::pondera_geral(alunos, ponderador_alunos, info_socioeco, financas)
+  dados_estaduais <- gera_dados_estaduais(dados)
+  aporte_federal <- auxilio_federal * calcula_fundo_total(dados)
 
-  aporte_federal <-
-    auxilio_federal * calcula_fundo_total(dados, {{var_fundo}})
-
-  dados_modelo <-
-    calcula_fundo_estadual(dados, var_fundo = {{var_fundo}}) %>%
-    dplyr::left_join(calcula_alunos_estadual(dados, var_alunos = {{var_alunos}}), by = "codigo_estado") %>%
-    dplyr::mutate(vaa = fundo_estadual / alunos_estado) %>%
-    prepara_equalizacao()
-
-  dados_modelo <- dados_modelo %>%
-    equaliza_modelo(aporte = aporte_federal, codigo = codigo_estado) %>%
-    dplyr::rename(vaa_fundeb = vaa)
+  if(equalizacao_socio) {
+    financiamento_estado <-
+      prepara_equalizacao(dados_estaduais) %>%
+      equaliza_modelo(var_alunos = alunos_estado_socio, codigo = codigo_estado, aporte = aporte_federal)
+  } else {
+    financiamento_estado <-
+      prepara_equalizacao(dados_estaduais) %>%
+      equaliza_modelo(codigo = codigo_estado, aporte = aporte_federal)
+  }
 
   dados %>%
-    dplyr::mutate(codigo_estado = substring(ibge, 1, 2) %>% as.numeric()) %>%
-    dplyr::left_join(dados_modelo) %>%
-    dplyr::left_join(base_financas) %>%
-    dplyr::mutate(vaa_final = vaa_fundeb + demais_receitas / {{var_alunos}})
-
+    dplyr::left_join(financiamento_estado) %>%
+    dplyr::group_by(codigo_estado) %>%
+    dplyr::mutate(
+      vaa_fundeb = ifelse(distribuicao_fundo_estadual_socio,
+        (total_fundo_estado * (alunos_socioeco / sum(alunos_socioeco)))/alunos_socioeco,
+        (total_fundo_estado * (alunos / sum(alunos)))/alunos),
+        vaa_final = ifelse(distribuicao_fundo_estadual_socio,
+        vaa_fundeb + demais_receitas / alunos_socioeco,
+        vaa_fundeb + demais_receitas / alunos)) %>%
+    ungroup()
 }
