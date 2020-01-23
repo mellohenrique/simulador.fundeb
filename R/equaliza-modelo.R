@@ -18,6 +18,7 @@ equaliza_modelo <- function(dados, var_necessidade_equalizacao = necessario_equa
     dplyr::filter({{var_necessidade_equalizacao}} < {{aporte}}) %>%
     dplyr::mutate(vaa = (sum({{fundo_equalizado}}) + {{aporte}}) / sum({{var_alunos}})) %>%
     dplyr::bind_rows(dados %>% dplyr::filter({{var_necessidade_equalizacao}} > {{aporte}})) %>%
-    dplyr::mutate(auxilio_federal = {{var_necessidade_equalizacao}} < {{aporte}}) %>%
-    dplyr::select({{codigo}}, vaa)
+    dplyr::mutate(auxilio_federal = {{var_necessidade_equalizacao}} < {{aporte}},
+                  total_fundo_estado = vaa * {{var_alunos}}) %>%
+    dplyr::select({{codigo}}, total_fundo_estado, vaa_equalizado = vaa, auxilio_federal)
   }
