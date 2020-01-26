@@ -38,9 +38,10 @@ simular_modelo_fundeb <- function(base_alunos, ponderador, base_socioeconomica, 
     dplyr::mutate(
       vaa_fundeb = ifelse(distribuicao_fundo_estadual_socio,
         (total_fundo_estado * (alunos_socioeco / sum(alunos_socioeco)))/alunos_socioeco,
-        (total_fundo_estado * (alunos / sum(alunos)))/alunos),
-        vaa_final = ifelse(distribuicao_fundo_estadual_socio,
-        vaa_fundeb + demais_receitas / alunos_socioeco,
-        vaa_fundeb + demais_receitas / alunos)) %>%
-    ungroup()
+        (total_fundo_estado * (alunos / sum(alunos)))/alunos)) %>%
+  dplyr::ungroup() %>%
+    dplyr::mutate(
+        vaa_final = case_when(
+          distribuicao_fundo_estadual_socio ~ vaa_fundeb + (demais_receitas / alunos_socioeco),
+          TRUE ~ vaa_fundeb + (demais_receitas / alunos)))
 }
