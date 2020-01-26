@@ -1,6 +1,6 @@
 #' Base com dados de valor socioeconomicos
 #'
-#'  Base com dados de alunos de 2015 para o pacote
+#'  Base com dados de financiamento de 2015
 #'
 #' @format Uma tabela com 6 colunas e 5592 linhas.
 #' \describe{

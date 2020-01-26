@@ -20,6 +20,6 @@ Tabela provida por Todos pela educacao
 info_socioeco
 }
 \description{
-Base com dados de alunos de 2015 para o pacote
+Base com dados de financiamento de 2015
 }
 \keyword{datasets}
