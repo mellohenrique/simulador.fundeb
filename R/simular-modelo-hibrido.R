@@ -18,19 +18,24 @@
 #' @export
 #'
 
-simular_modelo_hibrido <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal_fundeb = 0.1, auxilio_federal_vaa = 0.05, var_fundo = fundeb, var_alunos = alunos, codigo_equalizacao = ibge, ...) {
-  dados <- simular_modelo_fundeb(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = auxilio_federal_fundeb, ...)
+simular_modelo_hibrido <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, auxilio_federal_vaa = 0.05, var_fundo = fundeb, var_alunos = alunos, equalizacao_socio = FALSE, distribuicao_fundo_estadual_socio = FALSE, ...) {
+
+  dados <- simular_modelo_fundeb(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = auxilio_federal, ...)
 
   aporte_federal <-
     auxilio_federal_vaa * calcula_fundo_total(dados, {{var_fundo}})
 
-  dados_modelo <- prepara_equalizacao(dados, vaa_final, var_alunos_avaliada = alunos, ...) %>%
-    dplyr::mutate(financiamento_total = vaa_final * alunos) %>%
-    dplyr::rename(vaa = vaa_final) %>%
-    equaliza_modelo(fundo_equalizado = financiamento_total, var_alunos = alunos, codigo = {{codigo_equalizacao}}, ...) %>%
-    dplyr::rename(vaa_hibrido = vaa)
+  if(distribuicao_fundo_estadual_socio) {
+    financiamento <- equaliza_modelo(dados, recursos_totais, aporte = aporte_federal, var_alunos = var_alunos_socio, var_vaa = vaa_final, codigo = ibge)
+  } else {
+    financiamento <- equaliza_modelo(dados, recursos_totais, aporte = aporte_federal,var_vaa = vaa_final, var_alunos = alunos, codigo = ibge)
+  }
 
   dados %>%
-    dplyr::left_join(dados_modelo) %>%
-    dplyr::rename(vaa_modelo_fundeb = vaa_fundeb)
+    dplyr::left_join(financiamento %>% rename(fundo_etapa_vaa = fundo_equalizado)) %>%
+    dplyr::rename(vaa_intermediario = vaa_final) %>%
+    dplyr::mutate(
+      vaa_final = dplyr::case_when(
+        distribuicao_fundo_estadual_socio ~ recursos_totais / alunos_socioeco,
+        TRUE ~ recursos_totais / alunos))
 }

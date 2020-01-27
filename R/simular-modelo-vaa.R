@@ -17,24 +17,24 @@
 #' @export
 #'
 
-simular_modelo_vaa <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, var_fundo = fundeb, var_alunos = alunos, ...) {
-  dados <-
-    pondera_geral(base_alunos, ponderador, base_socioeconomica, base_financas, ...)
+simular_modelo_vaa <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, var_fundo = fundeb, var_alunos = alunos, equalizacao_socio = FALSE, distribuicao_fundo_estadual_socio = FALSE, ...){
+  dados <- pondera_geral(base_alunos, ponderador_alunos, base_socioeconomica, base_financas)
+  dados_estaduais <- gera_dados_estaduais(dados)
+  aporte_federal <- auxilio_federal * calcula_fundo_total(dados)
+  financiamento_estado <- dados_estaduais %>%
+      dplyr::select(fundo_estadual, codigo_estado)
 
-  aporte_federal <-
-    auxilio_federal * calcula_fundo_total(dados, {{var_fundo}})
-
-  dados_modelo <-
-    calcula_fundo_estadual(dados, var_fundo = {{var_fundo}}) %>%
-    dplyr::left_join(calcula_alunos_estadual(dados, var_alunos = {{var_alunos}}), by = "codigo_estado") %>%
-    dplyr::mutate(vaa_fundo_estadual = fundo_estadual / alunos_estado)
-
-  dados %>%
-    dplyr::mutate(codigo_estado = substring(ibge, 1, 2) %>% as.numeric()) %>%
-    dplyr::left_join(dados_modelo) %>%
-    dplyr::rename(vaa_fundeb = vaa) %>%
-    dplyr::mutate(vaa = vaa_fundeb + demais_receitas / alunos) %>%
-    prepara_equalizacao(var_vaa = vaa, var_alunos_avaliada = alunos) %>%
-    dplyr::mutate(total_financiamento = vaa * alunos) %>%
-    equaliza_modelo(var_alunos = alunos, aporte = aporte_federal, fundo_equalizado = total_financiamento)
+    dados %>%
+      dplyr::left_join(financiamento_estado) %>%
+      dplyr::group_by(codigo_estado) %>%
+      dplyr::mutate(
+        fundeb_recebido = dplyr::case_when(
+          distribuicao_fundo_estadual_socio ~ fundo_estadual * (alunos_socioeco / sum(alunos_socioeco)),
+          TRUE ~ fundo_estadual * (alunos / sum(alunos)))) %>%
+      dplyr::ungroup() %>%
+      dplyr::mutate(
+        recursos_totais = fundeb_recebido + demais_receitas,
+        vaa_final = dplyr::case_when(
+          distribuicao_fundo_estadual_socio ~ recursos_totais / alunos_socioeco,
+          TRUE ~ recursos_totais / alunos))
 }
