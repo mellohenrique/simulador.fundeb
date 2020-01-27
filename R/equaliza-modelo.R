@@ -3,22 +3,26 @@
 #' @description Função intermediária que equaliza o valor do fundo por aluno
 #'
 #' @param dados data.frame que serao equalizados
-#' @param var_necessidade_equalizacao variavel que indica a necessidade de equalizacao
+#' @param fundo coluna com o valor do fundo a ser equalizado
 #' @param aporte quantidade de verba que será usada na equalização
-#' @param fundo_equalizado coluna numerica com o fundo a ser equalizado entre os entes
+#' @param var_alunos coluna numerica com o numero de alunos
+#' @param var_vaa_eq coluna numerica com o valor aluno ano considerado
+#' @param codigo codigo do ente ou estado
 #'
-#' @return Um data.frame com as seguintes colunas adicionas cumulativo de alunos e gasto necessario para equalizar
+#' @return Um data.frame com o fundo avaliado equalizado
 #'
 #' @importFrom magrittr %>%
 #' @examples
 #' library(simulador.fundeb)
 
-equaliza_modelo <- function(dados, var_necessidade_equalizacao = necessario_equalizacao, aporte = aporte_federal, fundo_equalizado = fundo_estadual, var_alunos  = alunos_estado, codigo) {
+equaliza_modelo <- function(dados, fundo, aporte = aporte_federal,  var_alunos  = alunos_estado, var_vaa_eq = vaa, codigo) {
+  dados <- dados %>%
+    arrange({{var_vaa_eq}}) %>%
+    mutate(auxilio = aporte > cumsum({{var_alunos}}) * {{var_vaa_eq}} - cumsum({{var_vaa_eq}} * {{var_alunos}}))
   dados %>%
-    dplyr::filter({{var_necessidade_equalizacao}} < {{aporte}}) %>%
-    dplyr::mutate(vaa = (sum({{fundo_equalizado}}) + {{aporte}}) / sum({{var_alunos}})) %>%
-    dplyr::bind_rows(dados %>% dplyr::filter({{var_necessidade_equalizacao}} > {{aporte}})) %>%
-    dplyr::mutate(auxilio_federal = {{var_necessidade_equalizacao}} < {{aporte}},
-                  total_fundo_estado = vaa * {{var_alunos}}) %>%
-    dplyr::select({{codigo}}, total_fundo_estado, vaa_equalizado = vaa, auxilio_federal)
+    filter(auxilio) %>%
+    mutate(fundo_equalizado = (aporte + sum({{fundo}}))*{{var_alunos}}/sum({{var_alunos}})) %>%
+    bind_rows(dados %>% filter(!auxilio) %>%
+                mutate(fundo_equalizado = {{fundo}})) %>%
+    select({{codigo}}, fundo_equalizado)
   }
