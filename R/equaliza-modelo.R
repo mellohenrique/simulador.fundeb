@@ -6,7 +6,6 @@
 #' @param fundo coluna com o valor do fundo a ser equalizado
 #' @param aporte quantidade de verba que será usada na equalização
 #' @param var_alunos coluna numerica com o numero de alunos
-#' @param var_vaa_eq coluna numerica com o valor aluno ano considerado
 #' @param codigo codigo do ente ou estado
 #'
 #' @return Um data.frame com o fundo avaliado equalizado

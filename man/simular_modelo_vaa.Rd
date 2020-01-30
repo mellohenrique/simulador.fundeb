@@ -6,7 +6,8 @@
 \usage{
 simular_modelo_vaa(base_alunos, ponderador, base_socioeconomica,
   base_financas, auxilio_federal = 0.1, var_fundo = fundeb,
-  var_alunos = alunos, ...)
+  var_alunos = alunos, distribuicao_fundo_estadual_socio = FALSE,
+  equalizacao_vaa_socio = FALSE, ...)
 }
 \arguments{
 \item{base_alunos}{data.frame de numero de alunos por etapa e ente federativo}

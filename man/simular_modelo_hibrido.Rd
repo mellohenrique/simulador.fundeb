@@ -5,9 +5,9 @@
 \title{Simulação do modelo híbrido de financiamento da educação}
 \usage{
 simular_modelo_hibrido(base_alunos, ponderador, base_socioeconomica,
-  base_financas, auxilio_federal_fundeb = 0.1,
-  auxilio_federal_vaa = 0.05, var_fundo = fundeb,
-  var_alunos = alunos, codigo_equalizacao = ibge, ...)
+  base_financas, auxilio_federal = 0.1, auxilio_federal_vaa = 0.05,
+  var_fundo = fundeb, var_alunos = alunos, equalizacao_socio = FALSE,
+  distribuicao_fundo_estadual_socio = FALSE, ...)
 }
 \arguments{
 \item{base_alunos}{data.frame de numero de alunos por etapa e ente federativo}
@@ -18,13 +18,13 @@ simular_modelo_hibrido(base_alunos, ponderador, base_socioeconomica,
 
 \item{base_financas}{data.frame com o codigo do ibge e os valores do fundeb e das demais receitas}
 
-\item{auxilio_federal_fundeb}{percentual do fundo que a União complementará segundo o modelo fundeb}
-
 \item{auxilio_federal_vaa}{percentual do fundo que a União complementará segundo o modelo vaa}
 
 \item{var_fundo}{parametro com o nome da variavel do fundo a ser considerado}
 
 \item{var_alunos}{parametro com o nome da variavel alunos a ser considerada}
+
+\item{auxilio_federal_fundeb}{percentual do fundo que a União complementará segundo o modelo fundeb}
 }
 \value{
 Data.frame com alunos ponderador por ente federativo

@@ -4,22 +4,22 @@
 \alias{equaliza_modelo}
 \title{Equaliza um modelo}
 \usage{
-equaliza_modelo(dados,
-  var_necessidade_equalizacao = necessario_equalizacao,
-  aporte = aporte_federal, fundo_equalizado = fundo_estadual,
+equaliza_modelo(dados, fundo, aporte = aporte_federal,
   var_alunos = alunos_estado, codigo)
 }
 \arguments{
 \item{dados}{data.frame que serao equalizados}
 
-\item{var_necessidade_equalizacao}{variavel que indica a necessidade de equalizacao}
+\item{fundo}{coluna com o valor do fundo a ser equalizado}
 
 \item{aporte}{quantidade de verba que será usada na equalização}
 
-\item{fundo_equalizado}{coluna numerica com o fundo a ser equalizado entre os entes}
+\item{var_alunos}{coluna numerica com o numero de alunos}
+
+\item{codigo}{codigo do ente ou estado}
 }
 \value{
-Um data.frame com as seguintes colunas adicionas cumulativo de alunos e gasto necessario para equalizar
+Um data.frame com o fundo avaliado equalizado
 }
 \description{
 Função intermediária que equaliza o valor do fundo por aluno
