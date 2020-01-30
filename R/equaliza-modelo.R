@@ -15,10 +15,10 @@
 #' @examples
 #' library(simulador.fundeb)
 
-equaliza_modelo <- function(dados, fundo, aporte = aporte_federal,  var_alunos  = alunos_estado, var_vaa_eq = vaa, codigo) {
+equaliza_modelo <- function(dados, fundo, aporte = aporte_federal,  var_alunos  = alunos_estado, codigo) {
   dados <- dados %>%
-    arrange({{var_vaa_eq}}) %>%
-    mutate(auxilio = aporte > cumsum({{var_alunos}}) * {{var_vaa_eq}} - cumsum({{var_vaa_eq}} * {{var_alunos}}))
+    arrange({{fundo}}/{{var_alunos}}) %>%
+    mutate(auxilio = aporte > cumsum({{var_alunos}}) * {{fundo}}/{{var_alunos}} - cumsum({{fundo}}/{{var_alunos}} * {{var_alunos}}))
   dados %>%
     filter(auxilio) %>%
     mutate(fundo_equalizado = (aporte + sum({{fundo}}))*{{var_alunos}}/sum({{var_alunos}})) %>%
