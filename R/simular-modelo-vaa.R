@@ -17,14 +17,14 @@
 #' @export
 #'
 
-simular_modelo_vaa <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, var_fundo = fundeb, var_alunos = alunos, equalizacao_socio = FALSE, distribuicao_fundo_estadual_socio = FALSE, ...){
+simular_modelo_vaa <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, var_fundo = fundeb, var_alunos = alunos, distribuicao_fundo_estadual_socio = FALSE, equalizacao_vaa_socio = FALSE,...){
   dados <- pondera_geral(base_alunos, ponderador_alunos, base_socioeconomica, base_financas)
   dados_estaduais <- gera_dados_estaduais(dados)
   aporte_federal <- auxilio_federal * calcula_fundo_total(dados)
   financiamento_estado <- dados_estaduais %>%
       dplyr::select(fundo_estadual, codigo_estado)
 
-    dados %>%
+    dados <- dados %>%
       dplyr::left_join(financiamento_estado) %>%
       dplyr::group_by(codigo_estado) %>%
       dplyr::mutate(
@@ -37,4 +37,17 @@ simular_modelo_vaa <- function(base_alunos, ponderador, base_socioeconomica, bas
         vaa_final = dplyr::case_when(
           distribuicao_fundo_estadual_socio ~ recursos_totais / alunos_socioeco,
           TRUE ~ recursos_totais / alunos))
+
+    if(equalizacao_vaa_socio){
+      fundo_equalizado <- equaliza_modelo(fundo = recursos_totais, aporte = aporte_federal, var_alunos = alunos_socio, codigo = ibge) %>%
+        rename(recursos_complementados = fundo_equalizado)
+      dados <- left_join(dados, fundo_equalizado) %>%
+        mutate(vaa_complementado = recursos_+vaa_complementados / alunos_socio)
+    } else {
+      fundo_equalizado <- equaliza_modelo(fundo = recursos_totais, aporte = aporte_federal, var_alunos = alunos, codigo = ibge) %>%
+        rename(recursos_complementados = fundo_equalizado)
+      dados <- left_join(dados, fundo_equalizado) %>%
+        mutate(vaa_complementado = recursos_+vaa_complementados / alunos)
+    }
+    dados
 }
