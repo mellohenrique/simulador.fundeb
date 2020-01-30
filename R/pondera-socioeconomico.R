@@ -37,8 +37,8 @@ pondera_socioeconomico <-
                scales::rescale(c(max_social, min_social), c(0, 1)),
         financas = (({{var_fundo_pond}} - min({{var_fundo_pond}}, na.rm = TRUE)) / (max({{var_fundo_pond}}, na.rm = TRUE) - min({{var_fundo_pond}}, na.rm = TRUE))) %>%
           scales::rescale(c(max_social, min_social), c(0, 1)),
-        socioeco = if_else(is.nan(socioeco), (max_social + min_social)/2, socioeco),
-        financas = if_else(is.nan(financas), (max_social + min_social)/2, financas),
+        socioeco = dplyr::if_else(is.nan(socioeco), (max_social + min_social)/2, socioeco),
+        financas = dplyr::if_else(is.nan(financas), (max_social + min_social)/2, financas),
         peso_socio_eco = financas * socioeco,
         alunos_socioeco = alunos * peso_socio_eco) %>%
       dplyr::ungroup()
