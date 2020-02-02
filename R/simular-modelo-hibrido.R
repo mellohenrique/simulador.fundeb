@@ -26,13 +26,14 @@ simular_modelo_hibrido <- function(base_alunos, ponderador, base_socioeconomica,
     auxilio_federal_vaa * calcula_fundo_total(dados, {{var_fundo}})
 
   if(distribuicao_fundo_estadual_socio) {
-    financiamento <- equaliza_modelo(dados, recursos_totais, aporte = aporte_federal, var_alunos = var_alunos_socio, var_vaa = vaa_final, codigo = ibge)
+    financiamento <- equaliza_modelo(dados, recursos_totais, aporte = aporte_federal, var_alunos = alunos_socioeco, codigo = ibge)
   } else {
-    financiamento <- equaliza_modelo(dados, recursos_totais, aporte = aporte_federal,var_vaa = vaa_final, var_alunos = alunos, codigo = ibge)
+    financiamento <- equaliza_modelo(dados, recursos_totais, aporte = aporte_federal, var_alunos = alunos, codigo = ibge)
   }
 
   dados %>%
-    dplyr::left_join(financiamento %>% rename(fundo_etapa_vaa = fundo_equalizado)) %>%
+    dplyr::left_join(financiamento %>%
+                       dplyr::rename(fundo_etapa_vaa = fundo_equalizado)) %>%
     dplyr::rename(vaa_intermediario = vaa_final) %>%
     dplyr::mutate(
       vaa_final = dplyr::case_when(
