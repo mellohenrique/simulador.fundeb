@@ -1,4 +1,4 @@
-#' @title Simulação do modelo VAA de financiamento da educação
+#' @title Simulação do modelo VAT de financiamento da educação
 #'
 #' @description Recebe uma base com numero de alunos por ente e por etapa, ponderador por etapa, dados socioeconomicos por ente e dados financeiros por ente e simula o modelo fundeb de financiamento da educação
 #'
@@ -17,7 +17,7 @@
 #' @export
 #'
 
-simular_modelo_vaa <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, var_fundo = fundeb, var_alunos = alunos, distribuicao_fundo_estadual_socio = FALSE, equalizacao_vaa_socio = FALSE,...){
+simular_modelo_vat <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, var_fundo = fundeb, var_alunos = alunos, distribuicao_fundo_estadual_socio = FALSE, equalizacao_vaa_socio = FALSE,...){
   dados <- pondera_geral(base_alunos, ponderador_alunos, base_socioeconomica, base_financas)
   dados_estaduais <- gera_dados_estaduais(dados)
   aporte_federal <- auxilio_federal * calcula_fundo_total(dados)

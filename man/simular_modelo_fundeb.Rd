@@ -6,8 +6,8 @@
 \usage{
 simular_modelo_fundeb(base_alunos, ponderador, base_socioeconomica,
   base_financas, auxilio_federal = 0.1, var_fundo = fundeb,
-  var_alunos = alunos, equalizacao_socio = FALSE,
-  distribuicao_fundo_estadual_socio = FALSE, ...)
+  equalizacao_socio = FALSE, distribuicao_fundo_estadual_socio = FALSE,
+  ...)
 }
 \arguments{
 \item{base_alunos}{data.frame de numero de alunos por etapa e ente federativo}
@@ -21,8 +21,6 @@ simular_modelo_fundeb(base_alunos, ponderador, base_socioeconomica,
 \item{auxilio_federal}{percentual do fundo que a União complementará}
 
 \item{var_fundo}{parametro com o nome da variavel do fundo a ser considerado}
-
-\item{var_alunos}{parametro com o nome da variavel alunos a ser considerada}
 }
 \value{
 Data.frame com alunos ponderador por ente federativo
