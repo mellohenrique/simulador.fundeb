@@ -17,6 +17,4 @@ Função intermediária que gera dados dos estados que será usada nas simulaç�
 }
 \examples{
 library(simulador.fundeb)
-
-<- dplyr::left_join(
 }

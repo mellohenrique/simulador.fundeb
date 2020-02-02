@@ -8,7 +8,6 @@
 #' @param base_financas data.frame com o codigo do ibge e os valores do fundeb e das demais receitas
 #' @param auxilio_federal percentual do fundo que a União complementará
 #' @param var_fundo parametro com o nome da variavel do fundo a ser considerado
-#' @param var_alunos parametro com o nome da variavel alunos a ser considerada
 #'
 #' @return Data.frame com alunos ponderador por ente federativo
 #'
@@ -17,13 +16,14 @@
 #' @export
 #'
 
-simular_modelo_fundeb <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, var_fundo = fundeb, var_alunos = alunos, equalizacao_socio = FALSE, distribuicao_fundo_estadual_socio = FALSE, ...) {
+simular_modelo_fundeb <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, var_fundo = fundeb, equalizacao_socio = FALSE, distribuicao_fundo_estadual_socio = FALSE, ...){
+
   dados <- pondera_geral(base_alunos, ponderador_alunos, base_socioeconomica, base_financas)
   dados_estaduais <- gera_dados_estaduais(dados)
   aporte_federal <- auxilio_federal * calcula_fundo_total(dados)
 
   if(equalizacao_socio) {
-    financiamento_estado <- equaliza_modelo(dados_estaduais, fundo_estadual, aporte = aporte_federal, var_alunos = var_alunos_socio, var_vaa = vaa_socio, codigo = codigo_estado)
+    financiamento_estado <- equaliza_modelo(dados_estaduais, fundo_estadual, aporte = aporte_federal, var_alunos = alunos_estado_socio, codigo = codigo_estado)
   } else {
     financiamento_estado <- financiamento_estado <- equaliza_modelo(dados_estaduais, aporte = aporte_federal, fundo_estadual, codigo = codigo_estado)
   }
