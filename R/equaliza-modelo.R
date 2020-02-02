@@ -16,12 +16,13 @@
 
 equaliza_modelo <- function(dados, fundo, aporte = aporte_federal,  var_alunos  = alunos_estado, codigo) {
   dados <- dados %>%
-    arrange({{fundo}}/{{var_alunos}}) %>%
-    mutate(auxilio = aporte > cumsum({{var_alunos}}) * {{fundo}}/{{var_alunos}} - cumsum({{fundo}}/{{var_alunos}} * {{var_alunos}}))
+    dplyr::arrange({{fundo}}/{{var_alunos}}) %>%
+    dplyr::mutate(auxilio = aporte > cumsum({{var_alunos}}) * {{fundo}}/{{var_alunos}} - cumsum({{fundo}}/{{var_alunos}} * {{var_alunos}}))
   dados %>%
-    filter(auxilio) %>%
-    mutate(fundo_equalizado = (aporte + sum({{fundo}}))*{{var_alunos}}/sum({{var_alunos}})) %>%
-    bind_rows(dados %>% filter(!auxilio) %>%
-                mutate(fundo_equalizado = {{fundo}})) %>%
-    select({{codigo}}, fundo_equalizado)
+    dplyr::filter(auxilio) %>%
+    dplyr::mutate(fundo_equalizado = (aporte + sum({{fundo}}))*{{var_alunos}}/sum({{var_alunos}})) %>%
+    dplyr::bind_rows(dados %>%
+                       dplyr::filter(!auxilio) %>%
+                       dplyr::mutate(fundo_equalizado = {{fundo}})) %>%
+    dplyr::select({{codigo}}, fundo_equalizado)
   }
