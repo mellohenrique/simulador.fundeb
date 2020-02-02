@@ -9,8 +9,6 @@
 #' @importFrom magrittr %>%
 #' @examples
 #' library(simulador.fundeb)
-#'
-#' <- dplyr::left_join(
 
 gera_dados_estaduais <- function(dados){
   dplyr::left_join(
