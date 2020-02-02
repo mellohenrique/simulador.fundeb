@@ -18,7 +18,7 @@
 pondera_alunos_rede <- function(base_alunos, codigo = ibge, etapa_ensino = etapa, var_alunos = alunos, busca_creche = "Creche|Pr\u00E9-escola", busca_em = "EM"){
   base_alunos %>%
     dplyr::mutate(alunos = dplyr::case_when(
-      {{codigo}} == 53 ~ {{var_alunos}},
+      {{codigo}} == 5300108 ~ {{var_alunos}},
       {{codigo}} < 100 & stringr::str_detect({{etapa_ensino}}, busca_creche) ~ 0,
       {{codigo}} > 100 & stringr::str_detect({{etapa_ensino}}, busca_em) ~ 0,
       TRUE ~ alunos
