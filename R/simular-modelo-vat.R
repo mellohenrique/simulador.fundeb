@@ -17,7 +17,7 @@
 #' @export
 #'
 
-simular_modelo_vat <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, var_fundo = fundeb, var_alunos = alunos, distribuicao_fundo_estadual_socio = FALSE, equalizacao_vaa_socio = FALSE,...){
+simular_modelo_vat <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, var_fundo = fundeb, var_alunos = alunos, distribuicao_fundo_estadual_socio = FALSE, equalizacao_vaa = FALSE,...){
   dados <- pondera_geral(base_alunos, ponderador_alunos, base_socioeconomica, base_financas)
   dados_estaduais <- gera_dados_estaduais(dados)
   aporte_federal <- auxilio_federal * calcula_fundo_total(dados)
@@ -38,7 +38,7 @@ simular_modelo_vat <- function(base_alunos, ponderador, base_socioeconomica, bas
           distribuicao_fundo_estadual_socio ~ recursos_totais / alunos_socioeco,
           TRUE ~ recursos_totais / alunos))
 
-    if(equalizacao_vaa_socio){
+    if(equalizacao_vaa){
       fundo_equalizado <- equaliza_modelo(dados, fundo = recursos_totais, aporte = aporte_federal, var_alunos = alunos_socio, codigo = ibge) %>%
         dplyr::rename(recursos_complementados = fundo_equalizado)
       dados <- dplyr::left_join(dados, fundo_equalizado) %>%
