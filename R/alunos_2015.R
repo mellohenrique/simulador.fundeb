@@ -12,4 +12,4 @@
 #'   \item{alunos}{numero de alunos por etapa de ensino}
 #' }
 #' @source Tabela provida por Todos pela educacao
-"alunos"
+"alunos_2015"

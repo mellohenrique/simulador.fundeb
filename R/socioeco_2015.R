@@ -12,4 +12,4 @@
 #'   \item{idhm}{valor de indice de desenvolvimento humano municipal}
 #' }
 #' @source Tabela provida por Todos pela educacao
-"info_socioeco"
+"socioeco_2015"
