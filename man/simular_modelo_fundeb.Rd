@@ -5,9 +5,8 @@
 \title{Simulação do modelo Fundeb de financiamento da educação}
 \usage{
 simular_modelo_fundeb(base_alunos, ponderador, base_socioeconomica,
-  base_financas, auxilio_federal = 0.1, var_fundo = fundeb,
-  equalizacao_socio = FALSE, distribuicao_fundo_estadual_socio = FALSE,
-  ...)
+  base_financas, auxilio_federal = 0.1, equalizacao_socio = FALSE,
+  distribuicao_fundo_estadual_socio = FALSE, ...)
 }
 \arguments{
 \item{base_alunos}{data.frame de numero de alunos por etapa e ente federativo}
@@ -20,7 +19,9 @@ simular_modelo_fundeb(base_alunos, ponderador, base_socioeconomica,
 
 \item{auxilio_federal}{percentual do fundo que a União complementará}
 
-\item{var_fundo}{parametro com o nome da variavel do fundo a ser considerado}
+\item{equalizacao_socio}{parametro lógico que controla se a equalização do fundo considerara o vetor de alunos ou de alunos socioeconomico}
+
+\item{distribuicao_fundo_estadual_socio}{parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconomico}
 }
 \value{
 Data.frame com alunos ponderador por ente federativo

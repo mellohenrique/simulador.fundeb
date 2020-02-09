@@ -7,7 +7,8 @@
 #' @param base_socioeconomica data.frame com  o codigo do ibge, o numero de alunos ponderado e uma variavel socioeconomia a ponderar
 #' @param base_financas data.frame com o codigo do ibge e os valores do fundeb e das demais receitas
 #' @param auxilio_federal percentual do fundo que a União complementará
-#' @param var_fundo parametro com o nome da variavel do fundo a ser considerado
+#' @param equalizacao_socio parametro lógico que controla se a equalização do fundo considerara o vetor de alunos ou de alunos socioeconomico
+#' @param distribuicao_fundo_estadual_socio parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconomico
 #'
 #' @return Data.frame com alunos ponderador por ente federativo
 #'
@@ -16,7 +17,7 @@
 #' @export
 #'
 
-simular_modelo_fundeb <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, var_fundo = fundeb, equalizacao_socio = FALSE, distribuicao_fundo_estadual_socio = FALSE, ...){
+simular_modelo_fundeb <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, equalizacao_socio = FALSE, distribuicao_fundo_estadual_socio = FALSE, ...){
 
   dados <- pondera_geral(base_alunos, ponderador_alunos, base_socioeconomica, base_financas)
   dados_estaduais <- gera_dados_estaduais(dados)
