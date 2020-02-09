@@ -9,4 +9,4 @@
 #'   \item{idhm}{valor de indice de desenvolvimento humano municipal}
 #' }
 #' @source Tabela criada
-"info_socioeco_teste"
+"socioeco_teste"
