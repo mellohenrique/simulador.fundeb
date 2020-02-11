@@ -4,10 +4,17 @@
 \alias{simular_modelo_hibrido}
 \title{Simulação do modelo híbrido de financiamento da educação}
 \usage{
-simular_modelo_hibrido(base_alunos, ponderador, base_socioeconomica,
-  base_financas, auxilio_federal = 0.1, auxilio_federal_vaa = 0.05,
-  equalizacao_socio = FALSE, distribuicao_fundo_estadual_socio = FALSE,
-  ...)
+simular_modelo_hibrido(
+  base_alunos,
+  ponderador,
+  base_socioeconomica,
+  base_financas,
+  auxilio_federal = 0.1,
+  auxilio_federal_vaa = 0.05,
+  equalizacao_socio = FALSE,
+  distribuicao_fundo_estadual_socio = FALSE,
+  ...
+)
 }
 \arguments{
 \item{base_alunos}{data.frame de numero de alunos por etapa e ente federativo}

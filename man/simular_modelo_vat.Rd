@@ -4,10 +4,18 @@
 \alias{simular_modelo_vat}
 \title{Simulação do modelo VAT de financiamento da educação}
 \usage{
-simular_modelo_vat(base_alunos, ponderador, base_socioeconomica,
-  base_financas, auxilio_federal = 0.1, var_fundo = fundeb,
-  var_alunos = alunos, distribuicao_fundo_estadual_socio = FALSE,
-  equalizacao_socio = FALSE, ...)
+simular_modelo_vat(
+  base_alunos,
+  ponderador,
+  base_socioeconomica,
+  base_financas,
+  auxilio_federal = 0.1,
+  var_fundo = fundeb,
+  var_alunos = alunos,
+  distribuicao_fundo_estadual_socio = FALSE,
+  equalizacao_socio = FALSE,
+  ...
+)
 }
 \arguments{
 \item{base_alunos}{data.frame de numero de alunos por etapa e ente federativo}

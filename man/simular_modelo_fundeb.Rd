@@ -4,9 +4,16 @@
 \alias{simular_modelo_fundeb}
 \title{Simulação do modelo Fundeb de financiamento da educação}
 \usage{
-simular_modelo_fundeb(base_alunos, ponderador, base_socioeconomica,
-  base_financas, auxilio_federal = 0.1, equalizacao_socio = FALSE,
-  distribuicao_fundo_estadual_socio = FALSE, ...)
+simular_modelo_fundeb(
+  base_alunos,
+  ponderador,
+  base_socioeconomica,
+  base_financas,
+  auxilio_federal = 0.1,
+  equalizacao_socio = FALSE,
+  distribuicao_fundo_estadual_socio = FALSE,
+  ...
+)
 }
 \arguments{
 \item{base_alunos}{data.frame de numero de alunos por etapa e ente federativo}

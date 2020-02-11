@@ -4,8 +4,13 @@
 \alias{equaliza_modelo}
 \title{Equaliza um modelo}
 \usage{
-equaliza_modelo(dados, fundo, aporte = aporte_federal,
-  var_alunos = alunos_estado, codigo)
+equaliza_modelo(
+  dados,
+  fundo,
+  aporte = aporte_federal,
+  var_alunos = alunos_estado,
+  codigo
+)
 }
 \arguments{
 \item{dados}{data.frame que serao equalizados}

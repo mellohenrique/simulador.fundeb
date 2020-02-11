@@ -2,6 +2,9 @@
 
 export(pondera_geral)
 export(simular_modelo_fundeb)
+export(simular_modelo_fundeb_tempo)
 export(simular_modelo_hibrido)
+export(simular_modelo_hibrido_tempo)
 export(simular_modelo_vat)
+export(simular_modelo_vat_tempo)
 importFrom(magrittr,"%>%")

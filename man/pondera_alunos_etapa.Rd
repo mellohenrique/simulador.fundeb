@@ -4,8 +4,14 @@
 \alias{pondera_alunos_etapa}
 \title{Pondera alunos por etapa de ensino}
 \usage{
-pondera_alunos_etapa(base_alunos, ponderador, codigo = ibge,
-  etapa_ensino = etapa, var_alunos = alunos, variavel_peso = peso)
+pondera_alunos_etapa(
+  base_alunos,
+  ponderador,
+  codigo = ibge,
+  etapa_ensino = etapa,
+  var_alunos = alunos,
+  variavel_peso = peso
+)
 }
 \arguments{
 \item{base_alunos}{data.frame de numero de alunos por etapa e ente federativo}

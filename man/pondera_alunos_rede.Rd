@@ -4,9 +4,14 @@
 \alias{pondera_alunos_rede}
 \title{Calcula valor do fundo total}
 \usage{
-pondera_alunos_rede(base_alunos, codigo = ibge, etapa_ensino = etapa,
-  var_alunos = alunos, busca_creche = "Creche|Pré-escola",
-  busca_em = "EM")
+pondera_alunos_rede(
+  base_alunos,
+  codigo = ibge,
+  etapa_ensino = etapa,
+  var_alunos = alunos,
+  busca_creche = "Creche|Pré-escola",
+  busca_em = "EM"
+)
 }
 \arguments{
 \item{base_alunos}{data.frame de numero de alunos por etapa e ente federativo}

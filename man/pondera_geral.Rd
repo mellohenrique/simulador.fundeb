@@ -4,8 +4,15 @@
 \alias{pondera_geral}
 \title{Pondera alunos por etapa de ensino}
 \usage{
-pondera_geral(base_alunos, ponderador, base_socioeconomica, base_financas,
-  condicao_rede = TRUE, condicao_socio = TRUE, ...)
+pondera_geral(
+  base_alunos,
+  ponderador,
+  base_socioeconomica,
+  base_financas,
+  condicao_rede = TRUE,
+  condicao_socio = TRUE,
+  ...
+)
 }
 \arguments{
 \item{base_alunos}{data.frame de numero de alunos por etapa e ente federativo}
