@@ -10,6 +10,8 @@
 #' @param codigo coluna numerica com o codigo do estado, deve ter o mesmo nome em base_alunos e base_socioeconomica
 #' @param min_social peso minimo dado a informacao socioeconomica
 #' @param max_social peso maximo dado a informacao socioeconomica
+#' @param min_financas peso minimo dado a informacao de financas
+#' @param max_financas peso maximo dado a informacao de financas
 #' @param codigo parametro com o nome do codigo a ser usado como identificador dos entes federativos, recomedanda-se o codigo ibge
 #'
 #' @return Data.frame com alunos ponderador por ente federativo
@@ -26,6 +28,8 @@ pondera_socioeconomico <-
            var_fundo_pond = demais_receitas,
            min_social = 1,
            max_social = 1.3,
+           min_financas = 1,
+           max_financas = 1.3,
            codigo = ibge) {
     base_alunos %>%
       dplyr::left_join(base_socioeconomica) %>%
@@ -36,7 +40,7 @@ pondera_socioeconomico <-
         socioeco = (({{var_socioeconomica}} - min({{var_socioeconomica}}, na.rm = TRUE)) / (max({{var_socioeconomica}}, na.rm = TRUE) - min({{var_socioeconomica}}, na.rm = TRUE))) %>%
                scales::rescale(c(max_social, min_social), c(0, 1)),
         financas = (({{var_fundo_pond}} - min({{var_fundo_pond}}, na.rm = TRUE)) / (max({{var_fundo_pond}}, na.rm = TRUE) - min({{var_fundo_pond}}, na.rm = TRUE))) %>%
-          scales::rescale(c(max_social, min_social), c(0, 1)),
+          scales::rescale(c(max_financas, min_financas), c(0, 1)),
         socioeco = dplyr::if_else(is.nan(socioeco), (max_social + min_social)/2, socioeco),
         financas = dplyr::if_else(is.nan(financas), (max_social + min_social)/2, financas),
         peso_socio_eco = financas * socioeco,

@@ -9,6 +9,10 @@
 #' @param condicao_rede valor binario que condiciona a ponderacao por rede
 #' @param condicao_etapa valor binario que condiciona a ponderacao por etapa
 #' @param condicao_socio valor binario que condiciona a ponderacao por informacao socioeconomica
+#' @param min_social peso minimo dado a informacao socioeconomica
+#' @param max_social peso maximo dado a informacao socioeconomica
+#' @param min_financas peso minimo dado a informacao de financas
+#' @param max_financas peso maximo dado a informacao de financas
 #'
 #' @return Data.frame com alunos ponderador por ente federativo
 #'
@@ -19,7 +23,18 @@
 #' @examples
 #' library(simulador.fundeb)
 
-pondera_geral <- function(base_alunos, ponderador, base_socioeconomica, base_financas, condicao_rede = TRUE, condicao_socio = TRUE, ...){
+pondera_geral <- function(base_alunos,
+                          ponderador,
+                          base_socioeconomica,
+                          base_financas,
+                          condicao_rede = TRUE,
+                          condicao_socio = TRUE,
+                          min_social = 1,
+                          max_social = 1.3,
+                          min_financas = 1,
+                          max_financas = 1.3,
+                          ...
+){
   if(condicao_rede) {
     resultado <- pondera_alunos_rede(base_alunos, ...) %>%
       pondera_alunos_etapa(ponderador = ponderador)
@@ -28,7 +43,7 @@ pondera_geral <- function(base_alunos, ponderador, base_socioeconomica, base_fin
   }
 
   if(condicao_socio) {
-    pondera_socioeconomico(resultado, base_socioeconomica, base_financas, ...)
+    pondera_socioeconomico(resultado, base_socioeconomica, base_financas, min_financas = min_financas, max_financas = max_financas, min_social = min_social, max_social = max_social)
   } else {
     if(is.data.frame(base_socioeconomica) & is.data.frame(financas) & condicao_socio == FALSE){
       dplyr::left_join(resultado, base_socioeconomica) %>%

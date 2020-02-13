@@ -12,6 +12,8 @@ pondera_socioeconomico(
   var_fundo_pond = demais_receitas,
   min_social = 1,
   max_social = 1.3,
+  min_financas = 1,
+  max_financas = 1.3,
   codigo = ibge
 )
 }
@@ -29,6 +31,10 @@ pondera_socioeconomico(
 \item{min_social}{peso minimo dado a informacao socioeconomica}
 
 \item{max_social}{peso maximo dado a informacao socioeconomica}
+
+\item{min_financas}{peso minimo dado a informacao de financas}
+
+\item{max_financas}{peso maximo dado a informacao de financas}
 
 \item{codigo}{parametro com o nome do codigo a ser usado como identificador dos entes federativos, recomedanda-se o codigo ibge}
 }

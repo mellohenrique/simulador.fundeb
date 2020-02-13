@@ -11,6 +11,10 @@ pondera_geral(
   base_financas,
   condicao_rede = TRUE,
   condicao_socio = TRUE,
+  min_social = 1,
+  max_social = 1.3,
+  min_financas = 1,
+  max_financas = 1.3,
   ...
 )
 }
@@ -26,6 +30,14 @@ pondera_geral(
 \item{condicao_rede}{valor binario que condiciona a ponderacao por rede}
 
 \item{condicao_socio}{valor binario que condiciona a ponderacao por informacao socioeconomica}
+
+\item{min_social}{peso minimo dado a informacao socioeconomica}
+
+\item{max_social}{peso maximo dado a informacao socioeconomica}
+
+\item{min_financas}{peso minimo dado a informacao de financas}
+
+\item{max_financas}{peso maximo dado a informacao de financas}
 
 \item{condicao_etapa}{valor binario que condiciona a ponderacao por etapa}
 }
