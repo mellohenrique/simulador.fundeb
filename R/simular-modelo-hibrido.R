@@ -10,6 +10,10 @@
 #' @param auxilio_federal_vaa percentual do fundo que a União complementará segundo o modelo vaa
 #' @param equalizacao_socio parametro lógico que controla se a equalização do fundo considerara o vetor de alunos ou de alunos socioeconomico
 #' @param distribuicao_fundo_estadual_socio parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconomico
+#' @param min_social peso minimo dado a informacao socioeconomica
+#' @param max_social peso maximo dado a informacao socioeconomica
+#' @param min_financas peso minimo dado a informacao de financas
+#' @param max_financas peso maximo dado a informacao de financas
 #'
 #' @return Data.frame com alunos ponderador por ente federativo
 #'
@@ -20,7 +24,7 @@
 
 simular_modelo_hibrido <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, auxilio_federal_vaa = 0.05, equalizacao_socio = FALSE, distribuicao_fundo_estadual_socio = FALSE, ...){
 
-  dados <- simular_modelo_fundeb(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = auxilio_federal, distribuicao_fundo_estadual_socio= distribuicao_fundo_estadual_socio, equalizacao_socio = equalizacao_socio, ...)
+  dados <- simular_modelo_fundeb(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = auxilio_federal, distribuicao_fundo_estadual_socio= distribuicao_fundo_estadual_socio, equalizacao_socio = equalizacao_socio, min_social = min_social, max_social = max_social, min_financas = min_financas, max_financas = max_financas, ...)
 
   aporte_federal <-
     auxilio_federal_vaa * calcula_fundo_total(dados, fundeb)
