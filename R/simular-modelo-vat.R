@@ -9,6 +9,10 @@
 #' @param auxilio_federal percentual do fundo que a União complementará
 #' @param equalizacao_socio parametro lógico que controla se a equalização do fundo considerara o vetor de alunos ou de alunos socioeconomico
 #' @param distribuicao_fundo_estadual_socio parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconomico
+#' @param min_social peso minimo dado a informacao socioeconomica
+#' @param max_social peso maximo dado a informacao socioeconomica
+#' @param min_financas peso minimo dado a informacao de financas
+#' @param max_financas peso maximo dado a informacao de financas
 #'
 #' @return Data.frame com alunos ponderador por ente federativo
 #'
@@ -17,8 +21,8 @@
 #' @export
 #'
 
-simular_modelo_vat <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, var_fundo = fundeb, var_alunos = alunos, distribuicao_fundo_estadual_socio = FALSE, equalizacao_socio = FALSE,...){
-  dados <- pondera_geral(base_alunos, ponderador_alunos, base_socioeconomica, base_financas)
+simular_modelo_vat <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, var_fundo = fundeb, var_alunos = alunos, distribuicao_fundo_estadual_socio = FALSE, equalizacao_socio = FALSE, min_social = 1, max_social = 1.3, min_financas = 1, max_financas = 1.3, ...){
+  dados <- pondera_geral(base_alunos, ponderador_alunos, base_socioeconomica, base_financas, min_social = min_social, max_social = max_social, min_financas = min_financas, max_financas = max_financas)
   dados_estaduais <- gera_dados_estaduais(dados)
   aporte_federal <- auxilio_federal * calcula_fundo_total(dados)
   financiamento_estado <- dados_estaduais %>%

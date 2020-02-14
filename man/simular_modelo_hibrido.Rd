@@ -13,6 +13,10 @@ simular_modelo_hibrido(
   auxilio_federal_vaa = 0.05,
   equalizacao_socio = FALSE,
   distribuicao_fundo_estadual_socio = FALSE,
+  min_social = 1,
+  max_social = 1.3,
+  min_financas = 1,
+  max_financas = 1.3,
   ...
 )
 }
@@ -31,8 +35,6 @@ simular_modelo_hibrido(
 
 \item{distribuicao_fundo_estadual_socio}{parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconomico}
 
-\item{auxilio_federal_fundeb}{percentual do fundo que a União complementará segundo o modelo fundeb}
-
 \item{min_social}{peso minimo dado a informacao socioeconomica}
 
 \item{max_social}{peso maximo dado a informacao socioeconomica}
@@ -40,6 +42,8 @@ simular_modelo_hibrido(
 \item{min_financas}{peso minimo dado a informacao de financas}
 
 \item{max_financas}{peso maximo dado a informacao de financas}
+
+\item{auxilio_federal_fundeb}{percentual do fundo que a União complementará segundo o modelo fundeb}
 }
 \value{
 Data.frame com alunos ponderador por ente federativo

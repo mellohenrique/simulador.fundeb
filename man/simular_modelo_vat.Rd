@@ -14,6 +14,10 @@ simular_modelo_vat(
   var_alunos = alunos,
   distribuicao_fundo_estadual_socio = FALSE,
   equalizacao_socio = FALSE,
+  min_social = 1,
+  max_social = 1.3,
+  min_financas = 1,
+  max_financas = 1.3,
   ...
 )
 }
@@ -31,6 +35,14 @@ simular_modelo_vat(
 \item{distribuicao_fundo_estadual_socio}{parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconomico}
 
 \item{equalizacao_socio}{parametro lógico que controla se a equalização do fundo considerara o vetor de alunos ou de alunos socioeconomico}
+
+\item{min_social}{peso minimo dado a informacao socioeconomica}
+
+\item{max_social}{peso maximo dado a informacao socioeconomica}
+
+\item{min_financas}{peso minimo dado a informacao de financas}
+
+\item{max_financas}{peso maximo dado a informacao de financas}
 }
 \value{
 Data.frame com alunos ponderador por ente federativo

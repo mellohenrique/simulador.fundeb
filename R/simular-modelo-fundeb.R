@@ -21,7 +21,19 @@
 #' @export
 #'
 
-simular_modelo_fundeb <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, equalizacao_socio = FALSE, distribuicao_fundo_estadual_socio = FALSE, ...){
+simular_modelo_fundeb <- function(base_alunos,
+                                  ponderador,
+                                  base_socioeconomica,
+                                  base_financas,
+                                  auxilio_federal = 0.1,
+                                  equalizacao_socio = FALSE,
+                                  distribuicao_fundo_estadual_socio = FALSE,
+                                  min_social = 1,
+                                  max_social = 1.3,
+                                  min_financas = 1,
+                                  max_financas = 1.3,
+                                  ...
+){
 
   dados <- pondera_geral(base_alunos, ponderador_alunos, base_socioeconomica, base_financas, min_social = min_social, max_social = max_social, min_financas = min_financas, max_financas = max_financas)
   dados_estaduais <- gera_dados_estaduais(dados)

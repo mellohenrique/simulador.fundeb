@@ -12,6 +12,10 @@ simular_modelo_fundeb(
   auxilio_federal = 0.1,
   equalizacao_socio = FALSE,
   distribuicao_fundo_estadual_socio = FALSE,
+  min_social = 1,
+  max_social = 1.3,
+  min_financas = 1,
+  max_financas = 1.3,
   ...
 )
 }
