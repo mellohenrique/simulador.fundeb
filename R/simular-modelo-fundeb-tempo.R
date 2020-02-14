@@ -11,6 +11,10 @@
 #' @param distribuicao_fundo_estadual_socio parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconomico
 #' @param crescimento_economico vetor númerico de crescimento economico, especificamente do fundeb e das demais receitas
 #' @param crescimento_demografico vetor númerico de crescimento demográfico para alunos
+#' @param min_social peso minimo dado a informacao socioeconomica
+#' @param max_social peso maximo dado a informacao socioeconomica
+#' @param min_financas peso minimo dado a informacao de financas
+#' @param max_financas peso maximo dado a informacao de financas
 #'
 #' @return Data.frame com alunos ponderador por ente federativo
 #'
@@ -18,12 +22,26 @@
 #'
 #' @export
 
-simular_modelo_fundeb_tempo <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, equalizacao_socio = FALSE, distribuicao_fundo_estadual_socio = FALSE, crescimento_economico, crescimento_demografico, ...){
+simular_modelo_fundeb_tempo <- function(base_alunos,
+                                        ponderador,
+                                        base_socioeconomica,
+                                        base_financas,
+                                        auxilio_federal = 0.1,
+                                        equalizacao_socio = FALSE,
+                                        distribuicao_fundo_estadual_socio = FALSE,
+                                        crescimento_economico,
+                                        crescimento_demografico,
+                                        min_social = 1,
+                                        max_social = 1.3,
+                                        min_financas = 1,
+                                        max_financas = 1.3,
+                                        ...
+){
   lista_fundos <- purrr::map(cumprod(crescimento_economico), ~dplyr::mutate(base_financas, fundeb = fundeb * .x, demais_receitas = demais_receitas))
   lista_alunos <- purrr::map(cumprod(crescimento_demografico), ~dplyr::mutate(base_alunos, alunos = alunos * .x))
 
   purrr::map2_dfr(lista_alunos,
         lista_fundos,
-        ~simular_modelo_fundeb(.x, ponderador, base_socioeconomica, .y, auxilio_federal = auxilio_federal, equalizacao_socio = equalizacao_socio, distribuicao_fundo_estadual_socio = distribuicao_fundo_estadual_socio, ...),
+        ~simular_modelo_fundeb(.x, ponderador, base_socioeconomica, .y, auxilio_federal = auxilio_federal, equalizacao_socio = equalizacao_socio, distribuicao_fundo_estadual_socio = distribuicao_fundo_estadual_socio, min_social = min_social, max_social = max_social, min_financas = min_financas, max_financas = max_financas, ...),
         .id = "ano")
 }
