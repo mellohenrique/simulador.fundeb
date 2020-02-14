@@ -14,6 +14,10 @@ simular_modelo_vat_tempo(
   distribuicao_fundo_estadual_socio = FALSE,
   crescimento_economico,
   crescimento_demografico,
+  min_social = 1,
+  max_social = 1.3,
+  min_financas = 1,
+  max_financas = 1.3,
   ...
 )
 }
@@ -35,6 +39,14 @@ simular_modelo_vat_tempo(
 \item{crescimento_economico}{vetor númerico de crescimento economico, especificamente do fundeb e das demais receitas}
 
 \item{crescimento_demografico}{vetor númerico de crescimento demográfico para alunos}
+
+\item{min_social}{peso minimo dado a informacao socioeconomica}
+
+\item{max_social}{peso maximo dado a informacao socioeconomica}
+
+\item{min_financas}{peso minimo dado a informacao de financas}
+
+\item{max_financas}{peso maximo dado a informacao de financas}
 }
 \value{
 Data.frame com alunos ponderador por ente federativo
