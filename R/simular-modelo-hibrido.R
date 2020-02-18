@@ -7,7 +7,7 @@
 #' @param base_socioeconomica data.frame com  o codigo do ibge, o numero de alunos ponderado e uma variavel socioeconomia a ponderar
 #' @param base_financas data.frame com o codigo do ibge e os valores do fundeb e das demais receitas
 #' @param auxilio_federal_fundeb percentual do fundo que a União complementará segundo o modelo fundeb
-#' @param auxilio_federal_vaa percentual do fundo que a União complementará segundo o modelo vaa
+#' @param auxilio_federal_vaa percentual do fundo que a União complementará na segunda etapa, na equalizacao dos entes pelo valor vaa
 #' @param equalizacao_socio parametro lógico que controla se a equalização do fundo considerara o vetor de alunos ou de alunos socioeconomico
 #' @param distribuicao_fundo_estadual_socio parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconomico
 #' @param min_social peso minimo dado a informacao socioeconomica

@@ -43,10 +43,10 @@ simular_modelo_vat <- function(base_alunos, ponderador, base_socioeconomica, bas
           TRUE ~ recursos_totais / alunos))
 
     if(equalizacao_socio){
-      fundo_equalizado <- equaliza_modelo(dados, fundo = recursos_totais, aporte = aporte_federal, var_alunos = alunos_socio, codigo = ibge) %>%
+      fundo_equalizado <- equaliza_modelo(dados, fundo = recursos_totais, aporte = aporte_federal, var_alunos = alunos_socioeco, codigo = ibge) %>%
         dplyr::rename(recursos_complementados = fundo_equalizado)
       dados <- dplyr::left_join(dados, fundo_equalizado) %>%
-        dplyr::mutate(vaa_complementado = recursos_complementados / alunos_socio)
+        dplyr::mutate(vaa_complementado = recursos_complementados / alunos_socioeco)
     } else {
       fundo_equalizado <- equaliza_modelo(dados, fundo = recursos_totais, aporte = aporte_federal, var_alunos = alunos, codigo = ibge) %>%
         dplyr::rename(recursos_complementados = fundo_equalizado)
