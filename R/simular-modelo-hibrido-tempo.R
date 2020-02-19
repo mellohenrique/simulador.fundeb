@@ -7,7 +7,7 @@
 #' @param base_socioeconomica data.frame com  o codigo do ibge, o numero de alunos ponderado e uma variavel socioeconomia a ponderar
 #' @param base_financas data.frame com o codigo do ibge e os valores do fundeb e das demais receitas
 #' @param auxilio_federal percentual do fundo que a União complementará
-#' @param auxilio_federal_vaa percentual do fundo que a União complementará segundo o modelo vaa
+#' @param auxilio_federal_vat percentual do fundo que a União complementará segundo o modelo vaa
 #' @param equalizacao_socio parametro lógico que controla se a equalização do fundo considerara o vetor de alunos ou de alunos socioeconomico
 #' @param distribuicao_fundo_estadual_socio parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconomico
 #' @param crescimento_economico vetor númerico de crescimento economico, especificamente do fundeb e das demais receitas
@@ -28,7 +28,7 @@ simular_modelo_hibrido_tempo <- function(base_alunos,
                                          base_socioeconomica,
                                          base_financas,
                                          auxilio_federal = 0.1,
-                                         auxilio_federal_vaa = 0.05,
+                                         auxilio_federal_vat = 0.05,
                                          equalizacao_socio = FALSE,
                                          distribuicao_fundo_estadual_socio = FALSE,
                                          crescimento_economico,
@@ -39,7 +39,7 @@ simular_modelo_hibrido_tempo <- function(base_alunos,
                                          max_financas = 1.3,
                                          ...
 ){
-  lista_fundos <- purrr::map(cumprod(crescimento_economico), ~dplyr::mutate(base_financas, fundeb = fundeb * .x, demais_receitas = demais_receitas))
+  lista_fundos <- purrr::map(cumprod(crescimento_economico), ~dplyr::mutate(base_financas, fundeb = fundeb * .x, demais_receitas = demais_receitas * .x))
   lista_alunos <- purrr::map(cumprod(crescimento_demografico), ~dplyr::mutate(base_alunos, alunos = alunos * .x))
 
   purrr::map2_dfr(lista_alunos,

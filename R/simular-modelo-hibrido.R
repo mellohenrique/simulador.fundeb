@@ -7,7 +7,7 @@
 #' @param base_socioeconomica data.frame com  o codigo do ibge, o numero de alunos ponderado e uma variavel socioeconomia a ponderar
 #' @param base_financas data.frame com o codigo do ibge e os valores do fundeb e das demais receitas
 #' @param auxilio_federal_fundeb percentual do fundo que a União complementará segundo o modelo fundeb
-#' @param auxilio_federal_vaa percentual do fundo que a União complementará na segunda etapa, na equalizacao dos entes pelo valor vaa
+#' @param auxilio_federal_vat percentual do fundo que a União complementará na segunda etapa, na equalizacao dos entes pelo valor vaa
 #' @param equalizacao_socio parametro lógico que controla se a equalização do fundo considerara o vetor de alunos ou de alunos socioeconomico
 #' @param distribuicao_fundo_estadual_socio parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconomico
 #' @param min_social peso minimo dado a informacao socioeconomica
@@ -22,7 +22,7 @@
 #' @export
 #'
 
-simular_modelo_hibrido <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, auxilio_federal_vaa = 0.05, equalizacao_socio = FALSE, distribuicao_fundo_estadual_socio = FALSE, min_social = 1, max_social = 1.3, min_financas = 1, max_financas = 1.3, ...){
+simular_modelo_hibrido <- function(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = 0.1, auxilio_federal_vat = 0.05, equalizacao_socio = FALSE, distribuicao_fundo_estadual_socio = FALSE, min_social = 1, max_social = 1.3, min_financas = 1, max_financas = 1.3, ...){
 
   dados <- simular_modelo_fundeb(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = auxilio_federal, distribuicao_fundo_estadual_socio= distribuicao_fundo_estadual_socio, equalizacao_socio = equalizacao_socio, min_social = min_social, max_social = max_social, min_financas = min_financas, max_financas = max_financas, ...)
 
