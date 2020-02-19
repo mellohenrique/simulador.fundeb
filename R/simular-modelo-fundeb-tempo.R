@@ -26,7 +26,6 @@ simular_modelo_fundeb_tempo <- function(base_alunos,
                                         ponderador,
                                         base_socioeconomica,
                                         base_financas,
-                                        auxilio_federal = 0.1,
                                         equalizacao_socio = FALSE,
                                         distribuicao_fundo_estadual_socio = FALSE,
                                         crescimento_economico,
@@ -37,11 +36,10 @@ simular_modelo_fundeb_tempo <- function(base_alunos,
                                         max_financas = 1.3,
                                         ...
 ){
-  lista_fundos <- purrr::map(cumprod(crescimento_economico), ~dplyr::mutate(base_financas, fundeb = fundeb * .x, demais_receitas = demais_receitas))
+  lista_fundos <- purrr::map(cumprod(crescimento_economico), ~dplyr::mutate(base_financas, fundeb = fundeb * .x, demais_receitas = demais_receitas * .x))
   lista_alunos <- purrr::map(cumprod(crescimento_demografico), ~dplyr::mutate(base_alunos, alunos = alunos * .x))
 
-  purrr::map2_dfr(lista_alunos,
-        lista_fundos,
-        ~simular_modelo_fundeb(.x, ponderador, base_socioeconomica, .y, auxilio_federal = auxilio_federal, equalizacao_socio = equalizacao_socio, distribuicao_fundo_estadual_socio = distribuicao_fundo_estadual_socio, min_social = min_social, max_social = max_social, min_financas = min_financas, max_financas = max_financas, ...),
+  purrr::map2_dfr(.l = list(alunos = lista_alunos, fundos = lista_fundos, auxilio = auxilio_federal),
+       {simular_modelo_fundeb(alunos, ponderador, base_socioeconomica, fundos, auxilio_federal = auxilio, equalizacao_socio = equalizacao_socio, distribuicao_fundo_estadual_socio = distribuicao_fundo_estadual_socio, min_social = min_social, max_social = max_social, min_financas = min_financas, max_financas = max_financas, ...)},
         .id = "ano")
 }

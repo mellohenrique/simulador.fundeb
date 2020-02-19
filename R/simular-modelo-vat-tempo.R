@@ -37,7 +37,7 @@ simular_modelo_vat_tempo <- function(base_alunos,
                                      max_financas = 1.3,
                                      ...
 ){
-  lista_fundos <- purrr::map(cumprod(crescimento_economico), ~dplyr::mutate(base_financas, fundeb = fundeb * .x, demais_receitas = demais_receitas))
+  lista_fundos <- purrr::map(cumprod(crescimento_economico), ~dplyr::mutate(base_financas, fundeb = fundeb * .x, demais_receitas = demais_receitas * .x))
   lista_alunos <- purrr::map(cumprod(crescimento_demografico), ~dplyr::mutate(base_alunos, alunos = alunos * .x))
 
   purrr::map2_dfr(lista_alunos,
