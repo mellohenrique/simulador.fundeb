@@ -42,8 +42,29 @@ simular_modelo_hibrido_tempo <- function(base_alunos,
   lista_fundos <- purrr::map(cumprod(crescimento_economico), ~dplyr::mutate(base_financas, fundeb = fundeb * .x, demais_receitas = demais_receitas * .x))
   lista_alunos <- purrr::map(cumprod(crescimento_demografico), ~dplyr::mutate(base_alunos, alunos = alunos * .x))
 
-  purrr::map2_dfr(lista_alunos,
-                  lista_fundos,
-                  ~simular_modelo_hibrido(base_alunos, ponderador, base_socioeconomica, base_financas, auxilio_federal = auxilio_federal, auxilio_federal_vaa = auxilio_federal_vaa, equalizacao_socio = FALSE, distribuicao_fundo_estadual_socio = FALSE, , min_social = min_social, max_social = max_social, min_financas = min_financas, max_financas = max_financas,...),
-                  .id = "ano")
+  purrr::pmap_dfr(
+    .l = list(
+      ls_alunos = lista_alunos,
+      ls_fundos = lista_fundos,
+      ls_auxilio = auxilio_federal,
+      ls_auxilio_vaa = auxilio_federal_vat
+    ),
+    ~ simular_modelo_hibrido(
+      ls_alunos,
+      ponderador,
+      base_socioeconomica,
+      ls_fundos,
+      auxilio_federal = ls_auxilio,
+      auxilio_federal_vaa = ls_auxilio_vaa,
+      equalizacao_socio = FALSE,
+      distribuicao_fundo_estadual_socio = FALSE,
+      ,
+      min_social = min_social,
+      max_social = max_social,
+      min_financas = min_financas,
+      max_financas = max_financas,
+      ...
+    ),
+    .id = "ano"
+  )
 }

@@ -40,8 +40,26 @@ simular_modelo_vat_tempo <- function(base_alunos,
   lista_fundos <- purrr::map(cumprod(crescimento_economico), ~dplyr::mutate(base_financas, fundeb = fundeb * .x, demais_receitas = demais_receitas * .x))
   lista_alunos <- purrr::map(cumprod(crescimento_demografico), ~dplyr::mutate(base_alunos, alunos = alunos * .x))
 
-  purrr::map2_dfr(lista_alunos,
-                  lista_fundos,
-                  ~simular_modelo_vat(.x, ponderador, base_socioeconomica, .y, auxilio_federal = auxilio_federal, equalizacao_socio = equalizacao_socio, distribuicao_fundo_estadual_socio = distribuicao_fundo_estadual_socio, min_social = min_social, max_social = max_social, min_financas = min_financas, max_financas = max_financas, ...),
-                  .id = "ano")
+  purrr::pmap_dfr(
+    .l = list(
+      ls_alunos = lista_alunos,
+      ls_fundos = lista_fundos,
+      ls_auxilio = auxilio_federal
+    ),
+    ~ simular_modelo_vat(
+      ls_alunos,
+      ponderador,
+      base_socioeconomica,
+      ls_fundos,
+      auxilio_federal = ls_auxilio,
+      equalizacao_socio = equalizacao_socio,
+      distribuicao_fundo_estadual_socio = distribuicao_fundo_estadual_socio,
+      min_social = min_social,
+      max_social = max_social,
+      min_financas = min_financas,
+      max_financas = max_financas,
+      ...
+    ),
+    .id = "ano"
+  )
 }
