@@ -29,8 +29,6 @@ simular_modelo_fundeb_tempo <- function(base_alunos,
                                         max_financas = 1.3,
                                         var_socioeconomica = nse,
                                         considerar = "ambos",
-                                        condicao_rede = condicao_rede,
-                                        condicao_socio = condicao_socio,
                                         ...
 ){
   lista_fundos <- purrr::map(cumprod(crescimento_economico), ~dplyr::mutate(base_financas, fundeb = fundeb * .x, demais_receitas = demais_receitas * .x))
