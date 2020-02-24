@@ -13,6 +13,7 @@
 #' @param min_financas peso minimo dado a informacao de financas
 #' @param max_financas peso maximo dado a informacao de financas
 #' @param codigo parametro com o nome do codigo a ser usado como identificador dos entes federativos, recomedanda-se o codigo ibge
+  #' @param considerar nome que indica que parametro sera considarado na criacao do peso socioeconomico, se selecionado social se considerara apenas as informacoes sociais, se selecionado financas se considerara apenas as informacoes de financas e se selecionado ambos se considerara ambas as dimensoes
 #'
 #' @return Data.frame com alunos ponderador por ente federativo
 #'
@@ -20,6 +21,8 @@
 #' @examples
 #' library(simulador.fundeb)
 #'
+#'
+
 pondera_socioeconomico <-
   function(base_alunos,
            base_socioeconomica,
@@ -30,6 +33,7 @@ pondera_socioeconomico <-
            max_social = 1.3,
            min_financas = 1,
            max_financas = 1.3,
+           considerar = c("social", "financas", "ambos"),
            codigo = ibge) {
     base_alunos %>%
       dplyr::left_join(base_socioeconomica) %>%
@@ -41,9 +45,12 @@ pondera_socioeconomico <-
                scales::rescale(c(max_social, min_social), c(0, 1)),
         financas = (({{var_fundo_pond}} - min({{var_fundo_pond}}, na.rm = TRUE)) / (max({{var_fundo_pond}}, na.rm = TRUE) - min({{var_fundo_pond}}, na.rm = TRUE))) %>%
           scales::rescale(c(max_financas, min_financas), c(0, 1)),
-        socioeco = dplyr::if_else(is.nan(socioeco), 1, socioeco),
-        financas = dplyr::if_else(is.nan(financas), 1, financas),
-        peso_socio_eco = financas * socioeco,
+        socioeco = dplyr::if_else(is.nan(socioeco), min_social, socioeco),
+        financas = dplyr::if_else(is.nan(financas), min_financas, financas),
+        peso_socio_eco = case_when(
+          considerar == "social" ~ socioeco,
+          considerar == "financas" ~ financas,
+          considerar == "ambos" ~ financas * socioeco),
         alunos_socioeco = alunos * peso_socio_eco) %>%
       dplyr::ungroup()
   }

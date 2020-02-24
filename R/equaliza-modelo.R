@@ -14,7 +14,7 @@
 #' @examples
 #' library(simulador.fundeb)
 
-equaliza_modelo <- function(dados, fundo, aporte = aporte_federal,  var_alunos  = alunos_estado, codigo) {
+equaliza_modelo <- function(dados, fundo, aporte = aporte_federal, var_alunos  = alunos_estado, codigo) {
   dados <- dados %>%
     dplyr::arrange({{fundo}}/{{var_alunos}}) %>%
     dplyr::mutate(auxilio = aporte > cumsum({{var_alunos}}) * {{fundo}}/{{var_alunos}} - cumsum({{fundo}}/{{var_alunos}} * {{var_alunos}}))
