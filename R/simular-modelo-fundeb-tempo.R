@@ -30,8 +30,8 @@ simular_modelo_fundeb_tempo <- function(base_alunos,
                                         considerar = "ambos",
                                         ...
 ){
-  lista_fundos <- purrr::map(cumprod(crescimento_economico), ~dplyr::mutate(base_financas, fundeb = fundeb * .x, demais_receitas = demais_receitas * .x))
-  lista_alunos <- purrr::map(cumprod(crescimento_demografico), ~dplyr::mutate(base_alunos, alunos = alunos * .x))
+  lista_fundos <- purrr::map(cumprod(crescimento_economico + 1), ~dplyr::mutate(base_financas, fundeb = fundeb * .x, demais_receitas = demais_receitas * .x))
+  lista_alunos <- purrr::map(cumprod(crescimento_demografico + 1), ~dplyr::mutate(base_alunos, alunos = alunos * .x))
 
   purrr::pmap_dfr(
     .l = list(
