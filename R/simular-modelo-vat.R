@@ -2,7 +2,7 @@
 #'
 #' @description Recebe uma base com numero de alunos por ente e por etapa, ponderador por etapa, dados socioeconomicos por ente e dados financeiros por ente e simula o modelo fundeb de financiamento da educação
 #'
-#' @inheritParams simula_modelo_fundeb
+#' @inheritParams simular_modelo_fundeb
 #'
 #' @return Data.frame com alunos ponderador por ente federativo
 #'
@@ -26,6 +26,7 @@ simular_modelo_vat <-
            min_financas = 1,
            max_financas = 1.3,
            var_socioeconomica = nse,
+           considerar = "ambos",
            ...) {
     dados <-
       pondera_geral(
@@ -37,7 +38,8 @@ simular_modelo_vat <-
         max_social = max_social,
         min_financas = min_financas,
         max_financas = max_financas,
-        var_socioeconomica = {{var_socioeconomica}}
+        var_socioeconomica = {{var_socioeconomica}},
+        considerar = considerar
       )
     dados_estaduais <- gera_dados_estaduais(dados)
     aporte_federal <- auxilio_federal * calcula_fundo_total(dados)

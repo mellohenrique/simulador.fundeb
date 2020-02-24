@@ -18,27 +18,23 @@ simular_modelo_vat_tempo(
   max_social = 1.3,
   min_financas = 1,
   max_financas = 1.3,
+  var_socioeconomica = nse,
+  considerar = "ambos",
   ...
 )
 }
 \arguments{
 \item{base_alunos}{data.frame de numero de alunos por etapa e ente federativo}
 
-\item{ponderador}{data.frame de peso de aluno por etapa}
+\item{base_socioeconomica}{data.frame o codigo do ibge, o numero de alunos ponderado e uma variavel socioeconomia a ponderar}
 
-\item{base_socioeconomica}{data.frame com  o codigo do ibge, o numero de alunos ponderado e uma variavel socioeconomia a ponderar}
-
-\item{base_financas}{data.frame com o codigo do ibge e os valores do fundeb e das demais receitas}
+\item{base_financas}{data.frame o codigo do ibge e valores do fundeb e das demais receitas}
 
 \item{auxilio_federal}{percentual do fundo que a União complementará}
 
 \item{equalizacao_socio}{parametro lógico que controla se a equalização do fundo considerara o vetor de alunos ou de alunos socioeconomico}
 
 \item{distribuicao_fundo_estadual_socio}{parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconomico}
-
-\item{crescimento_economico}{vetor númerico de crescimento economico, especificamente do fundeb e das demais receitas}
-
-\item{crescimento_demografico}{vetor númerico de crescimento demográfico para alunos}
 
 \item{min_social}{peso minimo dado a informacao socioeconomica}
 
@@ -47,6 +43,10 @@ simular_modelo_vat_tempo(
 \item{min_financas}{peso minimo dado a informacao de financas}
 
 \item{max_financas}{peso maximo dado a informacao de financas}
+
+\item{var_socioeconomica}{variavel numerica socioeconomica de um ente federativo}
+
+\item{considerar}{nome que indica que parametro sera considarado na criacao do peso socioeconomico, se selecionado social se considerara apenas as informacoes sociais, se selecionado financas se considerara apenas as informacoes de financas e se selecionado ambos se considerara ambas as dimensoes}
 }
 \value{
 Data.frame com alunos ponderador por ente federativo

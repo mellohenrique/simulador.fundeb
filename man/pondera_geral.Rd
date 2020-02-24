@@ -15,21 +15,19 @@ pondera_geral(
   max_social = 1.3,
   min_financas = 1,
   max_financas = 1.3,
+  var_socioeconomica = nse,
+  considerar = "ambos",
   ...
 )
 }
 \arguments{
 \item{base_alunos}{data.frame de numero de alunos por etapa e ente federativo}
 
-\item{ponderador}{data.frame de peso de aluno por etapa}
-
 \item{base_socioeconomica}{data.frame o codigo do ibge, o numero de alunos ponderado e uma variavel socioeconomia a ponderar}
 
-\item{base_financas}{data.frame com o codigo do ibge e os valores do fundeb e das demais receitas}
+\item{base_financas}{data.frame o codigo do ibge e valores do fundeb e das demais receitas}
 
 \item{condicao_rede}{valor binario que condiciona a ponderacao por rede}
-
-\item{condicao_socio}{valor binario que condiciona a ponderacao por informacao socioeconomica}
 
 \item{min_social}{peso minimo dado a informacao socioeconomica}
 
@@ -38,6 +36,10 @@ pondera_geral(
 \item{min_financas}{peso minimo dado a informacao de financas}
 
 \item{max_financas}{peso maximo dado a informacao de financas}
+
+\item{var_socioeconomica}{variavel numerica socioeconomica de um ente federativo}
+
+\item{considerar}{nome que indica que parametro sera considarado na criacao do peso socioeconomico, se selecionado social se considerara apenas as informacoes sociais, se selecionado financas se considerara apenas as informacoes de financas e se selecionado ambos se considerara ambas as dimensoes}
 
 \item{condicao_etapa}{valor binario que condiciona a ponderacao por etapa}
 }

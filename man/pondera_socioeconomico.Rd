@@ -14,6 +14,7 @@ pondera_socioeconomico(
   max_social = 1.3,
   min_financas = 1,
   max_financas = 1.3,
+  considerar = c("social", "financas", "ambos"),
   codigo = ibge
 )
 }
@@ -35,6 +36,8 @@ pondera_socioeconomico(
 \item{min_financas}{peso minimo dado a informacao de financas}
 
 \item{max_financas}{peso maximo dado a informacao de financas}
+
+\item{considerar}{nome que indica que parametro sera considarado na criacao do peso socioeconomico, se selecionado social se considerara apenas as informacoes sociais, se selecionado financas se considerara apenas as informacoes de financas e se selecionado ambos se considerara ambas as dimensoes}
 
 \item{codigo}{parametro com o nome do codigo a ser usado como identificador dos entes federativos, recomedanda-se o codigo ibge}
 }

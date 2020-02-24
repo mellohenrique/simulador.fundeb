@@ -2,7 +2,7 @@
 #'
 #' @description Recebe uma base com numero de alunos por ente e por etapa, ponderador por etapa, dados socioeconomicos por ente e dados financeiros por ente e simula o modelo fundeb de financiamento da educação ao longo do tempo. Considera o crescimento demográfico e econômico ao longo do tempo.
 #'
-#' @inheritParams simula_modelo_fundeb
+#' @inheritParams simular_modelo_fundeb
 #' @param auxilio_federal percentual do fundo que a União complementará
 #' @param crescimento_economico vetor númerico de crescimento economico, especificamente do fundeb e das demais receitas
 #' @param crescimento_demografico vetor númerico de crescimento demográfico para alunos
@@ -26,6 +26,7 @@ simular_modelo_fundeb_tempo <- function(base_alunos,
                                         min_financas = 1,
                                         max_financas = 1.3,
                                         var_socioeconomica = nse,
+                                        considerar = "ambos",
                                         ...
 ){
   lista_fundos <- purrr::map(cumprod(crescimento_economico), ~dplyr::mutate(base_financas, fundeb = fundeb * .x, demais_receitas = demais_receitas * .x))
@@ -51,6 +52,7 @@ simular_modelo_fundeb_tempo <- function(base_alunos,
         min_financas = min_financas,
         max_financas = max_financas,
         var_socioeconomica = {{var_socioeconomica}},
+        considerar = considerar,
         ...
       )
     },

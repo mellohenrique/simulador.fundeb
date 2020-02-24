@@ -2,7 +2,7 @@
 #'
 #' @description Recebe uma base com numero de alunos por ente e por etapa, ponderador por etapa, dados socioeconomicos por ente e dados financeiros por ente e simula o modelo híbrido de financiamento da educação
 #'
-#' @inheritParams simula_modelo_fundeb
+#' @inheritParams simular_modelo_fundeb
 #' @param auxilio_federal_vat percentual do fundo que a União complementará na segunda etapa, na equalizacao dos entes pelo valor vaa
 #'
 #' @return Data.frame com alunos ponderador por ente federativo
@@ -26,6 +26,7 @@ simular_modelo_hibrido <-
            min_financas = 1,
            max_financas = 1.3,
            var_socioeconomica = nse,
+           considerar = "ambos",
            ...) {
     dados <-
       simular_modelo_fundeb(
@@ -41,6 +42,7 @@ simular_modelo_hibrido <-
         min_financas = min_financas,
         max_financas = max_financas,
         var_socioeconomica = {{var_socioeconomica}},
+        considerar = considerar,
         ...
       )
 
