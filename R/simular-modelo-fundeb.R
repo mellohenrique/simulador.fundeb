@@ -13,6 +13,7 @@
 #' @param max_social peso maximo dado a informacao socioeconomica
 #' @param min_financas peso minimo dado a informacao de financas
 #' @param max_financas peso maximo dado a informacao de financas
+#' @param var_socioeconomica variavel numerica socioeconomica de um ente federativo
 #'
 #' @return Data.frame com alunos ponderador por ente federativo
 #'
@@ -32,10 +33,11 @@ simular_modelo_fundeb <- function(base_alunos,
                                   max_social = 1.3,
                                   min_financas = 1,
                                   max_financas = 1.3,
+                                  var_socioeconomica = nse,
                                   ...
 ){
 
-  dados <- pondera_geral(base_alunos, ponderador_alunos, base_socioeconomica, base_financas, min_social = min_social, max_social = max_social, min_financas = min_financas, max_financas = max_financas)
+  dados <- pondera_geral(base_alunos, ponderador_alunos, base_socioeconomica, base_financas, min_social = min_social, max_social = max_social, min_financas = min_financas, max_financas = max_financas, var_socioeconomica = {{var_socioeconomica}})
   dados_estaduais <- gera_dados_estaduais(dados)
   aporte_federal <- auxilio_federal * calcula_fundo_total(dados)
 

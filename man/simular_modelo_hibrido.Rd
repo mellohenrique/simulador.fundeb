@@ -10,7 +10,7 @@ simular_modelo_hibrido(
   base_socioeconomica,
   base_financas,
   auxilio_federal = 0.1,
-  auxilio_federal_vaa = 0.05,
+  auxilio_federal_vat = 0.05,
   equalizacao_socio = FALSE,
   distribuicao_fundo_estadual_socio = FALSE,
   min_social = 1,
@@ -29,7 +29,7 @@ simular_modelo_hibrido(
 
 \item{base_financas}{data.frame com o codigo do ibge e os valores do fundeb e das demais receitas}
 
-\item{auxilio_federal_vaa}{percentual do fundo que a União complementará segundo o modelo vaa}
+\item{auxilio_federal_vat}{percentual do fundo que a União complementará na segunda etapa, na equalizacao dos entes pelo valor vaa}
 
 \item{equalizacao_socio}{parametro lógico que controla se a equalização do fundo considerara o vetor de alunos ou de alunos socioeconomico}
 

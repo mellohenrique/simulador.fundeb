@@ -13,6 +13,7 @@
 #' @param max_social peso maximo dado a informacao socioeconomica
 #' @param min_financas peso minimo dado a informacao de financas
 #' @param max_financas peso maximo dado a informacao de financas
+#' @param var_socioeconomica variavel numerica socioeconomica de um ente federativo
 #'
 #' @return Data.frame com alunos ponderador por ente federativo
 #'
@@ -33,6 +34,7 @@ pondera_geral <- function(base_alunos,
                           max_social = 1.3,
                           min_financas = 1,
                           max_financas = 1.3,
+                          var_socioeconomica = nse,
                           ...
 ){
   if(condicao_rede) {
@@ -43,7 +45,7 @@ pondera_geral <- function(base_alunos,
   }
 
   if(condicao_socio) {
-    pondera_socioeconomico(resultado, base_socioeconomica, base_financas, min_financas = min_financas, max_financas = max_financas, min_social = min_social, max_social = max_social)
+    pondera_socioeconomico(resultado, base_socioeconomica, base_financas, min_financas = min_financas, max_financas = max_financas, min_social = min_social, max_social = max_social, var_socioeconomica = {{var_socioeconomica}})
   } else {
     if(is.data.frame(base_socioeconomica) & is.data.frame(financas) & condicao_socio == FALSE){
       dplyr::left_join(resultado, base_socioeconomica) %>%

@@ -2,20 +2,9 @@
 #'
 #' @description Recebe uma base com numero de alunos por ente e por etapa, ponderador por etapa, dados socioeconomicos por ente e dados financeiros por ente e simula o modelo fundeb de financiamento da educação ao longo do tempo. Considera o crescimento demográfico e econômico ao longo do tempo.
 #'
-#' @param base_alunos data.frame de numero de alunos por etapa e ente federativo
-#' @param ponderador data.frame de peso de aluno por etapa
-#' @param base_socioeconomica data.frame com  o codigo do ibge, o numero de alunos ponderado e uma variavel socioeconomia a ponderar
-#' @param base_financas data.frame com o codigo do ibge e os valores do fundeb e das demais receitas
-#' @param auxilio_federal percentual do fundo que a União complementará
-#' @param auxilio_federal_vat percentual do fundo que a União complementará segundo o modelo vaa
-#' @param equalizacao_socio parametro lógico que controla se a equalização do fundo considerara o vetor de alunos ou de alunos socioeconomico
-#' @param distribuicao_fundo_estadual_socio parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconomico
+#' @inheritParams simula_modelo_fundeb
 #' @param crescimento_economico vetor númerico de crescimento economico, especificamente do fundeb e das demais receitas
 #' @param crescimento_demografico vetor númerico de crescimento demográfico para alunos
-#' @param min_social peso minimo dado a informacao socioeconomica
-#' @param max_social peso maximo dado a informacao socioeconomica
-#' @param min_financas peso minimo dado a informacao de financas
-#' @param max_financas peso maximo dado a informacao de financas
 #'
 #' @return Data.frame com alunos ponderador por ente federativo
 #'
@@ -37,6 +26,7 @@ simular_modelo_hibrido_tempo <- function(base_alunos,
                                          max_social = 1.3,
                                          min_financas = 1,
                                          max_financas = 1.3,
+                                         var_socioeconomica = nse,
                                          ...
 ){
   lista_fundos <- purrr::map(cumprod(crescimento_economico), ~dplyr::mutate(base_financas, fundeb = fundeb * .x, demais_receitas = demais_receitas * .x))
@@ -47,24 +37,25 @@ simular_modelo_hibrido_tempo <- function(base_alunos,
       ls_alunos = lista_alunos,
       ls_fundos = lista_fundos,
       ls_auxilio = auxilio_federal,
-      ls_auxilio_vaa = auxilio_federal_vat
+      ls_auxilio_vat = auxilio_federal_vat
     ),
-    ~ simular_modelo_hibrido(
+    .f = function(ls_alunos, ls_fundos, ls_auxilio, ls_auxilio_vat)
+      {simular_modelo_hibrido(
       ls_alunos,
       ponderador,
       base_socioeconomica,
       ls_fundos,
       auxilio_federal = ls_auxilio,
-      auxilio_federal_vaa = ls_auxilio_vaa,
+      auxilio_federal_vat = ls_auxilio_vat,
       equalizacao_socio = FALSE,
       distribuicao_fundo_estadual_socio = FALSE,
-      ,
       min_social = min_social,
       max_social = max_social,
       min_financas = min_financas,
       max_financas = max_financas,
+      var_socioeconomica = {{var_socioeconomica}},
       ...
-    ),
+    )},
     .id = "ano"
   )
 }

@@ -10,7 +10,7 @@ simular_modelo_hibrido_tempo(
   base_socioeconomica,
   base_financas,
   auxilio_federal = 0.1,
-  auxilio_federal_vaa = 0.05,
+  auxilio_federal_vat = 0.05,
   equalizacao_socio = FALSE,
   distribuicao_fundo_estadual_socio = FALSE,
   crescimento_economico,
@@ -33,7 +33,7 @@ simular_modelo_hibrido_tempo(
 
 \item{auxilio_federal}{percentual do fundo que a União complementará}
 
-\item{auxilio_federal_vaa}{percentual do fundo que a União complementará segundo o modelo vaa}
+\item{auxilio_federal_vat}{percentual do fundo que a União complementará segundo o modelo vaa}
 
 \item{equalizacao_socio}{parametro lógico que controla se a equalização do fundo considerara o vetor de alunos ou de alunos socioeconomico}
 

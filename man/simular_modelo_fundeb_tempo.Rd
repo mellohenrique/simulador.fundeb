@@ -9,8 +9,8 @@ simular_modelo_fundeb_tempo(
   ponderador,
   base_socioeconomica,
   base_financas,
-  auxilio_federal = 0.1,
   equalizacao_socio = FALSE,
+  auxilio_federal = 0.1,
   distribuicao_fundo_estadual_socio = FALSE,
   crescimento_economico,
   crescimento_demografico,
@@ -30,9 +30,9 @@ simular_modelo_fundeb_tempo(
 
 \item{base_financas}{data.frame com o codigo do ibge e os valores do fundeb e das demais receitas}
 
-\item{auxilio_federal}{percentual do fundo que a União complementará}
-
 \item{equalizacao_socio}{parametro lógico que controla se a equalização do fundo considerara o vetor de alunos ou de alunos socioeconomico}
+
+\item{auxilio_federal}{percentual do fundo que a União complementará}
 
 \item{distribuicao_fundo_estadual_socio}{parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconomico}
 
