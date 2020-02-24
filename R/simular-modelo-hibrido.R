@@ -20,7 +20,6 @@ simular_modelo_hibrido <-
            auxilio_federal = 0.1,
            auxilio_federal_vat = 0.05,
            condicao_rede = TRUE,
-           condicao_socio = TRUE,
            equalizacao_socio = FALSE,
            distribuicao_fundo_estadual_socio = FALSE,
            min_social = 1,
@@ -46,7 +45,6 @@ simular_modelo_hibrido <-
         var_socioeconomica = {{var_socioeconomica}},
         considerar = considerar,
         condicao_rede = condicao_rede,
-        condicao_socio = condicao_socio,
         ...
       )
 

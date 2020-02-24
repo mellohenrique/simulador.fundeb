@@ -20,7 +20,6 @@ pondera_geral <- function(base_alunos,
                           base_socioeconomica,
                           base_financas,
                           condicao_rede = TRUE,
-                          condicao_socio = TRUE,
                           min_social = 1,
                           max_social = 1.3,
                           min_financas = 1,
@@ -36,14 +35,6 @@ pondera_geral <- function(base_alunos,
     resultado <- pondera_alunos_etapa(base_alunos, ponderador, ...)
   }
 
-  if(condicao_socio) {
     pondera_socioeconomico(resultado, base_socioeconomica, base_financas, min_financas = min_financas, max_financas = max_financas, min_social = min_social, max_social = max_social, var_socioeconomica = {{var_socioeconomica}}, considerar = considerar)
-  } else {
-    if(is.data.frame(base_socioeconomica) & is.data.frame(financas) & condicao_socio == FALSE){
-      dplyr::left_join(resultado, base_socioeconomica) %>%
-        dplyr::left_join(base_financas)
-    } else {
-      resultado
-    }
-  }
+
 }

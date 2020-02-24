@@ -19,7 +19,6 @@ simular_modelo_fundeb <- function(base_alunos,
                                   base_socioeconomica,
                                   base_financas,
                                   condicao_rede = TRUE,
-                                  condicao_socio = TRUE,
                                   auxilio_federal = 0.1,
                                   equalizacao_socio = FALSE,
                                   distribuicao_fundo_estadual_socio = FALSE,
@@ -44,7 +43,6 @@ simular_modelo_fundeb <- function(base_alunos,
     var_socioeconomica = {{var_socioeconomica}},
     considerar = considerar,
     condicao_rede = condicao_rede,
-    condicao_socio = condicao_socio
   )
   dados_estaduais <- gera_dados_estaduais(dados)
   aporte_federal <- auxilio_federal * calcula_fundo_total(dados)

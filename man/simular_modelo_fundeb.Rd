@@ -9,6 +9,7 @@ simular_modelo_fundeb(
   ponderador,
   base_socioeconomica,
   base_financas,
+  condicao_rede = TRUE,
   auxilio_federal = 0.1,
   equalizacao_socio = FALSE,
   distribuicao_fundo_estadual_socio = FALSE,
@@ -27,6 +28,8 @@ simular_modelo_fundeb(
 \item{base_socioeconomica}{data.frame o codigo do ibge, o numero de alunos ponderado e uma variavel socioeconomia a ponderar}
 
 \item{base_financas}{data.frame o codigo do ibge e valores do fundeb e das demais receitas}
+
+\item{condicao_rede}{valor binario que condiciona a ponderacao por rede}
 
 \item{auxilio_federal}{percentual do fundo que a União complementará}
 

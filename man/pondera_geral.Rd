@@ -10,7 +10,6 @@ pondera_geral(
   base_socioeconomica,
   base_financas,
   condicao_rede = TRUE,
-  condicao_socio = TRUE,
   min_social = 1,
   max_social = 1.3,
   min_financas = 1,

@@ -2,7 +2,7 @@
 #'
 #' @description Recebe uma base com numero de alunos por ente e por etapa, ponderador por etapa, dados socioeconomicos por ente e dados financeiros por ente e simula o modelo fundeb de financiamento da educação ao longo do tempo. Considera o crescimento demográfico e econômico ao longo do tempo.
 #'
-#' @inheritParams simular_modelo_fundeb
+#' @inheritParams simular_modelo_fundeb_tempo
 #'
 #' @return Data.frame com alunos ponderador por ente federativo
 #'
@@ -16,7 +16,6 @@ simular_modelo_vat_tempo <- function(base_alunos,
                                      base_financas,
                                      auxilio_federal = 0.1,
                                      condicao_rede = TRUE,
-                                     condicao_socio = TRUE,
                                      equalizacao_socio = FALSE,
                                      distribuicao_fundo_estadual_socio = FALSE,
                                      crescimento_economico,
@@ -53,7 +52,6 @@ simular_modelo_vat_tempo <- function(base_alunos,
       var_socioeconomica = {{var_socioeconomica}},
       considerar = considerar,
       condicao_rede = condicao_rede,
-      condicao_socio = condicao_socio,
       ...
     )},
     .id = "ano"

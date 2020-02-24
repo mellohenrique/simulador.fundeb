@@ -50,4 +50,5 @@ Recebe uma base com código ibge, etapa e alunos e outra com pesos de ponderador
 \examples{
 library(simulador.fundeb)
 
+
 }

@@ -9,6 +9,7 @@ simular_modelo_fundeb_tempo(
   ponderador,
   base_socioeconomica,
   base_financas,
+  condicao_rede = TRUE,
   equalizacao_socio = FALSE,
   auxilio_federal = 0.1,
   distribuicao_fundo_estadual_socio = FALSE,
@@ -29,6 +30,8 @@ simular_modelo_fundeb_tempo(
 \item{base_socioeconomica}{data.frame o codigo do ibge, o numero de alunos ponderado e uma variavel socioeconomia a ponderar}
 
 \item{base_financas}{data.frame o codigo do ibge e valores do fundeb e das demais receitas}
+
+\item{condicao_rede}{valor binario que condiciona a ponderacao por rede}
 
 \item{equalizacao_socio}{parametro lógico que controla se a equalização do fundo considerara o vetor de alunos ou de alunos socioeconomico}
 
