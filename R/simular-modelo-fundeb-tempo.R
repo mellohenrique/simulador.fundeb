@@ -16,6 +16,8 @@ simular_modelo_fundeb_tempo <- function(base_alunos,
                                         ponderador,
                                         base_socioeconomica,
                                         base_financas,
+                                        condicao_rede = TRUE,
+                                        condicao_socio = TRUE,
                                         equalizacao_socio = FALSE,
                                         auxilio_federal = .1,
                                         distribuicao_fundo_estadual_socio = FALSE,
@@ -27,6 +29,8 @@ simular_modelo_fundeb_tempo <- function(base_alunos,
                                         max_financas = 1.3,
                                         var_socioeconomica = nse,
                                         considerar = "ambos",
+                                        condicao_rede = condicao_rede,
+                                        condicao_socio = condicao_socio,
                                         ...
 ){
   lista_fundos <- purrr::map(cumprod(crescimento_economico), ~dplyr::mutate(base_financas, fundeb = fundeb * .x, demais_receitas = demais_receitas * .x))
