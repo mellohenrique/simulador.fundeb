@@ -47,7 +47,7 @@ pondera_socioeconomico <-
           scales::rescale(c(max_financas, min_financas), c(0, 1)),
         socioeco = dplyr::if_else(is.nan(socioeco), min_social, socioeco),
         financas = dplyr::if_else(is.nan(financas), min_financas, financas),
-        peso_socio_eco = case_when(
+        peso_socio_eco = dplyr::case_when(
           considerar == "social" ~ socioeco,
           considerar == "financas" ~ financas,
           considerar == "ambos" ~ financas * socioeco),
