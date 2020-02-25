@@ -1,6 +1,6 @@
 #' Base com dados de alunos
 #'
-#'  Base com dados de alunos de 2015 para o pacote
+#'  Base com dados do numero de alunos por ente federativo para o ano de 2015
 #'
 #' @format Uma tabela com 6 colunas e 145264 linhas.
 #' \describe{

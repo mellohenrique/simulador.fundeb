@@ -20,6 +20,6 @@ Tabela provida por Todos pela educacao
 alunos_2015
 }
 \description{
-Base com dados de alunos de 2015 para o pacote
+Base com dados do numero de alunos por ente federativo para o ano de 2015
 }
 \keyword{datasets}

@@ -17,6 +17,6 @@ Tabela criada
 alunos_teste
 }
 \description{
-Base com dados de alunos de teste das funcoes do pacote
+Base com dados artificiais de alunos para realizacao de teste das funcoes do pacote
 }
 \keyword{datasets}

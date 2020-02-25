@@ -1,6 +1,6 @@
 #' Base com dados de alunos para teste
 #'
-#'  Base com dados de alunos de teste das funcoes do pacote
+#' Base com dados artificiais de alunos para realizacao de teste das funcoes do pacote
 #'
 #' @format Uma tabela com 3 colunas e 140 linhas.
 #' \describe{
