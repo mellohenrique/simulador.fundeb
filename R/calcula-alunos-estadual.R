@@ -1,12 +1,12 @@
 #' @title Calcula numero de alunos por estado
 #'
-#' @description Calcula o numero de alunos por ente federativo. Essa função supoe que os dois primeiros digitos sao referentes ao estado do ente federativo
+#' @description Calcula o numero de alunos por ente federativo. Essa funcao supoe que os dois primeiros digitos sao referentes ao estado do ente federativo
 #'
 #' @param dados data.frame com o numero de alunos por ente federativo
 #' @param codigo coluna numerica com o codigo identificador do ente
-#' @param var_alunos coluna numerica com o numero de alunos por ente
+#' @param var_alunos nomeia a coluna numerica com o numero de alunos por ente
 #'
-#' @return Um data.frame com o valor do fundo estadual em um coluna e o codigo do respectivo estado em outra
+#' @return Um data.frame com o numero de alunos por estado
 #'
 #' @importFrom magrittr %>%
 #' @examples

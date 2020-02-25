@@ -1,9 +1,9 @@
 #' @title Calcula valor do fundo total
 #'
-#' @description Essa função calcula o valor total de um fundo
+#' @description Essa função calcula o valor total do fundo selecionado
 #'
 #' @param fundo data.frame com o valor do fundo de cada entede federativo
-#' @param var_fundo coluna numerica de fundo
+#' @param var_fundo nomeia a coluna numerica com o valor do fundo
 #'
 #' @return O valor do fundo total como vetor numerico de tamanho 1
 #'
