@@ -12,6 +12,6 @@ Depends:
 Encoding: UTF-8
 LazyData: true
 Suggests: 
-    testthat
+    testthat (>= 2.1.0)
 RoxygenNote: 7.0.2
 Imports: dplyr (>= 0.8.3), magrittr (>= 1.5), stringr(>= 1.4.0), scales(>= 1.0.0), purrr(>= 0.3.3)
