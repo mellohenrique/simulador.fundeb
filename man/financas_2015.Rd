@@ -14,12 +14,12 @@
   \item{valor}{valor do fundo}
 }}
 \source{
-Tabela provida por Todos pela educacao
+Tabela provida pela organizacao Todos pela educacao
 }
 \usage{
 financas_2015
 }
 \description{
-Base com dados de financiamente do FUNDEB de 2015 para o pacote
+Base com dados de financiamente do FUNDEB por ente federativo para o ano de 2015
 }
 \keyword{datasets}

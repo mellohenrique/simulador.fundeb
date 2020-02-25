@@ -9,13 +9,13 @@ calcula_fundo_total(fundo, var_fundo = fundeb)
 \arguments{
 \item{fundo}{data.frame com o valor do fundo de cada entede federativo}
 
-\item{var_fundo}{coluna numerica de fundo}
+\item{var_fundo}{nomeia a coluna numerica com o valor do fundo}
 }
 \value{
 O valor do fundo total como vetor numerico de tamanho 1
 }
 \description{
-Essa função calcula o valor total de um fundo
+Essa função calcula o valor total do fundo selecionado
 }
 \examples{
 library(simulador.fundeb)

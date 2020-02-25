@@ -10,10 +10,10 @@ gera_dados_estaduais(dados)
 \item{dados}{data.frame preparado por pondera_geral}
 }
 \value{
-Um data.frame com as seguintes colunas adicionas cumulativo de alunos e gasto necessario para equalizar
+Um data.frame com dados de alunos por estado, pela ponderacao por etapa e por dados socioeconomicos, fundo estadual, vaa, pelas duas ponderacoes de aluno
 }
 \description{
-Função intermediária que gera dados dos estados que será usada nas simulações
+Funcao intermediaria que agrega dados de ente federativo por estado
 }
 \examples{
 library(simulador.fundeb)

@@ -17,6 +17,6 @@ Tabela criada
 financas_teste
 }
 \description{
-Base com dados de financiamente inventados para teste
+Base com dados artificiais de financiamente para realizacao de testes das funcoes do pacote
 }
 \keyword{datasets}

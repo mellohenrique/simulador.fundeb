@@ -13,21 +13,21 @@ equaliza_modelo(
 )
 }
 \arguments{
-\item{dados}{data.frame que serao equalizados}
+\item{dados}{data.frame que com informacoes de fundo, alunos e aporte federal}
 
 \item{fundo}{coluna com o valor do fundo a ser equalizado}
 
 \item{aporte}{quantidade de verba que será usada na equalização}
 
-\item{var_alunos}{coluna numerica com o numero de alunos}
+\item{var_alunos}{coluna numerica com o numero de alunos a ser considerado no calculo de recursos por aluno}
 
-\item{codigo}{codigo do ente ou estado}
+\item{codigo}{codigo dos entes que serao considerados na equalziacao}
 }
 \value{
-Um data.frame com o fundo avaliado equalizado
+Um data.frame com o fundo avaliado equalizado entre os entes
 }
 \description{
-Função intermediária que equaliza o valor do fundo por aluno
+Função intermediária que equaliza o valor do fundo por aluno de acordo com o tamanho do aporte federal. A equalizacao e realizada para melhorar a situacao dos entes com o menor valor de recursos por aluno.
 }
 \examples{
 library(simulador.fundeb)

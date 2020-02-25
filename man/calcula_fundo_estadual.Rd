@@ -7,17 +7,17 @@
 calcula_fundo_estadual(fundo, codigo = ibge, var_fundo = fundeb)
 }
 \arguments{
-\item{fundo}{data.frame com o valor do fundo de cada entede federativo e o codigo ibge do ente}
+\item{fundo}{data.frame com o valor do fundo de cada ente federativo e o codigo ibge do ente}
 
 \item{codigo}{coluna numerica com o codigo do estado}
 
-\item{var_fundo}{coluna numerica com o valor do fundo}
+\item{var_fundo}{nomeia a coluna numerica com o valor do fundo}
 }
 \value{
-Um data.frame com o valor do fundo estadual em um coluna e o codigo do respectivo estado em outra
+Um data.frame com o valor do fundo estadual por estado
 }
 \description{
-Essa função calcula o valor total de um fundo
+Essa função calcula o valor total dos fundo estaduais, a funcao considera que os dois primeiros digitos do codigo correspondem ao estado
 }
 \examples{
 library(simulador.fundeb)

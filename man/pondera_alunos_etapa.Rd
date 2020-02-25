@@ -8,7 +8,6 @@ pondera_alunos_etapa(
   base_alunos,
   ponderador,
   codigo = ibge,
-  etapa_ensino = etapa,
   var_alunos = alunos,
   variavel_peso = peso
 )
@@ -18,17 +17,17 @@ pondera_alunos_etapa(
 
 \item{ponderador}{data.frame de peso de aluno por etapa}
 
-\item{codigo}{coluna numerica com o codigo do estado}
+\item{codigo}{coluna numerica com o codigo do ente federativo ou estado}
 
-\item{etapa_ensino}{coluna de fator ou caractere com a etapa de ensino}
+\item{var_alunos}{nomeia a coluna numerica com o numero de alunos que sera utilizada}
 
-\item{var_alunos}{coluna numerica com o numero de alunos}
+\item{variavel_peso}{nomeia coluna que sera utilizada como peso da etapa de ensino}
 }
 \value{
 Data.frame com alunos ponderador por ente federativo
 }
 \description{
-Recebe uma base com código ibge, etapa e alunos e outra com pesos de ponderador por etapa e gera uma tabela com o número de alunos ponderados por entidade da federação
+Recebe uma base com codigo ibge, etapa e alunos e outra com pesos de ponderador por etapa e gera uma tabela com o numero de alunos ponderados por etapa para cada entidade do grupo considerado
 }
 \examples{
 library(simulador.fundeb)

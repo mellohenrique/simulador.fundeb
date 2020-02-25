@@ -14,7 +14,7 @@
   \item{alunos}{numero de alunos por etapa de ensino}
 }}
 \source{
-Tabela provida por Todos pela educacao
+Tabela provida pela organizacao Todos pela educacao
 }
 \usage{
 alunos_2015
