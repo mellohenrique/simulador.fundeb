@@ -11,5 +11,5 @@
 #'   \item{etapa}{etapa de ensino}
 #'   \item{alunos}{numero de alunos por etapa de ensino}
 #' }
-#' @source Tabela provida por Todos pela educacao
+#' @source Tabela provida pela organizacao Todos pela educacao
 "alunos_2015"

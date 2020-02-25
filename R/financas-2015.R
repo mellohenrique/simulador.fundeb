@@ -1,6 +1,6 @@
 #' Base com dados de financiamento do FUNDEB
 #'
-#'  Base com dados de financiamente do FUNDEB de 2015 para o pacote
+#' Base com dados de financiamente do FUNDEB por ente federativo para o ano de 2015
 #'
 #' @format Uma tabela com 6 colunas e 33552 linhas.
 #' \describe{
@@ -11,5 +11,5 @@
 #'   \item{tipo}{tipo do fundo}
 #'   \item{valor}{valor do fundo}
 #' }
-#' @source Tabela provida por Todos pela educacao
+#' @source Tabela provida pela organizacao Todos pela educacao
 "financas_2015"
