@@ -1,6 +1,6 @@
 #' @title Calcula valor do fundo estadual
 #'
-#' @description Essa função calcula o valor total de um fundo
+#' @description Essa função calcula o valor total dos fundo estaduais, a funcao considera que os dois primeiros digitos do codigo correspondem ao estado
 #'
 #' @param fundo data.frame com o valor do fundo de cada entede federativo e o codigo ibge do ente
 #' @param codigo coluna numerica com o codigo do estado
