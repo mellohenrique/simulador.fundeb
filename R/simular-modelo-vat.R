@@ -19,6 +19,7 @@ simular_modelo_vat <-
            auxilio_federal = 0.1,
            var_fundo = fundeb,
            var_alunos = alunos,
+           condicao_rede = TRUE,
            condicao_socio = TRUE,
            distribuicao_fundo_estadual_socio = FALSE,
            equalizacao_socio = FALSE,
