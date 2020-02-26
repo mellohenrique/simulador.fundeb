@@ -6,7 +6,7 @@
 #' @param condicao_rede valor binario que condiciona a ponderacao por rede
 #' @param condicao_etapa valor binario que condiciona a ponderacao por etapa
 #'
-#' @return Data.frame com alunos ponderador por ente federativo
+#' @return Data.frame com alunos ponderados de acordo com as especificacoes providas pelo usuario, dados de financas e dados socioeconomicos
 #'
 #' @importFrom magrittr %>%
 #'
