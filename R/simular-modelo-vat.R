@@ -61,7 +61,7 @@ simular_modelo_vat <-
       dplyr::ungroup() %>%
       dplyr::mutate(
         recursos_totais = fundeb_recebido + demais_receitas,
-        vaa_final = dplyr::case_when(
+        vaa_intermediario = dplyr::case_when(
           distribuicao_fundo_estadual_socio ~ recursos_totais / alunos_socioeco,
           TRUE ~ recursos_totais / alunos
         )
@@ -78,7 +78,7 @@ simular_modelo_vat <-
         ) %>%
         dplyr::rename(recursos_complementados = fundo_equalizado)
       dados <- dplyr::left_join(dados, fundo_equalizado) %>%
-        dplyr::mutate(vaa_complementado = recursos_complementados / alunos_socioeco)
+        dplyr::mutate(vaa_final = recursos_complementados / alunos_socioeco)
     } else {
       fundo_equalizado <-
         equaliza_modelo(
@@ -90,7 +90,7 @@ simular_modelo_vat <-
         ) %>%
         dplyr::rename(recursos_complementados = fundo_equalizado)
       dados <- dplyr::left_join(dados, fundo_equalizado) %>%
-        dplyr::mutate(vaa_complementado = recursos_complementados / alunos)
+        dplyr::mutate(vaa_final = recursos_complementados / alunos)
     }
     dados
   }
