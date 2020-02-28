@@ -12,6 +12,7 @@ simular_modelo_vat(
   auxilio_federal = 0.1,
   var_fundo = fundeb,
   var_alunos = alunos,
+  condicao_rede = TRUE,
   condicao_socio = TRUE,
   distribuicao_fundo_estadual_socio = FALSE,
   equalizacao_socio = FALSE,
@@ -32,6 +33,8 @@ simular_modelo_vat(
 \item{base_financas}{data.frame o codigo do ibge e valores do fundeb e das demais receitas}
 
 \item{auxilio_federal}{percentual do fundo que a União complementará}
+
+\item{condicao_rede}{valor binario que condiciona a ponderacao por rede}
 
 \item{distribuicao_fundo_estadual_socio}{parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconomico}
 
