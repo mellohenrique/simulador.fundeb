@@ -43,7 +43,7 @@ pondera_geral(
 \item{condicao_etapa}{valor binario que condiciona a ponderacao por etapa}
 }
 \value{
-Data.frame com alunos ponderador por ente federativo
+Data.frame com alunos ponderados de acordo com as especificacoes providas pelo usuario, dados de financas e dados socioeconomicos
 }
 \description{
 Recebe uma base com codigo ibge, etapa e alunos e outra com pesos de ponderador por etapa e gera uma tabela com o número de alunos ponderados por entidade da federação

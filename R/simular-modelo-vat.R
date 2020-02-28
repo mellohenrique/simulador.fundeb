@@ -20,7 +20,6 @@ simular_modelo_vat <-
            var_fundo = fundeb,
            var_alunos = alunos,
            condicao_rede = TRUE,
-           condicao_socio = TRUE,
            distribuicao_fundo_estadual_socio = FALSE,
            equalizacao_socio = FALSE,
            min_social = 1,

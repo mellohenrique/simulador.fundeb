@@ -54,7 +54,7 @@ simular_modelo_fundeb_tempo <- function(base_alunos,
         max_financas = max_financas,
         var_socioeconomica = {{var_socioeconomica}},
         considerar = considerar,
-        condicao_rede = TRUE,
+        condicao_rede = condicao_rede,
         ...
       )
     },

@@ -12,6 +12,7 @@ simular_modelo_hibrido_tempo(
   auxilio_federal = 0.1,
   auxilio_federal_vat = 0.05,
   condicao_rede = TRUE,
+  equalizacao_socio = FALSE,
   distribuicao_fundo_estadual_socio = FALSE,
   crescimento_economico,
   crescimento_demografico,
@@ -34,6 +35,8 @@ simular_modelo_hibrido_tempo(
 \item{auxilio_federal}{percentual do fundo que a União complementará}
 
 \item{condicao_rede}{valor binario que condiciona a ponderacao por rede}
+
+\item{equalizacao_socio}{parametro lógico que controla se a equalização do fundo considerara o vetor de alunos ou de alunos socioeconomico}
 
 \item{distribuicao_fundo_estadual_socio}{parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconomico}
 
