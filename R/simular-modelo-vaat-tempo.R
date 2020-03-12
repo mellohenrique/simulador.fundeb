@@ -10,7 +10,7 @@
 #'
 #' @export
 
-simular_modelo_vat_tempo <- function(base_alunos,
+simular_modelo_vaat_tempo <- function(base_alunos,
                                      ponderador,
                                      base_socioeconomica,
                                      base_financas,
@@ -37,7 +37,7 @@ simular_modelo_vat_tempo <- function(base_alunos,
       ls_fundos = lista_fundos,
       ls_auxilio = complem_uniao
     ),
-    .f = function(ls_alunos, ls_fundos, ls_auxilio){simular_modelo_vat(
+    .f = function(ls_alunos, ls_fundos, ls_auxilio){simular_modelo_vaat(
       ls_alunos,
       ponderador,
       base_socioeconomica,
