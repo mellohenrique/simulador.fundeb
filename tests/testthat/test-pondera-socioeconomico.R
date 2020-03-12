@@ -30,8 +30,8 @@ test_that("pondera_socioeconomico gera data.frame", {
       financas_teste,
       min_social = 0.5,
       max_social = 2,
-      min_financas = 3,
-      max_financas = 4,
+      min_disp_fiscal = 3,
+      max_disp_fiscal = 4,
       considerar = "ambos"
     ) %>% str,
     "data\\.frame"

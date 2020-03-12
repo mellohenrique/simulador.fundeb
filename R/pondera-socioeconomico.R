@@ -10,8 +10,8 @@
 #' @param codigo coluna numerica com o codigo do estado, deve ter o mesmo nome em base_alunos e base_socioeconomica
 #' @param min_social peso minimo dado a informacao socioeconomica
 #' @param max_social peso maximo dado a informacao socioeconomica
-#' @param min_financas peso minimo dado a informacao de financas
-#' @param max_financas peso maximo dado a informacao de financas
+#' @param min_disp_fiscal peso minimo dado a informacao de financas
+#' @param max_disp_fiscal peso maximo dado a informacao de financas
 #' @param codigo parametro com o nome do codigo a ser usado como identificador dos entes federativos, recomedanda-se o codigo ibge
   #' @param considerar nome que indica que parametro sera considarado na criacao do peso socioeconomico, se selecionado social se considerara apenas as informacoes sociais, se selecionado financas se considerara apenas as informacoes de financas e se selecionado ambos se considerara ambas as dimensoes
 #'
@@ -31,8 +31,8 @@ pondera_socioeconomico <-
            var_fundo_pond = demais_receitas,
            min_social = 1,
            max_social = 1.3,
-           min_financas = 1,
-           max_financas = 1.3,
+           min_disp_fiscal = 1,
+           max_disp_fiscal = 1.3,
            considerar = c("social", "financas", "ambos"),
            codigo = ibge) {
     base_alunos %>%
@@ -44,9 +44,9 @@ pondera_socioeconomico <-
         socioeco = (({{var_socioeconomica}} - min({{var_socioeconomica}}, na.rm = TRUE)) / (max({{var_socioeconomica}}, na.rm = TRUE) - min({{var_socioeconomica}}, na.rm = TRUE))) %>%
                scales::rescale(c(max_social, min_social), c(0, 1)),
         financas = (({{var_fundo_pond}} - min({{var_fundo_pond}}, na.rm = TRUE)) / (max({{var_fundo_pond}}, na.rm = TRUE) - min({{var_fundo_pond}}, na.rm = TRUE))) %>%
-          scales::rescale(c(max_financas, min_financas), c(0, 1)),
+          scales::rescale(c(max_disp_fiscal, min_disp_fiscal), c(0, 1)),
         socioeco = dplyr::if_else(is.nan(socioeco), min_social, socioeco),
-        financas = dplyr::if_else(is.nan(financas), min_financas, financas),
+        financas = dplyr::if_else(is.nan(financas), min_disp_fiscal, financas),
         peso_socio_eco = dplyr::case_when(
           considerar == "social" ~ socioeco,
           considerar == "financas" ~ financas,

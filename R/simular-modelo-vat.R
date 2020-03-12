@@ -16,16 +16,16 @@ simular_modelo_vat <-
            ponderador,
            base_socioeconomica,
            base_financas,
-           auxilio_federal = 0.1,
+           complem_uniao = 0.1,
            var_fundo = fundeb,
            var_alunos = alunos,
            condicao_rede = TRUE,
-           distribuicao_fundo_estadual_socio = FALSE,
+           fatores_intra_equidade = FALSE,
            equalizacao_socio = FALSE,
            min_social = 1,
            max_social = 1.3,
-           min_financas = 1,
-           max_financas = 1.3,
+           min_disp_fiscal = 1,
+           max_disp_fiscal = 1.3,
            var_socioeconomica = nse,
            considerar = "ambos",
            ...) {
@@ -37,14 +37,14 @@ simular_modelo_vat <-
         base_financas,
         min_social = min_social,
         max_social = max_social,
-        min_financas = min_financas,
-        max_financas = max_financas,
+        min_disp_fiscal = min_disp_fiscal,
+        max_disp_fiscal = max_disp_fiscal,
         var_socioeconomica = {{var_socioeconomica}},
         considerar = considerar,
         condicao_rede = condicao_rede
       )
     dados_estaduais <- gera_dados_estaduais(dados)
-    aporte_federal <- auxilio_federal * calcula_fundo_total(dados)
+    aporte_federal <- complem_uniao * calcula_fundo_total(dados)
     financiamento_estado <- dados_estaduais %>%
       dplyr::select(fundo_estadual, codigo_estado)
 
@@ -53,7 +53,7 @@ simular_modelo_vat <-
       dplyr::group_by(codigo_estado) %>%
       dplyr::mutate(
         fundeb_recebido = dplyr::case_when(
-          distribuicao_fundo_estadual_socio ~ fundo_estadual * (alunos_socioeco / sum(alunos_socioeco)),
+          fatores_intra_equidade ~ fundo_estadual * (alunos_socioeco / sum(alunos_socioeco)),
           TRUE ~ fundo_estadual * (alunos / sum(alunos))
         )
       ) %>%
@@ -61,7 +61,7 @@ simular_modelo_vat <-
       dplyr::mutate(
         recursos_totais = fundeb_recebido + demais_receitas,
         vaa_intermediario = dplyr::case_when(
-          distribuicao_fundo_estadual_socio ~ recursos_totais / alunos_socioeco,
+          fatores_intra_equidade ~ recursos_totais / alunos_socioeco,
           TRUE ~ recursos_totais / alunos
         )
       )
