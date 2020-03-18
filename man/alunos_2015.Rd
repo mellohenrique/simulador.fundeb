@@ -4,7 +4,8 @@
 \name{alunos_2015}
 \alias{alunos_2015}
 \title{Base com dados de alunos}
-\format{Uma tabela com 6 colunas e 145264 linhas.
+\format{
+Uma tabela com 6 colunas e 145264 linhas.
 \describe{
   \item{ibge}{codigo ibge do ente federativo}
   \item{nome}{nome do ente federativo}
@@ -12,7 +13,8 @@
   \item{estado}{estado do ente federativo}
   \item{etapa}{etapa de ensino}
   \item{alunos}{numero de alunos por etapa de ensino}
-}}
+}
+}
 \source{
 Tabela provida pela organizacao Todos pela educacao
 }

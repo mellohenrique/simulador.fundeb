@@ -4,11 +4,13 @@
 \name{ponderador_alunos}
 \alias{ponderador_alunos}
 \title{Base de dados com pesos das etapas para ponderacao do numero de alunos}
-\format{Uma tabela com 2 colunas e 28 linhas.
+\format{
+Uma tabela com 2 colunas e 28 linhas.
 \describe{
   \item{etapa}{etapa de ensino}
   \item{ponderador}{peso do aluno por etapa}
-}}
+}
+}
 \source{
 Tabela provida pela organizacao Todos pela educacao
 }
