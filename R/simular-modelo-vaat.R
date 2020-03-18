@@ -11,7 +11,7 @@
 #' @export
 #'
 
-simular_modelo_vat <-
+simular_modelo_vaat <-
   function(base_alunos,
            ponderador,
            base_socioeconomica,

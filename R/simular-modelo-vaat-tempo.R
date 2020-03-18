@@ -10,7 +10,7 @@
 #'
 #' @export
 
-simular_modelo_vat_tempo <- function(base_alunos,
+simular_modelo_vaat_tempo <- function(base_alunos,
                                      ponderador,
                                      base_socioeconomica,
                                      base_financas,
