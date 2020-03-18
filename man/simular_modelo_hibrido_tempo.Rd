@@ -9,17 +9,17 @@ simular_modelo_hibrido_tempo(
   ponderador,
   base_socioeconomica,
   base_financas,
-  auxilio_federal = 0.1,
-  auxilio_federal_vat = 0.05,
+  complem_uniao = 0.1,
+  complem_uniao_vat = 0.05,
   condicao_rede = TRUE,
   equalizacao_socio = FALSE,
-  distribuicao_fundo_estadual_socio = FALSE,
+  fatores_intra_equidade = FALSE,
   crescimento_economico,
   crescimento_demografico,
   min_social = 1,
   max_social = 1.3,
-  min_financas = 1,
-  max_financas = 1.3,
+  min_disp_fiscal = 1,
+  max_disp_fiscal = 1.3,
   var_socioeconomica = nse,
   considerar = "ambos",
   ...
@@ -32,13 +32,13 @@ simular_modelo_hibrido_tempo(
 
 \item{base_financas}{data.frame o codigo do ibge e valores do fundeb e das demais receitas}
 
-\item{auxilio_federal}{percentual do fundo que a União complementará}
+\item{complem_uniao}{percentual do fundo que a União complementará}
 
 \item{condicao_rede}{valor binario que condiciona a ponderacao por rede}
 
 \item{equalizacao_socio}{parametro lógico que controla se a equalização do fundo considerara o vetor de alunos ou de alunos socioeconomico}
 
-\item{distribuicao_fundo_estadual_socio}{parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconomico}
+\item{fatores_intra_equidade}{parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconomico}
 
 \item{crescimento_economico}{vetor númerico de crescimento economico, especificamente do fundeb e das demais receitas}
 
@@ -48,9 +48,9 @@ simular_modelo_hibrido_tempo(
 
 \item{max_social}{peso maximo dado a informacao socioeconomica}
 
-\item{min_financas}{peso minimo dado a informacao de financas}
+\item{min_disp_fiscal}{peso minimo dado a informacao de financas}
 
-\item{max_financas}{peso maximo dado a informacao de financas}
+\item{max_disp_fiscal}{peso maximo dado a informacao de financas}
 
 \item{var_socioeconomica}{variavel numerica socioeconomica de um ente federativo}
 

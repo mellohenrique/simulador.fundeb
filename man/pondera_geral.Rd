@@ -12,8 +12,8 @@ pondera_geral(
   condicao_rede = TRUE,
   min_social = 1,
   max_social = 1.3,
-  min_financas = 1,
-  max_financas = 1.3,
+  min_disp_fiscal = 1,
+  max_disp_fiscal = 1.3,
   var_socioeconomica = nse,
   considerar = "ambos",
   ...
@@ -32,9 +32,9 @@ pondera_geral(
 
 \item{max_social}{peso maximo dado a informacao socioeconomica}
 
-\item{min_financas}{peso minimo dado a informacao de financas}
+\item{min_disp_fiscal}{peso minimo dado a informacao de financas}
 
-\item{max_financas}{peso maximo dado a informacao de financas}
+\item{max_disp_fiscal}{peso maximo dado a informacao de financas}
 
 \item{var_socioeconomica}{variavel numerica socioeconomica de um ente federativo}
 

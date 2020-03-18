@@ -1,7 +1,11 @@
 Package: simulador.fundeb
 Type: Package
 Title: Modelos de Simulação do Fundeb
+<<<<<<< HEAD
 Version: 0.1.21
+=======
+Version: 0.1.3
+>>>>>>> 66150c1117aa0e4f7bab3f6afe6c7b298887464e
 Author: Henrique de Mello Santos de Assunção
 Maintainer: Henrique de Mello Santos de Assunção <henrique.mello1992@gmail.com>
 Description: Pacote que simula o financiamento do FUNDEB.
