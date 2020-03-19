@@ -78,9 +78,7 @@ simular_modelo_fundeb <- function(base_alunos,
     dplyr::ungroup() %>%
     dplyr::mutate(
       recursos_totais = fundeb_recebido + demais_receitas,
-      vaa_final = dplyr::case_when(
-        fatores_intra_equidade ~ recursos_totais / alunos_socioeco,
-        TRUE ~ recursos_totais / alunos
+      vaa_final = recursos_totais / aluno_imponderado
       )
-    )
+
 }

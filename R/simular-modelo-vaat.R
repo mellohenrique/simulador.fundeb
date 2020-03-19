@@ -89,7 +89,7 @@ simular_modelo_vaat <-
         ) %>%
         dplyr::rename(recursos_complementados = fundo_equalizado)
       dados <- dplyr::left_join(dados, fundo_equalizado) %>%
-        dplyr::mutate(vaa_final = recursos_complementados / alunos)
+        dplyr::mutate(vaa_final = recursos_complementados / alunos_imponderado)
     }
     dados
   }

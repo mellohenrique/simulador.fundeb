@@ -76,9 +76,7 @@ simular_modelo_hibrido <-
                          dplyr::rename(recursos_vat = fundo_equalizado)) %>%
       dplyr::rename(vaa_intermediario = vaa_final) %>%
       dplyr::mutate(
-        vaa_final = dplyr::case_when(
-          fatores_intra_equidade ~ recursos_vat / alunos_socioeco,
-          TRUE ~ recursos_vat / alunos
+        vaa_final = recursos_vat / aluno_imponderado
         )
-      )
+
   }
