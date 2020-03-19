@@ -28,6 +28,10 @@ pondera_geral <- function(base_alunos,
                           considerar = "ambos",
                           ...
 ){
+  matriculas <- base_alunos %>%
+    group_by(ibge) %>%
+    summarise(aluno_fisico = sum(alunos))
+
   if(condicao_rede) {
     resultado <- pondera_alunos_rede(base_alunos, ...) %>%
       pondera_alunos_etapa(ponderador = ponderador)
@@ -35,6 +39,7 @@ pondera_geral <- function(base_alunos,
     resultado <- pondera_alunos_etapa(base_alunos, ponderador, ...)
   }
 
-    pondera_socioeconomico(resultado, base_socioeconomica, base_financas, min_disp_fiscal = min_disp_fiscal, max_disp_fiscal = max_disp_fiscal, min_social = min_social, max_social = max_social, var_socioeconomica = {{var_socioeconomica}}, considerar = considerar)
+    pondera_socioeconomico(resultado, base_socioeconomica, base_financas, min_disp_fiscal = min_disp_fiscal, max_disp_fiscal = max_disp_fiscal, min_social = min_social, max_social = max_social, var_socioeconomica = {{var_socioeconomica}}, considerar = considerar) %>%
+      left_join(matriculas, by = "ibge")
 
 }
