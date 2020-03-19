@@ -29,8 +29,8 @@ pondera_geral <- function(base_alunos,
                           ...
 ){
   matriculas <- base_alunos %>%
-    group_by(ibge) %>%
-    summarise(aluno_inponderado = sum(alunos))
+    dplyr::group_by(ibge) %>%
+    dplyr::summarise(aluno_imponderado = sum(alunos))
 
 
   if(condicao_rede) {
@@ -41,6 +41,6 @@ pondera_geral <- function(base_alunos,
   }
 
     pondera_socioeconomico(resultado, base_socioeconomica, base_financas, min_disp_fiscal = min_disp_fiscal, max_disp_fiscal = max_disp_fiscal, min_social = min_social, max_social = max_social, var_socioeconomica = {{var_socioeconomica}}, considerar = considerar) %>%
-      left_join(matriculas, by = "ibge")
+      dplyr::left_join(matriculas, by = "ibge")
 
 }
