@@ -32,6 +32,7 @@ pondera_geral <- function(base_alunos,
     group_by(ibge) %>%
     summarise(aluno_inponderado = sum(alunos))
 
+
   if(condicao_rede) {
     resultado <- pondera_alunos_rede(base_alunos, ...) %>%
       pondera_alunos_etapa(ponderador = ponderador)
