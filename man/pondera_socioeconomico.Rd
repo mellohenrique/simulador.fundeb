@@ -15,6 +15,7 @@ pondera_socioeconomico(
   min_disp_fiscal = 1,
   max_disp_fiscal = 1.3,
   considerar = c("social", "financas", "ambos"),
+  desconsidera_estados = FALSE,
   codigo = ibge
 )
 }
@@ -38,6 +39,8 @@ pondera_socioeconomico(
 \item{max_disp_fiscal}{peso maximo dado a informacao de financas}
 
 \item{considerar}{nome que indica que parametro sera considarado na criacao do peso socioeconomico, se selecionado social se considerara apenas as informacoes sociais, se selecionado financas se considerara apenas as informacoes de financas e se selecionado ambos se considerara ambas as dimensoes}
+
+\item{desconsidera_estados}{variavel logica que indica se os estados seram considerados na ponderacao socioeconomica}
 
 \item{codigo}{parametro com o nome do codigo a ser usado como identificador dos entes federativos, recomedanda-se o codigo ibge}
 }

@@ -21,6 +21,7 @@ simular_modelo_fundeb_tempo(
   max_disp_fiscal = 1.3,
   var_socioeconomica = nse,
   considerar = "ambos",
+  desconsidera_estados = FALSE,
   ...
 )
 }
@@ -54,6 +55,8 @@ simular_modelo_fundeb_tempo(
 \item{var_socioeconomica}{variavel numerica socioeconomica de um ente federativo}
 
 \item{considerar}{nome que indica que parametro sera considarado na criacao do peso socioeconomico, se selecionado social se considerara apenas as informacoes sociais, se selecionado financas se considerara apenas as informacoes de financas e se selecionado ambos se considerara ambas as dimensoes}
+
+\item{desconsidera_estados}{variavel logica que indica se os estados seram considerados na ponderacao socioeconomica}
 }
 \value{
 Data.frame com alunos ponderador por ente federativo
