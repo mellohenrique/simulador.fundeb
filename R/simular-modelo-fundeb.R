@@ -80,7 +80,7 @@ simular_modelo_fundeb <- function(base_alunos,
     dplyr::ungroup() %>%
     dplyr::mutate(
       recursos_totais = fundeb_recebido + demais_receitas,
-      vaa_final = recursos_totais / aluno_imponderado
+      vaa_final = recursos_totais / alunos_imponderado
       )
 
 }
