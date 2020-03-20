@@ -30,7 +30,7 @@ pondera_geral <- function(base_alunos,
 ){
   matriculas <- base_alunos %>%
     dplyr::group_by(ibge) %>%
-    dplyr::summarise(aluno_imponderado = sum(alunos))
+    dplyr::summarise(alunos_imponderado = sum(alunos))
 
 
   if(condicao_rede) {
