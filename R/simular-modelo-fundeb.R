@@ -28,6 +28,7 @@ simular_modelo_fundeb <- function(base_alunos,
                                   max_disp_fiscal = 1.3,
                                   var_socioeconomica = nse,
                                   considerar = "ambos",
+                                  desconsidera_estados = FALSE,
                                   ...
 ){
 
@@ -43,6 +44,7 @@ simular_modelo_fundeb <- function(base_alunos,
     var_socioeconomica = {{var_socioeconomica}},
     considerar = considerar,
     condicao_rede = condicao_rede,
+    desconsidera_estados = desconsidera_estados
   )
   dados_estaduais <- gera_dados_estaduais(dados)
   aporte_federal <- complem_uniao * calcula_fundo_total(dados)

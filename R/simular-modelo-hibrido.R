@@ -28,6 +28,7 @@ simular_modelo_hibrido <-
            max_disp_fiscal = 1.3,
            var_socioeconomica = nse,
            considerar = "ambos",
+           desconsidera_estados = FALSE,
            ...) {
     dados <-
       simular_modelo_fundeb(
@@ -45,6 +46,7 @@ simular_modelo_hibrido <-
         var_socioeconomica = {{var_socioeconomica}},
         considerar = considerar,
         condicao_rede = condicao_rede,
+        desconsidera_estados = desconsidera_estados,
         ...
       )
 

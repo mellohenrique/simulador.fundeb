@@ -28,6 +28,7 @@ simular_modelo_vaat <-
            max_disp_fiscal = 1.3,
            var_socioeconomica = nse,
            considerar = "ambos",
+           desconsidera_estados = FALSE,
            ...) {
     dados <-
       pondera_geral(
@@ -41,7 +42,8 @@ simular_modelo_vaat <-
         max_disp_fiscal = max_disp_fiscal,
         var_socioeconomica = {{var_socioeconomica}},
         considerar = considerar,
-        condicao_rede = condicao_rede
+        condicao_rede = condicao_rede,
+        desconsidera_estados = desconsidera_estados
       )
     dados_estaduais <- gera_dados_estaduais(dados)
     aporte_federal <- complem_uniao * calcula_fundo_total(dados)

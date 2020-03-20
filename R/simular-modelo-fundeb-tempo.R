@@ -28,6 +28,7 @@ simular_modelo_fundeb_tempo <- function(base_alunos,
                                         max_disp_fiscal = 1.3,
                                         var_socioeconomica = nse,
                                         considerar = "ambos",
+                                        desconsidera_estados = FALSE,
                                         ...
 ){
   lista_fundos <- purrr::map(cumprod(crescimento_economico + 1), ~dplyr::mutate(base_financas, fundeb = fundeb * .x, demais_receitas = demais_receitas * .x))
@@ -55,6 +56,7 @@ simular_modelo_fundeb_tempo <- function(base_alunos,
         var_socioeconomica = {{var_socioeconomica}},
         considerar = considerar,
         condicao_rede = condicao_rede,
+        desconsidera_estados = desconsidera_estados,
         ...
       )
     },
