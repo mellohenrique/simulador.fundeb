@@ -68,7 +68,7 @@ pondera_socioeconomico <-
         bind_rows(estados) %>%
         group_by(codigo_estado) %>%
         mutate(peso_socio_eco = case_when(
-          ibge <- 100 ~ mean(peso_socio_eco),
+          ibge <- 100 ~ weighted.mean(peso_socio_eco, alunos),
           TRUE ~ peso_socio_eco
         ) %>%
           ungroup())
