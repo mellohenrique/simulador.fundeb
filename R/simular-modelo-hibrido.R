@@ -78,7 +78,7 @@ simular_modelo_hibrido <-
                          dplyr::rename(recursos_vat = fundo_equalizado)) %>%
       dplyr::rename(vaa_intermediario = vaa_final) %>%
       dplyr::mutate(
-        vaa_final = recursos_vat / aluno_imponderado
+        vaa_final = recursos_vat / alunos_imponderado
         )
 
   }

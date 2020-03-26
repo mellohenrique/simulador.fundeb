@@ -11,9 +11,9 @@ pondera_socioeconomico(
   var_socioeconomica = nse,
   var_fundo_pond = demais_receitas,
   min_social = 1,
-  max_social = 1.3,
+  max_social = 1.2,
   min_disp_fiscal = 1,
-  max_disp_fiscal = 1.3,
+  max_disp_fiscal = 1.2,
   considerar = c("social", "financas", "ambos"),
   desconsidera_estados = FALSE,
   codigo = ibge
