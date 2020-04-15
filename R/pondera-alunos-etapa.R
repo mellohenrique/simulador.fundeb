@@ -10,14 +10,18 @@
 #'
 #' @return Data.frame com alunos ponderador por ente federativo
 #'
+#' @import data.table
 #' @importFrom magrittr %>%
 #' @examples
 #' library(simulador.fundeb)
 
 
 pondera_alunos_etapa <- function(base_alunos, ponderador, codigo = ibge, var_alunos = alunos, variavel_peso = peso){
-  base_alunos %>%
-    dplyr::left_join(ponderador) %>%
-    dplyr::group_by({{codigo}}) %>%
-    dplyr::summarise(alunos = sum({{var_alunos}} * {{variavel_peso}}))
+  DT <- data.table(base_alunos)
+
+  DT[data.table(ponderador), on = "etapa"]
+
+  DT %>%
+    group_by({{codigo}}) %>%
+    summarise(alunos = sum({{var_alunos}} * {{variavel_peso}}))
 }

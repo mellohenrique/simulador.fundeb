@@ -14,4 +14,4 @@ LazyData: true
 Suggests: 
     testthat (>= 2.1.0)
 RoxygenNote: 7.1.0
-Imports: dplyr (>= 0.8.3), magrittr (>= 1.5), stringr(>= 1.4.0), scales(>= 1.0.0), purrr(>= 0.3.3)
+Imports: data.table(>= 1.12.8), dplyr (>= 0.8.3), magrittr (>= 1.5), stringr(>= 1.4.0), scales(>= 1.0.0), purrr(>= 0.3.3)

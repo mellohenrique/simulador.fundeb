@@ -8,6 +8,7 @@
 #'
 #' @return Data.frame com alunos ponderados de acordo com as especificacoes providas pelo usuario, dados de financas e dados socioeconomicos
 #'
+#' @import data.table
 #' @importFrom magrittr %>%
 #'
 #' @export
@@ -41,7 +42,8 @@ pondera_geral <- function(base_alunos,
     resultado <- pondera_alunos_etapa(base_alunos, ponderador, ...)
   }
 
-    pondera_socioeconomico(resultado, base_socioeconomica, base_financas, min_disp_fiscal = min_disp_fiscal, max_disp_fiscal = max_disp_fiscal, min_social = min_social, max_social = max_social, var_socioeconomica = {{var_socioeconomica}}, considerar = considerar, desconsidera_estados = desconsidera_estados) %>%
-      dplyr::left_join(matriculas, by = "ibge")
+    pondera_socioeconomico(resultado, base_socioeconomica, base_financas, min_disp_fiscal = min_disp_fiscal, max_disp_fiscal = max_disp_fiscal, min_social = min_social, max_social = max_social, var_socioeconomica = {{var_socioeconomica}}, considerar = considerar, desconsidera_estados = desconsidera_estados)
+
+
 
 }

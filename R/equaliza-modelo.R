@@ -10,6 +10,7 @@
 #'
 #' @return Um data.frame com o fundo avaliado equalizado entre os entes
 #'
+#' @import data.table
 #' @importFrom magrittr %>%
 #' @examples
 #' library(simulador.fundeb)
