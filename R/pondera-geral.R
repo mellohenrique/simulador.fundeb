@@ -55,7 +55,9 @@ pondera_geral <- function(base_alunos,
       desconsidera_estados = desconsidera_estados
       )
 
-    data.table(resultado)[data.table(matriculas), on = "ibge"]
+    resultado <- data.table(resultado)[data.table(matriculas), on = "ibge"]
+
+    resultado
 
 
 }
