@@ -19,7 +19,7 @@
 pondera_alunos_etapa <- function(base_alunos, ponderador, codigo = ibge, var_alunos = alunos, variavel_peso = peso){
   DT <- data.table(base_alunos)
 
-  DT[data.table(ponderador), on = "etapa"]
+  DT[data.table(ponderador), peso := i.peso, on = "etapa"]
 
   DT %>%
     group_by({{codigo}}) %>%

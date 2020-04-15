@@ -42,8 +42,20 @@ pondera_geral <- function(base_alunos,
     resultado <- pondera_alunos_etapa(base_alunos, ponderador, ...)
   }
 
-    pondera_socioeconomico(resultado, base_socioeconomica, base_financas, min_disp_fiscal = min_disp_fiscal, max_disp_fiscal = max_disp_fiscal, min_social = min_social, max_social = max_social, var_socioeconomica = {{var_socioeconomica}}, considerar = considerar, desconsidera_estados = desconsidera_estados)
+  resultado <- pondera_socioeconomico(
+      resultado,
+      base_socioeconomica,
+      base_financas,
+      min_disp_fiscal = min_disp_fiscal,
+      max_disp_fiscal = max_disp_fiscal,
+      min_social = min_social,
+      max_social = max_social,
+      var_socioeconomica = {{var_socioeconomica}},
+      considerar = considerar,
+      desconsidera_estados = desconsidera_estados
+      )
 
+    data.table(resultado)[data.table(matriculas), on = "ibge"]
 
 
 }
