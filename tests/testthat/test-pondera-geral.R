@@ -1,7 +1,7 @@
 test_that("pondera_geral funciona", {
   expect_equal(pondera_geral(alunos_teste, ponderador_alunos, socioeco_teste, financas_teste) %>% dplyr::pull(alunos), c(23.5, 47, 47, 24.55, 24.55))
 
-  expect_equal(pondera_geral(alunos_teste, ponderador_alunos, socioeco_teste, financas_teste) %>% dplyr::pull(socioeco), c(1.3, 1, 1, 1, 1.3))
+  expect_equal(pondera_geral(alunos_teste, ponderador_alunos, socioeco_teste, financas_teste) %>% dplyr::pull(socioeco), c(1.2, 1, 1, 1, 1.2))
 
   expect_equal(pondera_geral(alunos_teste, ponderador_alunos, socioeco_teste, financas_teste, max_disp_fiscal = 2, min_disp_fiscal = 0.2) %>% dplyr::pull(financas), c(2, 0.2, 0.2, 0.2, 2))
 })

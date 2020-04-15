@@ -1,11 +1,11 @@
 test_that("pondera_socioeconomico funciona", {
   expect_equal(
     pondera_socioeconomico(alunos_teste, socioeco_teste, financas_teste, considerar = "ambos") %>% dplyr::pull(socioeco),
-    c(rep(1.3, 28), rep(1, 28), rep(1.3, 28), rep(1, 56))
+    c(rep(1.2, 28), rep(1, 28), rep(1.2, 28), rep(1, 56))
   )
   expect_equal(
     pondera_socioeconomico(alunos_teste, socioeco_teste, financas_teste, considerar = "financas") %>% dplyr::pull(socioeco),
-    c(rep(1.3, 28), rep(1, 28), rep(1.3, 28), rep(1, 56))
+    c(rep(1.2, 28), rep(1, 28), rep(1.2, 28), rep(1, 56))
   )
 })
 
