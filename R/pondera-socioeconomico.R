@@ -41,7 +41,8 @@ pondera_socioeconomico <-
       estados <- base_alunos %>%
         dplyr::filter(ibge < 100) %>%
         dplyr::left_join(base_socioeconomica) %>%
-        dplyr::left_join(base_financas)
+        dplyr::left_join(base_financas) %>%
+        dplyr::mutate(codigo_estado = substring({{codigo}}, 1, 2) %>% as.numeric())
       base_alunos <- base_alunos %>%
         dplyr::filter(ibge > 100)
     }
