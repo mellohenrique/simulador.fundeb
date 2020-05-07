@@ -45,8 +45,8 @@ pondera_socioeconomico <-
     }
 
     dados <- base_alunos %>%
-      dplyr::left_join(base_socioeconomica, by = "ibge") %>%
-      dplyr::left_join(base_financas, by = "ibge") %>%
+      dplyr::left_join(base_socioeconomica) %>%
+      dplyr::left_join(base_financas) %>%
       dplyr::mutate(codigo_estado = substring({{codigo}}, 1, 2) %>% as.numeric()) %>%
       dplyr::group_by(codigo_estado) %>%
       dplyr::mutate(
