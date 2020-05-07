@@ -22,6 +22,6 @@ pondera_alunos_etapa <- function(base_alunos, ponderador, codigo = ibge, var_alu
   DT[data.table(ponderador), peso := i.peso, on = "etapa"]
 
   DT %>%
-    group_by({{codigo}}) %>%
-    summarise(alunos = sum({{var_alunos}} * {{variavel_peso}}))
+    dplyr::group_by({{codigo}}) %>%
+    dplyr::summarise(alunos = sum({{var_alunos}} * {{variavel_peso}}))
 }

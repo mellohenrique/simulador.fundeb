@@ -65,13 +65,13 @@ pondera_socioeconomico <-
 
     if(desconsidera_estados){
       dados <- dados %>%
-        bind_rows(estados) %>%
-        group_by(codigo_estado) %>%
-        mutate(peso_socio_eco = case_when(
+        dplyr::bind_rows(estados) %>%
+        dplyr::group_by(codigo_estado) %>%
+        dplyr::mutate(peso_socio_eco = case_when(
           ibge <- 100 ~ weighted.mean(peso_socio_eco, alunos),
           TRUE ~ peso_socio_eco
         ) %>%
-          ungroup())
+          dplyr::ungroup())
     }
 
     dados
