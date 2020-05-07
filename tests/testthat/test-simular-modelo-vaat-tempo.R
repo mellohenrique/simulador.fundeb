@@ -1,0 +1,7 @@
+test_that("simular_modelo_vaat_tempo gera data.frame", {
+  expect_output(simular_modelo_vaat_tempo(alunos_teste, ponderador_alunos, socioeco_teste, financas_teste, complem_uniao = c(.1, .15), crescimento_demografico = c(-.01, -0.02) , crescimento_economico = c(-.03, .015)) %>% str, "data\\.frame")
+  expect_output(simular_modelo_vaat_tempo(alunos_teste, ponderador_alunos, socioeco_teste, financas_teste, complem_uniao = c(.1, .15), crescimento_demografico = c(-.01, -0.02) , crescimento_economico = c(-.03, .015), condicao_rede = FALSE) %>% str, "data\\.frame")
+  expect_output(simular_modelo_vaat_tempo(alunos_teste, ponderador_alunos, socioeco_teste, financas_teste, complem_uniao = c(.1, .15), crescimento_demografico = c(-.01, -0.02) , crescimento_economico = c(-.03, .015), considerar = "social") %>% str, "data\\.frame")
+  expect_output(simular_modelo_vaat_tempo(alunos_teste, ponderador_alunos, socioeco_teste, financas_teste, complem_uniao = c(.1, .15), crescimento_demografico = c(-.01, -0.02) , crescimento_economico = c(-.03, .015), considerar = "financas") %>% str, "data\\.frame")
+  expect_output(simular_modelo_vaat_tempo(alunos_teste, ponderador_alunos, socioeco_teste, financas_teste, complem_uniao = c(.1, .15), crescimento_demografico = c(-.01, -0.02) , crescimento_economico = c(-.03, .015), min_social = 0.5, max_social = 2, min_disp_fiscal = 3, max_disp_fiscal = 4) %>% str, "data\\.frame")
+})
