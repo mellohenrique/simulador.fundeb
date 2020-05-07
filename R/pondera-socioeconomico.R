@@ -38,10 +38,12 @@ pondera_socioeconomico <-
            desconsidera_estados = FALSE,
            codigo = ibge) {
     if(desconsidera_estados){
+      estados <- base_alunos %>%
+        dplyr::filter(ibge < 100) %>%
+        dplyr::left_join(base_socioeconomica) %>%
+        dplyr::left_join(base_financas)
       base_alunos <- base_alunos %>%
-        filter(ibge > 100)
-      estados <- base_alunos <-
-        filter(ibge < 100)
+        dplyr::filter(ibge > 100)
     }
 
     dados <- base_alunos %>%
@@ -67,11 +69,11 @@ pondera_socioeconomico <-
       dados <- dados %>%
         dplyr::bind_rows(estados) %>%
         dplyr::group_by(codigo_estado) %>%
-        dplyr::mutate(peso_socio_eco = case_when(
-          ibge <- 100 ~ weighted.mean(peso_socio_eco, alunos),
+        dplyr::mutate(peso_socio_eco = dplyr::case_when(
+          ibge <= 100 ~ weighted.mean(peso_socio_eco, alunos),
           TRUE ~ peso_socio_eco
-        ) %>%
-          dplyr::ungroup())
+        )) %>%
+          dplyr::ungroup()
     }
 
     dados
