@@ -2,10 +2,10 @@
 #'
 #' @description Recebe uma base com código ibge, etapa e alunos e outra com pesos de ponderador por etapa e gera uma tabela com o número de alunos ponderados por entidade da federação
 #'
-#' @param base_alunos data.frame de numero de alunos por etapa e ente federativo
-#' @param base_socioeconomica data.frame o codigo do ibge, o numero de alunos ponderado e uma variavel socioeconomia a ponderar
-#' @param base_financas data.frame o codigo do ibge e valores do fundeb e das demais receitas
-#' @param var_socioeconomica variavel numerica socioeconomica de um ente federativo
+#' @param base_alunos data.frame com numero de alunos por etapa e ente federativo
+#' @param base_socioeconomica data.frame com o codigo do ibge, o numero de alunos ponderado e uma variavel socioeconomia a ponderar
+#' @param base_financas data.frame com o codigo do ibge e valores do fundeb e das demais receitas
+#' @param var_socioeconomica variavel numerica socioeconomica de um ente federativo a ser considerada na ponderacao socioeconomica do fundo
 #' @param var_fundo_pond variavel numerica com o valor do fundo a ser considerado na ponderacao financeira
 #' @param codigo coluna numerica com o codigo do estado, deve ter o mesmo nome em base_alunos e base_socioeconomica
 #' @param min_social peso minimo dado a informacao socioeconomica
@@ -14,7 +14,7 @@
 #' @param max_disp_fiscal peso maximo dado a informacao de financas
 #' @param codigo parametro com o nome do codigo a ser usado como identificador dos entes federativos, recomedanda-se o codigo ibge
 #' @param considerar nome que indica que parametro sera considarado na criacao do peso socioeconomico, se selecionado social se considerara apenas as informacoes sociais, se selecionado financas se considerara apenas as informacoes de financas e se selecionado ambos se considerara ambas as dimensoes
-#' @param desconsidera_estados variavel logica que indica se os estados seram considerados na ponderacao socioeconomica
+#' @param desconsidera_estados variavel logica que indica se os estados serao considerados na ponderacao socioeconomica, se verdadeiro o valor que os estados receberao nao e alterado pelo seu peso socioeconomico, se falso o valor que os estados receberao e alterado pelo seu peso socioeconomico
 #'
 #' @return Data.frame com alunos ponderador por ente federativo
 #'

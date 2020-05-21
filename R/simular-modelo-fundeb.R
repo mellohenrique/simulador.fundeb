@@ -4,8 +4,8 @@
 #'
 #' @inheritParams pondera_geral
 #' @param complem_uniao percentual do fundo que a União complementará
-#' @param equalizacao_socio parametro lógico que controla se a equalização do fundo considerara o vetor de alunos ou de alunos socioeconomico
-#' @param fatores_intra_equidade parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconomico
+#' @param equalizacao_socio parametro lógico que controla se a equalização do fundo considerara o vetor de alunos ou de alunos socioeconomico, se verdadeiro considera-se o vetor de alunos ponderados pelos pesos socioeconomicos caso falso considera-se o vetor de alunos sem ponderacao
+#' @param fatores_intra_equidade parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconomico, se verdadeiro considera-se o vetor de alunos ponderados pelos pesos socioeconomicos caso falso considera-se o vetor de alunos sem ponderacao
 #'
 #' @return Data.frame com alunos ponderador por ente federativo
 #'

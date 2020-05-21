@@ -3,8 +3,7 @@
 #' @description Recebe uma base com codigo ibge, etapa e alunos e outra com pesos de ponderador por etapa e gera uma tabela com o número de alunos ponderados por entidade da federação
 #'
 #' @inheritParams pondera_socioeconomico
-#' @param condicao_rede valor binario que condiciona a ponderacao por rede
-#' @param condicao_etapa valor binario que condiciona a ponderacao por etapa
+#' @param condicao_rede valor binario que condiciona a ponderacao por rede, se verdadeiro atribui pesos diferentes por rede de ensino, ou seja, difere o peso atribuido aos alunos das redes estadual da rede municipal a depender se estao no ensino infantil ou medio
 #'
 #' @return Data.frame com alunos ponderados de acordo com as especificacoes providas pelo usuario, dados de financas e dados socioeconomicos
 #'

@@ -20,13 +20,13 @@ pondera_socioeconomico(
 )
 }
 \arguments{
-\item{base_alunos}{data.frame de numero de alunos por etapa e ente federativo}
+\item{base_alunos}{data.frame com numero de alunos por etapa e ente federativo}
 
-\item{base_socioeconomica}{data.frame o codigo do ibge, o numero de alunos ponderado e uma variavel socioeconomia a ponderar}
+\item{base_socioeconomica}{data.frame com o codigo do ibge, o numero de alunos ponderado e uma variavel socioeconomia a ponderar}
 
-\item{base_financas}{data.frame o codigo do ibge e valores do fundeb e das demais receitas}
+\item{base_financas}{data.frame com o codigo do ibge e valores do fundeb e das demais receitas}
 
-\item{var_socioeconomica}{variavel numerica socioeconomica de um ente federativo}
+\item{var_socioeconomica}{variavel numerica socioeconomica de um ente federativo a ser considerada na ponderacao socioeconomica do fundo}
 
 \item{var_fundo_pond}{variavel numerica com o valor do fundo a ser considerado na ponderacao financeira}
 
@@ -40,7 +40,7 @@ pondera_socioeconomico(
 
 \item{considerar}{nome que indica que parametro sera considarado na criacao do peso socioeconomico, se selecionado social se considerara apenas as informacoes sociais, se selecionado financas se considerara apenas as informacoes de financas e se selecionado ambos se considerara ambas as dimensoes}
 
-\item{desconsidera_estados}{variavel logica que indica se os estados seram considerados na ponderacao socioeconomica}
+\item{desconsidera_estados}{variavel logica que indica se os estados serao considerados na ponderacao socioeconomica, se verdadeiro o valor que os estados receberao nao e alterado pelo seu peso socioeconomico, se falso o valor que os estados receberao e alterado pelo seu peso socioeconomico}
 
 \item{codigo}{parametro com o nome do codigo a ser usado como identificador dos entes federativos, recomedanda-se o codigo ibge}
 }

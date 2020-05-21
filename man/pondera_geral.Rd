@@ -21,13 +21,13 @@ pondera_geral(
 )
 }
 \arguments{
-\item{base_alunos}{data.frame de numero de alunos por etapa e ente federativo}
+\item{base_alunos}{data.frame com numero de alunos por etapa e ente federativo}
 
-\item{base_socioeconomica}{data.frame o codigo do ibge, o numero de alunos ponderado e uma variavel socioeconomia a ponderar}
+\item{base_socioeconomica}{data.frame com o codigo do ibge, o numero de alunos ponderado e uma variavel socioeconomia a ponderar}
 
-\item{base_financas}{data.frame o codigo do ibge e valores do fundeb e das demais receitas}
+\item{base_financas}{data.frame com o codigo do ibge e valores do fundeb e das demais receitas}
 
-\item{condicao_rede}{valor binario que condiciona a ponderacao por rede}
+\item{condicao_rede}{valor binario que condiciona a ponderacao por rede, se verdadeiro atribui pesos diferentes por rede de ensino, ou seja, difere o peso atribuido aos alunos das redes estadual da rede municipal a depender se estao no ensino infantil ou medio}
 
 \item{min_social}{peso minimo dado a informacao socioeconomica}
 
@@ -37,13 +37,11 @@ pondera_geral(
 
 \item{max_disp_fiscal}{peso maximo dado a informacao de financas}
 
-\item{var_socioeconomica}{variavel numerica socioeconomica de um ente federativo}
+\item{var_socioeconomica}{variavel numerica socioeconomica de um ente federativo a ser considerada na ponderacao socioeconomica do fundo}
 
 \item{considerar}{nome que indica que parametro sera considarado na criacao do peso socioeconomico, se selecionado social se considerara apenas as informacoes sociais, se selecionado financas se considerara apenas as informacoes de financas e se selecionado ambos se considerara ambas as dimensoes}
 
-\item{desconsidera_estados}{variavel logica que indica se os estados seram considerados na ponderacao socioeconomica}
-
-\item{condicao_etapa}{valor binario que condiciona a ponderacao por etapa}
+\item{desconsidera_estados}{variavel logica que indica se os estados serao considerados na ponderacao socioeconomica, se verdadeiro o valor que os estados receberao nao e alterado pelo seu peso socioeconomico, se falso o valor que os estados receberao e alterado pelo seu peso socioeconomico}
 }
 \value{
 Data.frame com alunos ponderados de acordo com as especificacoes providas pelo usuario, dados de financas e dados socioeconomicos
