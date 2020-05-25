@@ -70,11 +70,18 @@ pondera_socioeconomico <-
       dados <- dados %>%
         dplyr::bind_rows(estados) %>%
         dplyr::group_by(codigo_estado) %>%
+<<<<<<< HEAD
         dplyr::mutate(
           peso_socio_eco = dplyr::case_when(
           ibge <= 100 ~ weighted.mean(peso_socio_eco, alunos, na.rm = TRUE),
           TRUE ~ peso_socio_eco),
           alunos_socioeco = ifelse(is.na(alunos_socioeco), alunos * peso_socio_eco, alunos_socioeco)) %>%
+=======
+        dplyr::mutate(peso_socio_eco = dplyr::case_when(
+          ibge <= 100 ~ weighted.mean(peso_socio_eco, alunos, na.rm = TRUE),
+          TRUE ~ peso_socio_eco
+        )) %>%
+>>>>>>> 27ad5adf2eabe62e54a643c39f2f13f447815242
           dplyr::ungroup()
     }
 
