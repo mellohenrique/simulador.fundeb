@@ -71,7 +71,7 @@ pondera_socioeconomico <-
         dplyr::bind_rows(estados) %>%
         dplyr::group_by(codigo_estado) %>%
         dplyr::mutate(peso_socio_eco = dplyr::case_when(
-          ibge <= 100 ~ weighted.mean(peso_socio_eco, alunos),
+          ibge <= 100 ~ weighted.mean(peso_socio_eco, alunos, na.rm = TRUE),
           TRUE ~ peso_socio_eco
         )) %>%
           dplyr::ungroup()
