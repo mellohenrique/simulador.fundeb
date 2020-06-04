@@ -36,9 +36,9 @@ simular_modelo_vaat_tempo(
 
 \item{condicao_rede}{valor binario que condiciona a ponderacao por rede, se verdadeiro atribui pesos diferentes por rede de ensino, ou seja, difere o peso atribuido aos alunos das redes estadual da rede municipal a depender se estao no ensino infantil ou medio}
 
-\item{equalizacao_socio}{parametro lógico que controla se a equalização do fundo considerara o vetor de alunos ou de alunos socioeconomico, se verdadeiro considera-se o vetor de alunos ponderados pelos pesos socioeconomicos caso falso considera-se o vetor de alunos sem ponderacao}
+\item{equalizacao_socio}{parametro lógico que controla se a equalização do fundo pela União considerara o vetor de alunos ou de alunos socioeconômicos, se verdadeiro considera-se o vetor de alunos ponderados pelos pesos socioeconômicos caso falso considera-se o vetor de alunos sem ponderação.}
 
-\item{fatores_intra_equidade}{parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconomico, se verdadeiro considera-se o vetor de alunos ponderados pelos pesos socioeconomicos caso falso considera-se o vetor de alunos sem ponderacao}
+\item{fatores_intra_equidade}{parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconômicos, se verdadeiro considera-se o vetor de alunos ponderados pelos pesos socioeconômicos na divisão do fundo estadual entre os entes caso falso considera-se o vetor de alunos sem ponderação.}
 
 \item{crescimento_economico}{vetor númerico de crescimento economico, especificamente do fundeb e das demais receitas}
 
@@ -54,9 +54,9 @@ simular_modelo_vaat_tempo(
 
 \item{var_socioeconomica}{variavel numerica socioeconomica de um ente federativo a ser considerada na ponderacao socioeconomica do fundo}
 
-\item{considerar}{nome que indica que parametro sera considarado na criacao do peso socioeconomico, se selecionado social se considerara apenas as informacoes sociais, se selecionado financas se considerara apenas as informacoes de financas e se selecionado ambos se considerara ambas as dimensoes}
+\item{considerar}{nome que indica que parametro sera considarado na criacao do peso socioeconomico, se selecionado social se considerara apenas as informações sociais, se selecionado financas se considerara apenas as informações de financas e se selecionado ambos se considerara ambas as dimensoes}
 
-\item{desconsidera_estados}{variavel logica que indica se os estados serao considerados na ponderacao socioeconomica, se verdadeiro o valor que os estados receberao nao e alterado pelo seu peso socioeconomico, se falso o valor que os estados receberao e alterado pelo seu peso socioeconomico}
+\item{desconsidera_estados}{variavel logica que indica se os estados serao considerados na ponderacao socioeconomica, se verdadeiro o valor que os estados receberao nao e alterado pelo seu peso socioeconômico, se falso o valor que os estados receberao e alterado pelo seu peso socioeconômico}
 }
 \value{
 Data.frame com alunos ponderador por ente federativo

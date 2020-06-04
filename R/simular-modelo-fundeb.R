@@ -1,11 +1,11 @@
 #' @title Simulação do modelo Fundeb de financiamento da educação
 #'
-#' @description Recebe uma base com numero de alunos por ente e por etapa, ponderador por etapa, dados socioeconomicos por ente e dados financeiros por ente e simula o modelo fundeb de financiamento da educação
+#' @description Recebe uma base com numero de alunos por ente e por etapa, ponderador por etapa, dados socioeconômicos por ente e dados financeiros por ente e simula o modelo fundeb de financiamento da educação
 #'
 #' @inheritParams pondera_geral
-#' @param complem_uniao percentual do fundo que a União complementará
-#' @param equalizacao_socio parametro lógico que controla se a equalização do fundo considerara o vetor de alunos ou de alunos socioeconomico, se verdadeiro considera-se o vetor de alunos ponderados pelos pesos socioeconomicos caso falso considera-se o vetor de alunos sem ponderacao
-#' @param fatores_intra_equidade parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconomico, se verdadeiro considera-se o vetor de alunos ponderados pelos pesos socioeconomicos caso falso considera-se o vetor de alunos sem ponderacao
+#' @param complem_uniao percentual do fundo que a União complementará.
+#' @param equalizacao_socio parametro lógico que controla se a equalização do fundo pela União considerara o vetor de alunos ou de alunos socioeconômicos, se verdadeiro considera-se o vetor de alunos ponderados pelos pesos socioeconômicos caso falso considera-se o vetor de alunos sem ponderação.
+#' @param fatores_intra_equidade parametro logico que controla se a distribuicao do fundo estadual considerara o vetor de alunos ou de alunos socioeconômicos, se verdadeiro considera-se o vetor de alunos ponderados pelos pesos socioeconômicos na divisão do fundo estadual entre os entes caso falso considera-se o vetor de alunos sem ponderação.
 #'
 #' @return Data.frame com alunos ponderador por ente federativo
 #'
