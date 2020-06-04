@@ -60,9 +60,9 @@ pondera_socioeconomico <-
         socioeco = ifelse(is.nan(socioeco), min_social, socioeco),
         financas = ifelse(is.nan(financas), min_disp_fiscal, financas),
         peso_socio_eco = dplyr::case_when(
-          considerar == "social" ~ socioeco,
-          considerar == "financas" ~ financas,
-          considerar == "ambos" ~ financas * socioeco),
+          considerar == "social" ~ as.numeric(socioeco),
+          considerar == "financas" ~ as.numeric(financas),
+          considerar == "ambos" ~ as.numeric(financas * socioeco)),
         alunos_socioeco = alunos * peso_socio_eco) %>%
       dplyr::ungroup()
 
