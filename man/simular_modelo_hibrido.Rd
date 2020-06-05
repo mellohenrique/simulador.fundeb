@@ -10,7 +10,7 @@ simular_modelo_hibrido(
   base_socioeconomica,
   base_financas,
   complem_uniao = 0.1,
-  complem_uniao_vat = 0.05,
+  complem_uniao_vaat = 0.05,
   condicao_rede = TRUE,
   equalizacao_socio = FALSE,
   fatores_intra_equidade = FALSE,
@@ -33,7 +33,7 @@ simular_modelo_hibrido(
 
 \item{complem_uniao}{percentual do fundo que a União complementará.}
 
-\item{complem_uniao_vat}{percentual do fundo que a União complementará na segunda etapa, na equalizacao dos entes pelo valor vaa}
+\item{complem_uniao_vaat}{percentual do fundo que a União complementará na segunda etapa, na equalizacao dos entes pelo valor vaa}
 
 \item{condicao_rede}{valor binario que condiciona a ponderacao por rede, se verdadeiro atribui pesos diferentes por rede de ensino, ou seja, difere o peso atribuido aos alunos das redes estadual da rede municipal a depender se estao no ensino infantil ou medio}
 

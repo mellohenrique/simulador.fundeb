@@ -5,6 +5,7 @@
 #' @inheritParams simular_modelo_fundeb
 #' @param crescimento_economico vetor númerico de crescimento economico, especificamente do fundeb e das demais receitas
 #' @param crescimento_demografico vetor númerico de crescimento demográfico para alunos
+#' @param complem_uniao_vaat percentual do fundo que a União complementará na segunda etapa, na equalizacao dos entes pelo valor vaa
 #'
 #' @return Data.frame com alunos ponderador por ente federativo
 #'
@@ -17,7 +18,7 @@ simular_modelo_hibrido_tempo <- function(base_alunos,
                                          base_socioeconomica,
                                          base_financas,
                                          complem_uniao = 0.1,
-                                         complem_uniao_vat = 0.05,
+                                         complem_uniao_vaat = 0.05,
                                          condicao_rede = TRUE,
                                          equalizacao_socio = FALSE,
                                          fatores_intra_equidade = FALSE,
@@ -40,7 +41,7 @@ simular_modelo_hibrido_tempo <- function(base_alunos,
       ls_alunos = lista_alunos,
       ls_fundos = lista_fundos,
       ls_auxilio = complem_uniao,
-      ls_auxilio_vat = complem_uniao_vat
+      ls_auxilio_vat = complem_uniao_vaat
     ),
     .f = function(ls_alunos, ls_fundos, ls_auxilio, ls_auxilio_vat)
       {simular_modelo_hibrido(
@@ -49,7 +50,7 @@ simular_modelo_hibrido_tempo <- function(base_alunos,
       base_socioeconomica,
       ls_fundos,
       complem_uniao = ls_auxilio,
-      complem_uniao_vat = ls_auxilio_vat,
+      complem_uniao_vaat = ls_auxilio_vat,
       equalizacao_socio = equalizacao_socio,
       fatores_intra_equidade = fatores_intra_equidade,
       min_social = min_social,
