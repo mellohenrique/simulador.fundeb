@@ -7,10 +7,7 @@
 #' @return Um data.frame ou data.table
 #'
 #' @import data.table
-#'
-#' @examples
-#' retorna_dt_df(capitais, produto_dt = TRUE)
-#' retorna_dt_df(capitais, produto_dt = FALSE)
+
 
 retorna_dt_df <- function(dados, produto_dt){
   if(produto_dt) {
@@ -29,9 +26,7 @@ retorna_dt_df <- function(dados, produto_dt){
 #' @return Um objeto em data.table
 #'
 #' @import data.table
-#'
-#' @examples
-#' transforma_dt(capitais)
+
 
 checa_transforma_dt <- function(dados){
   if (!is.data.table(dados)){
@@ -39,3 +34,4 @@ checa_transforma_dt <- function(dados){
   }
   dados
 }
+
