@@ -32,6 +32,6 @@ pondera_alunos_etapa <- function(dados_fnde, peso_etapas = peso, tidy = TRUE, pr
   if(tidy){
     retorna_dt_df(alunos_long, produto_dt)
   } else {
-    retorna_dt_df(dcast(alunos_long, UF + `Município` + `Estimativa de Receitas` ~ etapa, value.var = "alunos_ponderados"), produto_dt)
+    retorna_dt_df(dcast(alunos_long, UF + `Município` ~ etapa, value.var = "alunos_ponderados"), produto_dt)
   }
-  }
+}

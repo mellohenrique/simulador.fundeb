@@ -4,7 +4,7 @@
 \alias{gera_fundo_estadual}
 \title{Pondera alunos por etapa}
 \usage{
-gera_fundo_estadual(dados_alunos, produto_dt = TRUE)
+gera_fundo_estadual(dados_alunos, dados_financas, produto_dt = TRUE)
 }
 \arguments{
 \item{dados_alunos}{data.frame ou data.table com os dados de alunos ponderados em formato tidy}
@@ -16,8 +16,4 @@ Um data.frame ou data.table com os dados de alunos considerando os pesos dados d
 }
 \description{
 Pondera dados de alunos do FNDE por ente e etapa e retorna os valores ponderados por etapa
-}
-\examples{
-
-
 }

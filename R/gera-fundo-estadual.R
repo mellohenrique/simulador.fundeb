@@ -10,19 +10,20 @@
 #' @import data.table
 #'
 #' @export
-#'
-#' @examples
-#'
-#'
 
-
-gera_fundo_estadual <- function(dados_alunos, produto_dt = TRUE ){
+gera_fundo_estadual <- function(dados_alunos, dados_financas, produto_dt = TRUE ){
   dados_alunos = checa_transforma_dt(dados_alunos)
 
-  fundo_estadual = dados_alunos[, .(alunos_ponderados = sum(alunos_ponderados),
-                   alunos = sum(alunos),
-                   receitas = sum(`Estimativa de Receitas`)),
+  dados_financas = checa_transforma_dt(dados_financas)
+
+  alunos_estadual = dados_alunos[, .(alunos_ponderados = sum(alunos_ponderados),
+                   alunos = sum(alunos)),
                by = UF]
+
+  dados_financas = dados_financas[, .(receitas = sum(`Estimativa de Receitas`)),
+                                  by = UF]
+
+  fundo_estadual = alunos_estadual[dados_financas, receitas := receitas, on = .(UF)]
 
   fundo_estadual[, vaa := receitas/alunos_ponderados]
 
