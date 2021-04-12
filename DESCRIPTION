@@ -1,7 +1,7 @@
 Package: simulador.fundeb2
 Type: Package
 Title: Simulador do Fundeb
-Version: 0.1.5
+Version: 0.1.6
 Author: Henrique de Mello Santos de Assunção
 Maintainer: Henrique de Mello Santos de Assunção <henrique.mello1992@gmail.com>
 Description: Pacote que simula o financiamento do Fundo de Manutenção e Desenvolvimento da Educacao Basica e de Valorizacao dos Profissionais da Educacao
@@ -11,4 +11,5 @@ Encoding: UTF-8
 LazyData: true
 Suggests: tinytest
 Imports: data.table(>= 1.12.8)
+Depends: R (>= 3.5.0)
 RoxygenNote: 7.1.1
