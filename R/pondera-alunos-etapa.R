@@ -41,7 +41,7 @@ if (retorno == "tidy") {
   retorna_dt_df(alunos_tidy, produto_dt = produto_dt)
 
 } else if (retorno == "etapa_long") {
-  retorna_dt_df(dcast(alunos_tidy, UF + municipio ~ etapa, value.var = "alunos_ponderados"), produto_dt= produto_dt)
+  retorna_dt_df(dcast(alunos_tidy, uf + municipio ~ etapa, value.var = "alunos_ponderados"), produto_dt= produto_dt)
 
   }
 }

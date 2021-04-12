@@ -27,9 +27,9 @@ simula_fundeb <- function(dados_fnde, peso_etapas = peso, aporte, produto_dt = T
                    var_receitas = "receitas",
                    aporte = aporte)
 
-  vaaf= alunos[financas, receitas := estimativa_de_receitas, on = .(UF,  municipio)]
-  vaaf[fundo_estadual_equalizado, fundo_estadual := receitas_etapa, on = .(UF)]
-  vaaf[, vaaf := fundo_estadual/sum(alunos_ponderados), by = .(UF)]
+  vaaf= alunos[financas, receitas := estimativa_de_receitas, on = .(uf,  municipio)]
+  vaaf[fundo_estadual_equalizado, fundo_estadual := receitas_etapa, on = .(uf)]
+  vaaf[, vaaf := fundo_estadual/sum(alunos_ponderados), by = .(uf)]
 
   retorna_dt_df(vaaf, produto_dt = produto_dt)
 }
