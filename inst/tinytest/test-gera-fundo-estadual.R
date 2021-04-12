@@ -20,9 +20,9 @@ expect_equal(dim(dt_teste),
              c(2, 5))
 
 ## Testando resultados
-expect_equal(df_teste$UF,
+expect_equal(df_teste$uf,
              c("AC", "RO"))
-expect_equal(dt_teste$UF,
+expect_equal(dt_teste$uf,
              c("AC", "RO"))
 expect_equal(df_teste$alunos_ponderados,
              c(277685.55, 398168.35))
