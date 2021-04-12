@@ -18,12 +18,12 @@ gera_fundo_estadual <- function(dados_alunos, dados_financas, produto_dt = TRUE 
 
   alunos_estadual = dados_alunos[, .(alunos_ponderados = sum(alunos_ponderados),
                    alunos = sum(alunos)),
-               by = UF]
+               by = uf]
 
-  dados_financas = dados_financas[, .(receitas = sum(`Estimativa de Receitas`)),
-                                  by = UF]
+  dados_financas = dados_financas[, .(receitas = sum(estimativa_de_receitas)),
+                                  by = uf]
 
-  fundo_estadual = alunos_estadual[dados_financas, receitas := receitas, on = .(UF)]
+  fundo_estadual = alunos_estadual[dados_financas, receitas := receitas, on = .(uf)]
 
   fundo_estadual[, vaa := receitas/alunos_ponderados]
 

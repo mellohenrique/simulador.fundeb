@@ -14,5 +14,5 @@ expect_equal(dim(peso),
 
 ## Teste de caracteristicas
 expect_true(all(peso$etapa %in% names(dados_teste)))
-expect_equal(unique(dados_teste$UF),
+expect_equal(unique(dados_teste$uf),
              c("AC", "RO"))

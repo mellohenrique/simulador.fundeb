@@ -42,17 +42,17 @@ expect_equal(dim(dt_teste_etapa_long),
 
 ## Testando ponderacao de alunos entre tipos diferentes de teste
 expect_equal(
-  data.table::setorder(dt_teste_etapa[etapa == "Ed. Especial",], `Município`)$alunos_ponderados,
-  data.table::setorder(dt_teste_etapa_long,`Município`)$`Ed. Especial`)
+  data.table::setorder(dt_teste_etapa[etapa == "ed_especial",], municipio)$alunos_ponderados,
+  data.table::setorder(dt_teste_etapa_long,municipio)$ed_especial)
 
 expect_equal(
-  data.table::setorder(dt_teste_etapa[etapa == "Ensino Médio Urbano",], `Município`)$alunos_ponderados,
-  data.table::setorder(dt_teste_etapa_long,`Município`)$`Ensino Médio Urbano`)
+  data.table::setorder(dt_teste_etapa[etapa == "ensino_medio_urbano",], municipio)$alunos_ponderados,
+  data.table::setorder(dt_teste_etapa_long,municipio)$ensino_medio_urbano)
 
 expect_equal(
-  data.table::setorder(dt_teste_etapa[etapa == "Ensino Fundamental Tempo Integral",], `Município`)$alunos_ponderados,
-  data.table::setorder(dt_teste_etapa_long,`Município`)$`Ensino Fundamental Tempo Integral`)
+  data.table::setorder(dt_teste_etapa[etapa == "ensino_fundamental_tempo_integral",], municipio)$alunos_ponderados,
+  data.table::setorder(dt_teste_etapa_long,municipio)$ensino_fundamental_tempo_integral)
 
 expect_equal(
-  data.table::setorder(dt_teste_etapa[etapa == "Ensino Fundamental Sér. Iniciais Urbana",], UF, `Município`)$alunos_ponderados,
+  data.table::setorder(dt_teste_etapa[etapa == "ensino_fundamental_ser_iniciais_urbana",], UF, municipio)$alunos_ponderados,
   c(781, 579, 1216, 709, 641, 2403, 789, 703,  24101, 229, 1171, 892, 754, 423, 262, 371, 6545, 575, 416, 2143, 927, 2058, 354, 1030, 487, 368, 690, 4826, 1808, 416, 311, 2406, 447, 1194, 0, 973, 553, 813, 275, 678, 1054, 1228, 268, 16410,  3177, 775, 2740, 3136, 1859, 337, 587, 597, 687, 1566, 342, 631, 2257, 281, 2066, 229, 23242, 813, 190, 349, 2933, 537, 371, 853, 989, 513, 207, 0, 538, 559, 358, 5972))

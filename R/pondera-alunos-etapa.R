@@ -17,9 +17,9 @@ pondera_alunos_etapa <- function(dados_fnde, peso_etapas = peso, retorno = c("ti
   retorno = match.arg(retorno)
   dados_fnde = checa_transforma_dt(dados_fnde)
 
-  dados_fnde[, `Estimativa de Receitas` := NULL]
+  dados_fnde[, estimativa_de_receitas := NULL]
 
-  alunos_tidy = suppressWarnings(melt(dados_fnde, id.vars = c("UF", "Município"),
+  alunos_tidy = suppressWarnings(melt(dados_fnde, id.vars = c("uf", "municipio"),
                                       variable.name = "etapa",
                                       value.name = "alunos",
                                       variable.factor = FALSE,
@@ -34,14 +34,14 @@ pondera_alunos_etapa <- function(dados_fnde, peso_etapas = peso, retorno = c("ti
 if (retorno == "tidy") {
   alunos_tidy = alunos_tidy[,.(
     alunos_ponderados = sum(alunos_ponderados),
-    alunos = sum(alunos)), by = .(UF, `Município`)]
+    alunos = sum(alunos)), by = .(uf, municipio)]
   retorna_dt_df(alunos_tidy, produto_dt = produto_dt)
 
 } else if (retorno == "etapa_tidy") {
   retorna_dt_df(alunos_tidy, produto_dt = produto_dt)
 
 } else if (retorno == "etapa_long") {
-  retorna_dt_df(dcast(alunos_tidy, UF + `Município` ~ etapa, value.var = "alunos_ponderados"), produto_dt= produto_dt)
+  retorna_dt_df(dcast(alunos_tidy, UF + municipio ~ etapa, value.var = "alunos_ponderados"), produto_dt= produto_dt)
 
   }
 }
