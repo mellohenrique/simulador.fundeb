@@ -13,15 +13,15 @@ expect_equal(dim(dados_teste_limpo_dt),
              c(76,32))
 
 ## Teste observando se tem a coluna Coeficiente de Distribuicao
-expect_equal(any(names(dados_teste_limpo) == "Coeficiente de Distribuição"),
+expect_equal(any(names(dados_teste_limpo) == "Coeficiente de DistribuiÃ§Ã£o"),
              FALSE)
-expect_equal(any(names(dados_teste_limpo_dt) == "Coeficiente de Distribuição"),
+expect_equal(any(names(dados_teste_limpo_dt) == "Coeficiente de DistribuiÃ§Ã£o"),
              FALSE)
 
 ## Teste observando se tem a linha Total Geral
-expect_equal(any(dados_teste_limpo$`Município` == "TOTAL GERAL"),
+expect_equal(any(dados_teste_limpo$`Munic?pio` == "TOTAL GERAL"),
              FALSE)
-expect_equal(any(dados_teste_limpo_dt$`Município` == "TOTAL GERAL"),
+expect_equal(any(dados_teste_limpo_dt$`Munic?pio` == "TOTAL GERAL"),
              FALSE)
 
 # Teste da funcao financas_fnde
@@ -40,7 +40,7 @@ expect_equal(dim(financas_dt),
 
 ## Teste observando os nomes das colunas
 expect_equal(names(financas),
-             c("UF", "Município", "Estimativa de Receitas"))
+             c("UF", "MunicÃ­pio", "Estimativa de Receitas"))
 expect_equal(names(financas_dt),
-             enc2utf8(c("UF", "Município", "Estimativa de Receitas")))
+             enc2utf8(c("UF", "MunicÃ­pio", "Estimativa de Receitas")))
 

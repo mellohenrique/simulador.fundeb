@@ -7,7 +7,7 @@
 pondera_alunos_etapa(
   dados_fnde,
   peso_etapas = peso,
-  tidy = TRUE,
+  retorno = c("tidy", "etapa_tidy", "etapa_long"),
   produto_dt = TRUE
 )
 }
@@ -16,7 +16,7 @@ pondera_alunos_etapa(
 
 \item{peso_etapas}{data.frame com os dados de peso das etapas}
 
-\item{tidy}{variavel binaria se a tabela final da funcao sera no formato tidy (se Verdadeiro) ou long (se Falso)}
+\item{retorno}{variavel em caractere com a opcao de retorno da funcao. As opcoes tidy se apresenta o retorno os valores de alunos e alunos ponderados, etapa_tidy se apresenta valores de alunos e alunos ponderados para todas as etapas em formato tidy e etapa_long se se apresenta valores de alunos e alunos ponderados para todas as etapas em formato long}
 
 \item{produto_dt}{Variavel binaria que determina se a tabela produto da funcao sera da classe data.table (se Verdadeiro) ou data.frame (se Falso)}
 }

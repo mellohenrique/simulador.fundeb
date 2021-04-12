@@ -13,5 +13,5 @@ checa_transforma_dt(dados)
 Um objeto em data.table
 }
 \description{
-Checa se um objeto e data.table e caso nao seja transforma em data.table
+Checa se um objeto e data.table e caso nao seja transforma em data.table. Caso seja faz uma copia para nao gerar problemas com avaliacoes intermediarias
 }

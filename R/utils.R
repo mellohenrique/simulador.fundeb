@@ -2,6 +2,7 @@
 #'
 #' @description Recebe um data.table e determina se transforma em data.frame ou continua dt
 #'
+#' @inheritParams limpa_fnde
 #' @param dados Um objeto da classe data.table
 #'
 #' @return Um data.frame ou data.table
@@ -18,7 +19,7 @@ retorna_dt_df <- function(dados, produto_dt){
 
 #' @title Checa e caso nao transforma em data.table
 #'
-#' @description Checa se um objeto e data.table e caso nao seja transforma em data.table
+#' @description Checa se um objeto e data.table e caso nao seja transforma em data.table. Caso seja faz uma copia para nao gerar problemas com avaliacoes intermediarias
 #'
 #' @param dados um objeto data.frame ou data.table
 #'
@@ -30,7 +31,8 @@ retorna_dt_df <- function(dados, produto_dt){
 checa_transforma_dt <- function(dados){
   if (!is.data.table(dados)){
     dados = as.data.table(dados)
+  } else {
+    copy(dados)
   }
-  dados
 }
 

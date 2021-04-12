@@ -4,7 +4,7 @@
 #'
 #' @inheritParams limpa_fnde
 #' @param peso_etapas data.frame com os dados de peso das etapas
-#' @param tidy variavel binaria se a tabela final da funcao sera no formato tidy (se Verdadeiro) ou long (se Falso)
+#' @param retorno variavel em caractere com a opcao de retorno da funcao. As opcoes tidy se apresenta o retorno os valores de alunos e alunos ponderados, etapa_tidy se apresenta valores de alunos e alunos ponderados para todas as etapas em formato tidy e etapa_long se se apresenta valores de alunos e alunos ponderados para todas as etapas em formato long
 #'
 #' @return Um data.frame ou data.table com os dados de alunos considerando os pesos dados de FNDE em formato longo ou curto
 #'
@@ -12,26 +12,36 @@
 #'
 #' @export
 
-pondera_alunos_etapa <- function(dados_fnde, peso_etapas = peso, tidy = TRUE, produto_dt = TRUE){
+pondera_alunos_etapa <- function(dados_fnde, peso_etapas = peso, retorno = c("tidy", "etapa_tidy", "etapa_long"), produto_dt = TRUE){
 
+  retorno = match.arg(retorno)
   dados_fnde = checa_transforma_dt(dados_fnde)
 
   dados_fnde[, `Estimativa de Receitas` := NULL]
-  alunos_long = suppressWarnings(melt(dados_fnde, id.vars = c("UF", "Município"),
+
+  alunos_tidy = suppressWarnings(melt(dados_fnde, id.vars = c("UF", "Município"),
                                       variable.name = "etapa",
                                       value.name = "alunos",
                                       variable.factor = FALSE,
                                       verbose = FALSE))
 
-  alunos_long[, `:=`(alunos = ifelse(is.na(alunos), 0, alunos))]
+  alunos_tidy[, `:=`(alunos = ifelse(is.na(alunos), 0, alunos))]
 
-  alunos_long[peso_etapas, peso := peso, on = "etapa"]
+  alunos_tidy[peso_etapas, peso := peso, on = "etapa"]
 
-  alunos_long[, alunos_ponderados := alunos * peso]
+  alunos_tidy[, alunos_ponderados := alunos * peso]
 
-  if(tidy){
-    retorna_dt_df(alunos_long, produto_dt)
-  } else {
-    retorna_dt_df(dcast(alunos_long, UF + `Município` ~ etapa, value.var = "alunos_ponderados"), produto_dt)
+if (retorno == "tidy") {
+  alunos_tidy = alunos_tidy[,.(
+    alunos_ponderados = sum(alunos_ponderados),
+    alunos = sum(alunos)), by = .(UF, `Município`)]
+  retorna_dt_df(alunos_tidy, produto_dt = produto_dt)
+
+} else if (retorno == "etapa_tidy") {
+  retorna_dt_df(alunos_tidy, produto_dt = produto_dt)
+
+} else if (retorno == "etapa_long") {
+  retorna_dt_df(dcast(alunos_tidy, UF + `Município` ~ etapa, value.var = "alunos_ponderados"), produto_dt= produto_dt)
+
   }
 }
