@@ -4,12 +4,22 @@
 \alias{simula_fundeb}
 \title{Simula FNDE}
 \usage{
-simula_fundeb(dados_fnde, peso_etapas = peso, aporte, produto_dt = TRUE)
+simula_fundeb(
+  dados_fnde,
+  peso_etapas = peso,
+  aporte_vaaf,
+  aporte_vaat,
+  produto_dt = TRUE
+)
 }
 \arguments{
 \item{dados_fnde}{data.frame ou data.table com os dados do FNDE}
 
 \item{peso_etapas}{data.frame com os dados de peso das etapas}
+
+\item{aporte_vaaf}{valor numerico com o montante a ser complementado pela uniao na etapa VAAF}
+
+\item{aporte_vaat}{valor numerico com o montante a ser complementado pela uniao na etapa VAAT}
 
 \item{produto_dt}{Variavel binaria que determina se a tabela produto da funcao sera da classe data.table (se Verdadeiro) ou data.frame (se Falso)}
 }

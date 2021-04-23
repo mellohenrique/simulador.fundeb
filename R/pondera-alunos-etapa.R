@@ -31,17 +31,17 @@ pondera_alunos_etapa <- function(dados_fnde, peso_etapas = peso, retorno = c("ti
 
   alunos_tidy[, alunos_ponderados := alunos * peso]
 
-if (retorno == "tidy") {
-  alunos_tidy = alunos_tidy[,.(
-    alunos_ponderados = sum(alunos_ponderados),
-    alunos = sum(alunos)), by = .(uf, municipio)]
-  retorna_dt_df(alunos_tidy, produto_dt = produto_dt)
+  if (retorno == "tidy") {
+    alunos_tidy = alunos_tidy[,.(
+      alunos_ponderados = sum(alunos_ponderados),
+      alunos = sum(alunos)), by = .(uf, municipio)]
+    retorna_dt_df(alunos_tidy, produto_dt = produto_dt)
 
-} else if (retorno == "etapa_tidy") {
-  retorna_dt_df(alunos_tidy, produto_dt = produto_dt)
+  } else if (retorno == "etapa_tidy") {
+    retorna_dt_df(alunos_tidy, produto_dt = produto_dt)
 
-} else if (retorno == "etapa_long") {
-  retorna_dt_df(dcast(alunos_tidy, uf + municipio ~ etapa, value.var = "alunos_ponderados"), produto_dt= produto_dt)
+  } else if (retorno == "etapa_long") {
+    retorna_dt_df(dcast(alunos_tidy, uf + municipio ~ etapa, value.var = "alunos_ponderados"), produto_dt= produto_dt)
 
   }
 }

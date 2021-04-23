@@ -9,7 +9,8 @@
 #'
 #' @import data.table
 
-retorna_dt_df <- function(dados, produto_dt){
+retorna_dt_df <- function(dados, produto_dt = TRUE){
+
   if(produto_dt) {
     dados
   } else {

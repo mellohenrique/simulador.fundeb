@@ -4,7 +4,7 @@
 \alias{retorna_dt_df}
 \title{Retorna data.frame ou data.table}
 \usage{
-retorna_dt_df(dados, produto_dt)
+retorna_dt_df(dados, produto_dt = TRUE)
 }
 \arguments{
 \item{dados}{Um objeto da classe data.table}

@@ -26,7 +26,7 @@ equaliza_fundo <- function(dados, aporte, var_ordem, var_alunos, var_receitas, p
   nao_equalizado = dados[equalizacao == FALSE,]
 
   equalizado[, receitas_etapa := ((sum(get(var_receitas)) + aporte)*get(var_alunos))/sum(get(var_alunos))]
-  nao_equalizado[, receitas_etapa := receitas]
+  nao_equalizado[, receitas_etapa := get(var_receitas)]
 
   dados_etapa = rbind(equalizado, nao_equalizado)
 
