@@ -20,7 +20,10 @@ equaliza_fundo <- function(dados, aporte, var_ordem, var_alunos, var_receitas, p
 
   setorderv(dados, var_ordem)
 
-  dados[, `:=`(equalizacao = (get(var_ordem) * cumsum(get(var_alunos)) - cumsum(get(var_receitas)))<aporte)]
+  if (aporte == 0){
+  dados[, `:=`(equalizacao = round(get(var_ordem) * cumsum(get(var_alunos)) - cumsum(get(var_receitas)), digits = 2) < aporte)] } else {
+  dados[, `:=`(equalizacao = get(var_ordem) * cumsum(get(var_alunos)) - cumsum(get(var_receitas)) <= aporte)]
+  }
 
   equalizado = dados[equalizacao == TRUE,]
   nao_equalizado = dados[equalizacao == FALSE,]

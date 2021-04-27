@@ -34,7 +34,7 @@ super_fundo <- equaliza_fundo(teste,
                               produto_dt = FALSE)
 
 zero_fundo <- equaliza_fundo(teste,
-                              0,
+                              aporte = 0,
                               var_ordem = "renda_pc",
                               var_alunos = "pop",
                               var_receitas = "renda",
