@@ -1,43 +1,50 @@
 # Teste da funcao simula fnde ----
 # Autor: Henrique de Assunção
-# Data: 16/04/2021
+# Data: 25/05/2021
 ## Testes para a função simula fnde
 
 ## Preparação ----
-fnde <- limpa_fnde(dados_teste)
+fnde = limpa_fnde(dados_teste)
 
-df_teste <- simula_fundeb(dados_fnde = fnde,
-                          peso_etapas = peso,
-                          aporte_vaaf = 1e5,
-                          aporte_vaat = 1e5,
-                          produto_dt = FALSE)
-dt_teste <- simula_fundeb(dados_fnde = fnde,
+df_teste = simula_fundeb(dados_fnde = fnde,
+                         dados_complementar = complementar,
+                         peso_etapas = peso,
+                         aporte_vaaf = 1e5,
+                         aporte_vaat = 1e5,
+                         produto_dt = FALSE)
+
+dt_teste = simula_fundeb(dados_fnde = fnde,
+                          dados_complementar = complementar,
                           peso_etapas = peso,
                           aporte_vaaf = 1e5,
                           aporte_vaat = 1e5,
                           produto_dt = TRUE)
 
 ### Preparação para teste de casos extremos ####
-dt_teste_zero <- simula_fundeb(dados_fnde = fnde,
+dt_teste_zero = simula_fundeb(dados_fnde = fnde,
+                               dados_complementar = complementar,
                                peso_etapas = peso,
                                aporte_vaaf = 0,
                                aporte_vaat = 0,
                                produto_dt = TRUE)
-dt_teste_super_vaat <- simula_fundeb(dados_fnde = fnde,
+
+dt_teste_super_vaat = simula_fundeb(dados_fnde = fnde,
+                                     dados_complementar = complementar,
                                      peso_etapas = peso,
                                      aporte_vaaf = 0,
                                      aporte_vaat = 1e10,
                                      produto_dt = TRUE)
-dt_teste_super_vaaf <- simula_fundeb(dados_fnde = fnde,
+dt_teste_super_vaaf = simula_fundeb(dados_fnde = fnde,
+                                    dados_complementar = complementar,
                                 peso_etapas = peso,
                                 aporte_vaaf = 1e10,
                                 aporte_vaat = 0,
                                 produto_dt = TRUE)
 
-teste_sem_aporte <- as.vector(cbind(by(df_teste$receitas, df_teste$uf, sum))/ cbind(by(df_teste$alunos_ponderados, df_teste$uf, sum)))
+teste_sem_aporte = as.vector(cbind(by(df_teste$receitas, df_teste$uf, sum))/ cbind(by(df_teste$alunos_ponderados, df_teste$uf, sum)))
 
-teste_super_aporte <- (sum(df_teste$receitas) + 1e10)/sum(df_teste$alunos_ponderados)
-
+teste_super_aporte = (sum(df_teste$receitas) + 1e10)/sum(df_teste$alunos_ponderados)
+teste_super_aporte_extra = (sum(df_teste$receitas +df_teste$impostos_extra) + 1e10)/sum(df_teste$alunos_ponderados)
 
 # Testes ----
 ## Testes de estrutura ####
@@ -46,21 +53,19 @@ expect_equal(class(df_teste),
 expect_equal(class(dt_teste),
              c("data.table", "data.frame"))
 expect_equal(dim(df_teste),
-             c(76,12))
+             c(76, 19))
 expect_equal(dim(dt_teste),
-             c(76,12))
+             c(76, 19))
 
 ## Teste de resultados da funcao ####
 ### Casos extremos
 #### Valores
 expect_equal(dt_teste_super_vaaf$vaaf,
              rep(teste_super_aporte, 76))
-expect_equal(dt_teste_super_vaaf$vaat,
-             rep(teste_super_aporte, 76))
-expect_equal(dt_teste_super_vaaf$vaaf,
-             rep(teste_super_aporte, 76))
+expect_equal(dt_teste_super_vaat$vaat,
+             rep(teste_super_aporte_extra, 76))
 
-expect_equal(unique(round(dt_teste_zero$vaat, digits = 2)),
+expect_equal(unique(round(dt_teste_zero$vaaf, digits = 2)),
              round(teste_sem_aporte, digits = 2))
 expect_equal(unique(round(dt_teste_zero$vaaf, digits = 2)),
              round(teste_sem_aporte, digits = 2))

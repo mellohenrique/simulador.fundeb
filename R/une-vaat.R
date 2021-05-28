@@ -21,7 +21,7 @@ une_vaat <- function(dados_entes,
   dados_entes[dados_etapa,
               `:=`(fundo_vaat = receitas_etapa,
                    equalizacao_vaat = equalizacao),
-              on = .(uf, municipio)]
+              on = .(uf, ibge)]
 
   dados_entes[, vaat := fundo_vaat/alunos_ponderados]
 

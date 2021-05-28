@@ -14,7 +14,7 @@
 limpa_fnde <- function(dados_fnde, produto_dt = TRUE){
   dados_fnde = checa_transforma_dt(dados_fnde)
 
-  dados_fnde = dados_fnde[municipio != "TOTAL GERAL",]
+  dados_fnde = dados_fnde[nome != "TOTAL GERAL",]
 
   dados_fnde[, coeficiente_de_distribuicao := NULL]
 
@@ -37,7 +37,7 @@ limpa_fnde <- function(dados_fnde, produto_dt = TRUE){
 financas_fnde <- function(dados_fnde, produto_dt = TRUE){
   dados_fnde = checa_transforma_dt(dados_fnde)
 
-  dados_fnde = dados_fnde[, .(uf, municipio, estimativa_de_receitas)]
+  dados_fnde = dados_fnde[, .(uf, ibge, estimativa_de_receitas)]
 
   retorna_dt_df(dados_fnde, produto_dt = produto_dt)
 }

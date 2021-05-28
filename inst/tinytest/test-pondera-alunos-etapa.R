@@ -1,14 +1,19 @@
-# Testando funcao limpa_fnde
+# Teste para função pondera_alunos_etapa----
+## Autor: Henrique de Assunção
+## Data: 25/05/2021
+## Testes para função de pnderar alunos por etapa
+
+# Configuração ----
 
 ## Cria bases de teste
-df_teste <- pondera_alunos_etapa(limpa_fnde(dados_teste), produto_dt = FALSE)
-dt_teste <- pondera_alunos_etapa(limpa_fnde(dados_teste), produto_dt = TRUE)
+df_teste = pondera_alunos_etapa(limpa_fnde(dados_teste), produto_dt = FALSE)
+dt_teste = pondera_alunos_etapa(limpa_fnde(dados_teste), produto_dt = TRUE)
 
-df_teste_etapa <- pondera_alunos_etapa(limpa_fnde(dados_teste), produto_dt = FALSE, retorno = "etapa_tidy")
-dt_teste_etapa <- pondera_alunos_etapa(limpa_fnde(dados_teste), produto_dt = TRUE, retorno = "etapa_tidy")
+df_teste_etapa = pondera_alunos_etapa(limpa_fnde(dados_teste), produto_dt = FALSE, retorno = "etapa_tidy")
+dt_teste_etapa = pondera_alunos_etapa(limpa_fnde(dados_teste), produto_dt = TRUE, retorno = "etapa_tidy")
 
-df_teste_etapa_long <- pondera_alunos_etapa(limpa_fnde(dados_teste), produto_dt = FALSE, retorno = "etapa_long")
-dt_teste_etapa_long <- pondera_alunos_etapa(limpa_fnde(dados_teste), produto_dt = TRUE, retorno = "etapa_long")
+df_teste_etapa_long = pondera_alunos_etapa(limpa_fnde(dados_teste), produto_dt = FALSE, retorno = "etapa_long")
+dt_teste_etapa_long = pondera_alunos_etapa(limpa_fnde(dados_teste), produto_dt = TRUE, retorno = "etapa_long")
 
 ## Teste de estrutura
 expect_equal(class(df_teste),
@@ -42,17 +47,17 @@ expect_equal(dim(dt_teste_etapa_long),
 
 ## Testando ponderacao de alunos entre tipos diferentes de teste
 expect_equal(
-  data.table::setorder(dt_teste_etapa[etapa == "ed_especial",], municipio)$alunos_ponderados,
-  data.table::setorder(dt_teste_etapa_long,municipio)$ed_especial)
+  data.table::setorder(dt_teste_etapa[etapa == "ed_especial",], ibge)$alunos_ponderados,
+  data.table::setorder(dt_teste_etapa_long,ibge)$ed_especial)
 
 expect_equal(
-  data.table::setorder(dt_teste_etapa[etapa == "ensino_medio_urbano",], municipio)$alunos_ponderados,
-  data.table::setorder(dt_teste_etapa_long,municipio)$ensino_medio_urbano)
+  data.table::setorder(dt_teste_etapa[etapa == "ensino_medio_urbano",], ibge)$alunos_ponderados,
+  data.table::setorder(dt_teste_etapa_long,ibge)$ensino_medio_urbano)
 
 expect_equal(
-  data.table::setorder(dt_teste_etapa[etapa == "ensino_fundamental_tempo_integral",], municipio)$alunos_ponderados,
-  data.table::setorder(dt_teste_etapa_long,municipio)$ensino_fundamental_tempo_integral)
+  data.table::setorder(dt_teste_etapa[etapa == "ensino_fundamental_tempo_integral",], ibge)$alunos_ponderados,
+  data.table::setorder(dt_teste_etapa_long,ibge)$ensino_fundamental_tempo_integral)
 
 expect_equal(
-  data.table::setorder(dt_teste_etapa[etapa == "ensino_fundamental_ser_iniciais_urbana",], uf, municipio)$alunos_ponderados,
-  c(781, 579, 1216, 709, 641, 2403, 789, 703,  24101, 229, 1171, 892, 754, 423, 262, 371, 6545, 575, 416, 2143, 927, 2058, 354, 1030, 487, 368, 690, 4826, 1808, 416, 311, 2406, 447, 1194, 0, 973, 553, 813, 275, 678, 1054, 1228, 268, 16410,  3177, 775, 2740, 3136, 1859, 337, 587, 597, 687, 1566, 342, 631, 2257, 281, 2066, 229, 23242, 813, 190, 349, 2933, 537, 371, 853, 989, 513, 207, 0, 538, 559, 358, 5972))
+  data.table::setorder(dt_teste_etapa[etapa == "ensino_fundamental_ser_iniciais_urbana",], uf, ibge)$alunos_ponderados,
+  c(24101, 781, 579, 1216, 709, 641, 2403, 789, 703, 229, 1171, 892, 754, 423, 371, 6545, 575, 416, 927, 2143, 2058, 354, 262, 16410, 1030, 4826, 416, 2406, 973, 813, 275, 678, 1228, 3177, 2740, 3136, 1859, 687, 2257, 2066, 23242, 813, 349, 2933, 537, 5972, 989, 1566, 690, 487, 368, 1808, 631, 311, 447, 1194, 0, 553, 1054, 268, 775, 337, 587, 597, 342,  281, 229, 190, 371, 853, 513, 207, 0, 538, 559, 358))

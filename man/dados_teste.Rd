@@ -7,8 +7,8 @@
 \format{
 Uma tabela com 3 colunas e 29 linhas.
 \describe{
-  \item{uf}{}
-  \item{municipio}{Variavel em caractere com o nome das etaoas segundo as portarias do FNDE}
+  \item{uf}{Variavel em caractere com o nome das unidades da federacao}
+  \item{nome}{Variavel em caractere com o nome das etaoas segundo as portarias do FNDE}
   \item{educacao_infantil_creche_integral}{Numero de matriculas no Ensino Infantil Creche Integral}
   \item{educacao_infantil_creche_parcial}{Numero de matriculas no Ensino Infantil Creche Parcial}
   \item{educacao_infantil_pre_escola_integral}{Numero de matriculas no Ensino Infantil Pré-Escola Integral}

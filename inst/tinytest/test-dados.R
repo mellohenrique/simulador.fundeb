@@ -8,7 +8,7 @@ expect_equal(class(peso),
 
 ## Teste de dimensoes
 expect_equal(dim(dados_teste),
-             c(78,33))
+             c(78,34))
 expect_equal(dim(peso),
              c(29,4))
 

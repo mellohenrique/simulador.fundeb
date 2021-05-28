@@ -1,13 +1,17 @@
-# Teste gera_fundo_estadual
+# Teste para função gera_fundo_estadual----
+## Autor: Henrique de Assunção
+## Data: 25/05/2021
+## Testes para função de gerar fundo estadual
 
+# Configuração ----
 ## Carregando dados
-dados <- limpa_fnde(dados_teste)
-dados_financas <- financas_fnde(dados)
-dados_alunos <- pondera_alunos_etapa(dados)
+dados = limpa_fnde(dados_teste)
+dados_financas = financas_fnde(dados)
+dados$municipio = NULL
+dados_alunos = pondera_alunos_etapa(dados)
 
-df_teste <- gera_fundo_estadual(dados_alunos, dados_financas, produto_dt = FALSE)
-dt_teste <- gera_fundo_estadual(dados_alunos, dados_financas, produto_dt = TRUE)
-
+df_teste = gera_fundo_estadual(dados_alunos, dados_financas, produto_dt = FALSE)
+dt_teste = gera_fundo_estadual(dados_alunos, dados_financas, produto_dt = TRUE)
 
 ## Testes de estrutura
 expect_equal(class(df_teste),
