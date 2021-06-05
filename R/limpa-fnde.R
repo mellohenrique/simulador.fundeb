@@ -30,8 +30,6 @@ limpa_fnde <- function(dados_fnde, produto_dt = TRUE){
 #' @return Um data.frame ou data.table com os dados de financas do FNDE por ente
 #'
 #' @import data.table
-#'
-#' @export
 
 financas_fnde <- function(dados_fnde, produto_dt = TRUE){
   dados_fnde = checa_transforma_dt(dados_fnde)
