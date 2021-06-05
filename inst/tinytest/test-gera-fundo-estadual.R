@@ -7,7 +7,6 @@
 ## Carregando dados
 dados = limpa_fnde(dados_teste)
 dados_financas = financas_fnde(dados)
-dados$municipio = NULL
 dados_alunos = pondera_alunos_etapa(dados)
 
 df_teste = gera_fundo_estadual(dados_alunos, dados_financas, produto_dt = FALSE)

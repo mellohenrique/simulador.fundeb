@@ -11,3 +11,4 @@ expect_equal(class(simulador.fundeb2:::retorna_dt_df(data.table::data.table(mtca
              c("data.table", "data.frame"))
 expect_equal(class(simulador.fundeb2:::retorna_dt_df(mtcars, produto_dt = FALSE)),
              c("data.frame"))
+

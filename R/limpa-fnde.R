@@ -8,8 +8,7 @@
 #' @return Um data.frame ou data.table com os dados do FNDE
 #'
 #' @import data.table
-#'
-#' @export
+
 
 limpa_fnde <- function(dados_fnde, produto_dt = TRUE){
   dados_fnde = checa_transforma_dt(dados_fnde)

@@ -10,7 +10,7 @@
 #'
 #' @import data.table
 #'
-#' @export
+
 une_vaat <- function(dados_entes,
                      dados_etapa,
                      produto_dt = TRUE){

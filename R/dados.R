@@ -53,3 +53,18 @@
 #' }
 #' @source Tabela Criada a partir dos dados do TCU
 "dados_teste"
+
+#' Dados Teste
+#'
+#' Uma base de dados com as matriculas por etapa, coeficiente de distribuicao, estimativas de receitas e estado por ente federativo
+#'
+#' @format Uma tabela com 3 colunas e 29 linhas.
+#' \describe{
+#'   \item{ibge}{}
+#'   \item{impostos_extra}{}
+#'   \item{impostos_cap}{}
+#'   \item{nome}{Variavel em cara
+#'   \item{uf}{Variavel em caractere com o nome das unidades da federacao}
+#'   \item{idhm}{}
+#'
+"complementar_teste"

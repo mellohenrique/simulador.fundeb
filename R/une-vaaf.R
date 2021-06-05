@@ -11,7 +11,7 @@
 #'
 #' @import data.table
 #'
-#' @export
+
 
 une_vaaf <- function(dados_entes,
                      dados_etapa,

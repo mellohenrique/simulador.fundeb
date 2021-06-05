@@ -7,14 +7,14 @@
 fnde = limpa_fnde(dados_teste)
 
 df_teste = simula_fundeb(dados_fnde = fnde,
-                         dados_complementar = complementar,
+                         dados_complementar = complementar_teste,
                          peso_etapas = peso,
                          aporte_vaaf = 1e5,
                          aporte_vaat = 1e5,
                          produto_dt = FALSE)
 
 dt_teste = simula_fundeb(dados_fnde = fnde,
-                          dados_complementar = complementar,
+                          dados_complementar = complementar_teste,
                           peso_etapas = peso,
                           aporte_vaaf = 1e5,
                           aporte_vaat = 1e5,

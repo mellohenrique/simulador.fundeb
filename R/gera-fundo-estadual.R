@@ -9,7 +9,7 @@
 #'
 #' @import data.table
 #'
-#' @export
+#'
 
 gera_fundo_estadual <- function(dados_alunos, dados_financas, produto_dt = TRUE ){
   dados_alunos = checa_transforma_dt(dados_alunos)

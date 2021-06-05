@@ -12,7 +12,6 @@
 #'
 #' @import data.table
 #'
-#' @export
 
 equaliza_fundo <- function(dados, aporte, var_ordem, var_alunos, var_receitas, produto_dt = TRUE){
 

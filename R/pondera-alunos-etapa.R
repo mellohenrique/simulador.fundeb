@@ -10,7 +10,7 @@
 #'
 #' @import data.table
 #'
-#' @export
+
 
 pondera_alunos_etapa <- function(dados_fnde, peso_etapas = peso, retorno = c("tidy", "etapa_tidy", "etapa_long"), produto_dt = TRUE){
 

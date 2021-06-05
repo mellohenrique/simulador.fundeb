@@ -14,7 +14,7 @@
 #'
 #' @import data.table
 #'
-#' @export
+
 
 pondera_alunos_sociofiscal <- function(dados_alunos, dados_complementar, chao_socio = 1, teto_socio = 1.3, chao_fiscal = 1, teto_fiscal = 1.3, produto_dt = TRUE){
 
