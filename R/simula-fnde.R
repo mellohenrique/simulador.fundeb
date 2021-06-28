@@ -18,7 +18,7 @@ simula_fundeb <- function(dados_fnde, dados_complementar, peso_etapas = peso, ch
 
   # Tabelas iniciais
   alunos = pondera_alunos_etapa(fnde, peso_etapas = peso_etapas)
-  alunos = pondera_alunos_sociofiscal(dados_alunos = alunos, dados_complementar = dados_complementar)
+  alunos = pondera_alunos_sociofiscal(dados_alunos = alunos, dados_complementar = dados_complementar, chao_socio = chao_socio, teto_socio = teto_socio, chao_fiscal = chao_fiscal, teto_fiscal = teto_fiscal)
   financas = financas_fnde(fnde)
   estados = gera_fundo_estadual(alunos, financas)
   entes = alunos[financas, receitas := estimativa_de_receitas, on = .(uf, ibge)]

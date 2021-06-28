@@ -6,14 +6,14 @@
 # Configuração ----
 
 ## Cria bases de teste
-df_teste = pondera_alunos_etapa(limpa_fnde(dados_teste), produto_dt = FALSE)
-dt_teste = pondera_alunos_etapa(limpa_fnde(dados_teste), produto_dt = TRUE)
+df_teste = simulador.fundeb2:::pondera_alunos_etapa(simulador.fundeb2:::limpa_fnde(dados_teste), produto_dt = FALSE)
+dt_teste = simulador.fundeb2:::pondera_alunos_etapa(simulador.fundeb2:::limpa_fnde(dados_teste), produto_dt = TRUE)
 
-df_teste_etapa = pondera_alunos_etapa(limpa_fnde(dados_teste), produto_dt = FALSE, retorno = "etapa_tidy")
-dt_teste_etapa = pondera_alunos_etapa(limpa_fnde(dados_teste), produto_dt = TRUE, retorno = "etapa_tidy")
+df_teste_etapa = simulador.fundeb2:::pondera_alunos_etapa(simulador.fundeb2:::limpa_fnde(dados_teste), produto_dt = FALSE, retorno = "etapa_tidy")
+dt_teste_etapa = simulador.fundeb2:::pondera_alunos_etapa(simulador.fundeb2:::limpa_fnde(dados_teste), produto_dt = TRUE, retorno = "etapa_tidy")
 
-df_teste_etapa_long = pondera_alunos_etapa(limpa_fnde(dados_teste), produto_dt = FALSE, retorno = "etapa_long")
-dt_teste_etapa_long = pondera_alunos_etapa(limpa_fnde(dados_teste), produto_dt = TRUE, retorno = "etapa_long")
+df_teste_etapa_long = simulador.fundeb2:::pondera_alunos_etapa(simulador.fundeb2:::limpa_fnde(dados_teste), produto_dt = FALSE, retorno = "etapa_long")
+dt_teste_etapa_long = simulador.fundeb2:::pondera_alunos_etapa(simulador.fundeb2:::limpa_fnde(dados_teste), produto_dt = TRUE, retorno = "etapa_long")
 
 ## Teste de estrutura
 expect_equal(class(df_teste),

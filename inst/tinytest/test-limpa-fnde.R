@@ -5,8 +5,8 @@
 
 # Configuração ----
 ## Teste da funcao limpa FNDE
-dados_teste_limpo <- simulador.fundeb2::limpa_fnde(dados_teste, produto_dt = FALSE)
-dados_teste_limpo_dt <- simulador.fundeb2::limpa_fnde(dados_teste, produto_dt = TRUE)
+dados_teste_limpo <- simulador.fundeb2:::limpa_fnde(dados_teste, produto_dt = FALSE)
+dados_teste_limpo_dt <- simulador.fundeb2:::limpa_fnde(dados_teste, produto_dt = TRUE)
 
 ## Testes de estrutura
 expect_equal(class(dados_teste_limpo),
@@ -31,8 +31,8 @@ expect_equal(any(dados_teste_limpo_dt$municipio == "TOTAL GERAL"),
              FALSE)
 
 # Teste da funcao financas_fnde
-financas <- financas_fnde(dados_teste_limpo, produto_dt = FALSE)
-financas_dt <- financas_fnde(dados_teste_limpo_dt, produto_dt = TRUE)
+financas <- simulador.fundeb2:::financas_fnde(dados_teste_limpo, produto_dt = FALSE)
+financas_dt <- simulador.fundeb2:::financas_fnde(dados_teste_limpo_dt, produto_dt = TRUE)
 
 ## Testes de estrutura
 expect_equal(class(financas),

@@ -4,7 +4,7 @@
 ## Testes para a função simula fnde
 
 ## Preparação ----
-fnde = limpa_fnde(dados_teste)
+fnde = simulador.fundeb2:::limpa_fnde(dados_teste)
 
 df_teste = simula_fundeb(dados_fnde = fnde,
                          dados_complementar = complementar_teste,
@@ -22,20 +22,21 @@ dt_teste = simula_fundeb(dados_fnde = fnde,
 
 ### Preparação para teste de casos extremos ####
 dt_teste_zero = simula_fundeb(dados_fnde = fnde,
-                               dados_complementar = complementar,
+                               dados_complementar = complementar_teste,
                                peso_etapas = peso,
                                aporte_vaaf = 0,
                                aporte_vaat = 0,
                                produto_dt = TRUE)
 
 dt_teste_super_vaat = simula_fundeb(dados_fnde = fnde,
-                                     dados_complementar = complementar,
+                                     dados_complementar = complementar_teste,
                                      peso_etapas = peso,
                                      aporte_vaaf = 0,
                                      aporte_vaat = 1e10,
                                      produto_dt = TRUE)
+
 dt_teste_super_vaaf = simula_fundeb(dados_fnde = fnde,
-                                    dados_complementar = complementar,
+                                    dados_complementar = complementar_teste,
                                 peso_etapas = peso,
                                 aporte_vaaf = 1e10,
                                 aporte_vaat = 0,

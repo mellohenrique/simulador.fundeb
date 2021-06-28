@@ -5,12 +5,12 @@
 
 # Configuração ----
 ## Carregando dados
-dados = limpa_fnde(dados_teste)
-dados_financas = financas_fnde(dados)
-dados_alunos = pondera_alunos_etapa(dados)
+dados = simulador.fundeb2:::limpa_fnde(dados_teste)
+dados_financas = simulador.fundeb2:::financas_fnde(dados)
+dados_alunos = simulador.fundeb2:::pondera_alunos_etapa(dados)
 
-df_teste = gera_fundo_estadual(dados_alunos, dados_financas, produto_dt = FALSE)
-dt_teste = gera_fundo_estadual(dados_alunos, dados_financas, produto_dt = TRUE)
+df_teste = simulador.fundeb2:::gera_fundo_estadual(dados_alunos, dados_financas, produto_dt = FALSE)
+dt_teste = simulador.fundeb2:::gera_fundo_estadual(dados_alunos, dados_financas, produto_dt = TRUE)
 
 ## Testes de estrutura
 expect_equal(class(df_teste),
