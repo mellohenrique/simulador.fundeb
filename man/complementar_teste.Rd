@@ -5,7 +5,15 @@
 \alias{complementar_teste}
 \title{Dados Teste}
 \format{
-
+Uma tabela com 3 colunas e 29 linhas.
+\describe{
+  \item{ibge}{Codigo ibge do ente}
+  \item{impostos_extra}{Impostos extra com direcionamento a educacao}
+  \item{impostos_cap}{Impostos extra por pessoa}
+  \item{nome}{Variavel em caracteres com o nome do ente}
+  \item{uf}{Variavel em caractere com o nome das unidades da federacao}
+  \item{idhm}{Variaval com o indice de desenvolvimento humano do ente}
+  }
 }
 \usage{
 complementar_teste

@@ -14,6 +14,8 @@
 une_vaat <- function(dados_entes,
                      dados_etapa,
                      produto_dt = TRUE){
+  # Binding variables para NULL
+  receitas_etapa = equalizacao = . = uf =ibge = vaat = fundo_vaat = alunos_ponderados = NULL
 
   dados_entes = checa_transforma_dt(dados_entes)
   dados_etapa = checa_transforma_dt(dados_etapa)

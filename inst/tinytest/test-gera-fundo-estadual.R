@@ -7,7 +7,7 @@
 ## Carregando dados
 dados = simulador.fundeb2:::limpa_fnde(dados_teste)
 dados_financas = simulador.fundeb2:::financas_fnde(dados)
-dados_alunos = simulador.fundeb2:::pondera_alunos_etapa(dados)
+dados_alunos = simulador.fundeb2:::pondera_alunos_etapa(dados, peso_etapas = peso)
 
 df_teste = simulador.fundeb2:::gera_fundo_estadual(dados_alunos, dados_financas, produto_dt = FALSE)
 dt_teste = simulador.fundeb2:::gera_fundo_estadual(dados_alunos, dados_financas, produto_dt = TRUE)

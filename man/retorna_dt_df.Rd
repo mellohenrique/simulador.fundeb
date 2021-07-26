@@ -8,8 +8,6 @@ retorna_dt_df(dados, produto_dt = TRUE)
 }
 \arguments{
 \item{dados}{Um objeto da classe data.table}
-
-\item{produto_dt}{Variavel binaria que determina se a tabela produto da funcao sera da classe data.table (se Verdadeiro) ou data.frame (se Falso)}
 }
 \value{
 Um data.frame ou data.table

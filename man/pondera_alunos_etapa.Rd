@@ -12,13 +12,9 @@ pondera_alunos_etapa(
 )
 }
 \arguments{
-\item{dados_fnde}{data.frame ou data.table com os dados do FNDE}
-
 \item{peso_etapas}{data.frame com os dados de peso das etapas}
 
 \item{retorno}{variavel em caractere com a opcao de retorno da funcao. As opcoes tidy se apresenta o retorno os valores de alunos e alunos ponderados, etapa_tidy se apresenta valores de alunos e alunos ponderados para todas as etapas em formato tidy e etapa_long se se apresenta valores de alunos e alunos ponderados para todas as etapas em formato long}
-
-\item{produto_dt}{Variavel binaria que determina se a tabela produto da funcao sera da classe data.table (se Verdadeiro) ou data.frame (se Falso)}
 }
 \value{
 Um data.frame ou data.table com os dados de alunos considerando os pesos dados de FNDE em formato longo ou curto

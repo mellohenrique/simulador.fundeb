@@ -23,8 +23,6 @@ equaliza_fundo(
 \item{var_alunos}{Variavel que sera utilizada como numero de alunos a serem considerados do ente}
 
 \item{var_receitas}{Variavel com as receitas que seram equalizadas}
-
-\item{produto_dt}{Variavel binaria que determina se a tabela produto da funcao sera da classe data.table (se Verdadeiro) ou data.frame (se Falso)}
 }
 \value{
 Um data.frame ou data.table

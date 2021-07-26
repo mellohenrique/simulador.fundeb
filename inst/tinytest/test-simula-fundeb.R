@@ -4,8 +4,6 @@
 ## Testes para a função simula fnde
 
 ## Preparação ----
-fnde = simulador.fundeb2:::limpa_fnde(dados_teste)
-
 df_teste = simula_fundeb(dados_fnde = fnde,
                          dados_complementar = complementar_teste,
                          peso_etapas = peso,

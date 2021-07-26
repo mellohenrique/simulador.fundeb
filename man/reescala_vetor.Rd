@@ -9,9 +9,9 @@ reescala_vetor(var, teto = 1.3, chao = 1)
 \arguments{
 \item{var}{um vetor numerico}
 
-\item{chao}{valor minimo do vetor apois o rescalonamento}
+\item{teto}{valor maximo do vetor apos o rescalonamento}
 
-\item{topo}{valor maximo do vetor apos o rescalonamento}
+\item{chao}{valor minimo do vetor apois o rescalonamento}
 }
 \value{
 Um vetor numerico reescalado

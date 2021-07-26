@@ -17,6 +17,8 @@
 
 
 pondera_alunos_sociofiscal <- function(dados_alunos, dados_complementar, chao_socio = 1, teto_socio = 1.3, chao_fiscal = 1, teto_fiscal = 1.3, produto_dt = TRUE){
+  # Binding variables para NULL
+  impostos_extra = imposto_cap = idhm = impostos_cap = alunos_ponderados = fator_fiscal = fator_socio = NULL
 
   dados_alunos = checa_transforma_dt(dados_alunos)
   dados_complementar = checa_transforma_dt(dados_complementar)

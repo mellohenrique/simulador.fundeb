@@ -2,14 +2,14 @@
 % Please edit documentation in R/gera-fundo-estadual.R
 \name{gera_fundo_estadual}
 \alias{gera_fundo_estadual}
-\title{Pondera alunos por etapa}
+\title{Gera Fundo estadual}
 \usage{
 gera_fundo_estadual(dados_alunos, dados_financas, produto_dt = TRUE)
 }
 \arguments{
 \item{dados_alunos}{data.frame ou data.table com os dados de alunos ponderados em formato tidy}
 
-\item{produto_dt}{Variavel binaria que determina se a tabela produto da funcao sera da classe data.table (se Verdadeiro) ou data.frame (se Falso)}
+\item{dados_financas}{data.frame ou data.table com os dados de receitas dos entes}
 }
 \value{
 Um data.frame ou data.table com os dados de alunos considerando os pesos dados de FNDE em formato longo ou curto

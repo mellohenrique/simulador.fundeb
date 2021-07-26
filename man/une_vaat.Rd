@@ -9,7 +9,7 @@ une_vaat(dados_entes, dados_etapa, produto_dt = TRUE)
 \arguments{
 \item{dados_entes}{data.frame ou data.table com os dados dos entes federativos}
 
-\item{produto_dt}{Variavel binaria que determina se a tabela produto da funcao sera da classe data.table (se Verdadeiro) ou data.frame (se Falso)}
+\item{dados_etapa}{data.frame ou data.table com os dados da equalizacao da etapa}
 }
 \value{
 Um data.frame ou data.table com a simulacao dos dados do FNDE

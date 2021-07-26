@@ -4,8 +4,7 @@
 #'
 #' @inheritParams pondera_alunos_etapa
 #' @param dados_entes data.frame ou data.table com os dados dos entes federativos
-#' @param dados_fundo data.frame ou data.table com os dados da equalizacao da etapa
-#' @param etapa variavel em caracteres que pode ter os valores "vaat" ou "vaaf" a depender da etapa do calculo
+#' @param dados_etapa data.frame ou data.table com os dados da equalizacao da etapa
 #'
 #' @return Um data.frame ou data.table com a simulacao dos dados do FNDE
 #'
@@ -16,6 +15,8 @@
 une_vaaf <- function(dados_entes,
                      dados_etapa,
                      produto_dt = TRUE){
+  # Binding variables para NULL
+  receitas_etapa = equalizacao = . = uf = fundo_estadual_vaaf = alunos_ponderados = NULL
 
   dados_entes = checa_transforma_dt(dados_entes)
   dados_etapa = checa_transforma_dt(dados_etapa)

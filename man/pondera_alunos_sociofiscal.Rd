@@ -26,8 +26,6 @@ pondera_alunos_sociofiscal(
 \item{chao_fiscal}{valor minimo do peso da variavel fiscal na ponderacao de alunos}
 
 \item{teto_fiscal}{valor maximo do peso da variavel fiscal na ponderacao de alunos}
-
-\item{produto_dt}{Variavel binaria que determina se a tabela produto da funcao sera da classe data.table (se Verdadeiro) ou data.frame (se Falso)}
 }
 \value{
 Um data.frame ou data.table com os dados de alunos considerando os fatores sociais e financeiros

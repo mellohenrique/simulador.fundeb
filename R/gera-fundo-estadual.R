@@ -1,9 +1,10 @@
-#' @title Pondera alunos por etapa
+#' @title Gera Fundo estadual
 #'
 #' @description Pondera dados de alunos do FNDE por ente e etapa e retorna os valores ponderados por etapa
 #'
 #' @inheritParams pondera_alunos_etapa
 #' @param dados_alunos data.frame ou data.table com os dados de alunos ponderados em formato tidy
+#' @param dados_financas data.frame ou data.table com os dados de receitas dos entes
 #'
 #' @return Um data.frame ou data.table com os dados de alunos considerando os pesos dados de FNDE em formato longo ou curto
 #'
@@ -12,6 +13,9 @@
 #'
 
 gera_fundo_estadual <- function(dados_alunos, dados_financas, produto_dt = TRUE ){
+  # Binding variables para NULL
+  alunos_ponderados = . = alunos = uf = estimativa_de_receitas = receitas = vaa = NULL
+
   dados_alunos = checa_transforma_dt(dados_alunos)
 
   dados_financas = checa_transforma_dt(dados_financas)

@@ -14,6 +14,8 @@
 #'
 
 equaliza_fundo <- function(dados, aporte, var_ordem, var_alunos, var_receitas, produto_dt = TRUE){
+  # Binding variables para NULL
+  equalizacao = receitas_etapa = vaa_etapa = NULL
 
   dados = checa_transforma_dt(dados)
 
