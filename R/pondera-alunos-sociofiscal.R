@@ -18,20 +18,19 @@
 
 pondera_alunos_sociofiscal <- function(dados_alunos, dados_complementar, chao_socio = 1, teto_socio = 1.3, chao_fiscal = 1, teto_fiscal = 1.3, produto_dt = TRUE){
   # Binding variables para NULL
-  impostos_extra = imposto_cap = idhm = impostos_cap = alunos_ponderados = fator_fiscal = fator_socio = NULL
+  impostos_extra = imposto_cap = fator_social = impostos_cap = alunos_ponderados = fator_fiscal = fator_socio = NULL
 
   dados_alunos = checa_transforma_dt(dados_alunos)
   dados_complementar = checa_transforma_dt(dados_complementar)
 
   dados_alunos[dados_complementar,
-         `:=`(impostos_extra = impostos_extra,
-              impostos_cap = imposto_cap,
-              idhm = idhm),
+         `:=`(fator_social = fator_social,
+              fator_fiscal = fator_fiscal),
          on = "ibge"]
 
   dados_alunos[, `:=`(
-    fator_socio = reescala_vetor(idhm, chao = chao_socio, teto = teto_socio),
-    fator_fiscal = reescala_vetor(impostos_cap, chao = chao_fiscal, teto = teto_fiscal))]
+    fator_socio = reescala_vetor(fator_social, chao = chao_socio, teto = teto_socio),
+    fator_fiscal = reescala_vetor(fator_fiscal, chao = chao_fiscal, teto = teto_fiscal))]
 
   dados_alunos[,
     alunos_ponderados := alunos_ponderados * fator_fiscal * fator_socio]

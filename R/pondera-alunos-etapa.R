@@ -19,6 +19,10 @@ pondera_alunos_etapa <- function(dados_fnde, peso_etapas = peso, retorno = c("ti
   retorno = match.arg(retorno)
   dados_fnde = checa_transforma_dt(dados_fnde)
 
+  suppressWarnings({
+  dados_fnde[,`:=`(nome = NULL)]
+  })
+
   alunos_tidy = suppressWarnings(melt(dados_fnde, id.vars = c("uf", "ibge"),
                                       variable.name = "etapa",
                                       value.name = "alunos",

@@ -52,6 +52,10 @@ reescala_vetor = function(var, teto = 1.3, chao = 1){
   minimo = min(var)
   diferenca = teto - chao
 
-  return(teto - diferenca * (var - minimo)/(maximo - minimo))
+  if (maximo == minimo){
+    return(1)
+  } else {
+    return(teto - diferenca * (var - minimo)/(maximo - minimo))
+    }
   }
 

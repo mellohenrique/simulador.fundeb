@@ -17,17 +17,27 @@ simula_fundeb <- function(dados_fnde, dados_complementar, peso_etapas = peso, ch
   # Checando dados
   complementar = checa_transforma_dt(dados_complementar)
   fnde = checa_transforma_dt(dados_fnde)
-  peso = checa_transforma_dt(peso_etapas)
+  peso_etapas = checa_transforma_dt(peso_etapas)
 
   # Binding variables para NULL
   . = uf = ibge = fundo_vaaf_extra = fundo_vaaf = impostos_extra = vaaf_extra = peso = alunos_ponderados = estimativa_de_receitas = receitas = NULL
 
   # Tabelas iniciais
-  alunos = pondera_alunos_etapa(fnde, peso_etapas = peso)
-  alunos = pondera_alunos_sociofiscal(dados_alunos = alunos, dados_complementar = dados_complementar, chao_socio = chao_socio, teto_socio = teto_socio, chao_fiscal = chao_fiscal, teto_fiscal = teto_fiscal)
-  financas = financas_fnde(fnde)
-  estados = gera_fundo_estadual(alunos, financas)
-  entes = alunos[financas, receitas := estimativa_de_receitas, on = .(uf, ibge)]
+  alunos = pondera_alunos_etapa(fnde, peso_etapas = peso_etapas)
+  alunos = pondera_alunos_sociofiscal(
+    dados_alunos = alunos,
+    dados_complementar = dados_complementar,
+    chao_socio = chao_socio,
+    teto_socio = teto_socio,
+    chao_fiscal = chao_fiscal,
+    teto_fiscal = teto_fiscal)
+  estados = gera_fundo_estadual(alunos, complementar)
+  entes = alunos[complementar,
+                 `:=`(receitas = receitas,
+                      outras_receitas = outras_receitas,
+                      fator_fiscal = fator_fiscal,
+                      fator_social = fator_social),
+                 on = .(uf, ibge)]
 
   # Etapa 1 ####
   ## Equalziacao VAAF
