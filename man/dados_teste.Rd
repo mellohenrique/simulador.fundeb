@@ -38,8 +38,6 @@ Uma tabela com 3 colunas e 29 linhas.
   \item{formacao_por_alternancia_ed_indig_quil}{Numero de matriculas em Formação por alternância Ed. Indíg./Quil.}
   \item{formacao_por_alternancia_eja_aval_no_proc}{Numero de matriculas em Formação por alternância EJA - Aval. no Proc}
   \item{formacao_por_alternancia_eja_int_ed_profis_de_nivel_medio}{Numero de matriculas em Formação por alternância EJA - Int Ed. Profis. De Nível Médio}
-  \item{estimativa_de_receitas}{Receitas de cada ente federativo}
-  \item{coeficiente_de_distribuicao}{Percentual das receitas do ente no total das receitas do estado}
 }
 }
 \source{

@@ -8,11 +8,12 @@
 Uma tabela com 3 colunas e 29 linhas.
 \describe{
   \item{ibge}{Codigo ibge do ente}
-  \item{impostos_extra}{Impostos extra com direcionamento a educacao}
-  \item{impostos_cap}{Impostos extra por pessoa}
+  \item{recursos_extra}{Variavel com recursos extra com direcionamento a educacao}
+  \item{fator_fiscal}{Variaval com Impostos extra por pessoa que sera usada como fator fiscal}
   \item{nome}{Variavel em caracteres com o nome do ente}
   \item{uf}{Variavel em caractere com o nome das unidades da federacao}
-  \item{idhm}{Variaval com o indice de desenvolvimento humano do ente}
+  \item{fator_social}{Variaval com o indice de desenvolvimento humano do ente que sera usado como fator social}
+  \item{fundeb}{Receitas do fundeb cada ente federativo}
   }
 }
 \usage{
