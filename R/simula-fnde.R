@@ -24,20 +24,14 @@ simula_fundeb <- function(dados_fnde, dados_complementar, peso_etapas = peso, ch
 
   # Tabelas iniciais
   alunos = pondera_alunos_etapa(fnde, peso_etapas = peso_etapas)
-  alunos = pondera_alunos_sociofiscal(
+  entes = pondera_alunos_sociofiscal(
     dados_alunos = alunos,
     dados_complementar = dados_complementar,
     chao_socio = chao_socio,
     teto_socio = teto_socio,
     chao_fiscal = chao_fiscal,
     teto_fiscal = teto_fiscal)
-  estados = gera_fundo_estadual(alunos, complementar)
-  entes = alunos[complementar,
-                 `:=`(receitas = receitas,
-                      outras_receitas = outras_receitas,
-                      fator_fiscal = fator_fiscal,
-                      fator_social = fator_social),
-                 on = .(uf, ibge)]
+  estados = gera_fundo_estadual(entes, complementar)
 
   # Etapa 1 ####
   ## Equalziacao VAAF
@@ -45,14 +39,14 @@ simula_fundeb <- function(dados_fnde, dados_complementar, peso_etapas = peso, ch
     equaliza_fundo(estados,
                    var_ordem = "vaa",
                    var_alunos = "alunos_ponderados",
-                   var_receitas = "receitas",
+                   var_receitas = "fundeb",
                    aporte = aporte_vaaf)
 
   ## Unindo bases
   entes = une_vaaf(entes, fundo_estadual_equalizado)
 
   ## Adicionando medida para Var
-  entes[,fundo_vaaf_extra := fundo_vaaf + impostos_extra ]
+  entes[,fundo_vaaf_extra := fundo_vaaf + recursos_extra ]
   entes[,vaaf_extra := fundo_vaaf_extra/alunos_ponderados]
 
   # Etapa 2

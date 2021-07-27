@@ -25,7 +25,9 @@ pondera_alunos_sociofiscal <- function(dados_alunos, dados_complementar, chao_so
 
   dados_alunos[dados_complementar,
          `:=`(fator_social = fator_social,
-              fator_fiscal = fator_fiscal),
+              fator_fiscal = fator_fiscal,
+              fundeb = fundeb,
+              recursos_extra = recursos_extra),
          on = "ibge"]
 
   dados_alunos[, `:=`(
