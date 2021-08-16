@@ -13,7 +13,7 @@
 #' @import data.table
 #'
 
-equaliza_fundo <- function(dados, aporte, var_ordem, var_alunos, var_receitas, produto_dt = TRUE){
+equaliza_fundo <- function(dados, aporte, var_ordem, var_alunos, var_receitas, entes_excluidos = NULL, produto_dt = TRUE){
   # Binding variables para NULL
   equalizacao = receitas_etapa = vaa_etapa = NULL
 
@@ -24,6 +24,10 @@ equaliza_fundo <- function(dados, aporte, var_ordem, var_alunos, var_receitas, p
   if (aporte == 0){
   dados[, `:=`(equalizacao = round(get(var_ordem) * cumsum(get(var_alunos)) - cumsum(get(var_receitas)), digits = 2) < aporte)] } else {
   dados[, `:=`(equalizacao = get(var_ordem) * cumsum(get(var_alunos)) - cumsum(get(var_receitas)) <= aporte)]
+  }
+
+  if (!is.null(entes_excluidos)){
+    dados[, equalizacao = ifelse(ibge %in% entes_excluidos, FALSE, equalizacao)]
   }
 
   equalizado = dados[equalizacao == TRUE,]

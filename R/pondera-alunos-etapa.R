@@ -12,11 +12,11 @@
 #'
 
 
-pondera_alunos_etapa <- function(dados_fnde, peso_etapas = peso, retorno = c("tidy", "etapa_tidy", "etapa_long"), produto_dt = TRUE){
+pondera_alunos_etapa <- function(dados_fnde, peso_etapas = peso, difere_etapas_complementacao = c("vaaf_vaat", "mesmos_pesos"), produto_dt = TRUE){
   # Binding variables para NULL
-  alunos = alunos_ponderados = . = uf = ibge = peso = NULL
+  alunos = alunos_ponderados = . = uf = ibge = NULL
 
-  retorno = match.arg(retorno)
+  difere_etapas_complementacao = match.arg(difere_etapas_complementacao)
   dados_fnde = checa_transforma_dt(dados_fnde)
 
   suppressWarnings({
@@ -31,21 +31,22 @@ pondera_alunos_etapa <- function(dados_fnde, peso_etapas = peso, retorno = c("ti
 
   alunos_tidy[, `:=`(alunos = ifelse(is.na(alunos), 0, alunos))]
 
-  alunos_tidy[peso_etapas, peso := peso, on = "etapa"]
+  if (difere_etapas_complementacao == "vaaf_vaat"){
+    alunos_tidy[peso_etapas, `:=`(peso_vaaf = peso_vaaf,
+                                  peso_vaat = peso_vaat), on = "etapa"]
+  } else if (difere_etapas_complementacao == "mesmos_pesos") {
 
-  alunos_tidy[, alunos_ponderados := alunos * peso]
-
-  if (retorno == "tidy") {
-    alunos_tidy = alunos_tidy[,.(
-      alunos_ponderados = sum(alunos_ponderados),
-      alunos = sum(alunos)), by = .(uf, ibge)]
-    retorna_dt_df(alunos_tidy, produto_dt = produto_dt)
-
-  } else if (retorno == "etapa_tidy") {
-    retorna_dt_df(alunos_tidy, produto_dt = produto_dt)
-
-  } else if (retorno == "etapa_long") {
-    retorna_dt_df(dcast(alunos_tidy, uf + ibge ~ etapa, value.var = "alunos_ponderados"), produto_dt= produto_dt)
-
+    alunos_tidy[peso_etapas, `:=`(peso_vaaf = peso_vaaf,
+                                  peso_vaat = peso_vaat), on = "etapa"]
   }
+
+  alunos_tidy[,
+              `:=`(alunos_ponderados_vaaf = alunos * peso_vaaf,
+                   alunos_ponderados_vaat = alunos * peso_vaat)]
+
+  alunos_tidy = alunos_tidy[,.(alunos_ponderados_vaaf = sum(alunos_ponderados_vaaf),
+                 alunos_ponderados_vaat = sum(alunos_ponderados_vaat)), by = .(uf, ibge)]
+
+  return(retorna_dt_df(alunos_tidy, produto_dt = produto_dt))
+
 }

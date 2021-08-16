@@ -31,11 +31,13 @@ pondera_alunos_sociofiscal <- function(dados_alunos, dados_complementar, chao_so
          on = "ibge"]
 
   dados_alunos[, `:=`(
-    fator_socio = reescala_vetor(fator_social, chao = chao_socio, teto = teto_socio),
+    fator_social = reescala_vetor(fator_social, chao = chao_socio, teto = teto_socio),
     fator_fiscal = reescala_vetor(fator_fiscal, chao = chao_fiscal, teto = teto_fiscal))]
 
   dados_alunos[,
-    alunos_ponderados := alunos_ponderados * fator_fiscal * fator_socio]
+               `:=`(alunos_ponderados_vaaf = alunos_ponderados_vaaf * fator_fiscal * fator_social,
+                    alunos_ponderados_vaat = alunos_ponderados_vaat * fator_fiscal * fator_social)
+    ]
 
     return(retorna_dt_df(dados_alunos, produto_dt = produto_dt))
 }

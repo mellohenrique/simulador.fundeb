@@ -13,8 +13,9 @@
 #'
 #' @export
 
-simula_fundeb <- function(dados_fnde, dados_complementar, peso_etapas = peso, chao_socio = 1, teto_socio = 1.3, chao_fiscal = 1, teto_fiscal = 1.3, aporte_vaaf, aporte_vaat, produto_dt = TRUE){
-  # Checando dados
+simula_fundeb <- function(dados_fnde, dados_complementar, peso_etapas = peso, chao_socio = 1, teto_socio = 1.3, chao_fiscal = 1, teto_fiscal = 1.3, entes_excluidos_vaaf = NULL, aporte_vaaf, aporte_vaat, produto_dt = TRUE){
+
+   # Checando dados
   complementar = checa_transforma_dt(dados_complementar)
   fnde = checa_transforma_dt(dados_fnde)
   peso_etapas = checa_transforma_dt(peso_etapas)
@@ -31,6 +32,7 @@ simula_fundeb <- function(dados_fnde, dados_complementar, peso_etapas = peso, ch
     teto_socio = teto_socio,
     chao_fiscal = chao_fiscal,
     teto_fiscal = teto_fiscal)
+
   estados = gera_fundo_estadual(entes, complementar)
 
   # Etapa 1 ####
@@ -38,7 +40,7 @@ simula_fundeb <- function(dados_fnde, dados_complementar, peso_etapas = peso, ch
   fundo_estadual_equalizado =
     equaliza_fundo(estados,
                    var_ordem = "vaa",
-                   var_alunos = "alunos_ponderados",
+                   var_alunos = "alunos_ponderados_vaaf",
                    var_receitas = "fundeb",
                    aporte = aporte_vaaf)
 
@@ -47,14 +49,15 @@ simula_fundeb <- function(dados_fnde, dados_complementar, peso_etapas = peso, ch
 
   ## Adicionando medida para Var
   entes[,fundo_vaaf_extra := fundo_vaaf + recursos_extra ]
-  entes[,vaaf_extra := fundo_vaaf_extra/alunos_ponderados]
+  entes[,vaaf_extra := fundo_vaaf_extra/alunos_ponderados_vaat]
 
   # Etapa 2
   fundo_ente =
     equaliza_fundo(entes,
                    var_ordem = "vaaf_extra",
-                   var_alunos = "alunos_ponderados",
+                   var_alunos = "alunos_ponderados_vaat",
                    var_receitas = "fundo_vaaf_extra",
+                   entes_excluidos_vaaf = entes_excluidos_vaaf,
                    aporte = aporte_vaat)
 
   ## Unindo bases

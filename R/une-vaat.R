@@ -25,7 +25,7 @@ une_vaat <- function(dados_entes,
                    equalizacao_vaat = equalizacao),
               on = .(uf, ibge)]
 
-  dados_entes[, vaat := fundo_vaat/alunos_ponderados]
+  dados_entes[, vaat := fundo_vaat/alunos_ponderados_vaat]
 
   return(dados_entes)
 }

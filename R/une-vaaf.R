@@ -28,8 +28,8 @@ une_vaaf <- function(dados_entes,
 
 
    dados_entes[,`:=`(
-     vaaf = fundo_estadual_vaaf/sum(alunos_ponderados),
-     fundo_vaaf = fundo_estadual_vaaf*alunos_ponderados/sum(alunos_ponderados)),
+     vaaf = fundo_estadual_vaaf/sum(alunos_ponderados_vaaf),
+     fundo_vaaf = fundo_estadual_vaaf*alunos_ponderados_vaaf/sum(alunos_ponderados_vaaf)),
                 by = .(uf)]
 
   return(dados_entes)

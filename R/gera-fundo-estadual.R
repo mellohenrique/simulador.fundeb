@@ -20,16 +20,18 @@ gera_fundo_estadual <- function(dados_alunos, dados_complementar, produto_dt = T
 
   dados_complementar = checa_transforma_dt(dados_complementar)
 
-  alunos_estadual = dados_alunos[, .(alunos_ponderados = sum(alunos_ponderados),
-                   alunos = sum(alunos)),
-               by = uf]
+  alunos_estadual = dados_alunos[, .(
+    alunos_ponderados_vaaf = sum(alunos_ponderados_vaaf),
+    alunos_ponderados_vaat = sum(alunos_ponderados_vaat),
+    alunos = sum(alunos)
+  ), by = uf]
 
   dados_financas = dados_complementar[, .(fundeb = sum(fundeb)),
                                   by = uf]
 
   fundo_estadual = alunos_estadual[dados_financas, fundeb := fundeb, on = .(uf)]
 
-  fundo_estadual[, vaa := fundeb/alunos_ponderados]
+  fundo_estadual[, vaa := fundeb/alunos_ponderados_vaaf]
 
-  retorna_dt_df(fundo_estadual, produto_dt)
+  return(retorna_dt_df(fundo_estadual, produto_dt))
 }
