@@ -44,7 +44,8 @@ pondera_alunos_etapa <- function(dados_fnde, peso_etapas = peso, difere_etapas_c
               `:=`(alunos_ponderados_vaaf = alunos * peso_vaaf,
                    alunos_ponderados_vaat = alunos * peso_vaat)]
 
-  alunos_tidy = alunos_tidy[,.(alunos_ponderados_vaaf = sum(alunos_ponderados_vaaf),
+  alunos_tidy = alunos_tidy[,.(alunos = sum(alunos),
+                               alunos_ponderados_vaaf = sum(alunos_ponderados_vaaf),
                  alunos_ponderados_vaat = sum(alunos_ponderados_vaat)), by = .(uf, ibge)]
 
   return(retorna_dt_df(alunos_tidy, produto_dt = produto_dt))

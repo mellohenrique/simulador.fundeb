@@ -12,8 +12,9 @@ simula_fundeb(
   teto_socio = 1.3,
   chao_fiscal = 1,
   teto_fiscal = 1.3,
-  aporte_vaaf,
-  aporte_vaat,
+  entes_excluidos_vaaf = NULL,
+  complementacao_vaaf,
+  complementacao_vaat,
   produto_dt = TRUE
 )
 }
@@ -30,9 +31,9 @@ simula_fundeb(
 
 \item{teto_fiscal}{valor maximo do peso da variavel fiscal na ponderacao de alunos}
 
-\item{aporte_vaaf}{valor numerico com o montante a ser complementado pela uniao na etapa VAAF}
+\item{complementacao_vaaf}{valor numerico com o montante a ser complementado pela uniao na etapa VAAF}
 
-\item{aporte_vaat}{valor numerico com o montante a ser complementado pela uniao na etapa VAAT}
+\item{complementacao_vaat}{valor numerico com o montante a ser complementado pela uniao na etapa VAAT}
 }
 \value{
 Um data.frame ou data.table com a simulacao dos dados do FNDE

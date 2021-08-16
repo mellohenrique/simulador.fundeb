@@ -6,17 +6,18 @@
 \usage{
 equaliza_fundo(
   dados,
-  aporte,
+  complementacao,
   var_ordem,
   var_alunos,
   var_receitas,
+  entes_excluidos = NULL,
   produto_dt = TRUE
 )
 }
 \arguments{
 \item{dados}{Um objeto da classe data.table ou data.frame com os dados do fundo a serem equalizados}
 
-\item{aporte}{Numero com a quantidade de fundos a serem utilizados na equalizacao}
+\item{complementacao}{Numero com a quantidade de fundos a serem utilizados na equalizacao}
 
 \item{var_ordem}{Variavel que sera utilizada para ordenar os entes}
 

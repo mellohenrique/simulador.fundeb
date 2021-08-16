@@ -4,8 +4,8 @@
 #'
 #' @inheritParams pondera_alunos_etapa
 #' @inheritParams pondera_alunos_sociofiscal
-#' @param aporte_vaaf valor numerico com o montante a ser complementado pela uniao na etapa VAAF
-#' @param aporte_vaat valor numerico com o montante a ser complementado pela uniao na etapa VAAT
+#' @param complementacao_vaaf valor numerico com o montante a ser complementado pela uniao na etapa VAAF
+#' @param complementacao_vaat valor numerico com o montante a ser complementado pela uniao na etapa VAAT
 #'
 #' @return Um data.frame ou data.table com a simulacao dos dados do FNDE
 #'
@@ -13,7 +13,7 @@
 #'
 #' @export
 
-simula_fundeb <- function(dados_fnde, dados_complementar, peso_etapas = peso, chao_socio = 1, teto_socio = 1.3, chao_fiscal = 1, teto_fiscal = 1.3, entes_excluidos_vaaf = NULL, aporte_vaaf, aporte_vaat, produto_dt = TRUE){
+simula_fundeb <- function(dados_fnde, dados_complementar, peso_etapas = peso, chao_socio = 1, teto_socio = 1.3, chao_fiscal = 1, teto_fiscal = 1.3, entes_excluidos_vaaf = NULL, complementacao_vaaf, complementacao_vaat, produto_dt = TRUE){
 
    # Checando dados
   complementar = checa_transforma_dt(dados_complementar)
@@ -42,7 +42,7 @@ simula_fundeb <- function(dados_fnde, dados_complementar, peso_etapas = peso, ch
                    var_ordem = "vaa",
                    var_alunos = "alunos_ponderados_vaaf",
                    var_receitas = "fundeb",
-                   aporte = aporte_vaaf)
+                   complementacao = complementacao_vaaf)
 
   ## Unindo bases
   entes = une_vaaf(entes, fundo_estadual_equalizado)
@@ -57,8 +57,8 @@ simula_fundeb <- function(dados_fnde, dados_complementar, peso_etapas = peso, ch
                    var_ordem = "vaaf_extra",
                    var_alunos = "alunos_ponderados_vaat",
                    var_receitas = "fundo_vaaf_extra",
-                   entes_excluidos_vaaf = entes_excluidos_vaaf,
-                   aporte = aporte_vaat)
+                   entes_excluidos = entes_excluidos_vaaf,
+                   complementacao = complementacao_vaat)
 
   ## Unindo bases
   entes = une_vaat(entes, fundo_ente)

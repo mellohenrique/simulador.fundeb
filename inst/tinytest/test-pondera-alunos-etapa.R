@@ -6,58 +6,28 @@
 # Configuração ----
 
 ## Cria bases de teste
-df_teste = simulador.fundeb2:::pondera_alunos_etapa(simulador.fundeb2:::limpa_fnde(dados_teste), peso_etapas = peso, produto_dt = FALSE)
-dt_teste = simulador.fundeb2:::pondera_alunos_etapa(simulador.fundeb2:::limpa_fnde(dados_teste), peso_etapas = peso, produto_dt = TRUE)
-
-df_teste_etapa = simulador.fundeb2:::pondera_alunos_etapa(simulador.fundeb2:::limpa_fnde(dados_teste), peso_etapas = peso, produto_dt = FALSE, retorno = "etapa_tidy")
-dt_teste_etapa = simulador.fundeb2:::pondera_alunos_etapa(simulador.fundeb2:::limpa_fnde(dados_teste), peso_etapas = peso, produto_dt = TRUE, retorno = "etapa_tidy")
-
-df_teste_etapa_long = simulador.fundeb2:::pondera_alunos_etapa(simulador.fundeb2:::limpa_fnde(dados_teste), peso_etapas = peso, produto_dt = FALSE, retorno = "etapa_long")
-dt_teste_etapa_long = simulador.fundeb2:::pondera_alunos_etapa(simulador.fundeb2:::limpa_fnde(dados_teste), peso_etapas = peso, produto_dt = TRUE, retorno = "etapa_long")
+df_teste = simulador.fundeb2:::pondera_alunos_etapa(dados_teste, peso_etapas = peso, produto_dt = FALSE)
+dt_teste = simulador.fundeb2:::pondera_alunos_etapa(dados_teste, peso_etapas = peso, produto_dt = TRUE)
 
 ## Teste de estrutura
 expect_equal(class(df_teste),
              "data.frame")
 expect_equal(class(dt_teste),
              c("data.table", "data.frame"))
-expect_equal(class(df_teste_etapa),
-             "data.frame")
-expect_equal(class(dt_teste_etapa),
-             c("data.table", "data.frame"))
-expect_equal(class(df_teste_etapa_long),
-             "data.frame")
-expect_equal(class(dt_teste_etapa_long),
-             c("data.table", "data.frame"))
 
 ## Teste de dimensoes
 expect_equal(dim(df_teste),
-             c(76, 4))
+             c(76, 5))
 expect_equal(dim(dt_teste),
-             c(76, 4))
-
-expect_equal(dim(df_teste_etapa),
-             c(2204, 6))
-expect_equal(dim(dt_teste_etapa),
-             c(2204, 6))
-
-expect_equal(dim(df_teste_etapa_long),
-             c(76, 31))
-expect_equal(dim(dt_teste_etapa_long),
-             c(76, 31))
+             c(76, 5))
 
 ## Testando ponderacao de alunos entre tipos diferentes de teste
-expect_equal(
-  data.table::setorder(dt_teste_etapa[etapa == "ed_especial",], ibge)$alunos_ponderados,
-  data.table::setorder(dt_teste_etapa_long,ibge)$ed_especial)
+df_teste = df_teste[order(df_teste$ibge),]
+expect_equal(df_teste$alunos,
+             c(192864.5, 151415.5, 2359, 11545, 645, 6644.5, 1575, 1933, 772, 2027, 2878, 4372, 5120.5, 7806.5, 4042.5, 2143, 4111.5, 4154, 45137, 1695, 514, 5332, 760, 11281.5, 3024, 3563.5, 1743.5, 1963, 1772, 3557, 844, 637, 1564, 3365, 516, 1471, 2750, 1163, 1495, 1190, 1149, 1831, 851, 541, 339.5, 430, 528, 2443, 1267, 749, 1291, 1696, 1280, 986, 2251, 1576, 3174, 1800, 2135, 12382, 2500, 4456.5, 2561, 3385, 2021, 5570, 2256, 3449, 25636, 4065, 2459, 2720, 5659, 7400, 1442, 2231))
 
-expect_equal(
-  data.table::setorder(dt_teste_etapa[etapa == "ensino_medio_urbano",], ibge)$alunos_ponderados,
-  data.table::setorder(dt_teste_etapa_long,ibge)$ensino_medio_urbano)
+expect_equal(df_teste$alunos_ponderados_vaaf,
+             c(213250.6, 166289.6, 2547.75, 12410.65, 688.2, 7239.35, 1658.2, 2102.85, 845.25, 2233.25, 3125.3, 4538.7, 5445.65, 8425.7, 4334.8, 2352.85, 4380.65, 4461.8, 47454.75, 1828.2, 532.6, 5661.25, 798.7, 11805.2, 3352.05, 3830.95, 1905.65, 2195.75, 1939.85, 3755.8, 882.6, 681.45, 1737.3, 3600.25, 598.3, 1624.95, 2956.05, 1306.05, 1528.6, 1268.35, 1239.8, 2018.4, 927.9, 571.65, 348.4, 468.1, 552, 2694.65, 1389.55, 825.7, 1510.65, 1895.25, 1367.5, 1072.6, 2468.85, 1687.5, 3463.95, 1967.75, 2233.4, 13858.65, 2803, 4837.15, 2970, 3711.05, 2158.5, 6284.95, 2491.15, 3809.4, 28312.45, 4386.1, 2901.95, 2895.9, 6141.9, 7945.5, 1607.35, 2459.5))
 
-expect_equal(
-  data.table::setorder(dt_teste_etapa[etapa == "ensino_fundamental_tempo_integral",], ibge)$alunos_ponderados,
-  data.table::setorder(dt_teste_etapa_long,ibge)$ensino_fundamental_tempo_integral)
-
-expect_equal(
-  data.table::setorder(dt_teste_etapa[etapa == "ensino_fundamental_ser_iniciais_urbana",], uf, ibge)$alunos_ponderados,
-  c(24101, 781, 579, 1216, 709, 641, 2403, 789, 703, 229, 1171, 892, 754, 423, 371, 6545, 575, 416, 927, 2143, 2058, 354, 262, 16410, 1030, 4826, 416, 2406, 973, 813, 275, 678, 1228, 3177, 2740, 3136, 1859, 687, 2257, 2066, 23242, 813, 349, 2933, 537, 5972, 989, 1566, 690, 487, 368, 1808, 631, 311, 447, 1194, 0, 553, 1054, 268, 775, 337, 587, 597, 342,  281, 229, 190, 371, 853, 513, 207, 0, 538, 559, 358))
+expect_equal(df_teste$alunos_ponderados_vaat,
+             c(216542.8, 171442, 2991.8, 14433.4, 842.35, 8645.6, 2085.15, 2488.6, 1004.2, 2621.55, 3688.85, 5682.75, 6642.35, 10286.25, 5180.4, 2681.1, 5382.25, 5443.6, 57988, 2240.85, 649.35, 6969.25, 994, 14215.65, 3847.8, 4489.4, 2229.05, 2440.9, 2129.25, 4483.7, 1090.1, 790.2, 2010.25, 4271.5, 648.2, 1900.4, 3398, 1487.4, 1824.85, 1429.5, 1493.65, 2362, 1068.2, 660.2, 431.4, 569.05, 679.15, 3099.6, 1601.8, 948.45, 1658.4, 2081.15, 1613.3, 1229.35, 2928.35, 2026.2, 4176.3, 2353.2, 2650.65, 16641.75, 3348.75, 5701.6, 3214.65, 4480.8, 2560.15, 6899.85, 2943.05, 4247.45, 36427.4, 5033.9, 3082.9, 3615.7, 7256.95, 9435.15, 1992.55, 2893.9))

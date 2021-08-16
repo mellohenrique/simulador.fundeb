@@ -7,7 +7,7 @@
 pondera_alunos_etapa(
   dados_fnde,
   peso_etapas = peso,
-  retorno = c("tidy", "etapa_tidy", "etapa_long"),
+  difere_etapas_complementacao = c("vaaf_vaat", "mesmos_pesos"),
   produto_dt = TRUE
 )
 }

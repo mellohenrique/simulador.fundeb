@@ -21,4 +21,4 @@ expect_true(all(peso$etapa %in% names(dados_teste)))
 expect_equal(unique(dados_teste$uf),
              c("AC", "RO"))
 expect_equal(sapply(complementar_teste, class, simplify = TRUE),
-             c("integer", "numeric", "numeric", "character", "character", "numeric", "numeric"))
+             c(ibge = "integer",  recursos_extra = "numeric", fator_fiscal = "numeric", nome = "character", uf = "character", fator_social = "numeric", fundeb = "numeric"))

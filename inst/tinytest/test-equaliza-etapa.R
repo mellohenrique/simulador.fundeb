@@ -34,7 +34,7 @@ super_fundo <- simulador.fundeb2:::equaliza_fundo(teste,
                               produto_dt = FALSE)
 
 zero_fundo <- simulador.fundeb2:::equaliza_fundo(teste,
-                              aporte = 0,
+                              complementacao = 0,
                               var_ordem = "renda_pc",
                               var_alunos = "pop",
                               var_receitas = "renda",
