@@ -2,8 +2,8 @@
 #'
 #' @description Recebe um data.table e determina se transforma em data.frame ou continua dt
 #'
-#' @inheritParams limpa_fnde
-#' @param dados Um objeto da classe data.table
+#' @inheritParams simula_fundeb
+#' @param dados Um objeto da classe data.table ou data.frame
 #'
 #' @return Um data.frame ou data.table
 #'

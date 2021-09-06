@@ -7,7 +7,9 @@
 retorna_dt_df(dados, produto_dt = TRUE)
 }
 \arguments{
-\item{dados}{Um objeto da classe data.table}
+\item{dados}{Um objeto da classe data.table ou data.frame}
+
+\item{produto_dt}{valor logico que determina se o resultado sera em data.table (caso produto_dt = TRUE) ou data.frame (caso produto_dt = FALSE)}
 }
 \value{
 Um data.frame ou data.table

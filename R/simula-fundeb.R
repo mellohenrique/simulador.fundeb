@@ -1,11 +1,18 @@
-#' @title Simula FNDE
+#' @title Simula Fundeb
 #'
-#' @description Simula a distribuição dos fundos do FNDE e as etapas de equalização
+#' @description Simula a distribuição dos fundos do Fundeb e as etapas de equalização
 #'
-#' @inheritParams pondera_alunos_etapa
-#' @inheritParams pondera_alunos_sociofiscal
+#' @param dados_alunos data.frame com os dados de alunos
+#' @param dados_complementar data.frame com os dados de peso das etapas
+#' @param peso_etapas data.frame com os dados de peso das etapas
+#' @param chao_socio valor minimo do peso da variavel social na ponderacao de alunos
+#' @param teto_socio valor maximo do peso da variavel social na ponderacao de alunos
+#' @param chao_fiscal valor minimo do peso da variavel fiscal na ponderacao de alunos
+#' @param teto_fiscal valor maximo do peso da variavel fiscal na ponderacao de alunos
 #' @param complementacao_vaaf valor numerico com o montante a ser complementado pela uniao na etapa VAAF
 #' @param complementacao_vaat valor numerico com o montante a ser complementado pela uniao na etapa VAAT
+#' @param difere_etapas_complementacao variavel em caractere com as opcoes de diferenciacao dos pesos das etapas. Caso escolha-se vaaf_vaat a etapa vaaf e a etapa vaat consideram pesos diferentes, caso escolha-se mesmos pesos as etapas tem os mesmos pesos
+#' @param produto_dt valor logico que determina se o resultado sera em data.table (caso produto_dt = TRUE) ou data.frame (caso produto_dt = FALSE)
 #'
 #' @return Um data.frame ou data.table com a simulacao dos dados do FNDE
 #'
@@ -13,18 +20,18 @@
 #'
 #' @export
 
-simula_fundeb <- function(dados_fnde, dados_complementar, peso_etapas = peso, chao_socio = 1, teto_socio = 1.3, chao_fiscal = 1, teto_fiscal = 1.3, entes_excluidos_vaaf = NULL, complementacao_vaaf, complementacao_vaat, produto_dt = TRUE){
+simula_fundeb <- function(dados_alunos, dados_complementar, peso_etapas = peso, chao_socio = 1, teto_socio = 1.3, chao_fiscal = 1, teto_fiscal = 1.3, entes_excluidos_vaaf = NULL, complementacao_vaaf, complementacao_vaat, produto_dt = TRUE){
 
    # Checando dados
   complementar = checa_transforma_dt(dados_complementar)
-  fnde = checa_transforma_dt(dados_fnde)
+  alunos = checa_transforma_dt(dados_alunos)
   peso_etapas = checa_transforma_dt(peso_etapas)
 
   # Binding variables para NULL
   . = uf = ibge = fundo_vaaf_extra = fundo_vaaf = impostos_extra = vaaf_extra = peso = alunos_ponderados = estimativa_de_receitas = receitas = NULL
 
   # Tabelas iniciais
-  alunos = pondera_alunos_etapa(fnde, peso_etapas = peso_etapas)
+  alunos = pondera_alunos_etapa(alunos, peso_etapas = peso_etapas)
   entes = pondera_alunos_sociofiscal(
     dados_alunos = alunos,
     dados_complementar = dados_complementar,
@@ -62,6 +69,7 @@ simula_fundeb <- function(dados_fnde, dados_complementar, peso_etapas = peso, ch
 
   ## Unindo bases
   entes = une_vaat(entes, fundo_ente)
+  entes[, vaa := fundo_vaat/alunos]
 
   # Retorno
   return(retorna_dt_df(entes, produto_dt = produto_dt))

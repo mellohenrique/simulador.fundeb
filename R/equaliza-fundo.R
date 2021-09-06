@@ -1,7 +1,6 @@
 #' @title Equaliza fundo
 #' @description Recebe dados dos entes do fnde, divididos em entes federativos ou fundos estaduais, e equaliza o valor recebido de acordo com o vaa em questao. A equalizacao e feita de baixo para cima.
 #'
-#' @inheritParams limpa_fnde
 #' @param dados Um objeto da classe data.table ou data.frame com os dados do fundo a serem equalizados
 #' @param complementacao Numero com a quantidade de fundos a serem utilizados na equalizacao
 #' @param var_ordem Variavel que sera utilizada para ordenar os entes

@@ -2,9 +2,7 @@
 #'
 #' @description Pondera dados de alunos do FNDE por ente e etapa e retorna os valores ponderados por etapa
 #'
-#' @inheritParams pondera_alunos_etapa
-#' @param dados_alunos data.frame ou data.table com os dados de alunos ponderados em formato tidy
-#' @param dados_complementar data.frame ou data.table com os dados de receitas dos entes
+#' @inheritParams simula_fundeb
 #'
 #' @return Um data.frame ou data.table com os dados de alunos considerando os pesos dados de FNDE em formato longo ou curto
 #'

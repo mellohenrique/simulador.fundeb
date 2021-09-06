@@ -2,9 +2,7 @@
 #'
 #' @description Pondera dados de alunos do FNDE por ente e etapa e retorna os valores ponderados por etapa
 #'
-#' @inheritParams limpa_fnde
-#' @param peso_etapas data.frame com os dados de peso das etapas
-#' @param retorno variavel em caractere com a opcao de retorno da funcao. As opcoes tidy se apresenta o retorno os valores de alunos e alunos ponderados, etapa_tidy se apresenta valores de alunos e alunos ponderados para todas as etapas em formato tidy e etapa_long se se apresenta valores de alunos e alunos ponderados para todas as etapas em formato long
+#' @inheritParams simula_fundeb
 #'
 #' @return Um data.frame ou data.table com os dados de alunos considerando os pesos dados de FNDE em formato longo ou curto
 #'

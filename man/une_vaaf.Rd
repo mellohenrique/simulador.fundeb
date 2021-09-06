@@ -10,6 +10,8 @@ une_vaaf(dados_entes, dados_etapa, produto_dt = TRUE)
 \item{dados_entes}{data.frame ou data.table com os dados dos entes federativos}
 
 \item{dados_etapa}{data.frame ou data.table com os dados da equalizacao da etapa}
+
+\item{produto_dt}{valor logico que determina se o resultado sera em data.table (caso produto_dt = TRUE) ou data.frame (caso produto_dt = FALSE)}
 }
 \value{
 Um data.frame ou data.table com a simulacao dos dados do FNDE

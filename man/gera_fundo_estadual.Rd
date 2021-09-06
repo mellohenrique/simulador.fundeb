@@ -7,9 +7,11 @@
 gera_fundo_estadual(dados_alunos, dados_complementar, produto_dt = TRUE)
 }
 \arguments{
-\item{dados_alunos}{data.frame ou data.table com os dados de alunos ponderados em formato tidy}
+\item{dados_alunos}{data.frame com os dados de alunos}
 
-\item{dados_complementar}{data.frame ou data.table com os dados de receitas dos entes}
+\item{dados_complementar}{data.frame com os dados de peso das etapas}
+
+\item{produto_dt}{valor logico que determina se o resultado sera em data.table (caso produto_dt = TRUE) ou data.frame (caso produto_dt = FALSE)}
 }
 \value{
 Um data.frame ou data.table com os dados de alunos considerando os pesos dados de FNDE em formato longo ou curto

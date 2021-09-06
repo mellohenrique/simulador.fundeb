@@ -2,13 +2,7 @@
 #'
 #' @description Pondera dados de alunos do FNDE por ente e etapa e retorna os valores ponderados por etapa
 #'
-#' @inheritParams limpa_fnde
-#' @param dados_alunos data.frame com os dados de peso das etapas
-#' @param dados_complementar data.frame com os dados de peso das etapas
-#' @param chao_socio valor minimo do peso da variavel social na ponderacao de alunos
-#' @param teto_socio valor maximo do peso da variavel social na ponderacao de alunos
-#' @param chao_fiscal valor minimo do peso da variavel fiscal na ponderacao de alunos
-#' @param teto_fiscal valor maximo do peso da variavel fiscal na ponderacao de alunos
+#' @inheritParams simula_fundeb
 #'
 #' @return Um data.frame ou data.table com os dados de alunos considerando os fatores sociais e financeiros
 #'

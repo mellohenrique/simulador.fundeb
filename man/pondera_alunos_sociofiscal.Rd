@@ -15,7 +15,7 @@ pondera_alunos_sociofiscal(
 )
 }
 \arguments{
-\item{dados_alunos}{data.frame com os dados de peso das etapas}
+\item{dados_alunos}{data.frame com os dados de alunos}
 
 \item{dados_complementar}{data.frame com os dados de peso das etapas}
 
@@ -26,6 +26,8 @@ pondera_alunos_sociofiscal(
 \item{chao_fiscal}{valor minimo do peso da variavel fiscal na ponderacao de alunos}
 
 \item{teto_fiscal}{valor maximo do peso da variavel fiscal na ponderacao de alunos}
+
+\item{produto_dt}{valor logico que determina se o resultado sera em data.table (caso produto_dt = TRUE) ou data.frame (caso produto_dt = FALSE)}
 }
 \value{
 Um data.frame ou data.table com os dados de alunos considerando os fatores sociais e financeiros

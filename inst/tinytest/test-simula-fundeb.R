@@ -53,9 +53,9 @@ expect_equal(class(df_teste),
 expect_equal(class(dt_teste),
              c("data.table", "data.frame"))
 expect_equal(dim(df_teste),
-             c(76, 19))
+             c(76, 20))
 expect_equal(dim(dt_teste),
-             c(76, 19))
+             c(76, 20))
 
 ## Teste de resultados da funcao ####
 ### Casos extremos
