@@ -20,9 +20,12 @@
 #'
 #' @export
 
-simula_fundeb <- function(dados_alunos, dados_complementar, peso_etapas = peso, chao_socio = 1, teto_socio = 1.3, chao_fiscal = 1, teto_fiscal = 1.3, entes_excluidos_vaaf = NULL, complementacao_vaaf, complementacao_vaat, produto_dt = TRUE){
+simula_fundeb <- function(dados_alunos, dados_complementar, peso_etapas = peso, chao_socio = 1, teto_socio = 1.3, difere_etapas_complementacao = c("vaaf_vaat", "mesmos_pesos"), chao_fiscal = 1, teto_fiscal = 1.3, entes_excluidos_vaaf = NULL, complementacao_vaaf, complementacao_vaat, produto_dt = TRUE){
 
-   # Checando dados
+  # Checa o argumento de diferenciacao de etapas
+  difere_etapas_complementacao = match.arg(difere_etapas_complementacao)
+
+  # Checando dados
   complementar = checa_transforma_dt(dados_complementar)
   alunos = checa_transforma_dt(dados_alunos)
   peso_etapas = checa_transforma_dt(peso_etapas)
@@ -31,7 +34,8 @@ simula_fundeb <- function(dados_alunos, dados_complementar, peso_etapas = peso, 
   . = uf = ibge = fundo_vaaf_extra = fundo_vaaf = impostos_extra = vaaf_extra = peso = alunos_ponderados = estimativa_de_receitas = receitas = NULL
 
   # Tabelas iniciais
-  alunos = pondera_alunos_etapa(alunos, peso_etapas = peso_etapas)
+  alunos = pondera_alunos_etapa(alunos, peso_etapas = peso_etapas, difere_etapas_complementacao = difere_etapas_complementacao)
+
   entes = pondera_alunos_sociofiscal(
     dados_alunos = alunos,
     dados_complementar = dados_complementar,

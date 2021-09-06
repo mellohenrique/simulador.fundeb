@@ -4,14 +4,14 @@
 ## Testes para a função simula fnde
 
 ## Preparação ----
-df_teste = simula_fundeb(dados_fnde = dados_teste,
+df_teste = simula_fundeb(dados_alunos = dados_teste,
                          dados_complementar = complementar_teste,
                          peso_etapas = peso,
                          complementacao_vaaf = 1e5,
                          complementacao_vaat = 1e5,
                          produto_dt = FALSE)
 
-dt_teste = simula_fundeb(dados_fnde = dados_teste,
+dt_teste = simula_fundeb(dados_alunos = dados_teste,
                           dados_complementar = complementar_teste,
                           peso_etapas = peso,
                           complementacao_vaaf = 1e5,
@@ -19,21 +19,21 @@ dt_teste = simula_fundeb(dados_fnde = dados_teste,
                           produto_dt = TRUE)
 
 ### Preparação para teste de casos extremos ####
-dt_teste_zero = simula_fundeb(dados_fnde = dados_teste,
+dt_teste_zero = simula_fundeb(dados_alunos = dados_teste,
                                dados_complementar = complementar_teste,
                                peso_etapas = peso,
                                complementacao_vaaf = 0,
                                complementacao_vaat = 0,
                                produto_dt = TRUE)
 
-dt_teste_super_vaat = simula_fundeb(dados_fnde = dados_teste,
+dt_teste_super_vaat = simula_fundeb(dados_alunos = dados_teste,
                                      dados_complementar = complementar_teste,
                                      peso_etapas = peso,
                                      complementacao_vaaf = 0,
                                      complementacao_vaat = 1e10,
                                      produto_dt = TRUE)
 
-dt_teste_super_vaaf = simula_fundeb(dados_fnde = dados_teste,
+dt_teste_super_vaaf = simula_fundeb(dados_alunos = dados_teste,
                                     dados_complementar = complementar_teste,
                                 peso_etapas = peso,
                                 complementacao_vaaf = 1e10,

@@ -34,8 +34,8 @@ pondera_alunos_etapa <- function(dados_fnde, peso_etapas = peso, difere_etapas_c
                                   peso_vaat = peso_vaat), on = "etapa"]
   } else if (difere_etapas_complementacao == "mesmos_pesos") {
 
-    alunos_tidy[peso_etapas, `:=`(peso_vaaf = peso_vaaf,
-                                  peso_vaat = peso_vaat), on = "etapa"]
+    alunos_tidy[peso_etapas, `:=`(peso_vaaf = peso,
+                                  peso_vaat = peso), on = "etapa"]
   }
 
   alunos_tidy[,

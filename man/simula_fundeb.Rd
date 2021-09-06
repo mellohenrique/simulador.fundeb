@@ -10,6 +10,7 @@ simula_fundeb(
   peso_etapas = peso,
   chao_socio = 1,
   teto_socio = 1.3,
+  difere_etapas_complementacao = c("vaaf_vaat", "mesmos_pesos"),
   chao_fiscal = 1,
   teto_fiscal = 1.3,
   entes_excluidos_vaaf = NULL,
@@ -29,6 +30,8 @@ simula_fundeb(
 
 \item{teto_socio}{valor maximo do peso da variavel social na ponderacao de alunos}
 
+\item{difere_etapas_complementacao}{variavel em caractere com as opcoes de diferenciacao dos pesos das etapas. Caso escolha-se vaaf_vaat a etapa vaaf e a etapa vaat consideram pesos diferentes, caso escolha-se mesmos pesos as etapas tem os mesmos pesos}
+
 \item{chao_fiscal}{valor minimo do peso da variavel fiscal na ponderacao de alunos}
 
 \item{teto_fiscal}{valor maximo do peso da variavel fiscal na ponderacao de alunos}
@@ -38,8 +41,6 @@ simula_fundeb(
 \item{complementacao_vaat}{valor numerico com o montante a ser complementado pela uniao na etapa VAAT}
 
 \item{produto_dt}{valor logico que determina se o resultado sera em data.table (caso produto_dt = TRUE) ou data.frame (caso produto_dt = FALSE)}
-
-\item{difere_etapas_complementacao}{variavel em caractere com as opcoes de diferenciacao dos pesos das etapas. Caso escolha-se vaaf_vaat a etapa vaaf e a etapa vaat consideram pesos diferentes, caso escolha-se mesmos pesos as etapas tem os mesmos pesos}
 }
 \value{
 Um data.frame ou data.table com a simulacao dos dados do FNDE
