@@ -46,7 +46,7 @@ simula_fundeb <- function(dados_alunos, dados_complementar, peso_etapas = peso, 
 
   estados = gera_fundo_estadual(entes, complementar)
 
-  # Etapa 1 ####
+    # Etapa 1 ####
   ## Equalziacao VAAF
   fundo_estadual_equalizado =
     equaliza_fundo(estados,
@@ -58,7 +58,9 @@ simula_fundeb <- function(dados_alunos, dados_complementar, peso_etapas = peso, 
   ## Unindo bases
   entes = une_vaaf(entes, fundo_estadual_equalizado)
 
-  ## Adicionando medida para Var
+  # Calculando medidas necessarias
+  # Calculando VAAT
+  entes[, fundo_base := alunos_ponderados_vaaf * sum(fundeb)/sum(alunos_ponderados_vaaf), by = uf]
   entes[,fundo_vaaf_extra := fundo_vaaf + recursos_extra ]
   entes[,vaaf_extra := fundo_vaaf_extra/alunos_ponderados_vaat]
 
@@ -73,7 +75,6 @@ simula_fundeb <- function(dados_alunos, dados_complementar, peso_etapas = peso, 
 
   ## Unindo bases
   entes = une_vaat(entes, fundo_ente)
-  entes[, vaa := fundo_vaat/alunos]
 
   # Retorno
   return(retorna_dt_df(entes, produto_dt = produto_dt))
