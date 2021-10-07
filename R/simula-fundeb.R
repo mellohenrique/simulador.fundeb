@@ -47,7 +47,7 @@ simula_fundeb <- function(dados_alunos, dados_complementar, peso_etapas = peso, 
   estados = gera_fundo_estadual(entes, complementar)
 
     # Etapa 1 ####
-  ## Equalziacao VAAF
+  ## Equalizacao VAAF
   fundo_estadual_equalizado =
     equaliza_fundo(estados,
                    var_ordem = "vaa",
