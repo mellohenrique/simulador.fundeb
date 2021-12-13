@@ -21,7 +21,7 @@ equaliza_fundo <- function(dados, complementacao, var_ordem, var_alunos, var_rec
   setorderv(dados, var_ordem)
 
   if (!is.null(entes_excluidos)){
-    entes_excluidos = dados[ibge %in% entes_excluidos,]
+    dados_entes_excluidos = dados[ibge %in% entes_excluidos,]
     dados = dados[!ibge %in% entes_excluidos,]
   }
 
@@ -38,12 +38,15 @@ equaliza_fundo <- function(dados, complementacao, var_ordem, var_alunos, var_rec
   nao_equalizado[, receitas_etapa := get(var_receitas)]
 
   if (!is.null(entes_excluidos)){
-    entes_excluidos[,`:=`(equalizacao = FALSE,
+    dados_entes_excluidos[,`:=`(equalizacao = FALSE,
                           receitas_etapa = get(var_receitas))]
   }
 
   dados_etapa = rbind(equalizado, nao_equalizado)
-  dados_etapa = rbind(dados_etapa, entes_excluidos)
+
+  if (!is.null(entes_excluidos)){
+  dados_etapa = rbind(dados_etapa, dados_entes_excluidos)
+  }
 
   dados_etapa[, vaa_etapa := receitas_etapa/get(var_alunos)]
 

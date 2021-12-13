@@ -20,7 +20,7 @@
 #'
 #' @export
 
-simula_fundeb <- function(dados_alunos, dados_complementar, peso_etapas = peso, chao_socio = 1, teto_socio = 1.3, difere_etapas_complementacao = c("vaaf_vaat", "mesmos_pesos"), chao_fiscal = 1, teto_fiscal = 1.3, entes_excluidos_vaaf = NULL, complementacao_vaaf, complementacao_vaat, produto_dt = TRUE){
+simula_fundeb <- function(dados_alunos, dados_complementar, peso_etapas = peso, chao_socio = 1, teto_socio = 1.3, difere_etapas_complementacao = c("vaaf_vaat", "mesmos_pesos"), chao_fiscal = 1, teto_fiscal = 1.3, entes_excluidos_vaat = NULL, complementacao_vaaf, complementacao_vaat, produto_dt = TRUE){
 
   # Checa o argumento de diferenciacao de etapas
   difere_etapas_complementacao = match.arg(difere_etapas_complementacao)
@@ -70,7 +70,7 @@ simula_fundeb <- function(dados_alunos, dados_complementar, peso_etapas = peso, 
                    var_ordem = "vaaf_extra",
                    var_alunos = "alunos_ponderados_vaat",
                    var_receitas = "fundo_vaaf_extra",
-                   entes_excluidos = entes_excluidos_vaaf,
+                   entes_excluidos = entes_excluidos_vaat,
                    complementacao = complementacao_vaat)
 
   ## Unindo bases

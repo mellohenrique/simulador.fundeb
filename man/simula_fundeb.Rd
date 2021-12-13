@@ -13,7 +13,7 @@ simula_fundeb(
   difere_etapas_complementacao = c("vaaf_vaat", "mesmos_pesos"),
   chao_fiscal = 1,
   teto_fiscal = 1.3,
-  entes_excluidos_vaaf = NULL,
+  entes_excluidos_vaat = NULL,
   complementacao_vaaf,
   complementacao_vaat,
   produto_dt = TRUE
