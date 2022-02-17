@@ -20,7 +20,7 @@
 #'
 #' @export
 
-simula_fundeb <- function(dados_alunos, dados_complementar, peso_etapas = peso, chao_socio = 1, teto_socio = 1.3, difere_etapas_complementacao = c("vaaf_vaat", "mesmos_pesos"), chao_fiscal = 1, teto_fiscal = 1.3, entes_excluidos_vaat = NULL, complementacao_vaaf, complementacao_vaat, produto_dt = TRUE){
+simula_fundeb <- function(dados_alunos, dados_complementar, peso_etapas = peso, chao_socio = 1, teto_socio = 1, difere_etapas_complementacao = c("vaaf_vaat", "mesmos_pesos"), chao_fiscal = 1, teto_fiscal = 1, entes_excluidos_vaat = NULL, complementacao_vaaf, complementacao_vaat, produto_dt = TRUE){
 
   # Checa o argumento de diferenciacao de etapas
   difere_etapas_complementacao = match.arg(difere_etapas_complementacao)
@@ -51,8 +51,8 @@ simula_fundeb <- function(dados_alunos, dados_complementar, peso_etapas = peso, 
   fundo_estadual_equalizado =
     equaliza_fundo(estados,
                    var_ordem = "vaa",
-                   var_alunos = "alunos_ponderados_vaaf",
-                   var_receitas = "fundeb",
+                   var_alunos = "alunos_vaaf",
+                   var_receitas = "fundeb_estado",
                    complementacao = complementacao_vaaf)
 
   ## Unindo bases
@@ -60,21 +60,25 @@ simula_fundeb <- function(dados_alunos, dados_complementar, peso_etapas = peso, 
 
   # Calculando medidas necessarias
   # Calculando VAAT
-  entes[, fundo_base := alunos_ponderados_vaaf * sum(fundeb)/sum(alunos_ponderados_vaaf), by = uf]
-  entes[,fundo_vaaf_extra := fundo_vaaf + recursos_extra ]
-  entes[,vaaf_extra := fundo_vaaf_extra/alunos_ponderados_vaat]
+  entes[, fundo_base := alunos_vaaf * sum(fundeb_vaaf)/sum(alunos_vaaf), by = uf]
+  entes[,fundo_vaat_pre := fundeb_vaat + recursos_extra ]
+  entes[,vaat_pre := fundo_vaat_pre/alunos_vaat]
 
   # Etapa 2
   fundo_ente =
     equaliza_fundo(entes,
-                   var_ordem = "vaaf_extra",
-                   var_alunos = "alunos_ponderados_vaat",
-                   var_receitas = "fundo_vaaf_extra",
+                   var_ordem = "vaat_pre",
+                   var_alunos = "alunos_vaat",
+                   var_receitas = "fundo_vaat_pre",
                    entes_excluidos = entes_excluidos_vaat,
                    complementacao = complementacao_vaat)
 
   ## Unindo bases
   entes = une_vaat(entes, fundo_ente)
+
+  ## Adiciona total recebido por ente a base
+  entes[, total_recebido := fundo_vaaf + fundo_vaat - fundeb_vaat]
+  entes[, total_recebido_alunos_vaat := total_recebido/ alunos_vaat]
 
   # Retorno
   return(retorna_dt_df(entes, produto_dt = produto_dt))
