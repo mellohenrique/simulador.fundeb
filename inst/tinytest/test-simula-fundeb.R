@@ -41,10 +41,10 @@ dt_teste_super_vaaf = simula_fundeb(dados_alunos = dados_teste,
                                 produto_dt = TRUE)
 
 #
-teste_sem_complementacao = as.vector(cbind(by(df_teste$fundeb, df_teste$uf, sum))/ cbind(by(df_teste$alunos_ponderados_vaaf, df_teste$uf, sum)))
+teste_sem_complementacao = as.vector(cbind(by(df_teste$fundeb_vaaf, df_teste$uf, sum))/ cbind(by(df_teste$alunos_vaaf, df_teste$uf, sum)))
 
-teste_super_complementacao = (sum(df_teste$fundeb) + 1e10)/sum(df_teste$alunos_ponderados_vaaf)
-teste_super_complementacao_extra = (sum(df_teste$fundeb +df_teste$recursos_extra) + 1e10)/sum(df_teste$alunos_ponderados_vaat)
+teste_super_complementacao = (sum(df_teste$fundeb_vaaf) + 1e10)/sum(df_teste$alunos_vaaf)
+teste_super_complementacao_extra = (sum(df_teste$fundeb_vaat +df_teste$recursos_extra) + 1e10)/sum(df_teste$alunos_vaat)
 
 # Testes ----
 ## Testes de estrutura ####
@@ -53,9 +53,9 @@ expect_equal(class(df_teste),
 expect_equal(class(dt_teste),
              c("data.table", "data.frame"))
 expect_equal(dim(df_teste),
-             c(76, 20))
+             c(76, 23))
 expect_equal(dim(dt_teste),
-             c(76, 20))
+             c(76, 23))
 
 ## Teste de resultados da funcao ####
 ### Casos extremos
@@ -69,7 +69,7 @@ expect_equal(unique(round(dt_teste_zero$vaaf, digits = 2)),
              round(teste_sem_complementacao, digits = 2))
 
 expect_equal(dt_teste_zero$vaat,
-             dt_teste_zero$vaaf_extra)
+             dt_teste_zero$vaat_pre)
 
 #### Equalizacao
 expect_equal(any(dt_teste_zero$equalizacao_vaaf),

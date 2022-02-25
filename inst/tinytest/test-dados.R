@@ -14,11 +14,11 @@ expect_equal(dim(dados_teste),
 expect_equal(dim(peso),
              c(29,5))
 expect_equal(dim(complementar_teste),
-             c(76,7))
+             c(76,8))
 
 ## Teste de caracteristicas
 expect_true(all(peso$etapa %in% names(dados_teste)))
 expect_equal(unique(dados_teste$uf),
              c("AC", "RO"))
 expect_equal(sapply(complementar_teste, class, simplify = TRUE),
-             c(ibge = "integer",  recursos_extra = "numeric", fator_fiscal = "numeric", nome = "character", uf = "character", fator_social = "numeric", fundeb = "numeric"))
+             c(ibge = "integer",  recursos_extra = "numeric", fator_fiscal = "numeric", nome = "character", uf = "character", fator_social = "numeric", fundeb_vaaf = "numeric", fundeb_vaat = "numeric"))

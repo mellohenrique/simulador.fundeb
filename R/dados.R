@@ -65,7 +65,8 @@
 #'   \item{nome}{Variavel em caracteres com o nome do ente}
 #'   \item{uf}{Variavel em caractere com o nome das unidades da federacao}
 #'   \item{fator_social}{Variaval com o indice de desenvolvimento humano do ente que sera usado como fator social}
-#'   \item{fundeb}{Receitas do fundeb cada ente federativo}
+#'   \item{fundeb_vaaf}{Receitas do fundeb cada ente federativo utilizadas na etapa VAAF}
+#'   \item{fundeb_vaat}{Receitas do fundeb cada ente federativo utilizadas na etapa VAAT}
 #'   }
 #'
 "complementar_teste"
