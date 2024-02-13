@@ -34,11 +34,7 @@ simula_fundeb <- function(dados_alunos, dados_complementar, peso_etapas = peso, 
 
   entes = pondera_alunos_sociofiscal(
     dados_alunos = alunos,
-    dados_complementar = dados_complementar,
-    chao_socio = chao_socio,
-    teto_socio = teto_socio,
-    chao_fiscal = chao_fiscal,
-    teto_fiscal = teto_fiscal)
+    dados_complementar = dados_complementar)
 
   estados = gera_fundo_estadual(entes, complementar)
 
