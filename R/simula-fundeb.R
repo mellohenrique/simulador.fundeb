@@ -5,10 +5,6 @@
 #' @param dados_alunos data.frame com os dados de alunos
 #' @param dados_complementar data.frame com os dados de peso das etapas
 #' @param peso_etapas data.frame com os dados de peso das etapas
-#' @param chao_socio valor minimo do peso da variavel social na ponderacao de alunos
-#' @param teto_socio valor maximo do peso da variavel social na ponderacao de alunos
-#' @param chao_fiscal valor minimo do peso da variavel fiscal na ponderacao de alunos
-#' @param teto_fiscal valor maximo do peso da variavel fiscal na ponderacao de alunos
 #' @param complementacao_vaaf valor numerico com o montante a ser complementado pela uniao na etapa VAAF
 #' @param complementacao_vaat valor numerico com o montante a ser complementado pela uniao na etapa VAAT
 #' @param difere_etapas_complementacao variavel em caractere com as opcoes de diferenciacao dos pesos das etapas. Caso escolha-se vaaf_vaat a etapa vaaf e a etapa vaat consideram pesos diferentes, caso escolha-se mesmos pesos as etapas tem os mesmos pesos
@@ -20,7 +16,7 @@
 #'
 #' @export
 
-simula_fundeb <- function(dados_alunos, dados_complementar, peso_etapas = peso, chao_socio = 1, teto_socio = 1, difere_etapas_complementacao = c("vaaf_vaat", "mesmos_pesos"), chao_fiscal = 1, teto_fiscal = 1, entes_excluidos_vaat = NULL, complementacao_vaaf, complementacao_vaat, produto_dt = TRUE){
+simula_fundeb <- function(dados_alunos, dados_complementar, peso_etapas = peso, difere_etapas_complementacao = c("vaaf_vaat", "mesmos_pesos"), entes_excluidos_vaat = NULL, complementacao_vaaf, complementacao_vaat, produto_dt = TRUE){
 
   # Checa o argumento de diferenciacao de etapas
   difere_etapas_complementacao = match.arg(difere_etapas_complementacao)
