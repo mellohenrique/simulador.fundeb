@@ -4,7 +4,7 @@
 #'
 #' @param dados_alunos data.frame com os dados de alunos
 #' @param dados_complementar data.frame com os dados de peso das etapas
-#' @param peso_etapas data.frame com os dados de peso das etapas
+#' @param dados_peso data.frame com os dados de peso das etapas
 #' @param complementacao_vaaf valor numerico com o montante a ser complementado pela uniao na etapa VAAF
 #' @param complementacao_vaat valor numerico com o montante a ser complementado pela uniao na etapa VAAT
 #' @param difere_etapas_complementacao variavel em caractere com as opcoes de diferenciacao dos pesos das etapas. Caso escolha-se vaaf_vaat a etapa vaaf e a etapa vaat consideram pesos diferentes, caso escolha-se mesmos pesos as etapas tem os mesmos pesos
@@ -16,21 +16,13 @@
 #'
 #' @export
 
-simula_fundeb <- function(dados_alunos, dados_complementar, peso_etapas = peso, difere_etapas_complementacao = c("vaaf_vaat", "mesmos_pesos"), entes_excluidos_vaat = NULL, complementacao_vaaf, complementacao_vaat, produto_dt = TRUE){
+simula_fundeb <- function(dados_alunos, dados_complementar, dados_peso, peso_vaar = NULL, entes_excluidos_vaat = NULL, complementacao_vaaf, complementacao_vaat, produto_dt = TRUE){
 
-  # Checa o argumento de diferenciacao de etapas
-  difere_etapas_complementacao = match.arg(difere_etapas_complementacao)
 
   # Checando dados
-  complementar = checa_transforma_dt(dados_complementar)
-  alunos = checa_transforma_dt(dados_alunos)
-  peso_etapas = checa_transforma_dt(peso_etapas)
-
-  # Binding variables para NULL
-  . = uf = ibge = fundo_vaaf_extra = fundo_vaaf = impostos_extra = vaaf_extra = peso = alunos_ponderados = estimativa_de_receitas = receitas = NULL
 
   # Tabelas iniciais
-  alunos = pondera_alunos_etapa(alunos, peso_etapas = peso_etapas, difere_etapas_complementacao = difere_etapas_complementacao)
+  df_alunos = pondera_alunos_etapa(dados_alunos = dados_alunos, peso_etapas = peso_etapas)
 
   entes = pondera_alunos_sociofiscal(
     dados_alunos = alunos,
