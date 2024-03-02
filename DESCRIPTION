@@ -10,6 +10,5 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Suggests: tinytest
-Imports: data.table(>= 1.12.8)
 Depends: R (>= 3.5.0)
 RoxygenNote: 7.1.2
