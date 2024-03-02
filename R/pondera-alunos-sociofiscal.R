@@ -10,24 +10,12 @@
 #'
 
 
-pondera_alunos_sociofiscal <- function(dados_alunos, dados_complementar, produto_dt = TRUE){
-  # Binding variables para NULL
-  impostos_extra = imposto_cap = fator_social = impostos_cap = alunos_ponderados = fator_fiscal = fator_socio = NULL
+pondera_alunos_sociofiscal <- function(dados_alunos, dados_complementar){
 
-  dados_alunos = checa_transforma_dt(dados_alunos)
-  dados_complementar = checa_transforma_dt(dados_complementar)
+  df_geral = merge(dados_alunos, dados_complementar, by = 'ibge')
 
-  dados_alunos[dados_complementar,
-         `:=`(nome = nome,
-              nse = nse,
-              fundeb_vaaf  = fundeb_vaaf ,
-              fundeb_vaat = fundeb_vaat),
-         on = "ibge"]
+  df_geral$alunos_vaaf = df_geral$alunos_vaaf * df_geral$nse
+  df_geral$alunos_vaat = df_geral$alunos_vaat * df_geral$nse
 
-  dados_alunos[,
-               `:=`(alunos_vaaf = alunos_vaaf * nse,
-                    alunos_vaat = alunos_vaat * nse)
-    ]
-
-    return(retorna_dt_df(dados_alunos, produto_dt = produto_dt))
+  return(df_geral)
 }
