@@ -12,42 +12,37 @@ teste <- data.frame(pop = sample(50:100, 32, replace = TRUE),
 teste$renda_pc = teste$renda/teste$pop
 
 ## Roda exemplos
-dt_fundo <- simulador.fundeb2:::equaliza_fundo(teste,
-               2000,
-               var_ordem = "renda_pc",
-               var_alunos = "pop",
-               var_receitas = "renda",
-               produto_dt = TRUE)
 
 df_fundo <- simulador.fundeb2:::equaliza_fundo(teste,
                            2000,
                            var_ordem = "renda_pc",
                            var_alunos = "pop",
-                           var_receitas = "renda",
-                           produto_dt = FALSE)
+                           var_recursos = "renda")
 
 super_fundo <- simulador.fundeb2:::equaliza_fundo(teste,
                               200000,
                               var_ordem = "renda_pc",
                               var_alunos = "pop",
-                              var_receitas = "renda",
-                              produto_dt = FALSE)
+                              var_recursos = "renda")
 
 zero_fundo <- simulador.fundeb2:::equaliza_fundo(teste,
-                              complementacao = 0,
+                              complemento = 0,
                               var_ordem = "renda_pc",
                               var_alunos = "pop",
-                              var_receitas = "renda",
-                              produto_dt = FALSE)
+                              var_recursos = "renda")
 # Testes ----
 ## Testes estrutura
 expect_equal(class(df_fundo),
              "data.frame")
-expect_equal(class(dt_fundo),
-             c("data.table","data.frame"))
+expect_equal(class(super_fundo),
+             c("data.frame"))
+expect_equal(class(zero_fundo),
+             c("data.frame"))
+expect_equal(dim(df_fundo),
+             c(32,5))
 expect_equal(dim(df_fundo),
              c(32,6))
-expect_equal(dim(dt_fundo),
+expect_equal(dim(df_fundo),
              c(32,6))
 
 ## Testes de resultados extremos
