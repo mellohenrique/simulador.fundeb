@@ -18,8 +18,6 @@
 #'
 #' @format Uma tabela com 3 colunas e 29 linhas.
 #' \describe{
-#'   \item{uf}{Variavel em caractere com o nome das unidades da federacao}
-#'   \item{nome}{Variavel em caractere com o nome das etaoas segundo as portarias do FNDE}
 #'   \item{educacao_infantil_creche_integral}{Numero de matriculas no Ensino Infantil Creche Integral}
 #'   \item{educacao_infantil_creche_parcial}{Numero de matriculas no Ensino Infantil Creche Parcial}
 #'   \item{educacao_infantil_pre_escola_integral}{Numero de matriculas no Ensino Infantil Pré-Escola Integral}
@@ -61,10 +59,9 @@
 #' \describe{
 #'   \item{ibge}{Codigo ibge do ente}
 #'   \item{recursos_extra}{Variavel com recursos extra com direcionamento a educacao}
-#'   \item{fator_fiscal}{Variaval com Impostos extra por pessoa que sera usada como fator fiscal}
 #'   \item{nome}{Variavel em caracteres com o nome do ente}
 #'   \item{uf}{Variavel em caractere com o nome das unidades da federacao}
-#'   \item{fator_social}{Variaval com o indice de desenvolvimento humano do ente que sera usado como fator social}
+#'   \item{nse}{Variaval com o indice socioeconomico, no exemplo do teste todos os valores sao um}
 #'   \item{fundeb_vaaf}{Receitas do fundeb cada ente federativo utilizadas na etapa VAAF}
 #'   \item{fundeb_vaat}{Receitas do fundeb cada ente federativo utilizadas na etapa VAAT}
 #'   }
