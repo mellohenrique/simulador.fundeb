@@ -7,6 +7,8 @@
 #' @param dados_peso data.frame com os dados de peso das etapas
 #' @param complementacao_vaaf valor numerico com o montante a ser complementado pela uniao na etapa VAAF
 #' @param complementacao_vaat valor numerico com o montante a ser complementado pela uniao na etapa VAAT
+#' @param teto valor maximo do nivel socioeconomico na ponderacao de alunos
+#' @param chao valor minimo do nivel socioeconomico na ponderacao de alunos
 #' @param difere_etapas_complementacao variavel em caractere com as opcoes de diferenciacao dos pesos das etapas. Caso escolha-se vaaf_vaat a etapa vaaf e a etapa vaat consideram pesos diferentes, caso escolha-se mesmos pesos as etapas tem os mesmos pesos
 #' @param produto_dt valor logico que determina se o resultado sera em data.table (caso produto_dt = TRUE) ou data.frame (caso produto_dt = FALSE)
 #'
@@ -16,22 +18,28 @@
 #'
 #' @export
 
-simula_fundeb <- function(dados_alunos, dados_complementar, dados_peso, peso_vaar = NULL, entes_excluidos_vaat = NULL, complementacao_vaaf, complementacao_vaat, produto_dt = TRUE){
+simula_fundeb <- function(dados_alunos, dados_complementar, dados_peso, peso_vaar = NULL, entes_excluidos_vaat = NULL, teto = 1.05, chao = .95, complementacao_vaaf, complementacao_vaat, produto_dt = TRUE){
 
 
-  # Checando dados
+  # Checando dados ----
 
-  # Tabelas iniciais
+  # Agregacoes iniciais ----
+  ## Pondera aluno por peso das etapas  ----
   df_alunos = pondera_alunos_etapa(dados_alunos = dados_alunos, peso_etapas = peso_etapas)
 
-  entes = pondera_alunos_sociofiscal(
-    dados_alunos = alunos,
+  # Reescala vetor socioeconomico ----
+  dados_complementar$nse = reescala_vetor(dados_complementar$nse, teto = teto, piso = piso)
+
+  # Pondera alunos por nivel socioeconomico
+  df_entes = pondera_alunos_sociofiscal(
+    dados_alunos = df_alunos,
     dados_complementar = dados_complementar)
 
-  estados = gera_fundo_estadual(entes, complementar)
+  # Gera fundo estadual
+  df_estados = gera_fundo_estadual(df_entes)
 
-    # Etapa 1 ####
-  ## Equalizacao VAAF
+  # Etapa 1 ----
+  ## Equalizacao VAAF ----
   fundo_estadual_equalizado =
     equaliza_fundo(estados,
                    var_ordem = "vaa",
@@ -39,7 +47,7 @@ simula_fundeb <- function(dados_alunos, dados_complementar, dados_peso, peso_vaa
                    var_receitas = "fundeb_estado",
                    complementacao = complementacao_vaaf)
 
-  ## Unindo bases
+  ## Unindo bases ----
   entes = une_vaaf(entes, fundo_estadual_equalizado)
 
   # Calculando medidas necessarias
