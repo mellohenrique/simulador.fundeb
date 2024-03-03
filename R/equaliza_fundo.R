@@ -2,53 +2,51 @@
 #' @description Recebe dados dos entes do fnde, divididos em entes federativos ou fundos estaduais, e equaliza o valor recebido de acordo com o vaa em questao. A equalizacao e feita de baixo para cima.
 #'
 #' @param dados Um objeto da classe data.table ou data.frame com os dados do fundo a serem equalizados
-#' @param complementacao Numero com a quantidade de fundos a serem utilizados na equalizacao
+#' @param complemento Numero com a quantidade de fundos a serem utilizados na equalizacao
 #' @param var_ordem Variavel que sera utilizada para ordenar os entes
 #' @param var_alunos Variavel que sera utilizada como numero de alunos a serem considerados do ente
-#' @param var_receitas Variavel com as receitas que seram equalizadas
+#' @param var_recursos Variavel com as receitas que seram equalizadas
 #'
 #' @return Um data.frame ou data.table
 #'
 #' @import data.table
 #'
 
-equaliza_fundo <- function(dados, complementacao, var_ordem, var_alunos, var_receitas, entes_excluidos = NULL, produto_dt = TRUE){
-  # Binding variables para NULL
-  equalizacao = receitas_etapa = vaa_etapa = NULL
+equaliza_fundo <- function(dados, complemento, var_ordem, var_alunos, var_recursos, entes_excluidos = NULL){
 
-  dados = checa_transforma_dt(dados)
-
-  setorderv(dados, var_ordem)
 
   if (!is.null(entes_excluidos)){
     dados_entes_excluidos = dados[ibge %in% entes_excluidos,]
     dados = dados[!ibge %in% entes_excluidos,]
   }
 
-  if (complementacao == 0){
-  dados[, `:=`(equalizacao = round(get(var_ordem) * cumsum(get(var_alunos)) - cumsum(get(var_receitas)), digits = 2) < complementacao)] } else {
-  dados[, `:=`(equalizacao = get(var_ordem) * cumsum(get(var_alunos)) - cumsum(get(var_receitas)) <= complementacao)]
-  }
+  dados = dados[order(dados[,var_ordem]),]
+  dados$alunos_acumulados = cumsum(dados[,var_alunos])
+  dados$recursos_acumulados = cumsum(dados[,var_recursos])
+  dados$complementacao_necessaria = dados$alunos_acumulados * dados[,var_ordem] - dados$recursos_acumulados
 
-  equalizado = dados[equalizacao == TRUE,]
-  nao_equalizado = dados[equalizacao == FALSE,]
-
-  equalizado[, receitas_etapa := ((sum(get(var_receitas)) + complementacao)*get(var_alunos))/sum(get(var_alunos))]
-
-  nao_equalizado[, receitas_etapa := get(var_receitas)]
+  entes_complementados = dados['complementacao_necessaria']  < complemento
+  complementar = dados[entes_complementados,]
 
   if (!is.null(entes_excluidos)){
-    dados_entes_excluidos[,`:=`(equalizacao = FALSE,
-                          receitas_etapa = get(var_receitas))]
+    nao_complementar = rbind(
+      dados[!entes_complementados,],
+      dados_entes_excluidos)
+  } else {
+    nao_complementar = dados[!entes_complementados,]
   }
 
-  dados_etapa = rbind(equalizado, nao_equalizado)
 
-  if (!is.null(entes_excluidos)){
-  dados_etapa = rbind(dados_etapa, dados_entes_excluidos)
-  }
+  complementar$recursos_pos = complementar[,var_alunos] * (sum(complementar[,var_recursos]) + complemento)/ sum(complementar[,var_alunos])
+  complementar$recursos_pos / complementar$alunos_vaaf
 
-  dados_etapa[, vaa_etapa := receitas_etapa/get(var_alunos)]
+  nao_complementar$recursos_pos = nao_complementar$recursos_vaaf
 
-  retorna_dt_df(dados_etapa, produto_dt)
+  dados_final = rbind(nao_complementar,
+        complementar[, names(nao_complementar)])
+
+  dados_final$recursos_acumulados = NULL
+  dados_final$complementacao_necessaria = NULL
+
+  return(dados_final)
 }

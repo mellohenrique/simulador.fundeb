@@ -10,25 +10,16 @@
 #'
 #'
 
-gera_fundo_estadual <- function(dados_alunos, dados_complementar, produto_dt = TRUE ){
-  # Binding variables para NULL
-  alunos_ponderados = . = alunos = uf = estimativa_de_receitas = receitas = vaa = NULL
+gera_fundo_estadual <- function(dados_entes){
 
-  dados_alunos = checa_transforma_dt(dados_alunos)
+  # Agrega dados por estado
+  fundo_estadual = aggregate(list(alunos_vaaf = df_entes$alunos_vaaf,
+                                  recursos_vaaf = df_entes$recursos_vaaf),
+                             by = list(uf = df_entes$uf), FUN=sum)
 
-  dados_complementar = checa_transforma_dt(dados_complementar)
+  # Calcula vaaf pre complementacao estadual
+  fundo_estadual$vaaf_inicial = fundo_estadual$recursos_vaaf / fundo_estadual$alunos_vaaf
 
-  alunos_estadual = dados_alunos[, .(
-    alunos_vaaf = sum(alunos_vaaf),
-    alunos = sum(alunos)
-  ), by = uf]
-
-  dados_financas = dados_complementar[, .(fundeb_estado = sum(fundeb_vaaf)),
-                                  by = uf]
-
-  fundo_estadual = alunos_estadual[dados_financas, fundeb_estado := fundeb_estado, on = .(uf)]
-
-  fundo_estadual[, vaa := fundeb_estado/alunos_vaaf]
-
-  return(retorna_dt_df(fundo_estadual, produto_dt))
+  # Retorna dados dos fundos estaduais
+  return(fundo_estadual)
 }
