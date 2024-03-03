@@ -7,18 +7,9 @@
 #' @inheritParams une_vaaf
 #'
 #' @return Um data.frame ou data.table com a simulacao dos dados do FNDE
-#'
-#' @import data.table
-#'
 
 une_vaat <- function(dados_entes,
-                     dados_etapa,
-                     produto_dt = TRUE){
-  # Binding variables para NULL
-  receitas_etapa = equalizacao = . = uf =ibge = vaat = fundo_vaat = alunos_ponderados = NULL
-
-  dados_entes = checa_transforma_dt(dados_entes)
-  dados_etapa = checa_transforma_dt(dados_etapa)
+                     dados_etapa){
 
   dados_entes[dados_etapa,
               `:=`(fundo_vaat = receitas_etapa,

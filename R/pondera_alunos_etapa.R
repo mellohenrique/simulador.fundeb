@@ -5,9 +5,6 @@
 #' @inheritParams simula_fundeb
 #'
 #' @return Um data.frame ou data.table com os dados de alunos considerando os pesos dados de FNDE em formato longo ou curto
-#'
-#' @import data.table
-#'
 
 
 pondera_alunos_etapa <- function(dados_alunos, dados_peso){

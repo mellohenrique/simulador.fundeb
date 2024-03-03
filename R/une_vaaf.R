@@ -7,19 +7,9 @@
 #' @param dados_etapa data.frame ou data.table com os dados da equalizacao da etapa
 #'
 #' @return Um data.frame ou data.table com a simulacao dos dados do FNDE
-#'
-#' @import data.table
-#'
-
 
 une_vaaf <- function(dados_entes,
-                     dados_etapa,
-                     produto_dt = TRUE){
-  # Binding variables para NULL
-  receitas_etapa = equalizacao = . = uf = fundo_estadual_vaaf = alunos_ponderados = NULL
-
-  dados_entes = checa_transforma_dt(dados_entes)
-  dados_etapa = checa_transforma_dt(dados_etapa)
+                     dados_etapa){
 
   dados_entes[dados_etapa,
               `:=`(fundo_estadual_vaaf = receitas_etapa,

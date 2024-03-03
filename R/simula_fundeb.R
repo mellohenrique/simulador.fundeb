@@ -9,8 +9,6 @@
 #' @param complementacao_vaat valor numerico com o montante a ser complementado pela uniao na etapa VAAT
 #' @param teto valor maximo do nivel socioeconomico na ponderacao de alunos
 #' @param chao valor minimo do nivel socioeconomico na ponderacao de alunos
-#' @param difere_etapas_complementacao variavel em caractere com as opcoes de diferenciacao dos pesos das etapas. Caso escolha-se vaaf_vaat a etapa vaaf e a etapa vaat consideram pesos diferentes, caso escolha-se mesmos pesos as etapas tem os mesmos pesos
-#' @param produto_dt valor logico que determina se o resultado sera em data.table (caso produto_dt = TRUE) ou data.frame (caso produto_dt = FALSE)
 #'
 #' @return Um data.frame ou data.table com a simulacao dos dados do FNDE
 #'
@@ -27,36 +25,34 @@ simula_fundeb <- function(dados_alunos, dados_complementar, dados_peso, peso_vaa
   ## Pondera aluno por peso das etapas  ----
   df_alunos = pondera_alunos_etapa(dados_alunos = dados_alunos, peso_etapas = peso_etapas)
 
-  # Reescala vetor socioeconomico ----
+  ## Reescala vetor socioeconomico ----
   dados_complementar$nse = reescala_vetor(dados_complementar$nse, teto = teto, piso = piso)
 
-  # Pondera alunos por nivel socioeconomico
+  ## Pondera alunos por nivel socioeconomico ----
   df_entes = pondera_alunos_sociofiscal(
     dados_alunos = df_alunos,
     dados_complementar = dados_complementar)
 
-  # Gera fundo estadual
+  ## Gera fundo estadual ----
   df_estados = gera_fundo_estadual(df_entes)
 
-  # Etapa 1 ----
+  # Etapa 1 VAAF ----
   ## Equalizacao VAAF ----
-  fundo_estadual_equalizado =
-    equaliza_fundo(estados,
-                   var_ordem = "vaa",
-                   var_alunos = "alunos_vaaf",
-                   var_receitas = "fundeb_estado",
-                   complementacao = complementacao_vaaf)
+  fundo_estadual_equalizado = equaliza_fundo(df_estados, complemento = complemento_vaaf, var_ordem = 'vaaf_inicial', var_alunos = 'alunos_vaaf', var_recursos = 'recursos_vaaf', entes_excluidos = NULL)
 
   ## Unindo bases ----
-  entes = une_vaaf(entes, fundo_estadual_equalizado)
+  df_entes = une_vaaf(entes, fundo_estadual_equalizado)
 
-  # Calculando medidas necessarias
-  # Calculando VAAT
+  ## Calculando medidas necessarias ----
+
+
+  ## Calculando VAAT ----
   entes[, fundo_base := alunos_vaaf * sum(fundeb_vaaf)/sum(alunos_vaaf), by = uf]
   entes[, vaat_pre := fundeb_vaat/alunos_vaat]
 
-  # Etapa 2
-  fundo_ente =
+  # Etapa 2 ----
+  fundo_vaat =  equaliza_fundo(df_entes, complemento = complemento_vaat, var_ordem = 'vaat_inicial', var_alunos = 'alunos_vaaft', var_recursos = 'recursos_vaat', entes_excluidos = df_entes$inabilitados_vaat)
+
     equaliza_fundo(entes,
                    var_ordem = "vaat_pre",
                    var_alunos = "alunos_vaat",
@@ -64,10 +60,12 @@ simula_fundeb <- function(dados_alunos, dados_complementar, dados_peso, peso_vaa
                    entes_excluidos = entes_excluidos_vaat,
                    complementacao = complementacao_vaat)
 
-  ## Unindo bases
-  entes = une_vaat(entes, fundo_ente)
+  ##
 
+  ## Unindo bases  ----
+  df_entes = une_vaat(entes, fundo_ente)
 
+  ## Etapa 3 VAAR ----
   # Retorno
   return(retorna_dt_df(entes, produto_dt = produto_dt))
 }
