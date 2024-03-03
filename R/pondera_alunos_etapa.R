@@ -12,11 +12,12 @@
 
 pondera_alunos_etapa <- function(dados_alunos, dados_peso){
 
-  matriz_alunms = as.matrix(matriculas[order(matriculas$ibge), !names(matriculas) %in% c('ibge')])
-  alunos_vaaf = as.matrix(matriculas[, pesos$etapa]) %*% pesos$peso_vaaf
-  alunos_vaat = as.matrix(matriculas[, pesos$etapa]) %*% pesos$peso_vaat
+  dados_alunos_sem_ibge = dados_alunos[order(dados_alunos$ibge), !names(dados_alunos) %in% c('ibge')]
+  matriz_alunos = as.matrix(dados_alunos_sem_ibge[, pesos$etapa])
+  alunos_vaaf = matriz_alunos %*% pesos$peso_vaaf
+  alunos_vaat = matriz_alunos %*% pesos$peso_vaat
 
-  df_alunos = data.frame(ibge = matriculas$ibge[order(matriculas$ibge)],
+  df_alunos = data.frame(ibge = dados_alunos$ibge[order(dados_alunos$ibge)],
              alunos_vaaf = alunos_vaaf,
              alunos_vaat = alunos_vaat)
 
