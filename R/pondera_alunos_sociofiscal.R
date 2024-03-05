@@ -13,12 +13,12 @@
 pondera_alunos_sociofiscal <- function(dados_alunos, dados_complementar){
 
   # Une dados de alunos com dados complementares
-  df_geral = merge(dados_alunos, dados_complementar, by = 'ibge')
+  df = merge(dados_alunos, dados_complementar, by = 'ibge')
 
   # Multiplica pelo fator socioeconomico
-  df_geral$alunos_vaaf = df_geral$alunos_vaaf * df_geral$nse
-  df_geral$alunos_vaat = df_geral$alunos_vaat * df_geral$nse
+  df$alunos_vaaf = df$alunos_vaaf * df$nse
+  df$alunos_vaat = df$alunos_vaat * df$nse
 
   # Retorna resultado
-  return(df_geral)
+  return(df)
 }

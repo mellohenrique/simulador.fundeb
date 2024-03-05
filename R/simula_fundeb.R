@@ -38,10 +38,11 @@ simula_fundeb <- function(dados_alunos, dados_complementar, dados_peso, peso_vaa
 
   # Etapa 1 VAAF ----
   ## Equalizacao VAAF ----
-  fundo_estadual_equalizado = equaliza_fundo(df_estados, complemento = complemento_vaaf, var_ordem = 'vaaf_inicial', var_alunos = 'alunos_vaaf', var_recursos = 'recursos_vaaf', entes_excluidos = NULL)
+  df_fundo_estadual = equaliza_fundo(df_estados, complemento = complemento_vaaf, var_ordem = 'vaaf_estado_inicial', var_alunos = 'alunos_estado_vaaf', var_recursos = 'recursos_estado_vaaf', entes_excluidos = NULL)
+
 
   ## Unindo bases ----
-  df_entes = une_vaaf(entes, fundo_estadual_equalizado)
+  df_entes = une_vaaf(df_entes, df_estados, df_fundo_estadual)
 
   ## Calculando medidas necessarias ----
 

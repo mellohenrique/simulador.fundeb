@@ -13,13 +13,14 @@
 gera_fundo_estadual <- function(dados_entes){
 
   # Agrega dados por estado
-  fundo_estadual = aggregate(list(alunos_vaaf = df_entes$alunos_vaaf,
-                                  recursos_vaaf = df_entes$recursos_vaaf),
-                             by = list(uf = df_entes$uf), FUN=sum)
+  df = aggregate(list(alunos_estado_vaaf = dados_entes$alunos_vaaf,
+                      recursos_estado_vaaf = dados_entes$recursos_vaaf),
+                 by = list(uf = dados_entes$uf),
+                 FUN=sum)
 
   # Calcula vaaf pre complementacao estadual
-  fundo_estadual$vaaf_inicial = fundo_estadual$recursos_vaaf / fundo_estadual$alunos_vaaf
+  df$vaaf_estado_inicial = df$recursos_estado_vaaf / df$alunos_estado_vaaf
 
   # Retorna dados dos fundos estaduais
-  return(fundo_estadual)
+  return(df)
 }
