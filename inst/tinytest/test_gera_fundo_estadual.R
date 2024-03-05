@@ -5,24 +5,24 @@
 
 # Configuração ----
 ## Carregando dados
-dados_alunos = simulador.fundeb2:::pondera_alunos_etapa(dados_teste, peso_etapas = peso)
+dados_alunos = simulador.fundeb2:::pondera_alunos_etapa(dados_alunos = teste_alunos,  dados_peso =  teste_peso)
 
-df_teste = simulador.fundeb2:::gera_fundo_estadual(dados_alunos, complementar_teste)
+dados_entes = simulador.fundeb2:::pondera_alunos_sociofiscal(dados_alunos = dados_alunos,  dados_complementar = teste_complementar)
+
+df_teste = simulador.fundeb2:::gera_fundo_estadual(dados_entes)
 
 ## Testes de estrutura
 expect_equal(class(df_teste),
              c("data.frame"))
 expect_equal(dim(df_teste),
-             c(2, 5))
+             c(2, 4))
 
 ## Testando resultados
 expect_equal(df_teste$uf,
              c("AC", "RO"))
-expect_equal(df_teste$alunos_vaaf,
+expect_equal(df_teste$alunos_estado_vaaf,
              c(277685.55, 398168.35))
-expect_equal(df_teste$alunos,
-             c(252544, 365712))
-expect_equal(df_teste$fundeb_estado,
+expect_equal(df_teste$recursos_estado_vaaf,
              c(1150404470.33, 1665184818.25))
-expect_equal(df_teste$vaa,
+expect_equal(df_teste$vaaf_estado_inicial,
              c(4142.83159613455, 4182.11246134958))

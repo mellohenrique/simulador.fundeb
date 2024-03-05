@@ -1,24 +1,24 @@
 # Teste das bases de dados
 
 ## Teste de estrutura
-expect_equal(class(dados_teste),
+expect_equal(class(teste_alunos),
              "data.frame")
-expect_equal(class(peso),
+expect_equal(class(teste_peso),
              "data.frame")
-expect_equal(class(dados_complementar),
+expect_equal(class(teste_complementar),
              "data.frame")
 
 ## Teste de dimensoes
-expect_equal(dim(dados_teste),
+expect_equal(dim(teste_alunos),
              c(76,30))
-expect_equal(dim(peso),
+expect_equal(dim(teste_peso),
              c(29,5))
-expect_equal(dim(dados_complementar),
+expect_equal(dim(teste_complementar),
              c(76,8))
 
 ## Teste de caracteristicas
-expect_true(all(peso$etapa %in% names(dados_teste)))
-expect_equal(sort(unique(as.integer(substr(dados_teste$ibge, 1, 2)))),
+expect_true(all(teste_peso$etapa %in% names(teste_alunos)))
+expect_equal(sort(unique(as.integer(substr(teste_alunos$ibge, 1, 2)))),
              11:12)
-expect_equal(sapply(dados_complementar, class, simplify = TRUE),
-             c(ibge = "integer",  recursos_extra = "numeric", fator_fiscal = "numeric", nome = "character", uf = "character", fator_social = "numeric", fundeb_vaaf = "numeric", fundeb_vaat = "numeric"))
+expect_equal(sapply(teste_complementar, class, simplify = TRUE),
+             c(ibge = "integer",  uf = "character", nome = "character", recursos_vaaf = "numeric", recursos_vaat = "numeric", nse = "numeric", peso_vaar = "numeric", inabilitados_vaat = "numeric"))

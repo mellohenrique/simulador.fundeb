@@ -7,7 +7,8 @@
 ## Simulação de dados
 set.seed(23)
 teste <- data.frame(pop = sample(50:100, 32, replace = TRUE),
-           renda = sample(1000:2000, 32, replace = TRUE))
+                    renda = sample(1000:2000, 32, replace = TRUE),
+                    id = 1:32)
 
 teste$renda_pc = teste$renda/teste$pop
 
@@ -17,19 +18,22 @@ df_fundo <- simulador.fundeb2:::equaliza_fundo(teste,
                            2000,
                            var_ordem = "renda_pc",
                            var_alunos = "pop",
-                           var_recursos = "renda")
+                           var_recursos = "renda",
+                           identificador = 'id')
 
 super_fundo <- simulador.fundeb2:::equaliza_fundo(teste,
                               200000,
                               var_ordem = "renda_pc",
                               var_alunos = "pop",
-                              var_recursos = "renda")
+                              var_recursos = "renda",
+                              identificador = 'id')
 
 zero_fundo <- simulador.fundeb2:::equaliza_fundo(teste,
-                              complemento = 0,
+                              complementacao_uniao = 0,
                               var_ordem = "renda_pc",
                               var_alunos = "pop",
-                              var_recursos = "renda")
+                              var_recursos = "renda",
+                              identificador = 'id')
 # Testes ----
 ## Testes estrutura
 expect_equal(class(df_fundo),
