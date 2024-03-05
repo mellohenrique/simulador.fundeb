@@ -10,7 +10,7 @@ expect_equal(class(dados_complementar),
 
 ## Teste de dimensoes
 expect_equal(dim(dados_teste),
-             c(76,32))
+             c(76,30))
 expect_equal(dim(peso),
              c(29,5))
 expect_equal(dim(dados_complementar),
@@ -18,7 +18,7 @@ expect_equal(dim(dados_complementar),
 
 ## Teste de caracteristicas
 expect_true(all(peso$etapa %in% names(dados_teste)))
-expect_equal(unique(dados_teste$uf),
-             c("AC", "RO"))
+expect_equal(sort(unique(as.integer(substr(dados_teste$ibge, 1, 2)))),
+             11:12)
 expect_equal(sapply(dados_complementar, class, simplify = TRUE),
              c(ibge = "integer",  recursos_extra = "numeric", fator_fiscal = "numeric", nome = "character", uf = "character", fator_social = "numeric", fundeb_vaaf = "numeric", fundeb_vaat = "numeric"))
