@@ -16,7 +16,7 @@
 #'
 #' @export
 
-simula_fundeb <- function(dados_alunos, dados_complementar, dados_peso, peso_vaar = NULL, entes_excluidos_vaat = NULL, teto = 1.05, chao = .95, complementacao_vaaf, complementacao_vaat, produto_dt = TRUE){
+simula_fundeb <- function(dados_alunos, dados_complementar, dados_peso, peso_vaar = NULL, entes_excluidos_vaat = NULL, teto = 1.05, chao = .95, complementacao_vaaf, complementacao_vaat, complementacao_vaar, produto_dt = TRUE){
 
 
   # Checando dados ----
@@ -50,19 +50,12 @@ simula_fundeb <- function(dados_alunos, dados_complementar, dados_peso, peso_vaa
   # Etapa 2 ----
   fundo_vaat =  equaliza_fundo(df_entes, complemento = complemento_vaat, var_ordem = 'vaat_pre', var_alunos = 'alunos_vaat', var_recursos = 'recursos_vaat', entes_excluidos = df_entes$inabilitados_vaat)
 
-    equaliza_fundo(entes,
-                   var_ordem = "vaat_pre",
-                   var_alunos = "alunos_vaat",
-                   var_receitas = "fundeb_vaat",
-                   entes_excluidos = entes_excluidos_vaat,
-                   complementacao = complementacao_vaat)
-
-  ##
-
   ## Unindo bases  ----
-  df_entes = une_vaat(entes, fundo_ente)
+  df_entes = une_vaat(df_entes, fundo_vaat)
 
   ## Etapa 3 VAAR ----
+  df_entes$recursos_vaar = df_entes$peso_vaar * complementacao_vaar
+
   # Retorno
-  return(retorna_dt_df(entes, produto_dt = produto_dt))
+  return(df_entes)
 }
