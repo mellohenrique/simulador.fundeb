@@ -45,14 +45,10 @@ simula_fundeb <- function(dados_alunos, dados_complementar, dados_peso, peso_vaa
   df_entes = une_vaaf(df_entes, df_estados, df_fundo_estadual)
 
   ## Calculando medidas necessarias ----
-
-
-  ## Calculando VAAT ----
-  entes[, fundo_base := alunos_vaaf * sum(fundeb_vaaf)/sum(alunos_vaaf), by = uf]
-  entes[, vaat_pre := fundeb_vaat/alunos_vaat]
+  df_entes$vaat_pre = df_entes$recursos_vaat / df_entes$alunos_vaat
 
   # Etapa 2 ----
-  fundo_vaat =  equaliza_fundo(df_entes, complemento = complemento_vaat, var_ordem = 'vaat_inicial', var_alunos = 'alunos_vaaft', var_recursos = 'recursos_vaat', entes_excluidos = df_entes$inabilitados_vaat)
+  fundo_vaat =  equaliza_fundo(df_entes, complemento = complemento_vaat, var_ordem = 'vaat_pre', var_alunos = 'alunos_vaat', var_recursos = 'recursos_vaat', entes_excluidos = df_entes$inabilitados_vaat)
 
     equaliza_fundo(entes,
                    var_ordem = "vaat_pre",
