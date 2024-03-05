@@ -4,7 +4,7 @@
 \alias{reescala_vetor}
 \title{Reescala uma vetor}
 \usage{
-reescala_vetor(var, teto = 1.3, chao = 1)
+reescala_vetor(var, teto = 1.05, chao = 0.95)
 }
 \arguments{
 \item{var}{um vetor numerico}
