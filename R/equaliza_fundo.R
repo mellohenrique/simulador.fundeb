@@ -13,8 +13,8 @@ equaliza_fundo <- function(dados, complementacao_uniao, var_ordem, var_alunos, v
 
   ## Remove entes que nao fazem parte da equalizacao
   if (!is.null(entes_excluidos)){
-    df_entes_excluidos = dados[ibge %in% entes_excluidos,]
-    df = dados[!ibge %in% entes_excluidos,]
+    df_entes_excluidos = dados[dados$ibge %in% entes_excluidos,]
+    df = dados[!dados$ibge %in% entes_excluidos,]
   }
 
   ## Limpeza
