@@ -10,7 +10,7 @@
 #'   \item{encontrado}{Variavel binaria, 1 se encontrado na regulamentacao do FNDE e 0 caso contrario}
 #' }
 #' @source Tabela Criada a partir dos dados do TCU
-"peso"
+"teste_peso"
 
 #' Dados Teste
 #'
@@ -49,7 +49,7 @@
 #'   \item{formacao_por_alternancia_eja_int_ed_profis_de_nivel_medio}{Numero de matriculas em Formação por alternância EJA - Int Ed. Profis. De Nível Médio}
 #' }
 #' @source Tabela Criada a partir dos dados do TCU
-"dados_teste"
+"teste_alunos"
 
 #' Dados Teste
 #'
@@ -58,12 +58,13 @@
 #' @format Uma tabela com 3 colunas e 29 linhas.
 #' \describe{
 #'   \item{ibge}{Codigo ibge do ente}
-#'   \item{recursos_extra}{Variavel com recursos extra com direcionamento a educacao}
-#'   \item{nome}{Variavel em caracteres com o nome do ente}
 #'   \item{uf}{Variavel em caractere com o nome das unidades da federacao}
+#'   \item{nome}{Variavel em caracteres com o nome do ente}
+#'   \item{recursos_vaaf}{Receitas do fundeb cada ente federativo utilizadas na etapa VAAF}
+#'   \item{recursos_vaat}{Receitas do fundeb cada ente federativo utilizadas na etapa VAAT}
 #'   \item{nse}{Variaval com o indice socioeconomico, no exemplo do teste todos os valores sao um}
-#'   \item{fundeb_vaaf}{Receitas do fundeb cada ente federativo utilizadas na etapa VAAF}
-#'   \item{fundeb_vaat}{Receitas do fundeb cada ente federativo utilizadas na etapa VAAT}
+#'   \item{peso_vaar}{Parcela dos recursos vaar que irao para cada ente}
+#'   \item{inabilitados_vaat}{Variavel com o identificador dos entes que nao participarao da complementacao vaat}
 #'   }
 #'
-"complementar_teste"
+"teste_complementar"
