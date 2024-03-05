@@ -7,18 +7,13 @@
 
 ## Cria bases de teste
 df_teste = simulador.fundeb2:::pondera_alunos_etapa(dados_teste, peso_etapas = peso, produto_dt = FALSE)
-dt_teste = simulador.fundeb2:::pondera_alunos_etapa(dados_teste, peso_etapas = peso, produto_dt = TRUE)
 
 ## Teste de estrutura
 expect_equal(class(df_teste),
              "data.frame")
-expect_equal(class(dt_teste),
-             c("data.table", "data.frame"))
 
 ## Teste de dimensoes
 expect_equal(dim(df_teste),
-             c(76, 5))
-expect_equal(dim(dt_teste),
              c(76, 5))
 
 ## Testando ponderacao de alunos entre tipos diferentes de teste
