@@ -1,25 +1,24 @@
 # Teste para função pondera_alunos_etapa----
 ## Autor: Henrique de Assunção
-## Data: 25/05/2021
 ## Testes para função de pnderar alunos por etapa
 
 # Configuração ----
 
 ## Cria bases de teste
-dados_alunos = simulador.fundeb2:::pondera_alunos_etapa(dados_alunos = teste_alunos,  dados_peso =  teste_peso)
+df = simulador.fundeb2:::pondera_alunos_etapa(dados_alunos = teste_alunos,  dados_peso =  teste_peso)
 
 ## Teste de estrutura
-expect_equal(class(dados_alunos),
+expect_equal(class(df),
              "data.frame")
 
 ## Teste de dimensoes
-expect_equal(dim(df_teste),
+expect_equal(dim(df),
              c(76, 3))
 
 ## Testando ponderacao de alunos entre tipos diferentes de teste
 
-expect_equal(dados_alunos$alunos_vaaf,
+expect_equal(df$alunos_vaaf,
              c(213250.6, 166289.6, 2547.75, 12410.65, 688.2, 7239.35, 1658.2, 2102.85, 845.25, 2233.25, 3125.3, 4538.7, 5445.65, 8425.7, 4334.8, 2352.85, 4380.65, 4461.8, 47454.75, 1828.2, 532.6, 5661.25, 798.7, 11805.2, 3352.05, 3830.95, 1905.65, 2195.75, 1939.85, 3755.8, 882.6, 681.45, 1737.3, 3600.25, 598.3, 1624.95, 2956.05, 1306.05, 1528.6, 1268.35, 1239.8, 2018.4, 927.9, 571.65, 348.4, 468.1, 552, 2694.65, 1389.55, 825.7, 1510.65, 1895.25, 1367.5, 1072.6, 2468.85, 1687.5, 3463.95, 1967.75, 2233.4, 13858.65, 2803, 4837.15, 2970, 3711.05, 2158.5, 6284.95, 2491.15, 3809.4, 28312.45, 4386.1, 2901.95, 2895.9, 6141.9, 7945.5, 1607.35, 2459.5))
 
-expect_equal(dados_alunos$alunos_vaat,
+expect_equal(df$alunos_vaat,
              c(216542.8, 171442, 2991.8, 14433.4, 842.35, 8645.6, 2085.15, 2488.6, 1004.2, 2621.55, 3688.85, 5682.75, 6642.35, 10286.25, 5180.4, 2681.1, 5382.25, 5443.6, 57988, 2240.85, 649.35, 6969.25, 994, 14215.65, 3847.8, 4489.4, 2229.05, 2440.9, 2129.25, 4483.7, 1090.1, 790.2, 2010.25, 4271.5, 648.2, 1900.4, 3398, 1487.4, 1824.85, 1429.5, 1493.65, 2362, 1068.2, 660.2, 431.4, 569.05, 679.15, 3099.6, 1601.8, 948.45, 1658.4, 2081.15, 1613.3, 1229.35, 2928.35, 2026.2, 4176.3, 2353.2, 2650.65, 16641.75, 3348.75, 5701.6, 3214.65, 4480.8, 2560.15, 6899.85, 2943.05, 4247.45, 36427.4, 5033.9, 3082.9, 3615.7, 7256.95, 9435.15, 1992.55, 2893.9))

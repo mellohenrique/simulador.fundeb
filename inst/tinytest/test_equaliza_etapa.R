@@ -1,7 +1,5 @@
 # Teste para função equaliza fundo ----
-## Autor: Henrique de Assunção
-## Data: 25/05/2021
-## Testes para a função de equalizar fundo:
+## Testes para a função de equalizar fundo
 
 # Configuração ----
 ## Simulação de dados

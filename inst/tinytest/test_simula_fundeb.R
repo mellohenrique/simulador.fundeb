@@ -1,34 +1,41 @@
 # Teste da funcao simula fnde ----
 # Autor: Henrique de Assunção
-# Data: 25/05/2021
 ## Testes para a função simula fnde
 
 ## Preparação ----
-df_teste = simula_fundeb(dados_alunos = dados_teste,
-                         dados_complementar = complementar_teste,
-                         peso_etapas = peso,
-                         complementacao_vaaf = 1e5,
-                         complementacao_vaat = 1e5,)
+df_teste = simulador.fundeb2:::simula_fundeb(
+  dados_alunos = teste_alunos,
+  dados_complementar = teste_complementar,
+  dados_peso = teste_peso,
+  complementacao_vaaf = 4e5,
+  complementacao_vaat = 1e5,
+  complementacao_vaar = 1e5)
 
 ### Preparação para teste de casos extremos ####
-df_teste_zero = simula_fundeb(dados_alunos = dados_teste,
-                               dados_complementar = complementar_teste,
-                               peso_etapas = peso,
-                               complementacao_vaaf = 0,
-                               complementacao_vaat = 0)
 
+df_teste_zero = simulador.fundeb2:::simula_fundeb(
+  dados_alunos = teste_alunos,
+  dados_complementar = teste_complementar,
+  dados_peso = teste_peso,
+  complementacao_vaaf = 0,
+  complementacao_vaat = 0,
+  complementacao_vaar = 0)
 
-df_teste_super_vaaf = simula_fundeb(dados_alunos = dados_teste,
-                                    dados_complementar = complementar_teste,
-                                    peso_etapas = peso,
-                                    complementacao_vaaf = 1e10,
-                                    complementacao_vaat = 0)
+df_teste_super_vaaf = simulador.fundeb2:::simula_fundeb(
+  dados_alunos = teste_alunos,
+  dados_complementar = teste_complementar,
+  dados_peso = teste_peso,
+  complementacao_vaaf = 1e8,
+  complementacao_vaat = 0,
+  complementacao_vaar = 0)
 
-df_teste_super_vaat = simula_fundeb(dados_alunos = dados_teste,
-                                     dados_complementar = complementar_teste,
-                                     peso_etapas = peso,
-                                     complementacao_vaaf = 0,
-                                     complementacao_vaat = 1e10)
+df_teste_super_vaat = simulador.fundeb2:::simula_fundeb(
+  dados_alunos = teste_alunos,
+  dados_complementar = teste_complementar,
+  dados_peso = teste_peso,
+  complementacao_vaaf = 0,
+  complementacao_vaat = 1e8,
+  complementacao_vaar = 0)
 
 
 #
@@ -42,7 +49,7 @@ teste_super_complementacao_extra = (sum(df_teste$fundeb_vaat +df_teste$recursos_
 expect_equal(class(df_teste),
              c("data.frame"))
 expect_equal(dim(df_teste),
-             c(76, 23))
+             c(76, 20))
 
 ## Teste de resultados da funcao ####
 ### Casos extremos

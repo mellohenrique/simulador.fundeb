@@ -1,6 +1,4 @@
 # Teste para função gera_fundo_estadual----
-## Autor: Henrique de Assunção
-## Data: 25/05/2021
 ## Testes para função de gerar fundo estadual
 
 # Configuração ----
