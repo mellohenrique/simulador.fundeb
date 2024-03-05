@@ -9,14 +9,17 @@
 #' @return Um data.frame ou data.table com a simulacao dos dados do FNDE
 
 une_vaat <- function(dados_entes,
-                     dados_etapa){
+                     dados_complementacao_vaat){
 
-  dados_entes[dados_etapa,
-              `:=`(fundo_vaat = receitas_etapa,
-                   equalizacao_vaat = equalizacao),
-              on = .(uf, ibge)]
+  # Une tabelas
+  df = merge(dados_entes, dados_complementacao_vaat, all = TRUE)
 
-  dados_entes[, vaat := fundo_vaat/alunos_vaat]
+  # Corrige nomes
+  names(df)[names(df) == 'recursos_pos'] <- 'recursos_vaat_final'
 
-  return(dados_entes)
+  # Gera calculos necessarios
+  df$vaat_final = df$recursos_vaat_final / df$alunos_vaat
+
+  # Retorna resultado
+  return(df)
 }

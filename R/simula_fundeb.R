@@ -16,17 +16,17 @@
 #'
 #' @export
 
-simula_fundeb <- function(dados_alunos, dados_complementar, dados_peso, peso_vaar = NULL, entes_excluidos_vaat = NULL, teto = 1.05, chao = .95, complementacao_vaaf, complementacao_vaat, complementacao_vaar, produto_dt = TRUE){
+simula_fundeb <- function(dados_alunos, dados_complementar, dados_peso, teto = 1.05, chao = .95, complementacao_vaaf, complementacao_vaat, complementacao_vaar){
 
 
   # Checando dados ----
 
   # Agregacoes iniciais ----
   ## Pondera aluno por peso das etapas  ----
-  df_alunos = pondera_alunos_etapa(dados_alunos = dados_alunos, peso_etapas = peso_etapas)
+  df_alunos = pondera_alunos_etapa(dados_alunos = dados_alunos, dados_peso = dados_peso)
 
   ## Reescala vetor socioeconomico ----
-  dados_complementar$nse = reescala_vetor(dados_complementar$nse, teto = teto, piso = piso)
+  dados_complementar$nse = reescala_vetor(dados_complementar$nse, teto = teto, chao = chao)
 
   ## Pondera alunos por nivel socioeconomico ----
   df_entes = pondera_alunos_sociofiscal(
@@ -38,7 +38,7 @@ simula_fundeb <- function(dados_alunos, dados_complementar, dados_peso, peso_vaa
 
   # Etapa 1 VAAF ----
   ## Equalizacao VAAF ----
-  df_fundo_estadual = equaliza_fundo(df_estados, complemento = complemento_vaaf, var_ordem = 'vaaf_estado_inicial', var_alunos = 'alunos_estado_vaaf', var_recursos = 'recursos_estado_vaaf', entes_excluidos = NULL)
+  df_fundo_estadual = equaliza_fundo(df_estados, complementacao_uniao = complementacao_vaaf, var_ordem = 'vaaf_estado_inicial', var_alunos = 'alunos_estado_vaaf', var_recursos = 'recursos_estado_vaaf', identificador = 'uf', entes_excluidos = NULL)
 
 
   ## Unindo bases ----
@@ -48,13 +48,19 @@ simula_fundeb <- function(dados_alunos, dados_complementar, dados_peso, peso_vaa
   df_entes$vaat_pre = df_entes$recursos_vaat / df_entes$alunos_vaat
 
   # Etapa 2 ----
-  fundo_vaat =  equaliza_fundo(df_entes, complemento = complemento_vaat, var_ordem = 'vaat_pre', var_alunos = 'alunos_vaat', var_recursos = 'recursos_vaat', entes_excluidos = df_entes$inabilitados_vaat)
+  fundo_vaat =  equaliza_fundo(df_entes, complementacao_uniao = complementacao_vaat, var_ordem = 'vaat_pre', var_alunos = 'alunos_vaat', var_recursos = 'recursos_vaat', identificador = 'ibge', entes_excluidos = df_entes$inabilitados_vaat)
 
   ## Unindo bases  ----
   df_entes = une_vaat(df_entes, fundo_vaat)
 
   ## Etapa 3 VAAR ----
   df_entes$recursos_vaar = df_entes$peso_vaar * complementacao_vaar
+
+  # Gera colunas de interesse
+  df_entes$complemento_vaaf = df_entes$recursos_vaaf_final - df_entes$recursos_vaaf
+  df_entes$complemento_vaat = df_entes$recursos_vaat_final - df_entes$recursos_vaat
+  df_entes$complemento_uniao = df_entes$recursos_vaar + df_entes$complemento_vaat + df_entes$complemento_vaaf
+  df_entes$recursos_fundeb = df_entes$recursos_vaaf + df_entes$complemento_uniao
 
   # Retorno
   return(df_entes)
