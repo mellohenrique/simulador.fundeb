@@ -21,4 +21,4 @@ expect_true(all(teste_peso$etapa %in% names(teste_alunos)))
 expect_equal(sort(unique(as.integer(substr(teste_alunos$ibge, 1, 2)))),
              11:12)
 expect_equal(sapply(teste_complementar, class, simplify = TRUE),
-             c(ibge = "integer",  uf = "character", nome = "character", recursos_vaaf = "numeric", recursos_vaat = "numeric", nse = "numeric", peso_vaar = "numeric", inabilitados_vaat = "numeric"))
+             c(ibge = "integer",  uf = "character", nome = "character", recursos_vaaf = "numeric", recursos_vaat = "numeric", nse = "numeric", peso_vaar = "numeric", inabilitados_vaat = "logical"))

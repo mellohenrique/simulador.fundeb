@@ -7,6 +7,7 @@
 #' @param dados_peso data.frame com os dados de peso das etapas
 #' @param complementacao_vaaf valor numerico com o montante a ser complementado pela uniao na etapa VAAF
 #' @param complementacao_vaat valor numerico com o montante a ser complementado pela uniao na etapa VAAT
+#' @param complementacao_vaar valor numerico com o montante a ser complementado pela uniao na etapa VAAR
 #' @param teto valor maximo do nivel socioeconomico na ponderacao de alunos
 #' @param chao valor minimo do nivel socioeconomico na ponderacao de alunos
 #'

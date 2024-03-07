@@ -6,6 +6,11 @@
 \usage{
 une_vaat(dados_entes, dados_complementacao_vaat)
 }
+\arguments{
+\item{dados_entes}{data.frame com os dados dos entes federativos considerados na funcao}
+
+\item{dados_complementacao_vaat}{data.frame com os dados da complementacao vaat}
+}
 \value{
 Um data.frame ou data.table com a simulacao dos dados do FNDE
 }

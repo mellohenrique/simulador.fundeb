@@ -2,14 +2,16 @@
 #'
 #' @description Pondera dados de alunos do FNDE por ente e etapa e retorna os valores ponderados por etapa
 #'
-#' @inheritParams simula_fundeb
+#' @param dados_entes data.frame com os dados dos entes federativos considerados na funcao
 #'
 #' @return Um data.frame com os dados de recursos e alunos dos fundos estaduais
+#'
+#' @importFrom stats aggregate
 
 gera_fundo_estadual <- function(dados_entes){
 
   # Agrega dados por estado
-  df = aggregate(list(alunos_estado_vaaf = dados_entes$alunos_vaaf,
+  df = stats::aggregate(list(alunos_estado_vaaf = dados_entes$alunos_vaaf,
                       recursos_estado_vaaf = dados_entes$recursos_vaaf),
                  by = list(uf = dados_entes$uf),
                  FUN=sum)

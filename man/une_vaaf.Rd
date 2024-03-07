@@ -4,14 +4,14 @@
 \alias{une_vaaf}
 \title{Une a equalizacao vaaf com a tabela de entes}
 \usage{
-une_vaaf(df_entes, df_estados, df_fundos_estaduais)
+une_vaaf(dados_entes, dados_estados, dados_fundos_estaduais)
 }
 \arguments{
-\item{df_entes}{data.frame com os dados dos entes federativos}
+\item{dados_entes}{data.frame com os dados dos entes federativos considerados na funcao}
 
-\item{df_estados}{data.frame com os dados dos fundos estaduais}
+\item{dados_estados}{data.frame com os dados dos fundos estaduais}
 
-\item{df_fundos_estaduais}{data.frame com os dados da equalizacao da etapa dos fundos estaduais}
+\item{dados_fundos_estaduais}{data.frame com os dados da equalizacao da etapa dos fundos estaduais}
 }
 \value{
 Um data.frame ou data.table com a simulacao dos dados do FNDE

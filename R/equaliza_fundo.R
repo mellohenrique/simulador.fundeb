@@ -6,6 +6,8 @@
 #' @param var_ordem Variavel que sera utilizada para ordenar os entes
 #' @param var_alunos Variavel que sera utilizada como numero de alunos a serem considerados do ente
 #' @param var_recursos Variavel com as receitas que seram equalizadas
+#' @param identificador Identificador unico para cada ente que estara sendo equalizado
+#' @param entes_excluidos Vetor com o identificador de cada entre que sera removido da equalizacao
 #'
 #' @return Um data.frame
 

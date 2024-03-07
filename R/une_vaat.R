@@ -5,6 +5,7 @@
 #' @description Une a equalização do fundo com a tabela dos entes e calcula o valor aluno ano da etapa
 #'
 #' @inheritParams une_vaaf
+#' @param dados_complementacao_vaat data.frame com os dados da complementacao vaat
 #'
 #' @return Um data.frame ou data.table com a simulacao dos dados do FNDE
 

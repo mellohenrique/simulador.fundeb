@@ -24,6 +24,10 @@ equaliza_fundo(
 \item{var_alunos}{Variavel que sera utilizada como numero de alunos a serem considerados do ente}
 
 \item{var_recursos}{Variavel com as receitas que seram equalizadas}
+
+\item{identificador}{Identificador unico para cada ente que estara sendo equalizado}
+
+\item{entes_excluidos}{Vetor com o identificador de cada entre que sera removido da equalizacao}
 }
 \value{
 Um data.frame

@@ -6,6 +6,9 @@
 \usage{
 gera_fundo_estadual(dados_entes)
 }
+\arguments{
+\item{dados_entes}{data.frame com os dados dos entes federativos considerados na funcao}
+}
 \value{
 Um data.frame com os dados de recursos e alunos dos fundos estaduais
 }

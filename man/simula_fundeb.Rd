@@ -29,6 +29,8 @@ simula_fundeb(
 \item{complementacao_vaaf}{valor numerico com o montante a ser complementado pela uniao na etapa VAAF}
 
 \item{complementacao_vaat}{valor numerico com o montante a ser complementado pela uniao na etapa VAAT}
+
+\item{complementacao_vaar}{valor numerico com o montante a ser complementado pela uniao na etapa VAAR}
 }
 \value{
 Um data.frame ou data.table com a simulacao dos dados do FNDE
