@@ -8,14 +8,11 @@ simula_fundeb(
   dados_alunos,
   dados_complementar,
   dados_peso,
-  peso_vaar = NULL,
-  entes_excluidos_vaat = NULL,
   teto = 1.05,
   chao = 0.95,
   complementacao_vaaf,
   complementacao_vaat,
-  complementacao_vaar,
-  produto_dt = TRUE
+  complementacao_vaar
 )
 }
 \arguments{

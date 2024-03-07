@@ -4,11 +4,7 @@
 #'
 #' @inheritParams simula_fundeb
 #'
-#' @return Um data.frame ou data.table com os dados de alunos considerando os pesos dados de FNDE em formato longo ou curto
-#'
-#' @import data.table
-#'
-#'
+#' @return Um data.frame com os dados de recursos e alunos dos fundos estaduais
 
 gera_fundo_estadual <- function(dados_entes){
 

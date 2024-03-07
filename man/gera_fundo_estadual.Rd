@@ -7,7 +7,7 @@
 gera_fundo_estadual(dados_entes)
 }
 \value{
-Um data.frame ou data.table com os dados de alunos considerando os pesos dados de FNDE em formato longo ou curto
+Um data.frame com os dados de recursos e alunos dos fundos estaduais
 }
 \description{
 Pondera dados de alunos do FNDE por ente e etapa e retorna os valores ponderados por etapa

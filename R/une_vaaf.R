@@ -2,7 +2,6 @@
 #'
 #' @description Une a equalização do fundo etapa vaaf com a tabela dos entes e calcula o valor aluno ano da etapa
 #'
-#' @inheritParams simula_fundeb
 #' @param df_entes data.frame com os dados dos entes federativos
 #' @param df_estados data.frame com os dados dos fundos estaduais
 #' @param df_fundos_estaduais data.frame com os dados da equalizacao da etapa dos fundos estaduais

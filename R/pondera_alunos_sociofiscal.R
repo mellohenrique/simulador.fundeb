@@ -5,9 +5,6 @@
 #' @inheritParams simula_fundeb
 #'
 #' @return Um data.frame com os dados de alunos considerando o nivel socioeconomico
-#'
-#' @import data.table
-#'
 
 
 pondera_alunos_sociofiscal <- function(dados_alunos, dados_complementar){

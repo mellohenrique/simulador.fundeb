@@ -12,12 +12,9 @@
 #'
 #' @return Um data.frame ou data.table com a simulacao dos dados do FNDE
 #'
-#' @import data.table
-#'
 #' @export
 
 simula_fundeb <- function(dados_alunos, dados_complementar, dados_peso, teto = 1.05, chao = .95, complementacao_vaaf, complementacao_vaat, complementacao_vaar){
-
 
   # Checando dados ----
 
@@ -39,7 +36,6 @@ simula_fundeb <- function(dados_alunos, dados_complementar, dados_peso, teto = 1
   # Etapa 1 VAAF ----
   ## Equalizacao VAAF ----
   df_fundo_estadual = equaliza_fundo(df_estados, complementacao_uniao = complementacao_vaaf, var_ordem = 'vaaf_estado_inicial', var_alunos = 'alunos_estado_vaaf', var_recursos = 'recursos_estado_vaaf', identificador = 'uf', entes_excluidos = NULL)
-
 
   ## Unindo bases ----
   df_entes = une_vaaf(df_entes, df_estados, df_fundo_estadual)

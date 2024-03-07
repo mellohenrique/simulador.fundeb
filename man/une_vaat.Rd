@@ -4,7 +4,7 @@
 \alias{une_vaat}
 \title{Une a equalizacao vaat com a tabela de entes}
 \usage{
-une_vaat(dados_entes, dados_etapa)
+une_vaat(dados_entes, dados_complementacao_vaat)
 }
 \value{
 Um data.frame ou data.table com a simulacao dos dados do FNDE
