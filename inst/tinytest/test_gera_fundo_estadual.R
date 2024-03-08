@@ -3,11 +3,11 @@
 
 # Configuração ----
 ## Carregando dados
-dados_alunos = simulador.fundeb2:::pondera_alunos_etapa(dados_alunos = teste_alunos,  dados_peso =  teste_peso)
+dados_alunos = simulador.fundeb:::pondera_alunos_etapa(dados_alunos = teste_alunos,  dados_peso =  teste_peso)
 
-dados_entes = simulador.fundeb2:::pondera_alunos_sociofiscal(dados_alunos = dados_alunos,  dados_complementar = teste_complementar)
+dados_entes = simulador.fundeb:::pondera_alunos_sociofiscal(dados_alunos = dados_alunos,  dados_complementar = teste_complementar)
 
-df_teste = simulador.fundeb2:::gera_fundo_estadual(dados_entes)
+df_teste = simulador.fundeb:::gera_fundo_estadual(dados_entes)
 
 ## Testes de estrutura
 expect_equal(class(df_teste),

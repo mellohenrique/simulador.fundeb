@@ -13,7 +13,7 @@ une_vaaf <- function(dados_entes,
                      dados_fundos_estaduais){
 
   # Une bases
-  df = merge(df_entes, dados_estados[, c('uf', 'alunos_estado_vaaf')], all.x = TRUE, by = 'uf')
+  df = merge(dados_entes, dados_estados[, c('uf', 'alunos_estado_vaaf')], all.x = TRUE, by = 'uf')
   df = merge(df, dados_fundos_estaduais, all.x = TRUE, by = 'uf')
 
   # Calcula valores

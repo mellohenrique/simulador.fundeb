@@ -3,7 +3,7 @@
 ## Testes para a função simula fnde
 
 ## Preparação ----
-df_teste = simulador.fundeb2:::simula_fundeb(
+df_teste = simulador.fundeb:::simula_fundeb(
   dados_alunos = teste_alunos,
   dados_complementar = teste_complementar,
   dados_peso = teste_peso,
@@ -13,7 +13,7 @@ df_teste = simulador.fundeb2:::simula_fundeb(
 
 ### Preparação para teste de casos extremos ####
 
-df_teste_zero = simulador.fundeb2:::simula_fundeb(
+df_teste_zero = simulador.fundeb:::simula_fundeb(
   dados_alunos = teste_alunos,
   dados_complementar = teste_complementar,
   dados_peso = teste_peso,
@@ -21,7 +21,7 @@ df_teste_zero = simulador.fundeb2:::simula_fundeb(
   complementacao_vaat = 0,
   complementacao_vaar = 0)
 
-df_teste_super_vaaf = simulador.fundeb2:::simula_fundeb(
+df_teste_super_vaaf = simulador.fundeb:::simula_fundeb(
   dados_alunos = teste_alunos,
   dados_complementar = teste_complementar,
   dados_peso = teste_peso,
@@ -29,7 +29,7 @@ df_teste_super_vaaf = simulador.fundeb2:::simula_fundeb(
   complementacao_vaat = 0,
   complementacao_vaar = 0)
 
-df_teste_super_vaat = simulador.fundeb2:::simula_fundeb(
+df_teste_super_vaat = simulador.fundeb:::simula_fundeb(
   dados_alunos = teste_alunos,
   dados_complementar = teste_complementar,
   dados_peso = teste_peso,

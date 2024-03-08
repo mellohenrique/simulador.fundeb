@@ -5,7 +5,7 @@
 # Configuração ----
 
 ## Cria bases de teste
-df = simulador.fundeb2:::pondera_alunos_etapa(dados_alunos = teste_alunos,  dados_peso =  teste_peso)
+df = simulador.fundeb:::pondera_alunos_etapa(dados_alunos = teste_alunos,  dados_peso =  teste_peso)
 
 ## Teste de estrutura
 expect_equal(class(df),
