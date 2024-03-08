@@ -1,10 +1,11 @@
 Package: simulador.fundeb
 Type: Package
 Title: Simulador Fundeb
-Version: 0.5.6
+Version: 0.5.7
 Author: Henrique de Mello Santos de Assuncao
 Maintainer: Henrique de Mello Santos de Assuncao <henrique.mello1992@gmail.com>
 Description: Pacote que simula o financiamento do Fundo de Manutencao e Desenvolvimento da Educacao Basica e de Valorizacao dos Profissionais da Educacao.
+    Package that simulates the financing of the FUNDEB (Fundo de Manutencao e Desenvolvimento da Educacao Basica e de Valorizacao dos Profissionais da Educacao - Fund for the Maintenance and Development of Basic Education and the Appreciation of Education Professionals).
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
