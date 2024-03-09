@@ -13,6 +13,7 @@ Uma tabela com 3 colunas e 29 linhas.
   \item{recursos_vaaf}{Receitas do fundeb cada ente federativo utilizadas na etapa VAAF}
   \item{recursos_vaat}{Receitas do fundeb cada ente federativo utilizadas na etapa VAAT}
   \item{nse}{Variaval com o indice socioeconomico, no exemplo do teste todos os valores sao um}
+  \item{nf}{Variaval com o indice de nivel fiscal, no exemplo do teste todos os valores sao um}
   \item{peso_vaar}{Parcela dos recursos vaar que irao para cada ente}
   \item{inabilitados_vaat}{Variavel com o identificador dos entes que nao participarao da complementacao vaat}
   }

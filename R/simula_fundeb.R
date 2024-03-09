@@ -13,6 +13,23 @@
 #'
 #' @return Um data.frame ou data.table com a simulacao dos dados do FNDE
 #'
+#'
+#' @examples
+#'
+#' data("teste_alunos")
+#' data("teste_complementar")
+#' data("teste_peso")
+#'
+#' df_teste = simulador.fundeb:::simula_fundeb(
+#'   dados_alunos = teste_alunos,
+#'   dados_complementar = teste_complementar,
+#'   dados_peso = teste_peso,
+#'   complementacao_vaaf = 4e5,
+#'   complementacao_vaat = 1e5,
+#'   complementacao_vaar = 1e5)
+#'
+#' head(df_teste)
+#'
 #' @export
 
 simula_fundeb <- function(dados_alunos, dados_complementar, dados_peso, teto = 1.05, chao = .95, complementacao_vaaf, complementacao_vaat, complementacao_vaar){

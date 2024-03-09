@@ -1,14 +1,15 @@
 Package: simulador.fundeb
 Type: Package
-Title: Simulador Fundeb
-Version: 0.5.7
-Author: Henrique de Mello Santos de Assuncao
-Maintainer: Henrique de Mello Santos de Assuncao <henrique.mello1992@gmail.com>
-Description: Pacote que simula o financiamento do Fundo de Manutencao e Desenvolvimento da Educacao Basica e de Valorizacao dos Profissionais da Educacao.
-    Package that simulates the financing of the FUNDEB (Fundo de Manutencao e Desenvolvimento da Educacao Basica e de Valorizacao dos Profissionais da Educacao - Fund for the Maintenance and Development of Basic Education and the Appreciation of Education Professionals).
+Title: Simulador do Fundeb
+Version: 0.6.0
+Authors@R: c(
+	person("Henrique", "Assunção", , "henrique.mello1992@gmail.com", role=c("aut", "cre")))
+Description: 
+    Simulates the financing of the Fundeb (Fundo de Manutencao e Desenvolvimento da Educacao Basica e de Valorizacao dos Profissionais da Educacao - Fund for the Maintenance and Development of Basic Education and the Appreciation of Education Professionals).
+    Simula o financiamento do Fundeb (Fundo de Manutenção e Desenvolvimento da Educacao Basica e de Valorizacao dos Profissionais da Educacao).
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Suggests: tinytest
 Depends: R (>= 3.5.0)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1

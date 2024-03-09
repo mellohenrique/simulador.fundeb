@@ -38,3 +38,20 @@ Um data.frame ou data.table com a simulacao dos dados do FNDE
 \description{
 Simula a distribuição dos fundos do Fundeb e as etapas de equalização
 }
+\examples{
+
+data("teste_alunos")
+data("teste_complementar")
+data("teste_peso")
+
+df_teste = simulador.fundeb:::simula_fundeb(
+  dados_alunos = teste_alunos,
+  dados_complementar = teste_complementar,
+  dados_peso = teste_peso,
+  complementacao_vaaf = 4e5,
+  complementacao_vaat = 1e5,
+  complementacao_vaar = 1e5)
+
+head(df_teste)
+
+}

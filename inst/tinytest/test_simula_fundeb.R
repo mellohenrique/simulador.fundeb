@@ -50,7 +50,7 @@ teste_super_complementacao_vaat = (sum(df_teste$recursos_vaat) + 1e10)/sum(df_te
 expect_equal(class(df_teste),
              c("data.frame"))
 expect_equal(dim(df_teste),
-             c(76, 20))
+             c(76, 21))
 
 ## Teste de resultados da funcao ####
 ### Casos extremos

@@ -16,6 +16,10 @@ pondera_alunos_sociofiscal <- function(dados_alunos, dados_complementar){
   df$alunos_vaaf = df$alunos_vaaf * df$nse
   df$alunos_vaat = df$alunos_vaat * df$nse
 
+  # Multiplica pelo fator fiscal
+  df$alunos_vaaf = df$alunos_vaaf * df$nf
+  df$alunos_vaat = df$alunos_vaat * df$nf
+
   # Retorna resultado
   return(df)
 }
