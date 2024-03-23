@@ -44,7 +44,7 @@ data("teste_alunos")
 data("teste_complementar")
 data("teste_peso")
 
-df_teste = simulador.fundeb:::simula_fundeb(
+df_teste = simulador.fundeb::simula_fundeb(
   dados_alunos = teste_alunos,
   dados_complementar = teste_complementar,
   dados_peso = teste_peso,

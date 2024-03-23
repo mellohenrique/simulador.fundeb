@@ -3,7 +3,13 @@
 ## Testes para a função simula fnde
 
 ## Preparação ----
-df_teste = simulador.fundeb:::simula_fundeb(
+
+### Entes habilitados
+ibge_habilitados = teste_complementar$ibge[teste_complementar$inabilitados_vaat == FALSE]
+
+### Teste original
+
+df_teste = simulador.fundeb::simula_fundeb(
   dados_alunos = teste_alunos,
   dados_complementar = teste_complementar,
   dados_peso = teste_peso,
@@ -13,7 +19,7 @@ df_teste = simulador.fundeb:::simula_fundeb(
 
 ### Preparação para teste de casos extremos ####
 
-df_teste_zero = simulador.fundeb:::simula_fundeb(
+df_teste_zero = simulador.fundeb::simula_fundeb(
   dados_alunos = teste_alunos,
   dados_complementar = teste_complementar,
   dados_peso = teste_peso,
@@ -21,7 +27,7 @@ df_teste_zero = simulador.fundeb:::simula_fundeb(
   complementacao_vaat = 0,
   complementacao_vaar = 0)
 
-df_teste_super_vaaf = simulador.fundeb:::simula_fundeb(
+df_teste_super_vaaf = simulador.fundeb::simula_fundeb(
   dados_alunos = teste_alunos,
   dados_complementar = teste_complementar,
   dados_peso = teste_peso,
@@ -29,7 +35,7 @@ df_teste_super_vaaf = simulador.fundeb:::simula_fundeb(
   complementacao_vaat = 0,
   complementacao_vaar = 0)
 
-df_teste_super_vaat = simulador.fundeb:::simula_fundeb(
+df_teste_super_vaat = simulador.fundeb::simula_fundeb(
   dados_alunos = teste_alunos,
   dados_complementar = teste_complementar,
   dados_peso = teste_peso,
@@ -38,27 +44,29 @@ df_teste_super_vaat = simulador.fundeb:::simula_fundeb(
   complementacao_vaar = 0)
 
 
-#
+### Parametros para teste ----
 teste_sem_complementacao = as.vector(cbind(by(df_teste$recursos_vaaf, df_teste$uf, sum))/ cbind(by(df_teste$alunos_vaaf, df_teste$uf, sum)))
 
 teste_super_complementacao_vaaf = (sum(df_teste$recursos_vaaf) + 1e10)/sum(df_teste$alunos_vaaf)
 
-teste_super_complementacao_vaat = (sum(df_teste$recursos_vaat) + 1e10)/sum(df_teste$alunos_vaat)
+df_teste_vaat = df_teste[df_teste$ibge %in% ibge_habilitados,]
+
+teste_super_complementacao_vaat = (sum(df_teste_vaat$recursos_vaat) + 1e10)/sum(df_teste_vaat$alunos_vaat)
 
 # Testes ----
-## Testes de estrutura ####
+## Testes de estrutura ----
 expect_equal(class(df_teste),
              c("data.frame"))
 expect_equal(dim(df_teste),
              c(76, 21))
 
-## Teste de resultados da funcao ####
+## Teste de resultados da funcao ----
 ### Casos extremos
 #### Valores
 expect_equal(df_teste_super_vaaf$vaaf_final,
              rep(teste_super_complementacao_vaaf, 76))
-expect_equal(df_teste_super_vaat$vaat_final,
-             rep(teste_super_complementacao_vaat, 76))
+expect_equal(df_teste_super_vaat[df_teste_super_vaat$ibge %in% ibge_habilitados,]$vaat_final,
+             rep(teste_super_complementacao_vaat, 75))
 
 expect_equal(sort(unique(round(df_teste_zero$vaaf, digits = 2))),
              sort(round(teste_sem_complementacao, digits = 2)))
@@ -66,7 +74,7 @@ expect_equal(sort(unique(round(df_teste_zero$vaaf, digits = 2))),
 expect_equal(df_teste_zero$vaat_pre,
              df_teste_zero$vaat_final)
 
-#### Equalizacao
+#### Equalizacao ----
 expect_equal(any(df_teste_zero$equalizacao_vaaf),
              FALSE)
 expect_equal(any(df_teste_zero$equalizacao_vaat),
