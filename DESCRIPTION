@@ -1,7 +1,7 @@
 Package: simulador.fundeb
 Type: Package
 Title: Simulador do Fundeb
-Version: 0.6.0
+Version: 0.7.0
 Authors@R: c(
 	person("Henrique", "Assunção", , "henrique.mello1992@gmail.com", role=c("aut", "cre")))
 Description: 
@@ -11,5 +11,5 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Suggests: tinytest
-Depends: R (>= 3.5.0)
+Depends: R (>= 4.3.0)
 RoxygenNote: 7.3.1
