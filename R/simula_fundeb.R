@@ -20,7 +20,7 @@
 #' data("teste_complementar")
 #' data("teste_peso")
 #'
-#' df_teste = simulador.fundeb:::simula_fundeb(
+#' df_teste = simulador.fundeb::simula_fundeb(
 #'   dados_alunos = teste_alunos,
 #'   dados_complementar = teste_complementar,
 #'   dados_peso = teste_peso,
@@ -35,6 +35,9 @@
 simula_fundeb <- function(dados_alunos, dados_complementar, dados_peso, teto = 1.05, chao = .95, complementacao_vaaf, complementacao_vaat, complementacao_vaar){
 
   # Checando dados ----
+
+  # Gera parametros
+  entes_excluidos = dados_complementar[dados_complementar[,'inabilitados_vaat'] == TRUE,]$ibge
 
   # Agregacoes iniciais ----
   ## Pondera aluno por peso das etapas  ----
@@ -62,7 +65,7 @@ simula_fundeb <- function(dados_alunos, dados_complementar, dados_peso, teto = 1
   df_entes$vaat_pre = df_entes$recursos_vaat / df_entes$alunos_vaat
 
   # Etapa 2 ----
-  fundo_vaat =  equaliza_fundo(df_entes, complementacao_uniao = complementacao_vaat, var_ordem = 'vaat_pre', var_alunos = 'alunos_vaat', var_recursos = 'recursos_vaat', identificador = 'ibge', entes_excluidos = df_entes$inabilitados_vaat)
+  fundo_vaat =  equaliza_fundo(df_entes, complementacao_uniao = complementacao_vaat, var_ordem = 'vaat_pre', var_alunos = 'alunos_vaat', var_recursos = 'recursos_vaat', identificador = 'ibge', entes_excluidos = entes_excluidos)
 
   ## Unindo bases  ----
   df_entes = une_vaat(df_entes, fundo_vaat)
