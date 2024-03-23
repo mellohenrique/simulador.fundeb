@@ -17,11 +17,13 @@ equaliza_fundo <- function(dados, complementacao_uniao, var_ordem, var_alunos, v
   if (!is.null(entes_excluidos)){
     df_entes_excluidos = dados[dados$ibge %in% entes_excluidos,]
     df = dados[!dados$ibge %in% entes_excluidos,]
+  } else if (is.null(entes_excluidos)) {
+    df = dados
   }
 
   ## Limpeza
   ### Ordena pela variavel de ordem
-  df = dados[order(dados[,var_ordem]),]
+  df = df[order(df[,var_ordem]),]
 
   ### Gera dados de alunos acumulados, recursos acumulados e acomplementacao necessaria para equalizacao
   df$alunos_acumulados = cumsum(df[,var_alunos])
@@ -33,8 +35,15 @@ equaliza_fundo <- function(dados, complementacao_uniao, var_ordem, var_alunos, v
   entes_complementados = df['complementacao_necessaria']  < complementacao_uniao
   df_complementar = df[entes_complementados,]
 
+
   ## Remove entes nao complementados
   if (!is.null(entes_excluidos)){
+    # Adicionando Colunas
+    df_entes_excluidos$complementacao_necessaria = FALSE
+    df_entes_excluidos$recursos_acumulados = 0
+    df_entes_excluidos$alunos_acumulados = 0
+
+    # Unindo Tabelas
     df_nao_complementar = rbind(
       df[!entes_complementados,],
       df_entes_excluidos)
