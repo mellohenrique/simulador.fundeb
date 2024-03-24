@@ -1,6 +1,6 @@
 Package: simulador.fundeb
 Type: Package
-Title: Simulador do Fundeb
+Title: Simulador Fundeb
 Version: 0.7.0
 Authors@R: c(
 	person("Henrique", "Assunção", , "henrique.mello1992@gmail.com", role=c("aut", "cre")))
