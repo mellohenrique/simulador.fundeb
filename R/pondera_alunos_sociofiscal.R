@@ -18,7 +18,6 @@ pondera_matriculas_sociofiscal <- function(dados_matriculas, dados_complementar)
 
   # Multiplica pelo fator fiscal
   df$matriculas_vaaf = df$matriculas_vaaf * df$nf
-  df$matriculas_vaat = df$matriculas_vaat * df$nf
 
   # Retorna resultado
   return(df)
