@@ -9,15 +9,64 @@
 #'
 #' @return Um vetor numerico reescalado
 
-reescala_vetor = function(var, teto = 1.05, chao = .95){
-  maximo = max(var)
-  minimo = min(var)
-  diferenca = teto - chao
+reescala_vetor = function(var, maximo = 1.05, minimo = .95){
+  maior_valor = max(var)
+  menor_valor = min(var)
+  diferenca = maximo - minimo
 
-  if (maximo == minimo){
+  if (maior_valor == menor_valor){
     return(1)
   } else {
-    return(chao + diferenca * (var - minimo)/(maximo - minimo))
+    return(minimo + diferenca * (var - menor_valor)/(maior_valor - menor_valor))
   }
 }
 
+#' @title Testa numerico
+#'
+#' @description Testa se objeto e um objeto numerico de dimensao 1
+#'
+#' @param x um objeto a ser testado
+#'
+#' @return Lanca um erro ou retorna um vetor logico
+
+checa_numerico = function(x, nome){
+  if(!is.numeric(x)) {
+    stop(paste(nome, 'não é numerico'), call. = FALSE)
+  } else if (length(x) != 1){
+    stop(paste(nome, 'tem comprimento diferente de 1'), call. = FALSE)
+  } else {
+    TRUE
+  }
+}
+
+#' @title Testa NAs
+#'
+#' @description Checa se um objeto possui algum valor NA
+#'
+#' @param x um objeto a ser testado
+#'
+#' @return Lanca um erro ou retorna um vetor logico
+
+checa_na = function(x, nome){
+  if(any(is.na(x)) | any(is.null(x))) {
+    stop(paste(nome, 'possui valores faltantes ou nulos'), call. = FALSE)
+  } else {
+    TRUE
+  }
+}
+
+#' @title Testa data.frame
+#'
+#' @description Checa se um objeto e um data.frame possui algum valor NA
+#'
+#' @param x um objeto a ser testado
+#'
+#' @return Um vetor numerico reescalado
+
+checa_data_frame = function(x, nome){
+  if(!is.data.frame(x)) {
+    stop(paste(nome, 'não é um data.frame'), call. = FALSE)
+  } else {
+    TRUE
+  }
+}
