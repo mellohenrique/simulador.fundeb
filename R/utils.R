@@ -58,11 +58,11 @@ checa_na = function(x, nome){
 
 #' @title Checa data.frame
 #'
-#' @description Checa se um objeto e um data.frame possui algum valor NA
+#' @description Checa se um objeto e um data.frame
 #'
 #' @inheritParams checa_numerico
 #'
-#' @return Um vetor numerico reescalado
+#' @return Lanca um erro ou retorna um vetor logico
 
 checa_data_frame = function(x, nome){
   if(!is.data.frame(x)) {

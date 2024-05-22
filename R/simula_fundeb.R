@@ -12,6 +12,7 @@
 #' @param min_nse valor minimo do nivel socioeconomico na ponderacao de matriculas
 #' @param max_nf valor maximo do nivel de capacidade fiscal na ponderacao de matriculas, exclusivo para VAAF
 #' @param min_nf valor minimo do nivel de capacidade fiscal na ponderacao de matriculas, exclusivo para VAAF
+#' @param checa_valores valor logico para avaliacao da necessidade de checar valores
 #'
 #' @return Um data.frame ou com a simulacao dos dados do FNDE
 #'
@@ -34,9 +35,24 @@
 #'
 #' @export
 
-simula_fundeb <- function(dados_matriculas, dados_complementar, dados_peso, max_nse = 1.05, min_nse = .95, max_nf = 1.05, min_nf = .95, complementacao_vaaf, complementacao_vaat, complementacao_vaar){
+simula_fundeb <- function(dados_matriculas, dados_complementar, dados_peso, max_nse = 1.05, min_nse = .95, max_nf = 1.05, min_nf = .95, complementacao_vaaf, complementacao_vaat, complementacao_vaar, checa_valores = FALSE){
 
   # Checando dados ----
+  if (checa_valores){
+    simulador.fundeb:::checa_dados_simulador(
+      dados_matriculas = dados_matriculas,
+      dados_complementar = dados_complementar,
+      dados_peso = dados_peso,
+      complementacao_vaaf = complementacao_vaaf,
+      complementacao_vaat = complementacao_vaat,
+      complementacao_vaar = complementacao_vaar,
+      max_nse = max_nse,
+      min_nse = min_nse,
+      max_nf = max_nf,
+      min_nf = min_nf
+    )
+
+  }
 
   # Gera parametros
   entes_excluidos = dados_complementar[dados_complementar[,'inabilitados_vaat'] == TRUE,]$ibge
@@ -46,10 +62,10 @@ simula_fundeb <- function(dados_matriculas, dados_complementar, dados_peso, max_
   df_matriculas = pondera_matriculas_etapa(dados_matriculas = dados_matriculas, dados_peso = dados_peso)
 
   ## Reescala vetor socioeconomico ----
-  dados_complementar$nse = reescala_vetor(dados_complementar$nse, max_nse = max_nse, min_nse = min_nse)
+  dados_complementar$nse = reescala_vetor(dados_complementar$nse, maximo = max_nse, minimo = min_nse)
 
   ## Reescala vetor de capacidade fiscal ----
-  dados_complementar$nf = reescala_vetor(dados_complementar$nse, max_nf = max_nf, min_nf = min_nf)
+  dados_complementar$nf = reescala_vetor(dados_complementar$nse, maximo = max_nf, minimo = min_nf)
 
   ## Pondera matriculas por nivel socioeconomico ----
   df_entes = pondera_matriculas_sociofiscal(

@@ -8,8 +8,10 @@ simula_fundeb(
   dados_matriculas,
   dados_complementar,
   dados_peso,
-  teto = 1.05,
-  chao = 0.95,
+  max_nse = 1.05,
+  min_nse = 0.95,
+  max_nf = 1.05,
+  min_nf = 0.95,
   complementacao_vaaf,
   complementacao_vaat,
   complementacao_vaar
@@ -22,9 +24,13 @@ simula_fundeb(
 
 \item{dados_peso}{data.frame com os dados de peso das etapas}
 
-\item{teto}{valor maximo do nivel socioeconomico na ponderacao de matriculas}
+\item{max_nse}{valor maximo do nivel socioeconomico na ponderacao de matriculas}
 
-\item{chao}{valor minimo do nivel socioeconomico na ponderacao de matriculas}
+\item{min_nse}{valor minimo do nivel socioeconomico na ponderacao de matriculas}
+
+\item{max_nf}{valor maximo do nivel de capacidade fiscal na ponderacao de matriculas, exclusivo para VAAF}
+
+\item{min_nf}{valor minimo do nivel de capacidade fiscal na ponderacao de matriculas, exclusivo para VAAF}
 
 \item{complementacao_vaaf}{valor numerico com o montante a ser complementado pela uniao na etapa VAAF}
 
@@ -33,7 +39,7 @@ simula_fundeb(
 \item{complementacao_vaar}{valor numerico com o montante a ser complementado pela uniao na etapa VAAR}
 }
 \value{
-Um data.frame ou data.table com a simulacao dos dados do FNDE
+Um data.frame ou com a simulacao dos dados do FNDE
 }
 \description{
 Simula a distribuição dos fundos do Fundeb e as etapas de equalização
