@@ -21,11 +21,12 @@ reescala_vetor = function(var, maximo = 1.05, minimo = .95){
   }
 }
 
-#' @title Testa numerico
+#' @title Checa numerico
 #'
 #' @description Testa se objeto e um objeto numerico de dimensao 1
 #'
 #' @param x um objeto a ser testado
+#' @param nome nome do objeto para ser passado para a chamada de erro se necessaria
 #'
 #' @return Lanca um erro ou retorna um vetor logico
 
@@ -39,11 +40,11 @@ checa_numerico = function(x, nome){
   }
 }
 
-#' @title Testa NAs
+#' @title Checa NAs
 #'
 #' @description Checa se um objeto possui algum valor NA
 #'
-#' @param x um objeto a ser testado
+#' @inheritParams checa_numerico
 #'
 #' @return Lanca um erro ou retorna um vetor logico
 
@@ -55,11 +56,11 @@ checa_na = function(x, nome){
   }
 }
 
-#' @title Testa data.frame
+#' @title Checa data.frame
 #'
 #' @description Checa se um objeto e um data.frame possui algum valor NA
 #'
-#' @param x um objeto a ser testado
+#' @inheritParams checa_numerico
 #'
 #' @return Um vetor numerico reescalado
 
