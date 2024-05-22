@@ -8,10 +8,12 @@
 #' @param complementacao_vaaf valor numerico com o montante a ser complementado pela uniao na etapa VAAF
 #' @param complementacao_vaat valor numerico com o montante a ser complementado pela uniao na etapa VAAT
 #' @param complementacao_vaar valor numerico com o montante a ser complementado pela uniao na etapa VAAR
-#' @param teto valor maximo do nivel socioeconomico na ponderacao de matriculas
-#' @param chao valor minimo do nivel socioeconomico na ponderacao de matriculas
+#' @param max_nse valor maximo do nivel socioeconomico na ponderacao de matriculas
+#' @param min_nse valor minimo do nivel socioeconomico na ponderacao de matriculas
+#' @param max_nf valor maximo do nivel de capacidade fiscal na ponderacao de matriculas, exclusivo para VAAF
+#' @param min_nf valor minimo do nivel de capacidade fiscal na ponderacao de matriculas, exclusivo para VAAF
 #'
-#' @return Um data.frame ou data.table com a simulacao dos dados do FNDE
+#' @return Um data.frame ou com a simulacao dos dados do FNDE
 #'
 #'
 #' @examples
@@ -32,7 +34,7 @@
 #'
 #' @export
 
-simula_fundeb <- function(dados_matriculas, dados_complementar, dados_peso, teto = 1.05, chao = .95, complementacao_vaaf, complementacao_vaat, complementacao_vaar){
+simula_fundeb <- function(dados_matriculas, dados_complementar, dados_peso, max_nse = 1.05, min_nse = .95, max_nf = 1.05, min_nf = .95, complementacao_vaaf, complementacao_vaat, complementacao_vaar){
 
   # Checando dados ----
 
@@ -44,7 +46,10 @@ simula_fundeb <- function(dados_matriculas, dados_complementar, dados_peso, teto
   df_matriculas = pondera_matriculas_etapa(dados_matriculas = dados_matriculas, dados_peso = dados_peso)
 
   ## Reescala vetor socioeconomico ----
-  dados_complementar$nse = reescala_vetor(dados_complementar$nse, teto = teto, chao = chao)
+  dados_complementar$nse = reescala_vetor(dados_complementar$nse, max_nse = max_nse, min_nse = min_nse)
+
+  ## Reescala vetor de capacidade fiscal ----
+  dados_complementar$nf = reescala_vetor(dados_complementar$nse, max_nf = max_nf, min_nf = min_nf)
 
   ## Pondera matriculas por nivel socioeconomico ----
   df_entes = pondera_matriculas_sociofiscal(
