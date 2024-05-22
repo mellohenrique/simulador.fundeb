@@ -10,8 +10,8 @@ gera_fundo_estadual(dados_entes)
 \item{dados_entes}{data.frame com os dados dos entes federativos considerados na funcao}
 }
 \value{
-Um data.frame com os dados de recursos e alunos dos fundos estaduais
+Um data.frame com os dados de recursos e matriculas dos fundos estaduais
 }
 \description{
-Pondera dados de alunos do FNDE por ente e etapa e retorna os valores ponderados por etapa
+Pondera dados de matriculas do FNDE por ente e etapa e retorna os valores ponderados por etapa
 }

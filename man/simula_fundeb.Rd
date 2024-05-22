@@ -5,7 +5,7 @@
 \title{Simula Fundeb}
 \usage{
 simula_fundeb(
-  dados_alunos,
+  dados_matriculas,
   dados_complementar,
   dados_peso,
   teto = 1.05,
@@ -16,15 +16,15 @@ simula_fundeb(
 )
 }
 \arguments{
-\item{dados_alunos}{data.frame com os dados de alunos}
+\item{dados_matriculas}{data.frame com os dados de matriculas}
 
 \item{dados_complementar}{data.frame com os dados de peso das etapas}
 
 \item{dados_peso}{data.frame com os dados de peso das etapas}
 
-\item{teto}{valor maximo do nivel socioeconomico na ponderacao de alunos}
+\item{teto}{valor maximo do nivel socioeconomico na ponderacao de matriculas}
 
-\item{chao}{valor minimo do nivel socioeconomico na ponderacao de alunos}
+\item{chao}{valor minimo do nivel socioeconomico na ponderacao de matriculas}
 
 \item{complementacao_vaaf}{valor numerico com o montante a ser complementado pela uniao na etapa VAAF}
 
@@ -40,12 +40,12 @@ Simula a distribuição dos fundos do Fundeb e as etapas de equalização
 }
 \examples{
 
-data("teste_alunos")
+data("teste_matriculas")
 data("teste_complementar")
 data("teste_peso")
 
 df_teste = simulador.fundeb::simula_fundeb(
-  dados_alunos = teste_alunos,
+  dados_matriculas = teste_matriculas,
   dados_complementar = teste_complementar,
   dados_peso = teste_peso,
   complementacao_vaaf = 4e5,

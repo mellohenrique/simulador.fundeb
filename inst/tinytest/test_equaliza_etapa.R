@@ -15,21 +15,21 @@ teste$renda_pc = teste$renda/teste$pop
 df_fundo <- simulador.fundeb:::equaliza_fundo(teste,
                            2000,
                            var_ordem = "renda_pc",
-                           var_alunos = "pop",
+                           var_matriculas = "pop",
                            var_recursos = "renda",
                            identificador = 'id')
 
 super_fundo <- simulador.fundeb:::equaliza_fundo(teste,
                               200000,
                               var_ordem = "renda_pc",
-                              var_alunos = "pop",
+                              var_matriculas = "pop",
                               var_recursos = "renda",
                               identificador = 'id')
 
 zero_fundo <- simulador.fundeb:::equaliza_fundo(teste,
                               complementacao_uniao = 0,
                               var_ordem = "renda_pc",
-                              var_alunos = "pop",
+                              var_matriculas = "pop",
                               var_recursos = "renda",
                               identificador = 'id')
 # Testes ----

@@ -19,7 +19,7 @@ une_vaat <- function(dados_entes,
   names(df)[names(df) == 'recursos_pos'] <- 'recursos_vaat_final'
 
   # Gera calculos necessarios
-  df$vaat_final = df$recursos_vaat_final / df$alunos_vaat
+  df$vaat_final = df$recursos_vaat_final / df$matriculas_vaat
 
   # Retorna resultado
   return(df)

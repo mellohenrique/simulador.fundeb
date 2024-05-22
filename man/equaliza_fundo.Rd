@@ -8,7 +8,7 @@ equaliza_fundo(
   dados,
   complementacao_uniao,
   var_ordem,
-  var_alunos,
+  var_matriculas,
   var_recursos,
   identificador,
   entes_excluidos = NULL
@@ -21,7 +21,7 @@ equaliza_fundo(
 
 \item{var_ordem}{Variavel que sera utilizada para ordenar os entes}
 
-\item{var_alunos}{Variavel que sera utilizada como numero de alunos a serem considerados do ente}
+\item{var_matriculas}{Variavel que sera utilizada como numero de matriculas a serem considerados do ente}
 
 \item{var_recursos}{Variavel com as receitas que seram equalizadas}
 

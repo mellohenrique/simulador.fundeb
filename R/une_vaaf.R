@@ -13,15 +13,15 @@ une_vaaf <- function(dados_entes,
                      dados_fundos_estaduais){
 
   # Une bases
-  df = merge(dados_entes, dados_estados[, c('uf', 'alunos_estado_vaaf')], all.x = TRUE, by = 'uf')
+  df = merge(dados_entes, dados_estados[, c('uf', 'matriculas_estado_vaaf')], all.x = TRUE, by = 'uf')
   df = merge(df, dados_fundos_estaduais, all.x = TRUE, by = 'uf')
 
   # Calcula valores
-  df$recursos_vaaf_final = df$alunos_vaaf * df$recursos_pos / df$alunos_estado_vaaf
-  df$vaaf_final = df$recursos_vaaf_final / df$alunos_vaaf
+  df$recursos_vaaf_final = df$matriculas_vaaf * df$recursos_pos / df$matriculas_estado_vaaf
+  df$vaaf_final = df$recursos_vaaf_final / df$matriculas_vaaf
 
   # Remove colunas indesejadas
-  df$alunos_estado_vaaf  = NULL
+  df$matriculas_estado_vaaf  = NULL
   df$recursos_pos = NULL
 
   # Retorna resultados

@@ -49,7 +49,7 @@
 #'   \item{formacao_por_alternancia_eja_int_ed_profis_de_nivel_medio}{Numero de matriculas em Formação por alternância EJA - Int Ed. Profis. De Nível Médio}
 #' }
 #' @source Tabela Criada a partir dos dados do TCU
-"teste_alunos"
+"teste_matriculas"
 
 #' Dados Teste
 #'
@@ -69,3 +69,4 @@
 #'   }
 #'
 "teste_complementar"
+

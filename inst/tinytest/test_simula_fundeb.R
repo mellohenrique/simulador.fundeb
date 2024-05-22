@@ -10,7 +10,7 @@ ibge_habilitados = teste_complementar$ibge[teste_complementar$inabilitados_vaat 
 ### Teste original
 
 df_teste = simulador.fundeb::simula_fundeb(
-  dados_alunos = teste_alunos,
+  dados_matriculas = teste_matriculas,
   dados_complementar = teste_complementar,
   dados_peso = teste_peso,
   complementacao_vaaf = 4e5,
@@ -20,7 +20,7 @@ df_teste = simulador.fundeb::simula_fundeb(
 ### Preparação para teste de casos extremos ####
 
 df_teste_zero = simulador.fundeb::simula_fundeb(
-  dados_alunos = teste_alunos,
+  dados_matriculas = teste_matriculas,
   dados_complementar = teste_complementar,
   dados_peso = teste_peso,
   complementacao_vaaf = 0,
@@ -28,7 +28,7 @@ df_teste_zero = simulador.fundeb::simula_fundeb(
   complementacao_vaar = 0)
 
 df_teste_super_vaaf = simulador.fundeb::simula_fundeb(
-  dados_alunos = teste_alunos,
+  dados_matriculas = teste_matriculas,
   dados_complementar = teste_complementar,
   dados_peso = teste_peso,
   complementacao_vaaf = 1e10,
@@ -36,7 +36,7 @@ df_teste_super_vaaf = simulador.fundeb::simula_fundeb(
   complementacao_vaar = 0)
 
 df_teste_super_vaat = simulador.fundeb::simula_fundeb(
-  dados_alunos = teste_alunos,
+  dados_matriculas = teste_matriculas,
   dados_complementar = teste_complementar,
   dados_peso = teste_peso,
   complementacao_vaaf = 0,
@@ -45,13 +45,13 @@ df_teste_super_vaat = simulador.fundeb::simula_fundeb(
 
 
 ### Parametros para teste ----
-teste_sem_complementacao = as.vector(cbind(by(df_teste$recursos_vaaf, df_teste$uf, sum))/ cbind(by(df_teste$alunos_vaaf, df_teste$uf, sum)))
+teste_sem_complementacao = as.vector(cbind(by(df_teste$recursos_vaaf, df_teste$uf, sum))/ cbind(by(df_teste$matriculas_vaaf, df_teste$uf, sum)))
 
-teste_super_complementacao_vaaf = (sum(df_teste$recursos_vaaf) + 1e10)/sum(df_teste$alunos_vaaf)
+teste_super_complementacao_vaaf = (sum(df_teste$recursos_vaaf) + 1e10)/sum(df_teste$matriculas_vaaf)
 
 df_teste_vaat = df_teste[df_teste$ibge %in% ibge_habilitados,]
 
-teste_super_complementacao_vaat = (sum(df_teste_vaat$recursos_vaat) + 1e10)/sum(df_teste_vaat$alunos_vaat)
+teste_super_complementacao_vaat = (sum(df_teste_vaat$recursos_vaat) + 1e10)/sum(df_teste_vaat$matriculas_vaat)
 
 # Testes ----
 ## Testes de estrutura ----
