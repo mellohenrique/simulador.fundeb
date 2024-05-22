@@ -12,8 +12,8 @@ checa_data_frame(x, nome)
 \item{nome}{nome do objeto para ser passado para a chamada de erro se necessaria}
 }
 \value{
-Um vetor numerico reescalado
+Lanca um erro ou retorna um vetor logico
 }
 \description{
-Checa se um objeto e um data.frame possui algum valor NA
+Checa se um objeto e um data.frame
 }

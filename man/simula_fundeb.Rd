@@ -14,7 +14,8 @@ simula_fundeb(
   min_nf = 0.95,
   complementacao_vaaf,
   complementacao_vaat,
-  complementacao_vaar
+  complementacao_vaar,
+  checa_valores = FALSE
 )
 }
 \arguments{
@@ -37,6 +38,8 @@ simula_fundeb(
 \item{complementacao_vaat}{valor numerico com o montante a ser complementado pela uniao na etapa VAAT}
 
 \item{complementacao_vaar}{valor numerico com o montante a ser complementado pela uniao na etapa VAAR}
+
+\item{checa_valores}{valor logico para avaliacao da necessidade de checar valores}
 }
 \value{
 Um data.frame ou com a simulacao dos dados do FNDE
