@@ -15,7 +15,7 @@ reescala_vetor = function(var, maximo = 1.05, minimo = .95){
   diferenca = maximo - minimo
 
   if (maior_valor == menor_valor){
-    return(1)
+    return(var)
   } else {
     return(minimo + diferenca * (var - menor_valor)/(maior_valor - menor_valor))
   }
