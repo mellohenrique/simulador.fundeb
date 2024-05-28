@@ -65,7 +65,7 @@ simula_fundeb <- function(dados_matriculas, dados_complementar, dados_peso, max_
   dados_complementar$nse = reescala_vetor(dados_complementar$nse, maximo = max_nse, minimo = min_nse)
 
   ## Reescala vetor de capacidade fiscal ----
-  dados_complementar$nf = reescala_vetor(dados_complementar$nse, maximo = max_nf, minimo = min_nf)
+  dados_complementar$nf = reescala_vetor(dados_complementar$nf, maximo = max_nf, minimo = min_nf)
 
   ## Pondera matriculas por nivel socioeconomico ----
   df_entes = pondera_matriculas_sociofiscal(
