@@ -2,71 +2,84 @@
 #'
 #' Uma base de dados com os pesos por etapa
 #'
-#' @format Uma tabela com 3 colunas e 29 linhas.
+#' @format Uma tabela com 5 colunas e 29 linhas.
 #' \describe{
-#'   \item{etapa}{Variavel em caractere com o nome das etaoas segundo as portarias do FNDE}
+#'   \item{nome}{Variavel em caractere com o nome das etapas formatado para apresentacao}
+#'   \item{etapa}{Variavel em caractere com o nome das etapas segundo as portarias do FNDE}
 #'   \item{peso_vaaf}{Variavel numerica com o peso de cada etapa para a etapa de complementacao VAAF segunda o regulamentacao do FNDE}
 #'   \item{peso_vaat}{Variavel numerica com o peso de cada etapa para a etapa de complementacao VAAT}
-#'   \item{encontrado}{Variavel binaria, 1 se encontrado na regulamentacao do FNDE e 0 caso contrario}
-#' }
 #' @source Tabela Criada a partir dos dados do TCU
-"teste_peso"
+"pesos"
 
 #' Dados Teste
 #'
 #' Uma base de dados com as matriculas por etapa, coeficiente de distribuicao, estimativas de receitas e estado por ente federativo
 #'
-#' @format Uma tabela com 3 colunas e 29 linhas.
+#' @format Uma tabela com 30 colunas e 76 linhas.
 #' \describe{
-#'   \item{educacao_infantil_creche_integral}{Numero de matriculas no Ensino Infantil Creche Integral}
-#'   \item{educacao_infantil_creche_parcial}{Numero de matriculas no Ensino Infantil Creche Parcial}
-#'   \item{educacao_infantil_pre_escola_integral}{Numero de matriculas no Ensino Infantil Pré-Escola Integral}
-#'   \item{educacao_infantil_pre_escola_parcial}{Numero de matriculas no Ensino Infantil Pré-Escola Parcial}
-#'   \item{ensino_fundamental_ser_iniciais_urbana}{Numero de matriculas no Ensino Fundamental_ser_Iniciais Urbana}
-#'   \item{ensino_fundamental_ser_iniciais_rural}{Numero de matriculas no Ensino Fundamental_ser_Iniciais Rural}
-#'   \item{ensino_fundamental_ser_finais_urbana}{Numero de matriculas no Ensino Fundamental_ser_Finais Urbana}
-#'   \item{ensino_fundamental_ser_finais_rural}{Numero de matriculas no Ensino Fundamental_ser_Finais Rural}
-#'   \item{ensino_fundamental_tempo_integral}{Numero de matriculas no Ensino Fundamental Tempo Integral}
-#'   \item{ensino_medio_urbano}{Numero de matriculas no Ensino Médio Urbano}
-#'   \item{ensino_medio_rural}{Numero de matriculas no Ensino Médio Rural}
-#'   \item{ensino_medio_tempo_integral}{Numero de matriculas no Ensino Médio Tempo Integral}
-#'   \item{ensino_medio_integ_a_ed_prof}{Numero de matriculas no Ensino Médio Integ. à Ed. Prof.}
-#'   \item{ed_especial}{Numero de matriculas no Ed. Especial}
-#'   \item{aee}{Numero de matriculas no AEE}
-#'   \item{eja_aval_no_proc}{Numero de matriculas no EJA Aval. no Proc}
-#'   \item{eja_integ_a_ed_prof_de_nivel_medio}{Numero de matriculas no EJA Integ. à Ed. Prof. De nível médio}
-#'   \item{eed_indig_quil}{Numero de matriculas no Ed. Indíg./Quil.}
-#'   \item{instituicoes_conveniadas_creche_integral}{Numero de matriculas em Instituições Conveniadas Creche Integral}
-#'   \item{instituicoes_conveniadas_creche_parcial}{Numero de matriculas em Instituições Conveniadas Creche Parcial}
-#'   \item{instituicoes_conveniadas_pre_escola_integral}{Numero de matriculas em Instituições Conveniadas Pré-Escola Integral}
-#'   \item{instituicoes_conveniadas_pre_escola_parcial}{Numero de matriculas em Instituições Conveniadas Pré-Escola Parcial}
-#'   \item{instituicoes_conveniadas_ed_especial}{Numero de matriculas em Instituições Conveniadas Ed. Especial}
-#'   \item{formacao_por_alternancia_ensino_fund_ser_finais_rural}{Numero de matriculas em Formação por alternância Ensino Fund. Sér. Finais Rural}
-#'   \item{formacao_por_alternancia_ensino_medio_rural}{Numero de matriculas em Formação por alternância Ensino Médio Rural}
-#'   \item{formacao_por_alternancia_ensino_medio_integ_a_ed_prof}{Numero de matriculas em Formação por alternância Ensino Médio Integ. à Ed. Prof.}
-#'   \item{formacao_por_alternancia_ed_indig_quil}{Numero de matriculas em Formação por alternância Ed. Indíg./Quil.}
-#'   \item{formacao_por_alternancia_eja_aval_no_proc}{Numero de matriculas em Formação por alternância EJA - Aval. no Proc}
-#'   \item{formacao_por_alternancia_eja_int_ed_profis_de_nivel_medio}{Numero de matriculas em Formação por alternância EJA - Int Ed. Profis. De Nível Médio}
+#'   \item{ibge}{Variavel numerica com o codigo ibge do ente}
+#'   \item{creche_integral_rede_publica}{Variavel numerica com o numero de matriculas no ensino infantil creche integral da rede publica}
+#'   \item{creche_parcial_rede_publica}{Variavel numerica com o numero de matriculas no ensino infantil creche parcial da rede publica}
+#'   \item{pre_escola_integral_rede_publica}{Variavel numerica com o numero de matriculas no ensino infantil pre escola integral da rede publica}
+#'   \item{pre_escola_parcial_rede_publica}{Variavel numerica com o numero de matriculas no ensino infantil pre escola parcial da rede publica}
+#'   \item{ens_fundamental_series_iniciais_urbano_rede_publica}{Variavel numerica com o numero de matriculas no ensino fundamental series iniciais urbano da rede publica}
+#'   \item{ens_fundamental_series_iniciais_rural_rede_publica}{Variavel numerica com o numero de matriculas no ensino fundamental series iniciais rural da rede publica}
+#'   \item{ens_fundamental_series_finais_urbano_rede_publica}{Variavel numerica com o numero de matriculas no ensino fundamental anos finais urbano rede publica}
+#'   \item{ens_fundamental_series_finais_rural_rede_publica}{Variavel numerica com o numero de matriculas no ensino fundalmental anos finais rural rede publica}
+#'   \item{"ens_fundamental_integral_rede_publica}{Variavel numerica com o numero de matriculas no ensino fundalmental integral rede publica}
+#'   \item{"ensino_medio_urbano_rede_publica}{Variavel numerica com o numero de matriculas no ensino medio urbano rede publica}
+#'   \item{"ensino_medio_rural_rede_publica}{Variavel numerica com o numero de matriculas no ensino medio rural rede publica}
+#'   \item{"ensino_medio_integral_rede_publica}{Variavel numerica com o numero de matriculas no ensino medio integral rede publica}
+#'   \item{"ensino_medio_integrado_a_educacao_profissional_rede_publica}{Variavel numerica com o numero de matriculas no ensino medio integrado a educacao profissional rede publica}
+#'   \item{"itinerario_de_formacao_tecnica_e_profissional_rede_publica}{Variavel numerica com o numero de matriculas no itinerario de formacao tecnica e profissional rede publica}
+#'   \item{"educacao_profissional_concomitante_ao_ensino_medio_rede_publica}{Variavel numerica com o numero de matriculas na educacao profissional concomitante ao ensino medio rede publica}
+#'   \item{"educacao_especial_rede_publica}{Variavel numerica com o numero de matriculas na educacao especial rede publica}
+#'   \item{"atendimento_educacional_especializado_aee}{Variavel numerica com o numero de matriculas no atendimento educacional especializado AEE}
+#'   \item{"educacao_de_jovens_e_adultos_com_avaliacao_no_processo_rede_publica}{Variavel numerica com o numero de matriculas na educacao de jovens e adultos EJA com avaliacao no processo rede publica}
+#'   \item{"educacao_de_jovens_e_adultos_integrada_a_ed_profissional_de_nivel_medio_rede_publica}{Variavel numerica com o numero de matriculas na educacao de jovens e adultos EJA integrada a educacao profissional de nivel medio rede publica}
+#'   \item{"educacao_indigena_e_quilombola_rede_publica}{Variavel numerica com o numero de matriculas na educacao indigena e quilombola, com excecao de creche e pre escola, rede publica}
+#'   \item{"creche_integral_rede_conveniada}{Variavel numerica com o numero de matriculas na educacao infantil creche integral rede conveniada}
+#'   \item{"creche_parcial_rede_conveniada}{Variavel numerica com o numero de matriculas na educacao infantil creche parcial rede conveniada}
+#'   \item{"pre_escola_integral_rede_conveniada}{Variavel numerica com o numero de matriculas na educacao infantil pre escola integral rede conveniada}
+#'   \item{"pre_escola_parcial_rede_conveniada}{Variavel numerica com o numero de matriculas na educacao infantil pre escola parcial rede conveniada}
+#'   \item{"educacao_especial_rede_conveniada}{Variavel numerica com o numero de matriculas na educacao especial rede conveniada}
+#'   \item{"ens_fundamental_series_finais_rural_rede_conveniada_de_formacao_por_alternancia}{Variavel numerica com o numero de matriculas no ensino fundamental series finais rural rede conveniada de formacao por alternancia}
+#'   \item{"ens_medio_rural_rede_conveniada_de_formacao_por_alternancia}{Variavel numerica com o numero de matriculas no ensino medio rural rede conveniada de formacao por alternancia}
+#'   \item{"ens_medio_integrado_a_ed_profisional_rede_conveniada_de_formacao_por_alternancia}{Variavel numerica com o numero de matriculas no ensino medio integrado a educacao profissional rede conveniada de formacao por alternancia}
+#'   \item{"educacao_indigena_e_quilombola_rede_conveniada_de_formacao_por_alternancia}{Variavel numerica com o numero de matriculas na educacao indignea e quilombola rede conveniada de formacao por alternancia}
+#'   \item{"eja_com_avaliacao_no_processo_rede_conveniada_de_formacao_por_alternancia}{Variavel numerica com o numero de matriculas na educacao de jovens e adultos EJA com avaliacao no processo rede conveniada de formacao por alternancia}
+#'   \item{"eja_integrada_a_ed_profissional_de_nivel_medio_rede_conveniada_de_formacao_por_alternancia}{Variavel numerica com o numero de matriculas na educacao de jovens e adultos EJA integrado a educacao profissional de nivel medio rede conveniada de formacao por alternancia}
+#'   \item{"itinerario_de_formacao_tecnica_e_profissional_rede_conveniada_de_formacao_por_alternancia}{Variavel numerica com o numero de matriculas no itinerario de formacao tecnica e profissional rede conveniada de formacao pro alternancia}
+#'   \item{"educacao_profissional_concomitante_ao_ensino_medio_rede_conveniada_de_formacao_por_alternancia}{Variavel numerica com o numero de matriculas na educacao profissional concomitante ao ensino medio na rede conveniada de formacao por alternancia}
+#'   \item{"ens_medio_integrado_a_ed_profissional_rede_conveniada_instituicoes_de_ed_profissional}{Variavel numerica com o numero de matriculas no ensino medio integrado a educacao profissional rede conveniada instituicoes de educacao profissional}
+#'   \item{"eja_integrada_a_ed_profissional_de_nivel_medio_rede_conveniada_instituicoes_de_ed_profissional}{Variavel numerica com o numero de matriculas na educacao de jovens e adultos EJA integrada a educacao profissional de nivel medio rede conveniada de instituicoes de educacao profissional}
+#'   \item{"itinerario_de_formacao_tecnica_e_profissional_rede_conveniada_instituicoes_de_ed_profissional}{Variavel numerica com o numero de matriculas no itinerario de formacao tecnica e profissional rede conveniada de instituicoes de educacao profissional}
+#'   \item{"educacao_profissional_concomitante_ao_ensino_medio_rede_conveniada_instituicoes_de_ed_profissional}{Variavel numerica com o numero de matriculas na educacao profissional concomitante ao ensino medio rede conveniado em instituicoes de educacao profissional}
+#'   \item{"ed_ind_quil_creche}{Variavel numerica com o numero de matriculas na educacao indigena e quilombolas em creche, rede publica}
+#'   \item{"ed_ind_quil_pre_escola}{Variavel numerica com o numero de matriculas na educacao indigena e quilombolas em pre escola, rede publica}
+#'   \item{"ed_esp_creche}{Variavel numerica com o numero de matriculas na educacao especial em creche, rede publica}
+#'   \item{"ed_esp_pre_escola}{Variavel numerica com o numero de matriculas na educacao especial em pre escola, rede publica}
 #' }
 #' @source Tabela Criada a partir dos dados do TCU
-"teste_matriculas"
+"matriculas"
 
 #' Dados Teste
 #'
 #' Uma base de dados com as matriculas por etapa, coeficiente de distribuicao, estimativas de receitas e estado por ente federativo
 #'
-#' @format Uma tabela com 3 colunas e 29 linhas.
+#' @format Uma tabela com 9 colunas e 76 linhas.
 #' \describe{
-#'   \item{ibge}{Codigo ibge do ente}
-#'   \item{uf}{Variavel em caractere com o nome das unidades da federacao}
+#'   \item{ibge}{Variavel numerica com o codigo ibge do ente}
+#'   \item{uf}{Variavel em caractere com o nome da unidades da federacao do ente}
 #'   \item{nome}{Variavel em caracteres com o nome do ente}
-#'   \item{recursos_vaaf}{Receitas do fundeb cada ente federativo utilizadas na etapa VAAF}
-#'   \item{recursos_vaat}{Receitas do fundeb cada ente federativo utilizadas na etapa VAAT}
-#'   \item{nse}{Variaval com o indice socioeconomico, no exemplo do teste todos os valores sao um}
+#'   \item{recursos_vaaf}{Variaval numerica receitas do fundeb cada ente federativo utilizadas na etapa VAAF}
+#'   \item{recursos_vaat}{Variaval numerica  com receitas do fundeb cada ente federativo utilizadas na etapa VAAT}
+#'   \item{nse}{Variaval numerica com o indice socioeconomico, no exemplo do teste todos os valores sao um}
+#'   \item{nf}{Variaval numerica com o indice de nivel fiscal, no exemplo do teste todos os valores sao um}
+#'   \item{peso_vaar}{Variavel com a proporcao de complementacao VAAR que o ente recebe}
+#'   \item{inabilitados_vaat}{Variavel logica com o identificador dos entes que nao participarao da complementacao vaat}
 #'   \item{nf}{Variaval com o indice de nivel fiscal, no exemplo do teste todos os valores sao um}
-#'   \item{peso_vaar}{Parcela dos recursos vaar que irao para cada ente}
-#'   \item{inabilitados_vaat}{Variavel com o identificador dos entes que nao participarao da complementacao vaat}
 #'   }
 #'
-"teste_complementar"
+"complementar"
 
