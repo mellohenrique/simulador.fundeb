@@ -8,7 +8,8 @@
 #'   \item{etapa}{Variavel em caractere com o nome das etapas segundo as portarias do FNDE}
 #'   \item{peso_vaaf}{Variavel numerica com o peso de cada etapa para a etapa de complementacao VAAF segunda o regulamentacao do FNDE}
 #'   \item{peso_vaat}{Variavel numerica com o peso de cada etapa para a etapa de complementacao VAAT}
-#' @source Tabela Criada a partir dos dados do TCU
+#'   }
+#' @source Tabela Criada a partir dos dados do Fundeb, referentes a portaria interministerial 2 de 2024
 "pesos"
 
 #' Dados Teste
@@ -60,7 +61,7 @@
 #'   \item{"ed_esp_creche}{Variavel numerica com o numero de matriculas na educacao especial em creche, rede publica}
 #'   \item{"ed_esp_pre_escola}{Variavel numerica com o numero de matriculas na educacao especial em pre escola, rede publica}
 #' }
-#' @source Tabela Criada a partir dos dados do TCU
+#' @source Tabela Criada a partir dos dados do Fundeb, referentes a portaria interministerial 2 de 2024
 "matriculas"
 
 #' Dados Teste
@@ -80,6 +81,6 @@
 #'   \item{inabilitados_vaat}{Variavel logica com o identificador dos entes que nao participarao da complementacao vaat}
 #'   \item{nf}{Variaval com o indice de nivel fiscal, no exemplo do teste todos os valores sao um}
 #'   }
-#'
+#' @source Tabela Criada a partir dos dados do Fundeb, referentes a portaria interministerial 2 de 2024
 "complementar"
 
