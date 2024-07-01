@@ -101,7 +101,7 @@ simula_fundeb <- function(dados_matriculas, dados_complementar, dados_peso, max_
   df_entes$recursos_fundeb = df_entes$recursos_vaaf + df_entes$complemento_uniao
 
   # Organiza colunas
-  df_entes = df_entes[,c('ibge', 'uf', 'nome', 'matriculas_vaaf', 'matriculas_vaat', 'recursos_vaaf', 'recuros_vaat', 'nse', 'nf', 'inabilitados_vaat', 'peso_vaar', 'recursos_vaaf_final', 'vaaf_final', 'vaat_pre', 'recursos_vaat_final', 'vaat_final', 'complemento_vaaf', 'complemento_vaat', 'complemento_vaar', 'complemento_uniao', 'recursos_fundeb')]
+  df_entes = df_entes[,c('ibge', 'uf', 'nome', 'matriculas_vaaf', 'matriculas_vaat', 'recursos_vaaf', 'recursos_vaat', 'nse', 'nf', 'inabilitados_vaat', 'peso_vaar', 'recursos_vaaf_final', 'vaaf_final', 'vaat_pre', 'recursos_vaat_final', 'vaat_final', 'complemento_vaaf', 'complemento_vaat', 'complemento_vaar', 'complemento_uniao', 'recursos_fundeb')]
 
   # Retorno
   return(df_entes)
